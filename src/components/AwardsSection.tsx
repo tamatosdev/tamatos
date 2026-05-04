@@ -81,7 +81,7 @@ export default function AwardsSection() {
                     Clutch 2026
                   </p>
                   <p
-                    className="text-white/70 font-normal mt-1 text-center"
+                    className="text-white font-normal mt-1 text-center"
                     style={{ fontSize: "16px", letterSpacing: "-0.03em" }}
                   >
                     {award.text}

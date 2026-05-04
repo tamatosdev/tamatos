@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack --yes)"
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack --yes)",
+      "Bash(npm install *)",
+      "Bash(curl -s http://localhost:3000)",
+      "WebFetch(domain:codepen.io)",
+      "WebFetch(domain:cdpn.io)",
+      "WebSearch",
+      "WebFetch(domain:gist.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(git rm *)",
+      "Bash(git remote *)"
     ]
   }
 }
