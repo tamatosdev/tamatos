@@ -22,8 +22,8 @@ const leftPills = [
 ];
 
 const rightPills = [
-  { label: "Product Design", top: "-3%", right: "0%" },
-  { label: "SEO", top: "44%", right: "4%" },
+  { label: "Product Design", top: "-1%", right: "0%" },
+  { label: "SEO", top: "44%", right: "1%" },
   { label: "Social Media Marketing", top: "73%", right: "0%" },
 ];
 
@@ -41,7 +41,7 @@ export default function Banner() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[93vh] flex items-center justify-center overflow-hidden">
       <Image
         src={BannerGradient}
         alt=""
@@ -50,9 +50,8 @@ export default function Banner() {
         className="object-cover object-center top-[-35%]!"
       />
 
-      <div ref={contentRef} className="container relative z-10 text-center pt-28" style={{ willChange: "transform" }}>
+      <div ref={contentRef} className="container relative z-10 text-center pt-24 lg:pt-28" style={{ willChange: "transform" }}>
 
-        {/* Background grid — stretches to full container height so button stays inside */}
         <Image
           src={BgGrid}
           alt=""
@@ -60,34 +59,40 @@ export default function Banner() {
           className="object-fill pointer-events-none"
         />
 
-        {/* Left pills */}
+        {/* Left pills — hidden on mobile/tablet, shown lg+ */}
         {leftPills.map((pill) => (
           <span
             key={pill.label}
-            className="absolute text-white text-[18px] font-medium rounded-full px-5 py-2.5 leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
-            style={{ ...pillStyle, top: pill.top, left: pill.left }} data-aos="fade-left" data-aos-duration="1500"
+            className="hidden lg:block text-white/70 font-medium rounded-full px-5 py-2.5 leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
+            style={{ position: "absolute", fontSize: "clamp(13px, 1.1vw, 18px)", ...pillStyle, top: pill.top, left: pill.left }}
+            data-aos="fade-left"
+            data-aos-duration="1500"
           >
             {pill.label}
           </span>
         ))}
 
-        {/* Right pills */}
+        {/* Right pills — hidden on mobile/tablet, shown lg+ */}
         {rightPills.map((pill) => (
           <span
             key={pill.label}
-            className="absolute text-white text-[18px] font-medium rounded-full px-5 py-2.5 leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
-            style={{ ...pillStyle, top: pill.top, right: pill.right }} data-aos="fade-right" data-aos-duration="1500"
+            className="hidden lg:block text-white/70 font-medium rounded-full px-5 py-2.5 leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
+            style={{ position: "absolute", fontSize: "clamp(13px, 1.1vw, 18px)", ...pillStyle, top: pill.top, right: pill.right }}
+            data-aos="fade-right"
+            data-aos-duration="1500"
           >
             {pill.label}
           </span>
         ))}
-        <h1 className="text-white font-normal leading-[1.1] text-[96px] tracking-[-0.05em]">
+
+        <h1 className="text-white font-normal leading-[1.1] tracking-[-0.05em] text-[38px] sm:text-[54px] md:text-[68px] lg:text-[80px] xl:text-[96px]">
           {/* Line 1 */}
-          <span className="flex items-center justify-center gap-4 flex-wrap">
+          <span className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
             <span>We Turn</span>
             <span
-              className="inline-flex items-center px-5 py-1 rounded-full font-semibold ml-[-23px] mr-[-27px] tracking-[-0.03em]" data-aos="zoom-in"
+              className="inline-flex items-center px-4 sm:px-5 py-1 rounded-full font-semibold ml-[-16px] mr-[-18px] sm:ml-[-23px] sm:mr-[-27px] tracking-[-0.03em]"
               style={{ background: "#E8601C", color: "#0A0A0C", fontSize: "0.55em", verticalAlign: "middle", transform: "rotate(-10deg)", display: "inline-block" }}
+              data-aos="zoom-in"
             >
               BOLD
             </span>
@@ -95,14 +100,14 @@ export default function Banner() {
           </span>
 
           {/* Line 2 */}
-          <span className="flex items-center justify-center gap-4 flex-wrap mt-1">
+          <span className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap mt-1">
             <span>Experiences</span>
             <Image
               src={Asterisk}
               alt="*"
               width={80}
               height={80}
-              className="inline-block"
+              className="inline-block w-[30px] sm:w-[45px] md:w-[60px] lg:w-[70px] xl:w-[80px] h-auto"
               style={{ verticalAlign: "middle" }}
               data-aos="flip-right"
               data-aos-duration="1500"
@@ -115,20 +120,17 @@ export default function Banner() {
         </h1>
 
         {/* Begin Now Button */}
-        <div className="mt-12 flex justify-center">
+        <div className="mt-8 sm:mt-12 flex justify-center">
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-6 rounded-full pl-[26px] pr-[15px] py-[10px] bg-white hover:bg-[#9DF560] transition-colors duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
-            data-aos="fade-up" data-aos-duration="1500"
+            className="group inline-flex items-center gap-4 sm:gap-6 rounded-full pl-[20px] sm:pl-[26px] pr-[12px] sm:pr-[15px] py-[10px] bg-white hover:bg-[#9DF560] transition-colors duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
+            data-aos="fade-up"
+            data-aos-duration="1500"
           >
-            {/* Text — always fixed */}
-            <span className="text-[#0A0A0C] font-medium text-[24px] leading-none tracking-[-0.05em]">
+            <span className="text-[#0A0A0C] font-medium text-[18px] sm:text-[24px] leading-none tracking-[-0.05em]">
               Begin Now
             </span>
-
-            {/* Image pill — Frame 1 (gradient) stays fixed; Frame 2 (arrow) slides up over it */}
-            <div className="relative w-[80px] h-[43px] rounded-[40px] overflow-hidden flex-shrink-0 transform-[translateZ(0)]">
-              {/* Frame 1 image — fixed, never moves */}
+            <div className="relative w-[64px] sm:w-[80px] h-[36px] sm:h-[43px] rounded-[40px] overflow-hidden flex-shrink-0 transform-[translateZ(0)]">
               <div className="absolute inset-0">
                 <Image
                   src={Frame1}
@@ -137,8 +139,6 @@ export default function Banner() {
                   className="object-cover object-center scale-150"
                 />
               </div>
-
-              {/* Frame 2 image — slides up from bottom on hover */}
               <div className="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] bg-[#0A0A0C] flex items-center justify-center">
                 <Image
                   src={Frame2}

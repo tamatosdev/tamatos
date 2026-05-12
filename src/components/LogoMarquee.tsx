@@ -21,10 +21,10 @@ const logos = [
 
 export default function LogoMarquee() {
   return (
-    <section className="py-24 overflow-hidden">
+    <section className="py-12 md:py-24 overflow-hidden">
       <div className="flex w-max animate-marquee">
         {[...logos, ...logos].map((logo, i) => (
-          <div key={i} className="flex items-center justify-center mx-10 flex-shrink-0">
+          <div key={i} className="flex items-center justify-center mx-6 md:mx-10 shrink-0">
             <Image
               src={logo.src}
               alt={logo.alt}
