@@ -112,7 +112,7 @@ export default async function BlogSection() {
        
             >
               {/* Image */}
-              <div className="relative overflow-hidden rounded-[20px]" style={{ height: "300px" }} radius={20}>
+              <div className="relative overflow-hidden rounded-[20px]" style={{ height: "300px" }}>
                 {post.featuredImage?.node?.sourceUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
