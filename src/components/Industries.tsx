@@ -39,13 +39,17 @@ export default function IndustriesSection() {
 
       <div className="container mx-auto px-5 relative z-10">
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_520px] gap-[70px] items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] xl:grid-cols-[1.2fr_440px] min-[1441px]:grid-cols-[1.4fr_500px] gap-[40px] min-[1441px]:gap-[70px] items-center">
 
           {/* Left Content */}
           <div>
 
             {/* Heading */}
-            <h2 className="text-white text-[60px] leading-[1.2] tracking-[-0.05em] max-w-[850px] font-medium">
+            <h2 className="text-white text-[60px] leading-[1.2] tracking-[-0.05em] max-w-[850px] font-medium"
+              style={{
+                fontSize: "clamp(30px, 3.13vw, 60px)"
+              }}
+            >
               We've{" "}
               <span className="italic text-white/60">
                 Shipped
@@ -72,12 +76,14 @@ export default function IndustriesSection() {
 
                       {/* Title */}
                       <h3
-                        className={`text-[24px] leading-none tracking-[-0.03em] transition-all duration-500 group-hover:pl-[20px]
+                        className={` leading-none tracking-[-0.03em] transition-all duration-500 group-hover:pl-[20px]
                         ${
                           isActive
                             ? "text-[#9DF560]"
                             : "text-white/65"
                         }`}
+                    
+                        style={{ fontSize: "clamp(16px, 1.25vw, 24px)" }}
                       >
                         {item.title}
                       </h3>

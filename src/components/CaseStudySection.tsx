@@ -127,8 +127,8 @@ export default function CaseStudySection() {
                 pill.flag ? (
                   <span
                     key={i}
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-full text-white/80 font-normal"
-                    style={{ fontSize: "clamp(14px, 1.3vw, 18px)", letterSpacing: "-0.03em", ...pillStyle }}
+                    className="inline-flex items-center gap-2 justify-center px-3 py-2 rounded-[40px] text-white/80 font-normal min-w-[79px] min-h-[42px]"
+                    style={{ fontSize: "clamp(14px, 1.3vw, 16px)", letterSpacing: "-0.03em", ...pillStyle }}
                   >
                     <Image
                       src={pill.flag}
@@ -141,8 +141,8 @@ export default function CaseStudySection() {
                 ) : (
                   <span
                     key={i}
-                    className="inline-flex items-center px-4 py-2 rounded-full text-white/80 font-normal"
-                    style={{ fontSize: "clamp(14px, 1.3vw, 18px)", letterSpacing: "-0.03em", ...pillStyle }}
+                    className="inline-flex items-center px-4 py-2 rounded-full text-white/80 font-normal min-w-[79px] min-h-[42px]"
+                    style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.03em", ...pillStyle }}
                   >
                     {pill.label}
                   </span>
@@ -153,7 +153,7 @@ export default function CaseStudySection() {
             {/* Heading */}
             <h2
               className="text-white font-medium leading-[1.2]"
-              style={{ fontSize: "clamp(20px, 2.8vw, 36px)", letterSpacing: "-0.04em" }}
+              style={{ fontSize: "clamp(20px, 2vw, 36px)", letterSpacing: "-0.04em" }}
             >
               {cs.heading}
             </h2>

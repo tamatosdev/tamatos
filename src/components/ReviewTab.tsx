@@ -91,11 +91,11 @@ export default function TestimonialsSection() {
 
   return (
     <section className=" py-[120px] overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-5">
+      <div className="container mx-auto px-5">
         
         {/* Heading */}
-        <div className="max-w-[1000px] mx-auto text-center">
-          <h2 className="text-white text-[36px] leading-[1.05] font-semibold tracking-[-0.04em]">
+        <div className="max-w-250 mx-auto text-center">
+          <h2 className="text-white leading-[1.2] font-semibold tracking-[-0.04em]" style={{ fontSize: "clamp(22px, 3.2vw, 60px)" }}>
             Verified{" "}
             <span className="text-[#9DF560]">reviews</span> From{" "}
             <span className="italic text-white/70">Real Clients</span>
@@ -143,7 +143,7 @@ export default function TestimonialsSection() {
               key={activeTab}
               className="animate-[moveUp_.5s_ease] flex flex-col justify-between h-full"
             >
-              <p className="text-[#0A0A0C] text-[36px] font-medium leading-[1.3] tracking-[-0.04em] max-w-[1000px]">
+              <p className="text-[#0A0A0C] font-medium leading-[1.3] tracking-[-0.04em] max-w-250" style={{ fontSize: "clamp(18px, 2vw, 36px)" }}>
                 {testimonials[activeTab].content}
               </p>
 

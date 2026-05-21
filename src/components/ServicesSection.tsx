@@ -41,10 +41,10 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="container py-12 md:py-24">
+    <section className="container py-12 md:py-24 relative z-1">
       <h2
         className="text-white font-medium text-center leading-[1.15] mb-10 md:mb-14"
-        style={{ fontSize: "clamp(28px, 4.5vw, 64px)", letterSpacing: "-0.04em" }}
+        style={{ fontSize: "clamp(32px, 4.44vw, 64px)", letterSpacing: "-0.04em" }}
       >
         Design &amp; Development<br />
         <span className="text-white/70 italic">Services </span>We Offer
@@ -59,7 +59,7 @@ export default function ServicesSection() {
           >
             <h3
               className="text-white font-medium mb-5 md:mb-6"
-              style={{ fontSize: "clamp(24px, 3.5vw, 48px)", letterSpacing: "-0.04em" }}
+              style={{ fontSize: "clamp(24px, 2.50vw, 48px)", letterSpacing: "-0.04em" }}
             >
               {service.category}
             </h3>
@@ -73,7 +73,7 @@ export default function ServicesSection() {
                   >
                     <span
                       className="font-medium"
-                      style={{ fontSize: "clamp(15px, 1.6vw, 22px)", letterSpacing: "-0.03em" }}
+                      style={{ fontSize: "clamp(16px, 1.25vw, 24px)", letterSpacing: "-0.03em" }}
                     >
                       {item}
                     </span>

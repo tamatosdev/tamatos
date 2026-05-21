@@ -16,15 +16,15 @@ const pillStyle: React.CSSProperties = {
 };
 
 const leftPills = [
-  { label: "UX/UI Design", top: "6%", left: "2%" },
-  { label: "Branding", top: "39%", left: "-2%" },
-  { label: "Web & App Dev", top: "75%", left: "11%" },
+  { label: "UX/UI Design",  top: "6%",  left: "0%" },
+  { label: "Branding",      top: "39%", left: "-3%" },
+  { label: "Web & App Dev", top: "75%", left: "2%" },
 ];
 
 const rightPills = [
-  { label: "Product Design", top: "-1%", right: "0%" },
-  { label: "SEO", top: "44%", right: "1%" },
-  { label: "Social Media Marketing", top: "73%", right: "0%" },
+  { label: "Product Design",         top: "-1%", right: "0%" },
+  { label: "SEO",                    top: "44%", right: "0%" },
+  { label: "Social Media Marketing", top: "73%", right: "-2%" },
 ];
 
 export default function Banner() {
@@ -50,8 +50,11 @@ export default function Banner() {
         className="object-cover object-center top-[-35%]!"
       />
 
-      <div ref={contentRef} className="container relative z-10 text-center pt-24 lg:pt-28" style={{ willChange: "transform" }}>
-
+      <div
+        ref={contentRef}
+        className="relative z-10 text-center pt-24 lg:pt-28 w-full max-w-[860px] xl:max-w-[1100px] 2xl:max-w-[1500px] mx-auto px-4"
+        style={{ willChange: "transform" }}
+      >
         <Image
           src={BgGrid}
           alt=""
@@ -59,12 +62,19 @@ export default function Banner() {
           className="object-fill pointer-events-none"
         />
 
-        {/* Left pills — hidden on mobile/tablet, shown lg+ */}
+        {/* Left Pills */}
         {leftPills.map((pill) => (
           <span
             key={pill.label}
-            className="hidden lg:block text-white/70 font-medium rounded-full px-5 py-2.5 leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
-            style={{ position: "absolute", fontSize: "clamp(13px, 1.1vw, 18px)", ...pillStyle, top: pill.top, left: pill.left }}
+            className="hidden lg:block text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
+            style={{
+              position: "absolute",
+              fontSize: "clamp(11px, 0.78vw, 16px)",
+              padding: "clamp(6px, 0.5vw, 10px) clamp(10px, 1vw, 20px)",
+              ...pillStyle,
+              top: pill.top,
+              left: pill.left,
+            }}
             data-aos="fade-left"
             data-aos-duration="1500"
           >
@@ -72,12 +82,19 @@ export default function Banner() {
           </span>
         ))}
 
-        {/* Right pills — hidden on mobile/tablet, shown lg+ */}
+        {/* Right Pills */}
         {rightPills.map((pill) => (
           <span
             key={pill.label}
-            className="hidden lg:block text-white/70 font-medium rounded-full px-5 py-2.5 leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
-            style={{ position: "absolute", fontSize: "clamp(13px, 1.1vw, 18px)", ...pillStyle, top: pill.top, right: pill.right }}
+            className="hidden lg:block text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
+            style={{
+              position: "absolute",
+              fontSize: "clamp(11px, 0.78vw, 16px)",
+              padding: "clamp(6px, 0.5vw, 10px) clamp(10px, 1vw, 20px)",
+              ...pillStyle,
+              top: pill.top,
+              right: pill.right,
+            }}
             data-aos="fade-right"
             data-aos-duration="1500"
           >
@@ -85,13 +102,21 @@ export default function Banner() {
           </span>
         ))}
 
-        <h1 className="text-white font-normal leading-[1.1] tracking-[-0.05em] text-[38px] sm:text-[54px] md:text-[68px] lg:text-[80px] xl:text-[96px]">
+        {/* Heading */}
+        <h1 className="text-white font-normal leading-[1.1] tracking-[-0.05em] text-[44px] sm:text-[50px] md:text-[64px] lg:text-[72px] xl:text-[84px] 2xl:text-[96px] banner-heading">
           {/* Line 1 */}
           <span className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
             <span>We Turn</span>
             <span
               className="inline-flex items-center px-4 sm:px-5 py-1 rounded-full font-semibold ml-[-16px] mr-[-18px] sm:ml-[-23px] sm:mr-[-27px] tracking-[-0.03em]"
-              style={{ background: "#E8601C", color: "#0A0A0C", fontSize: "0.55em", verticalAlign: "middle", transform: "rotate(-10deg)", display: "inline-block" }}
+              style={{
+                background: "#E8601C",
+                color: "#0A0A0C",
+                fontSize: "0.55em",
+                verticalAlign: "middle",
+                transform: "rotate(-10deg)",
+                display: "inline-block",
+              }}
               data-aos="zoom-in"
             >
               BOLD
@@ -107,7 +132,7 @@ export default function Banner() {
               alt="*"
               width={80}
               height={80}
-              className="inline-block w-[30px] sm:w-[45px] md:w-[60px] lg:w-[70px] xl:w-[80px] h-auto"
+              className="inline-block w-[28px] sm:w-[40px] md:w-[55px] lg:w-[62px] xl:w-[72px] 2xl:w-[80px] h-auto"
               style={{ verticalAlign: "middle" }}
               data-aos="flip-right"
               data-aos-duration="1500"

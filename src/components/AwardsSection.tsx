@@ -30,7 +30,7 @@ export default function AwardsSection() {
         <div className="mb-16">
           <h2
             className="text-white font-medium leading-[1.1]"
-            style={{ fontSize: "64px", letterSpacing: "-0.05em" }}
+            style={{ fontSize: "clamp(32px, 3.3vw, 60px)", letterSpacing: "-0.05em" }}
           >
             <span>Not just </span>
             <em className="italic text-white/60">Trusted.</em>
@@ -76,13 +76,13 @@ export default function AwardsSection() {
                 <div>
                   <p
                     className="text-white font-semibold leading-tight text-center"
-                    style={{ fontSize: "34px", letterSpacing: "-0.04em" }}
+                    style={{ fontSize: "clamp(14px, 1.5vw, 24px)", letterSpacing: "-0.04em" }}
                   >
                     Clutch 2026
                   </p>
                   <p
                     className="text-white font-normal mt-1 text-center"
-                    style={{ fontSize: "16px", letterSpacing: "-0.03em" }}
+                    style={{ fontSize: "clamp(10px, 1vw, 16px)", letterSpacing: "-0.03em" }}
                   >
                     {award.text}
                   </p>

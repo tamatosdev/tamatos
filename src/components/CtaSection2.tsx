@@ -4,10 +4,10 @@ import ctaImage from "@/assets/cta-2-shadow.png";
 
 export default function CtaSection2() {
   return (
-    <section className="container relative py-12 px-0 ">
+    <section className="container relative py-32 px-0 ">
       
       <div
-        className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-20 overflow-hidden"
+        className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-20 overflow-hidden relative"
         style={{
           background: "#fff",
           borderRadius: "40px",
@@ -18,7 +18,7 @@ export default function CtaSection2() {
             <Image
               src={ctaImage}
               alt=""
-              className="absolute right-[10%] top-[50px] h-[430px] w-[60%] object-cover object-center pointer-events-none select-none"
+              className="absolute right-[10%] top-[70px]  w-[60%] object-fill object-center pointer-events-none select-none"
               priority
             />
 

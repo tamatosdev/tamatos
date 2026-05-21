@@ -51,7 +51,7 @@ export default function ScrollTextReveal({
     <section ref={sectionRef} className="container py-10 md:py-16">
       <h2
         className="font-medium text-center leading-[1.2] capitalize"
-        style={{ fontSize: "clamp(28px, 6.5vw, 100px)", letterSpacing: "-0.02em" }}
+        style={{ fontSize: "clamp(45px, 5.73vw, 110px)", letterSpacing: "-0.02em" }}
       >
         {words.map((word, i) => (
           <span

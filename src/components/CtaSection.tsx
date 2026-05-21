@@ -6,7 +6,7 @@ import buttonicon2 from "@/assets/button-icon2.png";
 
 export default function CtaSection() {
   return (
-    <section className="container py-16 md:py-32 lg:py-48">
+    <section className="container py-16 md:py-32 lg:py-48 relative z-1 ">
       <div
         className="flex flex-col lg:grid items-center gap-6 lg:gap-0 py-8 px-6 sm:px-10 lg:py-8 lg:px-0"
         style={{ background: "#fff", borderRadius: "30px", gridTemplateColumns: "1fr auto 1fr" }}
@@ -39,7 +39,7 @@ export default function CtaSection() {
 
         {/* Column 3 — Text + CTA */}
         <div className="flex flex-col items-start gap-2 text-left lg:px-10">
-          <p className="text-[#0A0A0C]/80 font-normal leading-normal tracking-[-0.03em]" style={{ fontSize: "clamp(14px, 1.3vw, 18px)" }}>
+          <p className="text-[#0A0A0C]/80 font-normal leading-normal tracking-[-0.03em]" style={{ fontSize: "clamp(14px, 1.3vw, 16px)" }}>
             Hire the web development experts who deliver results.
           </p>
           <Link

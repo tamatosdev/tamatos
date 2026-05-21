@@ -1,7 +1,9 @@
 import { GraphQLClient, gql } from "graphql-request";
 import Link from "next/link";
 
-const client = new GraphQLClient("https://tamatos.com/graphql");
+const client = new GraphQLClient("https://tamatos.com/graphql", {
+  fetch: (url, options) => fetch(url, { ...options, cache: "no-store" }),
+});
 
 const query = gql`
   {
@@ -84,7 +86,7 @@ export default async function BlogSection() {
       <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-0 mb-8 md:mb-12">
         <h2
           className="text-white font-medium leading-[1.1]"
-          style={{ fontSize: "clamp(28px, 4.5vw, 64px)", letterSpacing: "-0.05em" }}
+          style={{ fontSize: "clamp(30px, 3.13vw, 60px)", letterSpacing: "-0.05em" }}
         >
           Latest from<br />the Blog
         </h2>
@@ -112,7 +114,7 @@ export default async function BlogSection() {
        
             >
               {/* Image */}
-              <div className="relative overflow-hidden rounded-[20px]" style={{ height: "300px" }}>
+              <div className="relative overflow-hidden rounded-[20px]" style={{ height: "225px" }}>
                 {post.featuredImage?.node?.sourceUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -138,7 +140,7 @@ export default async function BlogSection() {
                 {/* Title */}
                 <h3
                   className="text-white font-semibold leading-tight flex-1"
-                  style={{ fontSize: "clamp(24px, 1.3vw, 18px)", letterSpacing: "-0.03em" }}
+                  style={{ fontSize: "clamp(16px, 1.25vw, 24px)", letterSpacing: "-0.03em" }}
                 >
                   {post.title}
                 </h3>
