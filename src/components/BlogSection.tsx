@@ -81,14 +81,14 @@ export default async function BlogSection() {
   if (!posts.length) return null;
 
   return (
-    <section className="container py-32 md:py-24"> 
+    <section className="container py-14 lg:py-24"> 
       {/* Heading row */}
       <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-0 mb-8 md:mb-12">
         <h2
-          className="text-white font-medium leading-[1.1]"
-          style={{ fontSize: "clamp(30px, 3.13vw, 60px)", letterSpacing: "-0.05em" }}
+          className="text-white font-medium leading-[1.2]"
+          style={{ fontSize: "clamp(32px, 3.13vw, 60px)", letterSpacing: "-0.05em" }}
         >
-          Latest from<br />the Blog
+          Get Real <span className="text-white/50 italic">Growth Insights</span> and Proven Tactics For Digital Success<span className="text-[#9DF560]">.</span>
         </h2>
         <Link
           href="/blog"

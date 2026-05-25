@@ -1,4 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Fatima1 from "@/assets/farima-1.png";
 import Fatima2 from "@/assets/fatima-2.png";
 import Fatima3 from "@/assets/fatima-3.png";
@@ -89,7 +93,7 @@ const caseStudies: CaseStudy[] = [
       { src: Sep3, alt: "Sales Enforcement Platform — overview" },
     ],
   },
-   {
+  {
     pills: [
       { label: "UX/UI Design" },
       { label: "WordPress" },
@@ -111,107 +115,138 @@ const caseStudies: CaseStudy[] = [
 ];
 
 export default function CaseStudySection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const prevStudy = () =>
+    setActiveIndex((prev) => (prev - 1 + caseStudies.length) % caseStudies.length);
+  const nextStudy = () =>
+    setActiveIndex((prev) => (prev + 1) % caseStudies.length);
+
+  const cs = caseStudies[activeIndex];
+
   return (
-    <section className="container py-12 md:py-24 flex flex-col gap-32">
-      {caseStudies.map((cs, idx) => (
-        <div
-          key={idx}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start"
-        >
-          {/* Left column — sticky */}
-          <div className="lg:sticky lg:top-28 flex flex-col gap-6 md:gap-8">
+    <section className="container py-12 md:py-24">
 
-            {/* Pills */}
-            <div className="flex items-center gap-3 flex-wrap">
-              {cs.pills.map((pill, i) =>
-                pill.flag ? (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-2 justify-center px-3 py-2 rounded-[40px] text-white/80 font-normal min-w-[79px] min-h-[42px]"
-                    style={{ fontSize: "clamp(14px, 1.3vw, 16px)", letterSpacing: "-0.03em", ...pillStyle }}
-                  >
-                    <Image
-                      src={pill.flag}
-                      alt={pill.flagAlt ?? ""}
-                      width={24}
-                      height={18}
-                      className="rounded-sm object-cover"
-                    />
-                  </span>
-                ) : (
-                  <span
-                    key={i}
-                    className="inline-flex items-center px-4 py-2 rounded-full text-white/80 font-normal min-w-[79px] min-h-[42px]"
-                    style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.03em", ...pillStyle }}
-                  >
-                    {pill.label}
-                  </span>
-                )
-              )}
-            </div>
+      {/* ── MOBILE SLIDER ── */}
+      <div className="lg:hidden flex flex-col gap-6">
 
-            {/* Heading */}
-            <h2
-              className="text-white font-medium leading-[1.2]"
-              style={{ fontSize: "clamp(20px, 2vw, 36px)", letterSpacing: "-0.04em" }}
-            >
-              {cs.heading}
-            </h2>
+        {/* Animated content — key triggers smooth slideIn on every change */}
+        <div key={activeIndex} className="animate-slide-in flex flex-col gap-6">
 
-            {/* Divider */}
-            <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.15)" }} />
-
-            {/* Body text */}
-            <div className="flex flex-col gap-5">
-              {cs.paragraphs.map((p, i) => (
-                <p
-                  key={i}
-                  className="text-white/60 font-normal leading-relaxed"
-                  style={{ fontSize: "clamp(14px, 1.3vw, 18px)", letterSpacing: "-0.03em" }}
-                >
-                  {p}
-                </p>
-              ))}
-            </div>
-
-            {/* Author */}
-            <div className="flex items-center gap-4 pt-2">
-              <Image
-                src={AuthorImg}
-                alt={cs.author.name}
-                width={48}
-                height={48}
-                className="rounded-full object-cover shrink-0"
-              />
-              <div>
-                <p
-                  className="text-white font-medium leading-tight"
-                  style={{ fontSize: "clamp(14px, 1.1vw, 16px)", letterSpacing: "-0.03em" }}
-                >
-                  {cs.author.name}
-                </p>
-                <p
-                  className="text-white/50 font-normal mt-0.5"
-                  style={{ fontSize: "clamp(12px, 1vw, 14px)", letterSpacing: "-0.02em" }}
-                >
-                  {cs.author.designation}
-                </p>
-              </div>
-            </div>
-
+          {/* First image only */}
+          <div className="rounded-[20px] overflow-hidden">
+            <Image src={cs.images[0].src} alt={cs.images[0].alt} className="w-full h-auto object-cover" />
           </div>
 
-          {/* Right column — images */}
-          <div className="flex flex-col gap-6">
-            {cs.images.map((img) => (
-              <div key={img.alt} className="rounded-[20px] overflow-hidden">
-                <Image src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
-              </div>
-            ))}
+          {/* Pills */}
+          <div className="flex items-center gap-2 flex-wrap">
+            {cs.pills.map((pill, i) =>
+              pill.flag ? (
+                <span key={i} className="inline-flex items-center gap-2 justify-center px-3 py-2 rounded-[40px] text-white/80 font-normal"
+                  style={{ fontSize: "14px", letterSpacing: "-0.03em", ...pillStyle }}>
+                  <Image src={pill.flag} alt={pill.flagAlt ?? ""} width={24} height={18} className="rounded-sm object-cover" />
+                </span>
+              ) : (
+                <span key={i} className="inline-flex items-center px-4 py-2 rounded-full text-white/80 font-normal"
+                  style={{ fontSize: "14px", letterSpacing: "-0.03em", ...pillStyle }}>
+                  {pill.label}
+                </span>
+              )
+            )}
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "20px", letterSpacing: "-0.04em" }}>
+            {cs.heading}
+          </h2>
+
+          {/* Divider */}
+          <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.15)" }} />
+
+          {/* Body text — truncated */}
+          <div>
+            <p className="text-white/60 font-normal leading-relaxed line-clamp-4" style={{ fontSize: "14px", letterSpacing: "-0.03em" }}>
+              {cs.paragraphs.join(" ")}
+            </p>
+            <span className="text-white/80 font-medium text-[14px] cursor-pointer">Read More</span>
+          </div>
+
+          {/* Author */}
+          <div className="flex items-center gap-3">
+            <Image src={AuthorImg} alt={cs.author.name} width={44} height={44} className="rounded-full object-cover shrink-0" />
+            <div>
+              <p className="text-white font-medium leading-tight text-[14px]" style={{ letterSpacing: "-0.03em" }}>{cs.author.name}</p>
+              <p className="text-white/50 text-[12px] mt-0.5" style={{ letterSpacing: "-0.02em" }}>{cs.author.designation}</p>
+            </div>
           </div>
 
         </div>
-      ))}
+
+        {/* Arrows — separate row below content */}
+        <div className="flex items-center gap-3 pt-2">
+          <button onClick={prevStudy} className="w-11 h-11 rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-white/10 transition-colors">
+            <ArrowLeft size={18} />
+          </button>
+          <button onClick={nextStudy} className="w-11 h-11 rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-white/10 transition-colors">
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+      </div>
+
+      {/* ── DESKTOP — all stacked ── */}
+      <div className="hidden lg:flex flex-col gap-32">
+        {caseStudies.map((cs, idx) => (
+          <div key={idx} className="grid grid-cols-2 gap-16 items-start">
+
+            {/* Left — sticky */}
+            <div className="lg:sticky lg:top-28 flex flex-col gap-8">
+              <div className="flex items-center gap-3 flex-wrap">
+                {cs.pills.map((pill, i) =>
+                  pill.flag ? (
+                    <span key={i} className="inline-flex items-center gap-2 justify-center px-3 py-2 rounded-[40px] text-white/80 font-normal min-w-[79px] min-h-[42px]"
+                      style={{ fontSize: "clamp(14px, 1.3vw, 16px)", letterSpacing: "-0.03em", ...pillStyle }}>
+                      <Image src={pill.flag} alt={pill.flagAlt ?? ""} width={24} height={18} className="rounded-sm object-cover" />
+                    </span>
+                  ) : (
+                    <span key={i} className="inline-flex items-center px-4 py-2 rounded-full text-white/80 font-normal min-w-[79px] min-h-[42px]"
+                      style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.03em", ...pillStyle }}>
+                      {pill.label}
+                    </span>
+                  )
+                )}
+              </div>
+              <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "clamp(20px, 2vw, 36px)", letterSpacing: "-0.04em" }}>
+                {cs.heading}
+              </h2>
+              <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.15)" }} />
+              <div className="flex flex-col gap-5">
+                {cs.paragraphs.map((p, i) => (
+                  <p key={i} className="text-white/60 font-normal leading-relaxed" style={{ fontSize: "clamp(14px, 1.3vw, 18px)", letterSpacing: "-0.03em" }}>{p}</p>
+                ))}
+              </div>
+              <div className="flex items-center gap-4 pt-2">
+                <Image src={AuthorImg} alt={cs.author.name} width={48} height={48} className="rounded-full object-cover shrink-0" />
+                <div>
+                  <p className="text-white font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", letterSpacing: "-0.03em" }}>{cs.author.name}</p>
+                  <p className="text-white/50 font-normal mt-0.5" style={{ fontSize: "clamp(12px, 1vw, 14px)", letterSpacing: "-0.02em" }}>{cs.author.designation}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right — all 3 images */}
+            <div className="flex flex-col gap-6">
+              {cs.images.map((img) => (
+                <div key={img.alt} className="rounded-[20px] overflow-hidden">
+                  <Image src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
+                </div>
+              ))}
+            </div>
+
+          </div>
+        ))}
+      </div>
+
     </section>
   );
 }

@@ -112,10 +112,10 @@ export default function TeamOrbits() {
            
           }}
         />
-        <p className="font-normal text-white leading-none tracking-tight" style={{ fontSize: "clamp(52px, 6.5vw, 100px)" }}>
+        <p className="font-normal text-white leading-none tracking-tight" style={{ fontSize: "clamp(100px, 6.5vw, 100px)" }}>
           20+
         </p>
-        <p className="text-white font-medium mt-2 tracking-widest uppercase" style={{ fontSize: "clamp(13px, 1.3vw, 20px)" }}>
+        <p className="text-white font-medium mt-2 tracking-widest uppercase" style={{ fontSize: "clamp(16px, 1.3vw, 20px)" }}>
           Team Members
         </p>
       </div>

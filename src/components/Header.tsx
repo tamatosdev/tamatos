@@ -72,7 +72,7 @@ export default function Header() {
             href="/"
             className={`flex items-center transition-all duration-500 ${scrolled ? "opacity-0 pointer-events-none -translate-y-2" : "opacity-100 translate-y-0"}`}
           >
-            <Image src={Logo} alt="Logo" priority />
+            <Image src={Logo} alt="Logo" className="w-34.75 lg:w-auto h-auto" priority />
           </Link>
 
           {/* Desktop nav pill — hidden below lg */}
@@ -122,13 +122,14 @@ export default function Header() {
 
           {/* Hamburger button — shown below lg */}
           <button
-            className="flex lg:hidden flex-col gap-[5px] p-2 z-10"
+            className="flex lg:hidden flex-col gap-[5px] px-4 py-[11px] z-10 rounded-full"
+            style={{ border: "1px solid rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.06)" }}
             onClick={() => setSidebarOpen(true)}
             aria-label="Open menu"
           >
-            <span className="block w-6 h-[1.5px] bg-white rounded-full transition-all duration-300" />
-            <span className="block w-6 h-[1.5px] bg-white rounded-full transition-all duration-300" />
-            <span className="block w-4 h-[1.5px] bg-white rounded-full ml-auto transition-all duration-300" />
+            <span className="block w-5 h-[1.5px] bg-white rounded-full transition-all duration-300" />
+            <span className="block w-5 h-[1.5px] bg-white rounded-full transition-all duration-300" />
+            <span className="block w-3 h-[1.5px] bg-white rounded-full ml-auto transition-all duration-300" />
           </button>
 
         </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Asterisk from "@/assets/asteric.png";
 import MapImage from "@/assets/map-image.png";
+import MapMobile from "@/assets/map-mobile.png";
 import ClutchBg from "@/assets/clutch-bg.png";
 import ClutchDeveloper from "@/assets/clutch-developer.png";
 import ClutchPpc from "@/assets/clutch-ppc.png";
@@ -16,18 +17,25 @@ const awards = [
 
 export default function AwardsSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Map background */}
+    <section className="relative py-14 lg:py-24 overflow-hidden">
+      {/* Map background — desktop */}
       <Image
         src={MapImage}
         alt=""
         fill
-        className="object-cover object-center opacity-50 pointer-events-none"
+        className="hidden lg:block object-cover object-top opacity-50 pointer-events-none"
+      />
+      {/* Map background — mobile */}
+      <Image
+        src={MapMobile}
+        alt=""
+        fill
+        className="block lg:hidden object-contain object-top opacity-60 pointer-events-none"
       />
 
       <div className="container relative z-10">
         {/* Heading block */}
-        <div className="mb-16">
+        <div className="mb-8 lg:mb-16">
           <h2
             className="text-white font-medium leading-[1.1]"
             style={{ fontSize: "clamp(32px, 3.3vw, 60px)", letterSpacing: "-0.05em" }}
@@ -55,9 +63,9 @@ export default function AwardsSection() {
         </div>
 
         {/* Award cards */}
-        <div className="grid grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
           {awards.map((award) => (
-            <div key={award.text} className="relative  rounded-[20px] overflow-hidden p-8 flex flex-col items-start gap-5">
+            <div key={award.text} className="relative rounded-[20px] overflow-hidden p-3.25 lg:p-8 flex flex-col items-start gap-5">
               {/* Card background */}
               <Image
                 src={ClutchBg}
@@ -65,13 +73,13 @@ export default function AwardsSection() {
                 fill
                 className="object-cover object-center"
               />
-              <div className="relative w-full items-center z-10 flex flex-col gap-4">
+              <div className="relative w-full items-center z-10 flex flex-col gap-3 lg:gap-4">
                 <Image
                   src={award.image}
                   alt={award.text}
                   width={100}
                   height={120}
-                  className="object-contain"
+                  className="object-contain w-17 lg:w-25 h-auto"
                 />
                 <div>
                   <p

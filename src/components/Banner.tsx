@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import BannerGradient from "@/assets/banner-gradient.png";
 import BgGrid from "@/assets/bg-grid.png";
+import GridMobile from "@/assets/grid-mobile.png";
 import Asterisk from "@/assets/asteric.png";
 import Frame1 from "@/assets/button-frame-1.png";
 import Frame2 from "@/assets/button-frame-2.png";
@@ -15,16 +16,26 @@ const pillStyle: React.CSSProperties = {
   border: "1px solid rgba(255, 255, 255, 0.25)",
 };
 
+// Desktop pills — relative to contentRef div
 const leftPills = [
   { label: "UX/UI Design",  top: "6%",  left: "0%" },
   { label: "Branding",      top: "39%", left: "-3%" },
   { label: "Web & App Dev", top: "75%", left: "2%" },
 ];
-
 const rightPills = [
   { label: "Product Design",         top: "-1%", right: "0%" },
   { label: "SEO",                    top: "44%", right: "0%" },
   { label: "Social Media Marketing", top: "73%", right: "-2%" },
+];
+
+// Mobile pills — top/bottom fixed pixel values (aligned to pt-36 content start ~144px)
+const mobilePills: { label: string; top?: string; bottom?: string; left?: string; right?: string }[] = [
+  { label: "UX/UI Design",          top: "16%", left: "-1%" },
+  { label: "Branding",              top: "18%", left: "42%" },
+  { label: "Product Design",        top: "100px", right: "-6%" },
+  { label: "SEO",                   top: "44%", right: "2%" },
+  { label: "Social Media Marketing",bottom: "20%", right: "-11%" },
+  { label: "Web & App Dev",         bottom: "7%", left: "-1%" },
 ];
 
 export default function Banner() {
@@ -41,7 +52,9 @@ export default function Banner() {
   }, []);
 
   return (
-    <section className="relative min-h-[93vh] flex items-center justify-center overflow-hidden">
+    <section className="relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:min-h-[93vh]">
+
+      {/* Gradient */}
       <Image
         src={BannerGradient}
         alt=""
@@ -50,27 +63,56 @@ export default function Banner() {
         className="object-cover object-center top-[-35%]!"
       />
 
+      {/* Mobile pills — relative to section height */}
+      {mobilePills.map((pill) => (
+        <span
+          key={pill.label}
+          className="lg:hidden text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-70 tracking-[-0.05em] z-20"
+          style={{
+            position: "absolute",
+            fontSize: "13px",
+            padding: "8px 14px",
+            ...pillStyle,
+            ...(pill.top    !== undefined ? { top:    pill.top    } : {}),
+            ...(pill.bottom !== undefined ? { bottom: pill.bottom } : {}),
+            ...(pill.left   !== undefined ? { left:   pill.left   } : {}),
+            ...(pill.right  !== undefined ? { right:  pill.right  } : {}),
+          }}
+        >
+          {pill.label}
+        </span>
+      ))}
+
       <div
         ref={contentRef}
-        className="relative z-10 text-center pt-24 lg:pt-28 w-full max-w-[860px] xl:max-w-[1100px] 2xl:max-w-[1500px] mx-auto px-4"
+        className="relative z-10 text-left lg:text-center pt-36 lg:pt-28 w-full max-w-[860px] xl:max-w-[1100px] 2xl:max-w-[1500px] mx-auto px-4"
         style={{ willChange: "transform" }}
       >
+        {/* Grid — desktop */}
         <Image
           src={BgGrid}
           alt=""
           fill
-          className="object-fill pointer-events-none"
+          className="hidden lg:block object-fill pointer-events-none"
         />
 
-        {/* Left Pills */}
+        {/* Grid — mobile: contained, 20px from top, left/right gaps from container padding */}
+        <Image
+          src={GridMobile}
+          alt=""
+          className="block lg:hidden absolute left-0 right-0 w-full h-auto pointer-events-none object-contain"
+          style={{ top: "20%" }}
+        />
+
+        {/* Desktop Left Pills */}
         {leftPills.map((pill) => (
           <span
             key={pill.label}
             className="hidden lg:block text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
             style={{
               position: "absolute",
-              fontSize: "clamp(11px, 0.78vw, 16px)",
-              padding: "clamp(6px, 0.5vw, 10px) clamp(10px, 1vw, 20px)",
+              fontSize: "clamp(13px, 0.78vw, 16px)",
+              padding: "clamp(7px, 0.5vw, 10px) clamp(12px, 1vw, 20px)",
               ...pillStyle,
               top: pill.top,
               left: pill.left,
@@ -82,15 +124,15 @@ export default function Banner() {
           </span>
         ))}
 
-        {/* Right Pills */}
+        {/* Desktop Right Pills */}
         {rightPills.map((pill) => (
           <span
             key={pill.label}
             className="hidden lg:block text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
             style={{
               position: "absolute",
-              fontSize: "clamp(11px, 0.78vw, 16px)",
-              padding: "clamp(6px, 0.5vw, 10px) clamp(10px, 1vw, 20px)",
+              fontSize: "clamp(13px, 0.78vw, 16px)",
+              padding: "clamp(7px, 0.5vw, 10px) clamp(12px, 1vw, 20px)",
               ...pillStyle,
               top: pill.top,
               right: pill.right,
@@ -103,9 +145,9 @@ export default function Banner() {
         ))}
 
         {/* Heading */}
-        <h1 className="text-white font-normal leading-[1.1] tracking-[-0.05em] text-[44px] sm:text-[50px] md:text-[64px] lg:text-[72px] xl:text-[84px] 2xl:text-[96px] banner-heading">
+        <h1 className="text-white font-normal leading-[1.1] tracking-[-0.05em] text-[44px] sm:text-[50px] md:text-[64px] lg:text-[72px] xl:text-[84px] 2xl:text-[96px]">
           {/* Line 1 */}
-          <span className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+          <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap">
             <span>We Turn</span>
             <span
               className="inline-flex items-center px-4 sm:px-5 py-1 rounded-full font-semibold ml-[-16px] mr-[-18px] sm:ml-[-23px] sm:mr-[-27px] tracking-[-0.03em]"
@@ -125,7 +167,7 @@ export default function Banner() {
           </span>
 
           {/* Line 2 */}
-          <span className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap mt-1">
+          <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap mt-1">
             <span>Experiences</span>
             <Image
               src={Asterisk}
@@ -145,7 +187,7 @@ export default function Banner() {
         </h1>
 
         {/* Begin Now Button */}
-        <div className="mt-8 sm:mt-12 flex justify-center">
+        <div className="mt-8 sm:mt-12 flex justify-start lg:justify-center">
           <Link
             href="/contact"
             className="group inline-flex items-center gap-4 sm:gap-6 rounded-full pl-[20px] sm:pl-[26px] pr-[12px] sm:pr-[15px] py-[10px] bg-white hover:bg-[#9DF560] transition-colors duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
@@ -157,20 +199,10 @@ export default function Banner() {
             </span>
             <div className="relative w-[64px] sm:w-[80px] h-[36px] sm:h-[43px] rounded-[40px] overflow-hidden flex-shrink-0 transform-[translateZ(0)]">
               <div className="absolute inset-0">
-                <Image
-                  src={Frame1}
-                  alt=""
-                  fill
-                  className="object-cover object-center scale-150"
-                />
+                <Image src={Frame1} alt="" fill className="object-cover object-center scale-150" />
               </div>
               <div className="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] bg-[#0A0A0C] flex items-center justify-center">
-                <Image
-                  src={Frame2}
-                  alt=""
-                  fill
-                  className="object-cover object-center"
-                />
+                <Image src={Frame2} alt="" fill className="object-cover object-center" />
               </div>
             </div>
           </Link>

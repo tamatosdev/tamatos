@@ -44,9 +44,13 @@ export default function ServicesSection() {
     <section className="container py-12 md:py-24 relative z-1">
       <h2
         className="text-white font-medium text-center leading-[1.15] mb-10 md:mb-14"
-        style={{ fontSize: "clamp(32px, 4.44vw, 64px)", letterSpacing: "-0.04em" }}
+        style={{
+          fontSize: "clamp(32px, 4.44vw, 64px)",
+          letterSpacing: "-0.04em",
+        }}
       >
-        Design &amp; Development<br />
+        Design &amp; Development
+        <br />
         <span className="text-white/70 italic">Services </span>We Offer
       </h2>
 
@@ -55,30 +59,58 @@ export default function ServicesSection() {
           <div
             key={service.category}
             className="rounded-3xl p-6 md:p-8 flex flex-col shadow-[inset_5.33px_4px_10px_0_#FFFFFF1A] mix-blend-plus-lighter"
-            style={{ background: service.bg, "--hover-color": service.hoverBg } as React.CSSProperties}
+            style={
+              {
+                background: service.bg,
+                "--hover-color": service.hoverBg,
+              } as React.CSSProperties
+            }
           >
             <h3
               className="text-white font-medium mb-5 md:mb-6"
-              style={{ fontSize: "clamp(24px, 2.50vw, 48px)", letterSpacing: "-0.04em" }}
+              style={{
+                fontSize: "clamp(24px, 2.5vw, 48px)",
+                letterSpacing: "-0.04em",
+              }}
             >
               {service.category}
             </h3>
 
             <ul className="flex flex-col">
-              {service.items.map((item) => (
+              {service.items.map((item, index) => (
                 <li key={item}>
                   <Link
                     href="/services"
-                    className="group/item flex items-center justify-between py-4 md:py-5 px-3 rounded-xl text-white transition-all duration-300 ease-out hover:px-5 hover:bg-(--hover-color) hover:text-[#0A0A0C]"
+                    className={`
+                      group/item flex items-center justify-between py-4 md:py-5 px-3 rounded-xl transition-all duration-300 ease-out
+                      
+                       lg:text-white
+                      
+                      /* MOBILE: only first item active */
+                      ${index === 0 ? "bg-[var(--hover-color)] text-[#0A0A0C]" : "bg-transparent"}
+                      
+                      /* DESKTOP: hover behavior */
+                      lg:bg-transparent lg:hover:bg-[var(--hover-color)] lg:hover:text-[#0A0A0C] lg:hover:px-5
+                    `}
                   >
                     <span
                       className="font-medium"
-                      style={{ fontSize: "clamp(16px, 1.25vw, 24px)", letterSpacing: "-0.03em" }}
+                      style={{
+                        fontSize: "clamp(16px, 1.25vw, 24px)",
+                        letterSpacing: "-0.03em",
+                      }}
                     >
                       {item}
                     </span>
+
                     <span className="leading-none transition-transform duration-300 group-hover/item:translate-x-1 shrink-0">
-                      <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg
+                        width="20"
+                        height="16"
+                        viewBox="0 0 20 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                         <path
                           fillRule="evenodd"
                           clipRule="evenodd"

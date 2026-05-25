@@ -144,24 +144,24 @@ export default function Footer() {
         className="absolute pointer-events-none select-none"
         style={{ right: 0, top: 0, zIndex: 0 }}
       />
-      <div className="container py-[128px] relative" style={{ zIndex: 1 }}>
+      <div className="container py-14 lg:py-32 relative" style={{ zIndex: 1 }}>
 
         {/* Top grid: logo col + nav columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-16 pb-10 lg:pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 lg:gap-16 pb-8 lg:pb-8">
 
           {/* Left — logo, tagline, email */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 pb-4 lg:pb-0">
             <Link href="/">
-              <Image src={Logo} alt="Tamatos" width={240} height={20} />
+              <Image src={Logo} alt="Tamatos" width={160} height={20} className="w-40 lg:w-60" />
             </Link>
-            <p className="text-white font-medium leading-relaxed mt-[30px]" style={{ fontSize: "20px", letterSpacing: "-0.02em" }}>
+            <p className="text-white font-medium leading-relaxed mt-3 lg:mt-7.5" style={{ fontSize: "clamp(16px, 1.3vw, 20px)", letterSpacing: "-0.02em" }}>
               Ready to Thrive Online?<br />Drop us a Line
             </p>
             <div className="flex items-center">
               <a
                 href="mailto:hello@tamatos.com"
                 className="text-white font-medium hover:text-white transition-colors duration-200"
-                style={{ fontSize: "24px", letterSpacing: "-0.02em" }}
+                style={{ fontSize: "clamp(20px, 1.5vw, 24px)", letterSpacing: "-0.02em" }}
               >
                 hello@tamatos.com
               </a>
@@ -170,22 +170,22 @@ export default function Footer() {
           </div>
 
           {/* Right — nav columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
             {navColumns.map((col) => (
-              <div key={col.title} className="flex flex-col gap-4">
+              <div key={col.title} className="flex flex-col gap-3 lg:gap-4">
                 <p
                   className="text-white font-medium"
-                  style={{ fontSize: "20px", letterSpacing: "-0.05em" }}
+                  style={{ fontSize: "clamp(18px, 1.2vw, 22px)", letterSpacing: "-0.05em" }}
                 >
                   {col.title}
                 </p>
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col gap-2">
                   {col.links.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
                         className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
-                        style={{ fontSize: "16px", letterSpacing: "-0.05em", lineHeight: "220.00000000000003%" }}
+                        style={{ fontSize: "clamp(16px, 1vw, 18px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
                       >
                         {link.label}
                       </Link>
@@ -198,20 +198,20 @@ export default function Footer() {
         </div>
 
         {/* Second row — Industries + Company */}
-        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-16 py-12 lg:py-16">
-          <div /> {/* spacer aligns with logo col */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-            <div className="flex flex-col gap-4">
-              <p className="text-white font-medium" style={{ fontSize: "20px", letterSpacing: "-0.05em" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 lg:gap-16 py-8 lg:py-16">
+          <div className="hidden lg:block" /> {/* spacer — desktop only */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
+            <div className="flex flex-col gap-3 lg:gap-4">
+              <p className="text-white font-medium" style={{ fontSize: "clamp(18px, 1.2vw, 20px)", letterSpacing: "-0.05em" }}>
                 Industries
               </p>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-2">
                 {industryLinks.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
                       className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
-                      style={{ fontSize: "16px", letterSpacing: "-0.05em" }}
+                      style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
                     >
                       {link.label}
                     </Link>
@@ -219,17 +219,17 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col gap-4">
-              <p className="text-white font-medium" style={{ fontSize: "20px", letterSpacing: "-0.05em" }}>
+            <div className="flex flex-col gap-3 lg:gap-4">
+              <p className="text-white font-medium" style={{ fontSize: "clamp(18px, 1.2vw, 20px)", letterSpacing: "-0.05em" }}>
                 Company
               </p>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-2">
                 {companyLinks.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
                       className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
-                      style={{ fontSize: "16px", letterSpacing: "-0.05em" }}
+                      style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
                     >
                       {link.label}
                     </Link>
@@ -241,19 +241,19 @@ export default function Footer() {
         </div>
 
         {/* Clutch badges */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-8 lg:py-8" >
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4 py-6 lg:py-8">
           {clutchBadges.map((badge) => (
             <div
               key={badge.label}
-              className="flex flex-col items-center gap-3 rounded-2xl py-10 px-4"
-              style={{ background: "rgb(255 255 255 / 5%)"}}
+              className="flex flex-col items-center gap-2 lg:gap-3 rounded-2xl py-5 lg:py-10 px-3 lg:px-4"
+              style={{ background: "rgb(255 255 255 / 5%)" }}
             >
-              <Image src={badge.src} alt={badge.alt} width={64} height={80} className="object-contain" />
+              <Image src={badge.src} alt={badge.alt} width={48} height={60} className="object-contain lg:w-16 lg:h-20" />
               <div className="text-center">
-                <p className="text-white font-semibold" style={{ fontSize: "20px", letterSpacing: "-0.05em" }}>
+                <p className="text-white font-semibold" style={{ fontSize: "clamp(14px, 1.2vw, 20px)", letterSpacing: "-0.05em" }}>
                   Clutch 2026
                 </p>
-                <p className="text-white font-normal mt-0.5" style={{ fontSize: "14px", letterSpacing: "-0.05em" }}>
+                <p className="text-white font-normal mt-0.5" style={{ fontSize: "clamp(10px, 0.9vw, 14px)", letterSpacing: "-0.05em" }}>
                   {badge.label}
                 </p>
               </div>
@@ -262,99 +262,79 @@ export default function Footer() {
         </div>
 
         {/* Accordions */}
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-3 lg:gap-0">
           {/* Show More Services */}
-          <div className="color-white transition-colors duration-200 font-normal mb-5 px-[32px] py-5 rounded-[20px] cursor-pointer"
-          style={{ background: "rgb(255 255 255 / 5%)"}}
+          <div className="transition-colors duration-200 font-normal lg:mb-5 px-5 lg:px-8 py-4 lg:py-5 rounded-2xl lg:rounded-[20px] cursor-pointer"
+            style={{ background: "rgb(255 255 255 / 5%)" }}
           >
-          <button
-            onClick={() => setShowServices((v) => !v)}
-            className="flex items-center justify-between w-full text-left cursor-pointer"
-          >
-            <span className="text-white font-medium" style={{ fontSize: "18px", letterSpacing: "-0.05em" }}>
-              Show More Services
-            </span>
-            <ChevronIcon open={showServices} />
-          </button>
-          {showServices && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 py-6 ">
-              {[
-                "E-commerce Design", "SaaS Design", "Dashboard Design", "Startup Branding",
-                "Social Media Design", "Presentation Design", "Motion Design", "3D Design",
-                "Email Design", "Print Design",
-              ].map((s) => (
-                <Link
-                  key={s}
-                  href="/services"
-                  className="text-white/50 hover:text-white transition-colors duration-200 font-normal"
-                  style={{ fontSize: "16px", letterSpacing: "-0.01em" }}
-                >
-                  {s}
-                </Link>
-              ))}
-            </div>
-          )}
+            <button
+              onClick={() => setShowServices((v) => !v)}
+              className="flex items-center justify-between w-full text-left cursor-pointer"
+            >
+              <span className="text-white font-medium" style={{ fontSize: "clamp(16px, 1.1vw, 18px)", letterSpacing: "-0.05em" }}>
+                Show More Services
+              </span>
+              <ChevronIcon open={showServices} />
+            </button>
+            {showServices && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 py-5">
+                {[
+                  "E-commerce Design", "SaaS Design", "Dashboard Design", "Startup Branding",
+                  "Social Media Design", "Presentation Design", "Motion Design", "3D Design",
+                  "Email Design", "Print Design",
+                ].map((s) => (
+                  <Link
+                    key={s}
+                    href="/services"
+                    className="text-white/50 hover:text-white transition-colors duration-200 font-normal"
+                    style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.01em" }}
+                  >
+                    {s}
+                  </Link>
+                ))}
               </div>
+            )}
+          </div>
+
           {/* Show More Locations */}
-
-          <div className="color-white transition-colors duration-200 font-normal mb-5 px-[32px] py-5 rounded-[20px] cursor-pointer"
-          style={{ background: "rgb(255 255 255 / 5%)"}}>
-
-          <button
-            onClick={() => setShowLocations((v) => !v)}
-            className="flex items-center justify-between w-full text-left color-white transition-colors duration-200 font-normal cursor-pointer"
-            
+          <div className="transition-colors duration-200 font-normal px-5 lg:px-8 py-4 lg:py-5 rounded-2xl lg:rounded-[20px] cursor-pointer"
+            style={{ background: "rgb(255 255 255 / 5%)" }}
           >
-            <span className="text-white font-medium" style={{ fontSize: "18px", letterSpacing: "-0.02em" }}>
-              Show More Locations
-            </span>
-            <ChevronIcon open={showLocations} />
-          </button>
-          {showLocations && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 py-6">
-              {[
-                "Karachi", "Dubai", "Toronto"
-              ].map((loc) => (
-                <span
-                  key={loc}
-                  className="text-white/50 font-normal"
-                  style={{ fontSize: "16px", letterSpacing: "-0.01em" }}
-                >
-                  {loc}
-                </span>
-              ))}
-            </div>
-          )}
+            <button
+              onClick={() => setShowLocations((v) => !v)}
+              className="flex items-center justify-between w-full text-left cursor-pointer"
+            >
+              <span className="text-white font-medium" style={{ fontSize: "clamp(16px, 1.1vw, 18px)", letterSpacing: "-0.02em" }}>
+                Show More Locations
+              </span>
+              <ChevronIcon open={showLocations} />
+            </button>
+            {showLocations && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 py-5">
+                {["Karachi", "Dubai", "Toronto"].map((loc) => (
+                  <span
+                    key={loc}
+                    className="text-white/50 font-normal"
+                    style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.01em" }}
+                  >
+                    {loc}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-5 pt-8">
-          {/* Legal links */}
-          <div className="flex items-center gap-5 flex-wrap">
-            {legalLinks.map((link, i) => (
-              <span key={link.label} className="flex items-center gap-5">
-                <Link
-                  href={link.href}
-                  className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
-                  style={{ fontSize: "16px", letterSpacing: "-0.05em" }}
-                >
-                  {link.label}
-                </Link>
-               
-              </span>
-            ))}
-          </div>
+        <div className="flex flex-col items-center sm:flex-row sm:justify-between gap-4 pt-10 lg:pt-8">
 
-          {/* Social icons */}
-          <div className="flex items-center gap-6">
-            {/* Facebook */}
+          {/* Social icons — first on mobile */}
+          <div className="flex items-center gap-6 order-1 sm:order-2">
             <a href="https://www.facebook.com/tamatosdigital" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white transition-colors duration-200">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </a>
-            {/* Instagram */}
             <a href="https://www.instagram.com/tamatosdigital/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white transition-colors duration-200">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -362,25 +342,36 @@ export default function Footer() {
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
             </a>
-            {/* LinkedIn */}
             <a href="https://www.linkedin.com/company/tamatos" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white transition-colors duration-200">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
                 <circle cx="4" cy="4" r="2" />
               </svg>
             </a>
-            {/* Behance */}
-            <a href="https://www.behance.net/tamatos" target="_blank" rel="noopener noreferrer" className=" hover:opacity-100 transition-opacity duration-200">
+            <a href="https://www.behance.net/tamatos" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity duration-200">
               <Image src={BehanceIcon} alt="Behance" width={20} height={20} />
             </a>
-            {/* Clutch */}
             <a href="https://clutch.co/profile/tamatos" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity duration-200">
               <Image src={ClutchIcon} alt="Clutch" width={18} height={18} />
             </a>
           </div>
 
+          {/* Legal links */}
+          <div className="flex items-center gap-4 flex-wrap justify-center order-2 sm:order-1">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
+                style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.05em" }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
           {/* Copyright */}
-          <p className="text-white/70 font-normal" style={{ fontSize: "16px", letterSpacing: "-0.01em" }}>
+          <p className="text-white/70 font-normal text-center order-3" style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.01em" }}>
             © 2021 - 2026 Tamatos — All Rights Reserved
           </p>
         </div>

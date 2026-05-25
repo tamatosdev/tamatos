@@ -13,7 +13,6 @@ import textimage from "@/assets/text-image2.png";
 import Asterisk from "@/assets/asteric.png";
 import shade1 from "@/assets/shade-1.png";
 import shade2 from "@/assets/Shade-2.png";
-import teamstructure from "@/assets/team-structure.png";
 import AwardsSection from "@/components/AwardsSection";
 import ReviewTab from "@/components/ReviewTab";
 import Industries from "@/components/Industries";
@@ -30,27 +29,64 @@ export default function Home() {
     <main style={{ overflowX: "clip" }}>
       <Banner />
       <div className="full-shade relative">
-        <Image
+        {/* <Image
           src={bigShade}
           alt=""
           className="absolute pointer-events-none select-none left-1/2"
           style={{ top: "50%", transform: "translate(-50%, -50%)", zIndex: 0 }}
-        />
+        /> */}
+       <Image
+  src={bigShade}
+  alt=""
+  className="
+    absolute pointer-events-none select-none
+    left-1/2
+    top-[80%]          /* mobile default */
+
+    sm:top-[80%]        /* small devices */
+    md:top-[60%]        /* medium */
+    lg:top-1/2          /* large */
+  "
+  style={{
+    transform: "translate(-50%, -50%)",
+    zIndex: 0,
+  }}
+/>
         <AboutStrip />
-        <LogoMarquee />
+        {/* Marquee shade wrapper — mobile only */}
+        <div className="relative">
+          <Image
+            src={shade1}
+            alt=""
+            width={749}
+            height={1961}
+            className="block lg:hidden absolute pointer-events-none select-none w-48 opacity-90"
+            style={{ left: 0, bottom: 0, zIndex: 0 }}
+          />
+          <LogoMarquee />
+        </div>
 
         {/* About / agency statement
             The shade images must live in a full-width wrapper (not inside .container)
             so their absolute positioning is relative to the page edge, not the 1360px box */}
         <section className="relative py-12 lg:py-24">
-          {/* Left shade — full-width wrapper gives left:0 = page left edge */}
+          {/* Right shade — mobile */}
+          <Image
+            src={shade2}
+            alt=""
+            width={893}
+            height={1961}
+            className="block lg:hidden absolute pointer-events-none select-none w-52 opacity-100"
+            style={{ right: 0, bottom: "5%", zIndex: 0 }}
+          />
+          {/* Left shade — desktop */}
           <Image
             src={shade1}
             alt=""
             width={800}
             height={400}
-            className="absolute pointer-events-none select-none hidden lg:block"
-            style={{ left: 0, top: "-11%", zIndex: 0 }}
+            className="hidden lg:block absolute pointer-events-none select-none w-200 opacity-100"
+            style={{ left: 0, bottom: "0%", zIndex: 0 }}
           />
 
           <div className="container relative" style={{ zIndex: 1 }}>
@@ -90,14 +126,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right shade — right:0 = page right edge */}
+          {/* Right shade — desktop only */}
           <Image
             src={shade2}
             alt=""
             width={800}
             height={400}
-            className="absolute pointer-events-none select-none hidden lg:block"
-            style={{ right: 0, top: "90%", zIndex: 0 }}
+            className="hidden lg:block absolute pointer-events-none select-none w-200 opacity-100"
+            style={{ right: 0, top: "-100%", zIndex: 0 }}
           />
         </section>
 
@@ -108,7 +144,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3">
 
             {/* Column 1 */}
-            <div className="md:pr-6 lg:pr-16 pb-10 md:pb-0 border-b md:border-b-0 border-white/10">
+            <div className="md:pr-6 lg:pr-16 pb-10 md:pb-0">
               <p className="text-white font-normal leading-none" style={{ fontSize: "clamp(64px, 6.2vw, 120px)", letterSpacing: "-0.05em" }}>
                 +200%
               </p>
@@ -121,7 +157,7 @@ export default function Home() {
             </div>
 
             {/* Column 2 */}
-            <div className="md:px-6 lg:px-16 pt-10 md:pt-0 pb-10 md:pb-0 border-b md:border-b-0 border-white/10">
+            <div className="md:px-6 lg:px-16 pt-10 md:pt-0 pb-10 md:pb-0">
               <p className="text-white font-normal leading-none" style={{ fontSize: "clamp(64px, 6.2vw, 120px)", letterSpacing: "-0.05em" }}>
                 3.8×
               </p>
@@ -154,11 +190,11 @@ export default function Home() {
         {/* Compare strip + scroll reveal */}
         <div className="relative overflow-hidden">
           <section className="container py-8 lg:py-16 relative z-10">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-0">
+            <div className="flex  items-start sm:items-center justify-between gap-5 sm:gap-0">
 
               <p
                 className="text-white/70 font-normal leading-normal"
-                style={{ fontSize: "clamp(14px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}
+                style={{ fontSize: "clamp(16px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}
               >
                 Most agencies = Either design well OR market well
               </p>
@@ -167,7 +203,7 @@ export default function Home() {
 
               <p
                 className="text-white text-left sm:text-right font-medium"
-                style={{ fontSize: "clamp(14px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}
+                style={{ fontSize: "clamp(16px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}
               >
                 tamatos = Bridges Product + Growth
               </p>
@@ -194,7 +230,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="relative py-24">
+      <section className="relative py-14 lg:py-24">
         {/* Left shade — bleeds into adjacent sections */}
         <Image
           src={footerShade1}
@@ -210,19 +246,30 @@ export default function Home() {
           style={{ right: 0, top: "50%", transform: "translateY(-50%)", zIndex: 0 }}
         />
         <div className="container relative" style={{ zIndex: 1 }}>
+
+          {/* Heading — mobile only, shown above orbit */}
+          <div className="block lg:hidden mb-6">
+            <h2 className="leading-[1.1] font-medium tracking-[-0.03em]"
+              style={{ fontSize: "clamp(32px, 3.3vw, 60px)" }}
+            >
+              Digital Design Experts <br />
+              who<span className="text-[#9DF560] italic"> Fuel Growth.</span>
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <TeamOrbits />
             </div>
             <div className="pl-3.5">
-              <h2 className="leading-[1.1] font-medium tracking-[-0.03em]"
-                style={{fontSize: "clamp(32px, 3.3vw, 60px)"
-}}
+              {/* Heading — desktop only */}
+              <h2 className="hidden lg:block leading-[1.1] font-medium tracking-[-0.03em]"
+                style={{ fontSize: "clamp(32px, 3.3vw, 60px)" }}
               >
                 Digital Design Experts <br />
                 who<span className="text-[#9DF560] italic"> Fuel Growth.</span>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 lg:pt-10">
                 <div>
                   <p className="text-[18px] leading-[1.5] text-white/80">
                     Your digital design and development partner for high-impact results

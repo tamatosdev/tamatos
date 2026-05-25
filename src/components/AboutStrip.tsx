@@ -4,9 +4,9 @@ import SmilyFace from "@/assets/Smily Face.png";
 export default function AboutStrip() {
   return (
     <section className="py-8 md:py-10">
-      <div className="container flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-8">
+      <div className="container flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-8 ">
 
-        <div className="flex items-start sm:items-center gap-4 sm:gap-6">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 sm:gap-6">
           <Image
             src={SmilyFace}
             alt="Smiley face"
