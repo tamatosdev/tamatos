@@ -145,7 +145,7 @@ export default function TestimonialsSection() {
             >
               <div
                 key={activeTab}
-                className="animate-[moveUp_.5s_ease] flex flex-col gap-5"
+                className="animate-[moveUp_.5s_ease] h-full justify-between flex flex-col gap-5"
               >
                 {/* Arrows — mobile only, top right */}
                 <div className="flex lg:hidden justify-end gap-2">

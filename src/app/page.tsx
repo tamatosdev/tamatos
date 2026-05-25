@@ -222,7 +222,7 @@ export default function Home() {
         <Image
           src={circleShade}
           alt=""
-          className="absolute pointer-events-none select-none"
+          className="case-shade absolute pointer-events-none select-none"
           style={{ left: 0, bottom: 0, zIndex: 0 }}
         />
         <div className="relative" style={{ zIndex: 1 }}>
@@ -240,11 +240,17 @@ export default function Home() {
         />
         {/* Right shade — bleeds into adjacent sections */}
         <Image
-          src={footerShade2}
-          alt=""
-          className="absolute pointer-events-none select-none"
-          style={{ right: 0, top: "50%", transform: "translateY(-50%)", zIndex: 0 }}
-        />
+  src={footerShade2}
+  alt=""
+  className="
+    absolute pointer-events-none select-none right-0
+    top-[-15%] lg:top-[50%]
+  "
+  style={{
+    transform: "translateY(-50%)",
+    zIndex: 0,
+  }}
+/>
         <div className="container relative" style={{ zIndex: 1 }}>
 
           {/* Heading — mobile only, shown above orbit */}

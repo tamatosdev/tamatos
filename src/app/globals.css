@@ -57,6 +57,11 @@
     zoom: 0.54;
   }
 }
+@media (max-width: 840px) {
+  .case-shade{
+    display: none;
+  }
+}
 
 @media (min-width: 640px) and (max-width: 1500px) {
   .container {

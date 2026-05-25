@@ -8,11 +8,13 @@ export default function CtaSection2() {
     <section className="container relative py-14 lg:py-32 px-0">
 
       <div
-        className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-20 overflow-hidden relative rounded-[28px] lg:rounded-[40px]"
-        style={{
-          background: "#fff",
-          padding: "40px 20px",
-        }}
+        className=" grid grid-cols-1 lg:grid-cols-[1fr_auto]
+    gap-10 lg:gap-20
+    overflow-hidden relative
+    rounded-[28px] lg:rounded-[40px]
+    bg-white
+    px-5 py-10 lg:p-[70px_120px]"
+       
       >
         {/* Shade — desktop */}
         <Image
@@ -47,19 +49,19 @@ export default function CtaSection2() {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-row flex-nowrap items-center gap-2 lg:gap-4">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3 lg:gap-4">
             <Link
               href="/work"
-              className="inline-flex items-center justify-center rounded-full font-medium text-white bg-[#1D17E0] hover:bg-[#0A0A0C] transition-colors duration-300 py-3.5 px-5 lg:py-4 lg:px-8"
-              style={{ fontSize: "clamp(14px, 1.2vw, 16px)", letterSpacing: "-0.02em" }}
+              className="inline-flex items-center justify-center rounded-full font-medium text-white bg-[#1D17E0] hover:bg-[#0A0A0C] transition-colors duration-300 py-4 px-5 lg:py-4 lg:px-8"
+              style={{ fontSize: "clamp(16px, 1.2vw, 18px)", letterSpacing: "-0.02em" }}
             >
               See Our Work
             </Link>
 
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-black/20 font-medium bg-white text-[#0A0A0C] transition-colors duration-300 hover:bg-[#9DF560] hover:border-[#9DF560] py-3.5 px-5 lg:py-4 lg:px-8"
-              style={{ fontSize: "clamp(14px, 1.2vw, 16px)", letterSpacing: "-0.02em" }}
+              className="inline-flex items-center justify-center rounded-full border border-black/20 font-medium bg-white text-[#0A0A0C] transition-colors duration-300 hover:bg-[#9DF560] hover:border-[#9DF560] py-4 px-5 lg:py-4 lg:px-8"
+              style={{ fontSize: "clamp(16px, 1.2vw, 18px)", letterSpacing: "-0.02em" }}
             >
               Book a Free Call
             </Link>

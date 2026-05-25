@@ -128,7 +128,7 @@ export default async function BlogSection() {
               </div>
 
               {/* Body */}
-              <div className="flex flex-col gap-3 p-5 flex-1">
+              <div className="flex flex-col gap-3 p-0 pt-5 sm:p-5 flex-1">
                 {/* Date + reading time */}
                 <p
                   className="text-white/80 font-medium"
