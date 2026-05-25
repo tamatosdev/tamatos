@@ -52,17 +52,23 @@
     max-width: 1280px;
     padding-inline: 0rem; }
 }
+
 @media (max-width: 639px) {
   .team-orbit {
     zoom: 0.54;
   }
 }
+
 @media (max-width: 840px) {
   .case-shade{
     display: none;
   }
 }
-
+@media (max-width: 1141px) {
+  .container{
+    padding-inline: 1.25rem !important;
+  }
+}
 @media (min-width: 640px) and (max-width: 1500px) {
   .container {
     max-width: 1140px;

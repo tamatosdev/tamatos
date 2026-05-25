@@ -24,7 +24,7 @@ const industries = [
   {
     id: 4,
     title: "E-Commerce & Retail",
-    tags: ["Shopify Partner", "Checkout UX", "Product Pages", "Brand Identity"],
+    tags: ["Shopify Partner", "Checkout UX", "Product Pages"],
   },
 ];
 

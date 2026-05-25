@@ -154,7 +154,7 @@ export default function Header() {
         {/* Sidebar top */}
         <div className="flex items-center justify-between px-8 py-6" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <Link href="/" onClick={() => setSidebarOpen(false)}>
-            <Image src={Logo} alt="Logo" width={110} height={32} priority />
+            <Image src={Logo} alt="Logo" width={140} height={32} priority />
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}

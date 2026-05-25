@@ -9,11 +9,11 @@ export default function CtaSection2() {
 
       <div
         className=" grid grid-cols-1 lg:grid-cols-[1fr_auto]
-    gap-10 lg:gap-20
+    gap-10 lg:gap-10
     overflow-hidden relative
     rounded-[28px] lg:rounded-[40px]
     bg-white
-    px-5 py-10 lg:p-[70px_120px]"
+    px-5 py-10 lg:p-[70px_110px]"
        
       >
         {/* Shade — desktop */}
