@@ -38,7 +38,7 @@ const locations = [
     flag: uaeFlag,
     role: "Global UAE",
     desc: "Serving clients across the Gulf with a local market-first mindset.",
-    location: "Level 1, Yas Mall, Yas Island, Abu Dhabi, United Arab Emirates",
+    location: "Level 1, Yas Mall, Yas Island, Abu Dhabi, United Arab Emirates.",
     coords: [55.27, 25.2] as [number, number],
     labelOffset: { x: 50, y: 30 },
   },
