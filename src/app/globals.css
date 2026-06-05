@@ -30,6 +30,10 @@
   margin-inline: auto;
   padding-inline: 1.25rem; /* 20px on mobile */
 }
+.about-last-3 .review-main-heading, .other-page-section .review-main-heading {
+    text-align: left;
+    margin-left: 0;
+}
 
 @media (min-width: 640px) {
   .container { padding-inline: 1.5rem; }
@@ -91,4 +95,64 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
+}
+
+/* Blog post content styles */
+.blog-content {
+  color: rgba(255,255,255,0.75) !important;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.blog-content * { box-sizing: border-box; }
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  margin-top: 2em !important;
+  margin-bottom: 0.6em !important;
+}
+
+.blog-content h1 { font-size: clamp(32px, 3.5vw, 56px) !important; }
+.blog-content h2 { font-size: clamp(26px, 2.8vw, 44px) !important; }
+.blog-content h3 { font-size: clamp(22px, 2.2vw, 36px) !important; }
+.blog-content h4 { font-size: clamp(20px, 1.8vw, 28px) !important; }
+.blog-content h5,
+.blog-content h6 { font-size: clamp(18px, 1.4vw, 22px) !important; }
+
+.blog-content p { margin-bottom: 1.4em; color: rgba(255,255,255,0.75) !important; }
+
+.blog-content strong,
+.blog-content b { color: #ffffff !important; font-weight: 600 !important; }
+
+.blog-content a { color: #ffffff !important; text-decoration: underline !important; text-underline-offset: 3px; }
+.blog-content a:hover { color: #9DF560 !important; }
+
+.blog-content ul,
+.blog-content ol { padding-left: 1.5em; margin-bottom: 1.4em; }
+.blog-content li { margin-bottom: 0.4em; color: rgba(255,255,255,0.75) !important; }
+
+.blog-content blockquote {
+  border-left: 3px solid #9DF560 !important;
+  padding-left: 1.2em;
+  color: rgba(255,255,255,0.6) !important;
+  font-style: italic;
+  margin: 1.6em 0;
+}
+
+.blog-content img { border-radius: 12px; max-width: 100%; height: auto; margin: 1.6em 0; }
+
+.blog-content code {
+  background: rgba(255,255,255,0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #9DF560 !important;
 }

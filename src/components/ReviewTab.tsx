@@ -90,8 +90,8 @@ export default function TestimonialsSection() {
       <div className="container mx-auto px-5">
 
         {/* Heading */}
-        <div className="max-w-250 mx-auto text-center">
-          <h2 className="text-white leading-[1.2] font-semibold tracking-[-0.04em]" style={{ fontSize: "clamp(22px, 3.2vw, 60px)" }}>
+        <div className="review-main-heading max-w-250 mx-auto text-center">
+          <h2 className="text-white leading-[1.2] font-medium tracking-[-0.04em]" style={{ fontSize: "clamp(22px, 3.2vw, 60px)" }}>
             Verified{" "}
             <span className="text-[#9DF560]">reviews</span> From{" "}
             <span className="italic text-white/70">Real Clients</span>
