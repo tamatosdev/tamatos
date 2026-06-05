@@ -1,9 +1,15 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY || "");
-
 const recipient = process.env.RESEND_TO_EMAIL || "hello@tamatos.com";
+
+function createResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error("Missing Resend API key.");
+  }
+  return new Resend(apiKey);
+}
 
 export async function POST(request: Request) {
   try {
@@ -20,6 +26,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing Resend API key." }, { status: 500 });
     }
 
+    const resend = createResendClient();
     await resend.emails.send({
       from,
       to: recipient,
