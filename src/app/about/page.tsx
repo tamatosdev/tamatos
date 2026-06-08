@@ -135,13 +135,16 @@ export default function AboutPage() {
 
       
 
-      <section className="relative py-8 lg:py-16 overflow-hidden">
-        <Image
-          src={bigShade}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-          style={{ zIndex: 0 }}
-        />
+      <section className="relative py-12 lg:py-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none select-none" style={{ zIndex: 0 }}>
+          <div className="absolute left-1/2 top-[68%] w-[150%] lg:w-[140%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-90">
+            <Image
+              src={bigShade}
+              alt=""
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
 
         <div className="relative" style={{ zIndex: 1 }}>
           <section className="relative py-6 lg:py-12">

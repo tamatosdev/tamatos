@@ -248,7 +248,7 @@ export default function Footer() {
               className="flex flex-col items-center gap-2 lg:gap-3 rounded-2xl py-5 lg:py-10 px-3 lg:px-4"
               style={{ background: "rgb(255 255 255 / 5%)" }}
             >
-              <Image src={badge.src} alt={badge.alt} width={48} height={60} className="object-contain lg:w-16 lg:h-20" />
+              <Image src={badge.src} alt={badge.alt} width={80} height={120} className="object-contain  " />
               <div className="text-center">
                 <p className="text-white font-semibold" style={{ fontSize: "clamp(14px, 1.2vw, 20px)", letterSpacing: "-0.05em" }}>
                   Clutch 2026
@@ -326,33 +326,33 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center sm:flex-row sm:justify-between gap-4 pt-10 lg:pt-8">
+        <div className="flex flex-col items-center sm:flex-row sm:justify-between gap-4 pt-10 lg:pt-14">
 
           {/* Social icons — first on mobile */}
           <div className="flex items-center gap-6 order-1 sm:order-2">
             <a href="https://www.facebook.com/tamatosdigital" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white transition-colors duration-200">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </a>
             <a href="https://www.instagram.com/tamatosdigital/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white transition-colors duration-200">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
             </a>
             <a href="https://www.linkedin.com/company/tamatos" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white transition-colors duration-200">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
                 <circle cx="4" cy="4" r="2" />
               </svg>
             </a>
             <a href="https://www.behance.net/tamatos" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity duration-200">
-              <Image src={BehanceIcon} alt="Behance" width={20} height={20} />
+              <Image src={BehanceIcon} alt="Behance" width={30} height={30} />
             </a>
             <a href="https://clutch.co/profile/tamatos" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity duration-200">
-              <Image src={ClutchIcon} alt="Clutch" width={18} height={18} />
+              <Image src={ClutchIcon} alt="Clutch" width={30} height={30} />
             </a>
           </div>
 

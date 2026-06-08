@@ -5,6 +5,7 @@ import AosProvider from "@/components/AosProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FaviconAnimator from "@/components/FaviconAnimator";
+import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
 const inter = Inter({
@@ -34,7 +35,9 @@ export default function RootLayout({
           <LenisProvider>
             <AosProvider>
               <Header />
-              {children}
+              <PageTransition>
+                {children}
+              </PageTransition>
               <Footer />
             </AosProvider>
           </LenisProvider>
