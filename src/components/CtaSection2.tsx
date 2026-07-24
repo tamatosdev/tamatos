@@ -37,7 +37,7 @@ export default function CtaSection2() {
             className="text-[#0A0A0C] font-medium leading-[1.2]"
             style={{ fontSize: "clamp(32px, 4.5vw, 60px)", letterSpacing: "-0.05em" }}
           >
-            Got a <em className="italic text-[#0A0A0C]/70">Kickass</em> Idea?<br /> We'll Help You Make it Real.
+            Got a <em className="italic text-[#0A0A0C]/70">Kickass</em> Idea?<br /> We&apos;ll Help You Make it Real.
           </h2>
 
           {/* Description — mobile only, shown between heading and buttons */}

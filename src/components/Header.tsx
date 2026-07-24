@@ -33,8 +33,37 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = sidebarOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+
+    if (sidebarOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      if (originalBodyOverflow) {
+        document.body.style.overflow = originalBodyOverflow;
+      } else {
+        document.body.style.removeProperty("overflow");
+      }
+      if (originalHtmlOverflow) {
+        document.documentElement.style.overflow = originalHtmlOverflow;
+      } else {
+        document.documentElement.style.removeProperty("overflow");
+      }
+    }
+
+    return () => {
+      if (originalBodyOverflow) {
+        document.body.style.overflow = originalBodyOverflow;
+      } else {
+        document.body.style.removeProperty("overflow");
+      }
+      if (originalHtmlOverflow) {
+        document.documentElement.style.overflow = originalHtmlOverflow;
+      } else {
+        document.documentElement.style.removeProperty("overflow");
+      }
+    };
   }, [sidebarOpen]);
 
   return (

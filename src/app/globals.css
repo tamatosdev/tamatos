@@ -34,7 +34,9 @@
     text-align: left;
     margin-left: 0;
 }
-
+.blog-content p {
+    margin-bottom: 10px;
+}
 @media (min-width: 640px) {
   .container { padding-inline: 1.5rem; }
 }
@@ -95,6 +97,18 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
+}
+
+/* Banner hero pills — only adjust horizontal on lg–1600; vertical (top) unchanged */
+@media (min-width: 1024px) and (max-width: 1600px) {
+  .banner-pill-left {
+    left: calc(50% - 50vw + var(--pill-inset-narrow, 2.5rem)) !important;
+  }
+
+  .banner-pill-right {
+    right: calc(50% - 50vw + var(--pill-inset-narrow, 2.5rem)) !important;
+    left: auto !important;
+  }
 }
 
 /* Blog post content styles */

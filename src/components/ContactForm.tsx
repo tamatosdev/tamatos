@@ -19,7 +19,7 @@ function FloatingInput({
   onChange: (v: string) => void;
 }) {
   return (
-    <div className="relative">
+    <div className="relative" suppressHydrationWarning>
       <input
         type={type}
         required={required}
@@ -27,6 +27,7 @@ function FloatingInput({
         value={value}
         onChange={e => onChange(e.target.value)}
         className="peer w-full bg-transparent border-b border-black/20 pt-5 pb-2 text-[#0A0A0C] text-[16px] font-normal outline-none focus:border-black/60 transition-colors duration-200"
+        suppressHydrationWarning
       />
       <label className="absolute left-0 top-3.5 text-black font-medium text-[16px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-[14px] peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-[14px] peer-[:not(:placeholder-shown)]:text-black/50">
         {label}{required && <span className="text-red-500 ml-0.5">*</span>}
@@ -47,7 +48,7 @@ function FloatingTextarea({
   onChange: (v: string) => void;
 }) {
   return (
-    <div className="relative">
+    <div className="relative" suppressHydrationWarning>
       <textarea
         required={required}
         placeholder=" "
@@ -55,6 +56,7 @@ function FloatingTextarea({
         value={value}
         onChange={e => onChange(e.target.value)}
         className="peer w-full bg-transparent border-b border-black/20 pt-5 pb-2 text-[#0A0A0C] text-[16px] font-normal outline-none focus:border-black/60 transition-colors duration-200 resize-none"
+        suppressHydrationWarning
       />
       <label className="absolute left-0 top-3.5 text-black font-medium text-[16px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-[14px] peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-[14px] peer-[:not(:placeholder-shown)]:text-black/50">
         {label}{required && <span className="text-red-500 ml-0.5">*</span>}
@@ -231,7 +233,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full sm:w-auto rounded-full bg-[#9DF560] text-[#0A0A0C] font-semibold hover:bg-[#8ae84d] transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-full bg-[#9DF560] text-[#0A0A0C] font-semibold hover:bg-[#8ae84d] transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
               style={{ fontSize: "17px", padding: "14px 42px" }}
             >
               {status === "sending" ? "Sending..." : "Submit"}
@@ -243,7 +245,7 @@ export default function ContactForm() {
 
       {status === "success" && (
         <div className="mt-6 rounded-2xl border border-green-200/30 bg-[#f1ffda] px-5 py-4 text-sm text-[#152b08]">
-          Your message has been sent successfully. We'll get back to you soon.
+          Your message has been sent successfully. We&apos;ll get back to you soon.
         </div>
       )}
 

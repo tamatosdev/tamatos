@@ -21,7 +21,7 @@ const testimonials = [
     content:
      <>Tamatos have done a {" "}
      <span className="italic text-[#0A0A0CB2] / 70">fantastic job </span>{" "}
-     at understanding the ethos of myZoi and then reflected this in our web design that's purpose and consumer led!{" "}
+     at understanding the ethos of myZoi and then reflected this in our web design that&apos;s purpose and consumer led!{" "}
      <span className="italic text-[#0A0A0CB2] / 70">Thank you Team Tamatos </span></>,
     author: "Asmik Akopyan",
     role: "Head of Brand & Marketing, myZoi Financial Inclusion Technologies",

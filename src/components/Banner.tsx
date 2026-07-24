@@ -16,26 +16,26 @@ const pillStyle: React.CSSProperties = {
   border: "1px solid rgba(255, 255, 255, 0.25)",
 };
 
-// Desktop pills — relative to contentRef div
+// Desktop pills — top unchanged; --pill-*-narrow = horizontal inset from viewport (≤1600px)
 const leftPills = [
-  { label: "UX/UI Design",  top: "6%",  left: "0%" },
-  { label: "Branding",      top: "39%", left: "-3%" },
-  { label: "Web & App Dev", top: "75%", left: "2%" },
+  { label: "UX/UI Design", top: "6%", left: "0%", insetNarrow: "2.5rem" },
+  { label: "Branding", top: "39%", left: "-3%", insetNarrow: "2rem" },
+  { label: "Web & App Dev", top: "75%", left: "2%", insetNarrow: "3rem" },
 ];
 const rightPills = [
-  { label: "Product Design",         top: "-1%", right: "0%" },
-  { label: "SEO",                    top: "44%", right: "0%" },
-  { label: "Social Media Marketing", top: "73%", right: "-2%" },
+  { label: "Product Design", top: "-1%", right: "0%", insetNarrow: "2.5rem" },
+  { label: "SEO", top: "44%", right: "0%", insetNarrow: "2rem" },
+  { label: "Social Media Marketing", top: "73%", right: "-2%", insetNarrow: "3rem" },
 ];
 
-// Mobile pills — top/bottom fixed pixel values (aligned to pt-36 content start ~144px)
+// Mobile pills — unchanged
 const mobilePills: { label: string; top?: string; bottom?: string; left?: string; right?: string }[] = [
-  { label: "UX/UI Design",          top: "16%", left: "-1%" },
-  { label: "Branding",              top: "18%", left: "42%" },
-  { label: "Product Design",        top: "100px", right: "-6%" },
-  { label: "SEO",                   top: "44%", right: "2%" },
-  { label: "Social Media Marketing",bottom: "20%", right: "-11%" },
-  { label: "Web & App Dev",         bottom: "7%", left: "-1%" },
+  { label: "UX/UI Design", top: "16%", left: "-1%" },
+  { label: "Branding", top: "18%", left: "42%" },
+  { label: "Product Design", top: "100px", right: "-6%" },
+  { label: "SEO", top: "44%", right: "2%" },
+  { label: "Social Media Marketing", bottom: "20%", right: "-11%" },
+  { label: "Web & App Dev", bottom: "7%", left: "-1%" },
 ];
 
 export default function Banner() {
@@ -63,7 +63,7 @@ export default function Banner() {
         className="object-cover object-center top-[-35%]!"
       />
 
-      {/* Mobile pills — relative to section height */}
+      {/* Mobile pills */}
       {mobilePills.map((pill) => (
         <span
           key={pill.label}
@@ -73,10 +73,10 @@ export default function Banner() {
             fontSize: "13px",
             padding: "8px 14px",
             ...pillStyle,
-            ...(pill.top    !== undefined ? { top:    pill.top    } : {}),
+            ...(pill.top !== undefined ? { top: pill.top } : {}),
             ...(pill.bottom !== undefined ? { bottom: pill.bottom } : {}),
-            ...(pill.left   !== undefined ? { left:   pill.left   } : {}),
-            ...(pill.right  !== undefined ? { right:  pill.right  } : {}),
+            ...(pill.left !== undefined ? { left: pill.left } : {}),
+            ...(pill.right !== undefined ? { right: pill.right } : {}),
           }}
         >
           {pill.label}
@@ -96,7 +96,7 @@ export default function Banner() {
           className="hidden lg:block object-fill pointer-events-none"
         />
 
-        {/* Grid — mobile: contained, 20px from top, left/right gaps from container padding */}
+        {/* Grid — mobile */}
         <Image
           src={GridMobile}
           alt=""
@@ -104,11 +104,11 @@ export default function Banner() {
           style={{ top: "20%" }}
         />
 
-        {/* Desktop Left Pills */}
+        {/* Desktop left pills */}
         {leftPills.map((pill) => (
           <span
             key={pill.label}
-            className="hidden lg:block text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
+            className="banner-pill-left hidden lg:block text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
             style={{
               position: "absolute",
               fontSize: "clamp(13px, 0.78vw, 16px)",
@@ -116,6 +116,7 @@ export default function Banner() {
               ...pillStyle,
               top: pill.top,
               left: pill.left,
+              ["--pill-inset-narrow" as string]: pill.insetNarrow,
             }}
             data-aos="fade-left"
             data-aos-duration="1500"
@@ -124,11 +125,11 @@ export default function Banner() {
           </span>
         ))}
 
-        {/* Desktop Right Pills */}
+        {/* Desktop right pills */}
         {rightPills.map((pill) => (
           <span
             key={pill.label}
-            className="hidden lg:block text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
+            className="banner-pill-right hidden lg:block text-white/70 font-medium rounded-full leading-none whitespace-nowrap opacity-60 tracking-[-0.05em]"
             style={{
               position: "absolute",
               fontSize: "clamp(13px, 0.78vw, 16px)",
@@ -136,6 +137,7 @@ export default function Banner() {
               ...pillStyle,
               top: pill.top,
               right: pill.right,
+              ["--pill-inset-narrow" as string]: pill.insetNarrow,
             }}
             data-aos="fade-right"
             data-aos-duration="1500"
@@ -146,7 +148,6 @@ export default function Banner() {
 
         {/* Heading */}
         <h1 className="text-white font-normal leading-[1.1] tracking-[-0.05em] text-[44px] sm:text-[50px] md:text-[64px] lg:text-[72px] xl:text-[84px] 2xl:text-[96px]">
-          {/* Line 1 */}
           <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap">
             <span>We Turn</span>
             <span
@@ -166,7 +167,6 @@ export default function Banner() {
             <span>Ideas Into Digital</span>
           </span>
 
-          {/* Line 2 */}
           <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap mt-1">
             <span>Experiences</span>
             <Image
@@ -182,7 +182,6 @@ export default function Banner() {
             <span className="italic font-normal text-white/70">Businesses</span>
           </span>
 
-          {/* Line 3 */}
           <span className="block mt-1">Grow With.</span>
         </h1>
 

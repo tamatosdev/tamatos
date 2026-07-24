@@ -44,9 +44,9 @@ export default function IndustriesSection() {
           className="block lg:hidden text-white font-medium leading-[1.2] tracking-tighter mb-6"
           style={{ fontSize: "clamp(30px, 3.13vw, 60px)" }}
         >
-          We've{" "}
+          We&apos;ve{" "}
           <span className="italic text-white/60">Shipped</span>{" "}
-          for Industries that Don't Forgive Average
+          for Industries that Don&apos;t Forgive Average
           <span className="text-[#9DF560]">.</span>
         </h2>
 
@@ -60,9 +60,9 @@ export default function IndustriesSection() {
               className="hidden lg:block text-white font-medium leading-[1.2] tracking-tighter max-w-212.5"
               style={{ fontSize: "clamp(30px, 3.13vw, 60px)" }}
             >
-              We've{" "}
+              We&apos;ve{" "}
               <span className="italic text-white/60">Shipped</span>{" "}
-              for Industries that Don't Forgive Average
+              for Industries that Don&apos;t Forgive Average
               <span className="text-[#9DF560]">.</span>
             </h2>
 

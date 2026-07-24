@@ -1,82 +1,12 @@
-import { GraphQLClient, gql } from "graphql-request";
 import Link from "next/link";
-
-const client = new GraphQLClient("https://tamatos.com/graphql", {
-  fetch: (url, options) => fetch(url, { ...options, cache: "no-store" }),
-});
-
-const query = gql`
-  {
-    posts(first: 3) {
-      nodes {
-        id
-        title
-        slug
-        date
-        content
-        featuredImage {
-          node {
-            sourceUrl
-            altText
-          }
-        }
-        authorGroup {
-          authorName
-          authorImage {
-            node {
-              sourceUrl
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-type Post = {
-  id: string;
-  title: string;
-  slug: string;
-  date: string;
-  content?: string;
-  featuredImage?: { node: { sourceUrl: string; altText: string } };
-  authorGroup?: { authorName?: string; authorImage?: { node: { sourceUrl: string } } };
-};
-
-async function getPosts(): Promise<Post[]> {
-  try {
-    const data = await client.request<{ posts: { nodes: Post[] } }>(query);
-    return data.posts.nodes;
-  } catch {
-    return [];
-  }
-}
-
-function formatDate(dateStr: string) {
-  const d = new Date(dateStr);
-  const day = d.getDate();
-  const month = d.toLocaleString("en-GB", { month: "long" });
-  const year = d.getFullYear();
-  const suffix =
-    day % 10 === 1 && day !== 11
-      ? "st"
-      : day % 10 === 2 && day !== 12
-      ? "nd"
-      : day % 10 === 3 && day !== 13
-      ? "rd"
-      : "th";
-  return `${day}${suffix} ${month} ${year}`;
-}
-
-function getReadingTime(html: string) {
-  const text = html.replace(/<[^>]*>/g, " ");
-  const words = text.trim().split(/\s+/).filter(Boolean).length;
-  const mins = Math.max(1, Math.round(words / 200));
-  return `${String(mins).padStart(2, "0")} Mins Read`;
-}
+import {
+  formatDate,
+  getPostReadingTime,
+  getPosts,
+} from "@/lib/blog";
 
 export default async function BlogSection() {
-  const posts = await getPosts();
+  const posts = await getPosts(3);
 
   if (!posts.length) return null;
 
@@ -88,7 +18,7 @@ export default async function BlogSection() {
           className="text-white font-medium leading-[1.2]"
           style={{ fontSize: "clamp(32px, 3.13vw, 60px)", letterSpacing: "-0.05em" }}
         >
-          Get Real <span className="text-white/50 italic">Growth Insights</span> and Proven Tactics For Digital Success<span className="text-[#9DF560]">.</span>
+          Get Real <span className="text-white/50 italic">Growth Insights</span> and Proven Tactics For Digital Success<span className="text-[#9DF560]">.</span>
         </h2>
         <Link
           href="/blog"
@@ -104,7 +34,7 @@ export default async function BlogSection() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {posts.map((post) => {
           const authorGroup = post.authorGroup;
-          const readingTime = post.content ? getReadingTime(post.content) : "03 Mins Read";
+          const readingTime = getPostReadingTime(post);
 
           return (
             <Link

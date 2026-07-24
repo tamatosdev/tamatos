@@ -1,0 +1,31 @@
+/* Google Font import (agar use karna hai) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Poori studio ka background gradient */
+body,
+#sanity,
+[data-ui="Layer"] {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #e0e7ff 100%) !important;
+}
+
+/* Sidebar background */
+[data-ui="Card"][data-scheme="light"] {
+  background-color: transparent !important;
+}
+
+/* Font family poori studio mein */
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Selected/active item ka gradient (jaisa "Post" blue button hai) */
+[aria-selected="true"] {
+  background: linear-gradient(90deg, #6C47FF 0%, #9333EA 100%) !important;
+  color: white !important;
+}
+
+/* Top navbar */
+header {
+  background: linear-gradient(90deg, #ffffff 0%, #f3f0ff 100%) !important;
+  border-bottom: 1px solid #e5e7eb;
+}

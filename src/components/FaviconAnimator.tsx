@@ -64,7 +64,7 @@ export default function FaviconAnimator() {
         } else {
           current = next;
           next = (next + 1) % frames.length;
-          setTimeout(animate, 500);
+          setTimeout(animate, 300);
         }
       };
 

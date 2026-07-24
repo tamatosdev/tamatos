@@ -29,7 +29,6 @@ const W  = 650;
 const H  = 652;
 
 const ORBIT_RADII  = [150, 225, 320];
-const AVATAR_SIZES = [58,  50,  44 ];
 
 const ARC_DEG      = 54;
 const SPEEDS       = [0.28, 0.20, 0.14];
@@ -44,14 +43,13 @@ export default function TeamOrbits() {
 
   useEffect(() => {
     let last = performance.now();
-    const angles = teamMembers.map((m) => m.baseAngle);
 
     const tick = (now: number) => {
       const dt = (now - last) / 16.67;
       last = now;
       timeRef.current += dt;
 
-      const next = teamMembers.map((m, i) => {
+      const next = teamMembers.map((m) => {
         const spd = SPEEDS[m.orbit];
         
         return (ARC_DEG / 2) * Math.sin((timeRef.current * spd * Math.PI) / 180) + m.baseAngle;
@@ -148,13 +146,11 @@ export default function TeamOrbits() {
               boxShadow: "0 4px 16px rgba(0,0,0,0.5)",
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <Image
-  src={member.src}
-  alt="team member"
-  
-  className="w-full h-full object-cover block"
-/>
+              src={member.src}
+              alt="team member"
+              className="w-full h-full object-cover block"
+            />
           </div>
         );
       })}
