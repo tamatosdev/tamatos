@@ -6,6 +6,7 @@
 }
 
 @theme inline {
+  --spacing: 0.25rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
@@ -66,9 +67,54 @@
 }
 
 @media (max-width: 840px) {
-  .case-shade{
+  .case-shade,
+  .work-portfolio-shade,
+  .work-portfolio-shade-fade {
     display: none;
   }
+}
+
+.work-portfolio-section {
+  position: relative;
+  overflow: visible;
+  min-height: 100vh;
+}
+
+.work-portfolio-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  object-fit: cover;
+  object-position: top left;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 50%,
+    rgba(0, 0, 0, 0.55) 75%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 50%,
+    rgba(0, 0, 0, 0.55) 75%,
+    transparent 100%
+  );
+}
+
+.work-portfolio-shade-fade {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: min(320px, 40vh);
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 0%, #0a0a0c 92%);
 }
 @media (max-width: 1141px) {
   .container{

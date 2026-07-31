@@ -1,57 +1,58 @@
 import Link from "next/link";
+import type { ServicesData } from "@/lib/home";
 
-const services = [
+const defaultServices = [
   {
     category: "Branding",
     bg: "#FFFFFF1A",
     hoverBg: "#9DF560",
-    items: [
-      "Pitch Deck Design",
-      "Brand Identity",
-      "Logo Design",
-      "Graphic Design",
-      "Rebranding",
-    ],
+    items: ["Pitch Deck Design", "Brand Identity", "Logo Design", "Graphic Design", "Rebranding"],
   },
   {
     category: "Design",
     bg: "#FFFFFF1A",
     hoverBg: "#FC7031",
-    items: [
-      "UX/UI Design",
-      "Web Design",
-      "Mobile App Design",
-      "Website Redesign",
-      "UX/UI Audit",
-    ],
+    items: ["UX/UI Design", "Web Design", "Mobile App Design", "Website Redesign", "UX/UI Audit"],
   },
   {
     category: "Development",
     bg: "#FFFFFF1A",
     hoverBg: "#03E4AC",
-    items: [
-      "Web Development",
-      "MVP Development",
-      "WebFlow Development",
-      "Landing Page",
-      "Mobile Development",
-    ],
+    items: ["Web Development", "MVP Development", "WebFlow Development", "Landing Page", "Mobile Development"],
   },
 ];
 
-export default function ServicesSection() {
+export default function ServicesSection({ data }: { data?: ServicesData }) {
+  const titleLine1 = data?.titleLine1 ?? "Design & Development";
+  const titleEmphasis = data?.titleEmphasis ?? "Services";
+  const titleLine2 = data?.titleLine2 ?? "We Offer";
+
+  const services =
+    data?.categories?.length
+      ? data.categories.map((cat) => ({
+          category: cat.title ?? "",
+          bg: cat.backgroundColor ?? "#FFFFFF1A",
+          hoverBg: cat.hoverColor ?? "#9DF560",
+          items: cat.items?.map((item) => ({
+            label: item.label ?? "",
+            href: item.href ?? "/services",
+          })) ?? [],
+        }))
+      : defaultServices.map((s) => ({
+          ...s,
+          items: s.items.map((label) => ({ label, href: "/services" })),
+        }));
+
   return (
     <section className="container py-12 md:py-24 relative z-1">
       <h2
         className="text-white font-medium text-center leading-[1.15] mb-10 md:mb-14"
-        style={{
-          fontSize: "clamp(32px, 4.44vw, 64px)",
-          letterSpacing: "-0.04em",
-        }}
+        style={{ fontSize: "clamp(32px, 4.44vw, 64px)", letterSpacing: "-0.04em" }}
       >
-        Design &amp; Development
+        {titleLine1}
         <br />
-        <span className="text-white/70 italic">Services </span>We Offer
+        <span className="text-white/70 italic">{titleEmphasis} </span>
+        {titleLine2}
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -68,49 +69,31 @@ export default function ServicesSection() {
           >
             <h3
               className="text-white font-medium mb-5 md:mb-6"
-              style={{
-                fontSize: "clamp(24px, 2.5vw, 48px)",
-                letterSpacing: "-0.04em",
-              }}
+              style={{ fontSize: "clamp(24px, 2.5vw, 48px)", letterSpacing: "-0.04em" }}
             >
               {service.category}
             </h3>
 
             <ul className="flex flex-col">
               {service.items.map((item, index) => (
-                <li key={item}>
+                <li key={item.label}>
                   <Link
-                    href="/services"
+                    href={item.href}
                     className={`
                       group/item flex items-center justify-between py-4 md:py-5 px-3 rounded-xl transition-all duration-300 ease-out
-                      
                        lg:text-white
-                      
-                      /* MOBILE: only first item active */
                       ${index === 0 ? "bg-[var(--hover-color)] text-[#0A0A0C]" : "bg-transparent"}
-                      
-                      /* DESKTOP: hover behavior */
                       lg:bg-transparent lg:hover:bg-[var(--hover-color)] lg:hover:text-[#0A0A0C] lg:hover:px-5
                     `}
                   >
                     <span
                       className="font-medium"
-                      style={{
-                        fontSize: "clamp(16px, 1.25vw, 24px)",
-                        letterSpacing: "-0.03em",
-                      }}
+                      style={{ fontSize: "clamp(16px, 1.25vw, 24px)", letterSpacing: "-0.03em" }}
                     >
-                      {item}
+                      {item.label}
                     </span>
-
                     <span className="leading-none transition-transform duration-300 group-hover/item:translate-x-1 shrink-0">
-                      <svg
-                        width="20"
-                        height="16"
-                        viewBox="0 0 20 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           fillRule="evenodd"
                           clipRule="evenodd"

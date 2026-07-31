@@ -4,9 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/assets/Logo.svg";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "Works", href: "/works" },
+  { label: "Works", href: "/work" },
   { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "Pricing", href: "/pricing" },
@@ -15,6 +16,7 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -128,16 +130,26 @@ export default function Header() {
                 background: "linear-gradient(to bottom, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
               }}
             />
-            <nav className="relative flex items-center gap-6 xl:gap-8 px-6 xl:px-7.5 py-3.75">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-white hover:text-white/70 text-[15px] xl:text-[18px] font-medium transition-colors duration-200 whitespace-nowrap"
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <nav className="relative flex items-center gap-2 xl:gap-3 px-2.5 py-2.5">
+              {navLinks.map((link) => {
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== "/" && pathname.startsWith(`${link.href}/`));
+
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className={`text-[15px] xl:text-[18px] font-medium transition-all duration-200 whitespace-nowrap px-2.5 py-2.5 rounded-full ${
+                      isActive
+                        ? "bg-white text-[#0A0A0C]"
+                        : "text-white hover:text-white/70"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 

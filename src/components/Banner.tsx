@@ -9,6 +9,7 @@ import GridMobile from "@/assets/grid-mobile.png";
 import Asterisk from "@/assets/asteric.png";
 import Frame1 from "@/assets/button-frame-1.png";
 import Frame2 from "@/assets/button-frame-2.png";
+import type { HeroData } from "@/lib/home";
 
 const pillStyle: React.CSSProperties = {
   background: "rgba(255, 255, 255, 0.10)",
@@ -16,20 +17,19 @@ const pillStyle: React.CSSProperties = {
   border: "1px solid rgba(255, 255, 255, 0.25)",
 };
 
-// Desktop pills — top unchanged; --pill-*-narrow = horizontal inset from viewport (≤1600px)
-const leftPills = [
+const defaultLeftPills = [
   { label: "UX/UI Design", top: "6%", left: "0%", insetNarrow: "2.5rem" },
   { label: "Branding", top: "39%", left: "-3%", insetNarrow: "2rem" },
   { label: "Web & App Dev", top: "75%", left: "2%", insetNarrow: "3rem" },
 ];
-const rightPills = [
+
+const defaultRightPills = [
   { label: "Product Design", top: "-1%", right: "0%", insetNarrow: "2.5rem" },
   { label: "SEO", top: "44%", right: "0%", insetNarrow: "2rem" },
   { label: "Social Media Marketing", top: "73%", right: "-2%", insetNarrow: "3rem" },
 ];
 
-// Mobile pills — unchanged
-const mobilePills: { label: string; top?: string; bottom?: string; left?: string; right?: string }[] = [
+const defaultMobilePills: { label: string; top?: string; bottom?: string; left?: string; right?: string }[] = [
   { label: "UX/UI Design", top: "16%", left: "-1%" },
   { label: "Branding", top: "18%", left: "42%" },
   { label: "Product Design", top: "100px", right: "-6%" },
@@ -38,8 +38,22 @@ const mobilePills: { label: string; top?: string; bottom?: string; left?: string
   { label: "Web & App Dev", bottom: "7%", left: "-1%" },
 ];
 
-export default function Banner() {
+export default function Banner({ data }: { data?: HeroData }) {
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const leftPills = data?.leftPills?.length ? data.leftPills : defaultLeftPills;
+  const rightPills = data?.rightPills?.length ? data.rightPills : defaultRightPills;
+  const mobilePills = data?.mobilePills?.length ? data.mobilePills : defaultMobilePills;
+
+  const line1BeforeBold = data?.line1BeforeBold ?? "We Turn";
+  const boldWord = data?.boldWord ?? "BOLD";
+  const line1AfterBold = data?.line1AfterBold ?? "Ideas Into Digital";
+  const line2Word = data?.line2Word ?? "Experiences";
+  const line2ItalicWord = data?.line2ItalicWord ?? "Businesses";
+  const line3 = data?.line3 ?? "Grow With.";
+  const boldHighlightColor = data?.boldHighlightColor ?? "#E8601C";
+  const ctaLabel = data?.cta?.label ?? "Begin Now";
+  const ctaHref = data?.cta?.href ?? "/contact";
 
   useEffect(() => {
     const onScroll = () => {
@@ -53,8 +67,6 @@ export default function Banner() {
 
   return (
     <section className="relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:min-h-[93vh]">
-
-      {/* Gradient */}
       <Image
         src={BannerGradient}
         alt=""
@@ -63,7 +75,6 @@ export default function Banner() {
         className="object-cover object-center top-[-35%]!"
       />
 
-      {/* Mobile pills */}
       {mobilePills.map((pill) => (
         <span
           key={pill.label}
@@ -88,15 +99,7 @@ export default function Banner() {
         className="relative z-10 text-left lg:text-center pt-36 lg:pt-28 w-full max-w-[860px] xl:max-w-[1100px] 2xl:max-w-[1500px] mx-auto px-4"
         style={{ willChange: "transform" }}
       >
-        {/* Grid — desktop */}
-        <Image
-          src={BgGrid}
-          alt=""
-          fill
-          className="hidden lg:block object-fill pointer-events-none"
-        />
-
-        {/* Grid — mobile */}
+        <Image src={BgGrid} alt="" fill className="hidden lg:block object-fill pointer-events-none" />
         <Image
           src={GridMobile}
           alt=""
@@ -104,7 +107,6 @@ export default function Banner() {
           style={{ top: "20%" }}
         />
 
-        {/* Desktop left pills */}
         {leftPills.map((pill) => (
           <span
             key={pill.label}
@@ -125,7 +127,6 @@ export default function Banner() {
           </span>
         ))}
 
-        {/* Desktop right pills */}
         {rightPills.map((pill) => (
           <span
             key={pill.label}
@@ -146,14 +147,13 @@ export default function Banner() {
           </span>
         ))}
 
-        {/* Heading */}
         <h1 className="text-white font-normal leading-[1.1] tracking-[-0.05em] text-[44px] sm:text-[50px] md:text-[64px] lg:text-[72px] xl:text-[84px] 2xl:text-[96px]">
           <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap">
-            <span>We Turn</span>
+            <span>{line1BeforeBold}</span>
             <span
               className="inline-flex items-center px-4 sm:px-5 py-1 rounded-full font-semibold ml-[-16px] mr-[-18px] sm:ml-[-23px] sm:mr-[-27px] tracking-[-0.03em]"
               style={{
-                background: "#E8601C",
+                background: boldHighlightColor,
                 color: "#0A0A0C",
                 fontSize: "0.55em",
                 verticalAlign: "middle",
@@ -162,13 +162,13 @@ export default function Banner() {
               }}
               data-aos="zoom-in"
             >
-              BOLD
+              {boldWord}
             </span>
-            <span>Ideas Into Digital</span>
+            <span>{line1AfterBold}</span>
           </span>
 
           <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap mt-1">
-            <span>Experiences</span>
+            <span>{line2Word}</span>
             <Image
               src={Asterisk}
               alt="*"
@@ -179,22 +179,21 @@ export default function Banner() {
               data-aos="flip-right"
               data-aos-duration="1500"
             />
-            <span className="italic font-normal text-white/70">Businesses</span>
+            <span className="italic font-normal text-white/70">{line2ItalicWord}</span>
           </span>
 
-          <span className="block mt-1">Grow With.</span>
+          <span className="block mt-1">{line3}</span>
         </h1>
 
-        {/* Begin Now Button */}
         <div className="mt-8 sm:mt-12 flex justify-start lg:justify-center">
           <Link
-            href="/contact"
+            href={ctaHref}
             className="group inline-flex items-center gap-4 sm:gap-6 rounded-full pl-[20px] sm:pl-[26px] pr-[12px] sm:pr-[15px] py-[10px] bg-white hover:bg-[#9DF560] transition-colors duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
             data-aos="fade-up"
             data-aos-duration="1500"
           >
             <span className="text-[#0A0A0C] font-medium text-[18px] sm:text-[24px] leading-none tracking-[-0.05em]">
-              Begin Now
+              {ctaLabel}
             </span>
             <div className="relative w-[64px] sm:w-[80px] h-[36px] sm:h-[43px] rounded-[40px] overflow-hidden flex-shrink-0 transform-[translateZ(0)]">
               <div className="absolute inset-0">
