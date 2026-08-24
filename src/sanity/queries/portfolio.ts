@@ -10,15 +10,16 @@ const portfolioFields = /* groq */ `
   title,
   "slug": slug.current,
   excerpt,
-  order,
+  orderRank,
   tags,
   featuredImage { ${imageFields} },
+  hoverImages[] { ${imageFields} },
   "services": services[]->{ _id, title, "slug": slug.current },
   "industries": industries[]->{ _id, title, "slug": slug.current }
 `;
 
 export const portfoliosQuery = defineQuery(/* groq */ `
-  *[_type == "portfolio" && defined(slug.current)] | order(order asc, _createdAt desc) {
+  *[_type == "portfolio" && defined(slug.current)] | order(orderRank asc) {
     ${portfolioFields}
   }
 `);

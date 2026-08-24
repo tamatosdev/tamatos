@@ -105,7 +105,7 @@ export default async function PortfolioDetailPage({
                   style={{
                     padding: "8px 14px",
                     borderRadius: "40px",
-                    fontSize: "14px",
+                    fontSize: "12px",
                     letterSpacing: "-0.05em",
                     background: "rgba(255, 255, 255, 0.05)",
                     boxShadow: "inset 5.33px 4px 10px 0px rgba(255, 255, 255, 0.1)",

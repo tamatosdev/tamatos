@@ -1,4 +1,5 @@
 import type { StructureResolver } from "sanity/structure";
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { FileText, User, Tag, FolderOpen, Plus, Home, Briefcase } from "lucide-react";
 
 const hiddenTypes = [
@@ -12,7 +13,7 @@ const hiddenTypes = [
   "portfolioIndustryTag",
 ];
 
-export const structure: StructureResolver = (S) =>
+export const structure: StructureResolver = (S, context) =>
   S.list()
     .title("Content")
     .items([
@@ -35,21 +36,23 @@ export const structure: StructureResolver = (S) =>
           S.list()
             .title("Portfolio")
             .items([
-              S.listItem()
-                .title("All Portfolio")
-                .icon(Briefcase)
-                .child(
-                  S.documentTypeList("portfolio")
-                    .title("All Portfolio")
-                    .defaultOrdering([
-                      { field: "order", direction: "asc" },
-                      { field: "_createdAt", direction: "desc" },
-                    ])
-                ),
+              orderableDocumentListDeskItem({
+                type: "portfolio",
+                title: "All Portfolio",
+                icon: Briefcase,
+                S,
+                context,
+              }),
               S.listItem()
                 .title("Add Portfolio")
                 .icon(Plus)
-                .child(S.document().schemaType("portfolio")),
+                .id("add-portfolio")
+                .child(() =>
+                  S.document()
+                    .schemaType("portfolio")
+                    .documentId(crypto.randomUUID())
+                    .title("New Portfolio")
+                ),
               S.divider(),
               S.listItem()
                 .title("Services")
@@ -86,7 +89,13 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title("Add Post")
                 .icon(Plus)
-                .child(S.document().schemaType("post")),
+                .id("add-post")
+                .child(() =>
+                  S.document()
+                    .schemaType("post")
+                    .documentId(crypto.randomUUID())
+                    .title("New Post")
+                ),
               S.divider(),
               S.listItem()
                 .title("Categories")

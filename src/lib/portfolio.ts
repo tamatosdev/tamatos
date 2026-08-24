@@ -14,21 +14,42 @@ export type PortfolioTag = {
   slug: string;
 };
 
+export type PortfolioImage = {
+  url?: string;
+  alt?: string;
+};
+
 export type PortfolioItem = {
   _id: string;
   title: string;
   slug: string;
   excerpt?: string;
-  order?: number;
+  orderRank?: string;
   tags?: string[];
-  featuredImage?: { url?: string; alt?: string };
+  featuredImage?: PortfolioImage;
+  hoverImages?: PortfolioImage[];
   services?: PortfolioTag[];
   industries?: PortfolioTag[];
 };
 
+/** Featured image first, then hover slideshow images (deduped by URL). */
+export function getPortfolioCardImages(item: PortfolioItem): PortfolioImage[] {
+  const images: PortfolioImage[] = [];
+  const seen = new Set<string>();
+
+  for (const image of [item.featuredImage, ...(item.hoverImages ?? [])]) {
+    const url = image?.url?.trim();
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    images.push({ url, alt: image?.alt });
+  }
+
+  return images;
+}
+
 export type PortfolioDetail = PortfolioItem & {
   body?: PortableTextBlock[];
-  gallery?: { url?: string; alt?: string }[];
+  gallery?: PortfolioImage[];
 };
 
 export async function getPortfolios(): Promise<PortfolioItem[]> {

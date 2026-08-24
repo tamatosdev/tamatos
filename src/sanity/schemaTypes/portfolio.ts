@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
 
 export const portfolioServiceTag = defineType({
   name: 'portfolioServiceTag',
@@ -52,7 +53,9 @@ export const portfolio = defineType({
   name: 'portfolio',
   title: 'Portfolio',
   type: 'document',
+  orderings: [orderRankOrdering],
   fields: [
+    orderRankField({ type: 'portfolio' }),
     defineField({
       name: 'title',
       title: 'Title',
@@ -71,6 +74,18 @@ export const portfolio = defineType({
       title: 'Featured Image',
       type: 'imageWithAlt',
       validation: (rule) => rule.required(),
+      description: 'Default image on the work listing card',
+    }),
+    defineField({
+      name: 'hoverImages',
+      title: 'Hover slideshow images',
+      type: 'array',
+      of: [defineArrayMember({ type: 'imageWithAlt' })],
+      description:
+        'Extra images shown while hovering the work listing card. Plays as a slideshow after the featured image. Leave empty to keep a single static image.',
+      options: {
+        layout: 'grid',
+      },
     }),
     defineField({
       name: 'excerpt',
@@ -115,19 +130,6 @@ export const portfolio = defineType({
       of: [{ type: 'imageWithAlt' }],
       description: 'Additional images for the portfolio detail page',
     }),
-    defineField({
-      name: 'order',
-      title: 'Sort order',
-      type: 'number',
-      description: 'Lower numbers appear first',
-    }),
-  ],
-  orderings: [
-    {
-      title: 'Sort order',
-      name: 'sortOrder',
-      by: [{ field: 'order', direction: 'asc' }],
-    },
   ],
   preview: {
     select: {

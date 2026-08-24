@@ -1,14 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import circleShade from "@/assets/circle-shade.png";
 import {
   filterPortfolios,
+  getPortfolioCardImages,
   getPortfolioCardTags,
   type PortfolioItem,
   type PortfolioTag,
 } from "@/lib/portfolio";
+
+const HOVER_SLIDE_INTERVAL_MS = 900;
 
 const filterBoxClass =
   "rounded-[30px] mix-blend-plus-lighter backdrop-blur-xl";
@@ -25,7 +28,7 @@ const portfolioTagPillClass = "inline-flex items-center text-white/80 mix-blend-
 const portfolioTagPillStyle = {
   padding: "8px 14px",
   borderRadius: "40px",
-  fontSize: "14px",
+  fontSize: "12px",
   letterSpacing: "-0.05em",
   background: "rgba(255, 255, 255, 0.05)",
   boxShadow: "inset 5.33px 4px 10px 0px rgba(255, 255, 255, 0.1)",
@@ -58,20 +61,98 @@ function FilterPill({
 
 function PortfolioCard({ item }: { item: PortfolioItem }) {
   const tags = getPortfolioCardTags(item);
+  const images = useMemo(() => getPortfolioCardImages(item), [item]);
+  const canSlide = images.length > 1;
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hovering, setHovering] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (!hovering || !canSlide) {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      return;
+    }
+
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % images.length);
+    }, HOVER_SLIDE_INTERVAL_MS);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [hovering, canSlide, images.length]);
+
+  // Prefetch hover images so the first slide is instant
+  useEffect(() => {
+    images.slice(1).forEach((image) => {
+      if (!image.url) return;
+      const preload = new window.Image();
+      preload.src = image.url;
+    });
+  }, [images]);
+
+  const handleEnter = () => {
+    if (!canSlide) return;
+    setHovering(true);
+  };
+
+  const handleLeave = () => {
+    setHovering(false);
+    setActiveIndex(0);
+  };
 
   return (
-    <Link href={`/work/${item.slug}`} className="flex flex-col gap-5 lg:gap-6">
+    <Link
+      href={`/work/${item.slug}`}
+      className="flex flex-col gap-5 lg:gap-6"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      onFocus={handleEnter}
+      onBlur={handleLeave}
+    >
       <div className="relative overflow-hidden rounded-[24px] lg:rounded-[28px] bg-white/5">
-        {item.featuredImage?.url ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={item.featuredImage.url}
-            alt={item.featuredImage.alt || item.title}
-            className="w-full h-auto object-cover"
-          />
+        {images.length > 0 ? (
+          <>
+            {/* Preserve card height from the featured (first) image */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={images[0].url}
+              alt=""
+              aria-hidden
+              className="w-full h-auto opacity-0 pointer-events-none select-none"
+              draggable={false}
+            />
+            <div
+              className="absolute inset-0 flex h-full transition-transform duration-500 ease-out will-change-transform"
+              style={{
+                width: `${images.length * 100}%`,
+                transform: `translateX(-${(activeIndex * 100) / images.length}%)`,
+              }}
+            >
+              {images.map((image, index) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={`${image.url}-${index}`}
+                  src={image.url}
+                  alt={image.alt || item.title}
+                  className="h-full object-cover"
+                  style={{ width: `${100 / images.length}%` }}
+                  draggable={false}
+                />
+              ))}
+            </div>
+          </>
         ) : (
           <div className="w-full min-h-[200px] bg-white/5" />
         )}
+
       </div>
 
       <div className="flex flex-col gap-3 lg:gap-4">
@@ -138,7 +219,7 @@ export default function WorkPortfolioSection({
           className="flex flex-col lg:flex-row"
           style={{ gap: "calc(var(--spacing) * 10)" }}
         >
-          <aside className="w-full lg:w-[440px] shrink-0 flex flex-col gap-5 lg:gap-6">
+          <aside className="w-full lg:w-[440px] shrink-0 flex flex-col gap-5 lg:gap-6 lg:sticky lg:top-28 lg:self-start">
             <div className="flex flex-col gap-3">
               <p className="text-white font-medium" style={{ fontSize: "18px", letterSpacing: "-0.02em" }}>
                 Services
