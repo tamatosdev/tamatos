@@ -51,7 +51,7 @@ export default function ScrollTextReveal({
     <section ref={sectionRef} className="container py-16 lg:py-32 relative z-10">
       <p
         className="text-white font-medium text-center leading-[1.2] "
-        style={{ fontSize: "clamp(35px, 6.25vw, 110px)", letterSpacing: "-0.04em" }}
+        style={{ fontSize: "clamp(31.11px, 6.25vw, 97.78px)", letterSpacing: "-0.04em" }}
       >
         {words.map((word, i) => {
           const clean = word.replace(/[.,!?]/g, "");

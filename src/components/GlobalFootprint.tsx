@@ -67,14 +67,14 @@ export default function GlobalFootprint() {
       {/* Heading */}
       <h2
         className="text-white font-medium text-center leading-tight mb-3"
-        style={{ fontSize: "clamp(32px, 3vw, 60px)", letterSpacing: "-0.04em" }}
+        style={{ fontSize: "clamp(28.44px, 3vw, 50.06px)", letterSpacing: "-0.04em" }}
       >
         Our <span className="text-[#9DF560]">Global</span> Footprint
       </h2>
 
       {/* Paragraph */}
       <p className="text-center text-white/80 max-w-2xl mx-auto leading-relaxed"
-        style={{ letterSpacing: "-0.02em", fontSize: "clamp(16px, 0.94vw, 18px)" }}>
+        style={{ letterSpacing: "-0.02em", fontSize: "clamp(16px, 0.94vw, 16px)" }}>
         Delivering excellence across multiple regions with a strong commitment to quality, reliability, and global collaboration.
       </p>
 
@@ -211,7 +211,7 @@ export default function GlobalFootprint() {
                   <p
                     className="font-semibold leading-tight flex justify-between items-center gap-2"
                     style={{
-                      fontSize: "clamp(18px, 1.25vw, 24px)",
+                      fontSize: "clamp(16px, 1.25vw, 21.33px)",
                       color: isActive ? "#0b1721" : "#ffffff",
                       letterSpacing: "-0.02em",
                     }}
@@ -232,7 +232,7 @@ export default function GlobalFootprint() {
               </div>
 
               <div className="ml-11">
-                <p className="font-normal mb-2" style={{ color: isActive ? "#0b1721" : "#ffffff80", fontSize: "clamp(16px, 0.94vw, 18px)" }}>
+                <p className="font-normal mb-2" style={{ color: isActive ? "#0b1721" : "#ffffff80", fontSize: "clamp(16px, 0.94vw, 16px)" }}>
                   Location: <span className="" 
                   style={{
                      color: isActive ? "#0b1721" : "#ffffffcc",

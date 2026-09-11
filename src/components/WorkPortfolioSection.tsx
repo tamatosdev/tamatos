@@ -52,7 +52,7 @@ function FilterPill({
           ? "bg-white text-[#0A0A0C]"
           : "bg-white/[0.07] text-white/50 hover:bg-white/[0.1] hover:text-white/70"
       }`}
-      style={{ fontSize: "16.6px", padding: "8px 16px", letterSpacing: "-0.03em", fontWeight: 500 }}
+      style={{ fontSize: "14.6px", padding: "8px 16px", letterSpacing: "-0.03em", fontWeight: 500 }}
     >
       {label}
     </button>
@@ -109,8 +109,7 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
   };
 
   return (
-    <Link
-      href={`/work/${item.slug}`}
+    <div
       className="flex flex-col gap-5 lg:gap-6"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
@@ -158,7 +157,7 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
       <div className="flex flex-col gap-3 lg:gap-4">
         <h3
           className="text-white font-medium leading-[1.15]"
-          style={{ fontSize: "clamp(20px, 2vw, 28px)", letterSpacing: "-5%" }}
+          style={{ fontSize: "clamp(17.78px, 2vw, 24.89px)", letterSpacing: "-5%" }}
         >
           {item.title}
         </h3>
@@ -182,7 +181,7 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
           </div>
         )}
       </div>
-    </Link>
+    </div>
   );
 }
 
@@ -221,7 +220,7 @@ export default function WorkPortfolioSection({
         >
           <aside className="w-full lg:w-[440px] shrink-0 flex flex-col gap-5 lg:gap-6 lg:sticky lg:top-28 lg:self-start">
             <div className="flex flex-col gap-3">
-              <p className="text-white font-medium" style={{ fontSize: "18px", letterSpacing: "-0.02em" }}>
+              <p className="text-white font-medium" style={{ fontSize: "19.56px", letterSpacing: "-0.02em" }}>
                 Services
               </p>
               <div className={filterBoxClass} style={filterBoxStyle}>
@@ -244,7 +243,7 @@ export default function WorkPortfolioSection({
             </div>
 
             <div className="flex flex-col gap-3">
-              <p className="text-white font-medium" style={{ fontSize: "18px", letterSpacing: "-0.02em" }}>
+              <p className="text-white font-medium" style={{ fontSize: "19.56px", letterSpacing: "-0.02em" }}>
                 Industries
               </p>
               <div className={filterBoxClass} style={filterBoxStyle}>
@@ -269,7 +268,7 @@ export default function WorkPortfolioSection({
             <Link
               href="/contact"
               className="flex items-center justify-center w-full rounded-full bg-white text-[#0A0A0C] font-medium hover:bg-[#9DF560] transition-colors duration-300 mt-1 lg:mt-2"
-              style={{ fontSize: "clamp(16px, 1.15vw, 22px)", padding: "20px 28px", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(16px, 1.15vw, 19.56px)", padding: "20px 28px", letterSpacing: "-0.02em" }}
             >
               Have a Project?
             </Link>
@@ -278,7 +277,7 @@ export default function WorkPortfolioSection({
           <div className="flex-1 min-w-0">
             <h2
               className="text-white font-medium leading-[1.08] mb-10 lg:mb-12"
-              style={{ fontSize: "clamp(36px, 3.8vw, 64px)", letterSpacing: "-0.04em" }}
+              style={{ fontSize: "clamp(32px, 3.8vw, 50.06px)", letterSpacing: "-0.04em" }}
             >
               Works That <span className="text-[#9DF560]">Power</span> Growth.
             </h2>

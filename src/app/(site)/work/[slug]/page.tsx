@@ -72,7 +72,7 @@ export default async function PortfolioDetailPage({
           <div
             className="inline-flex w-fit items-center gap-2 px-5 py-2 rounded-full text-white/70 font-medium mb-8"
             style={{
-              fontSize: "18px",
+              fontSize: "16px",
               background: "rgba(255,255,255,0.05)",
               border: "1px solid #ffffff26",
               boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",
@@ -91,7 +91,7 @@ export default async function PortfolioDetailPage({
 
           <h1
             className="text-white font-medium leading-[1.1] max-w-4xl"
-            style={{ fontSize: "clamp(36px, 4.5vw, 72px)", letterSpacing: "-0.04em" }}
+            style={{ fontSize: "clamp(32px, 4.5vw, 64px)", letterSpacing: "-0.04em" }}
           >
             {item.title}
           </h1>
@@ -136,7 +136,7 @@ export default async function PortfolioDetailPage({
         <section className="container pb-12 lg:pb-16">
           <div
             className="prose prose-invert max-w-3xl prose-p:text-white/70 prose-headings:text-white prose-headings:font-medium prose-a:text-[#9DF560]"
-            style={{ fontSize: "clamp(16px, 1.1vw, 18px)", lineHeight: 1.7 }}
+            style={{ fontSize: "clamp(16px, 1.1vw, 16px)", lineHeight: 1.7 }}
           >
             <PortableTextContent value={item.body} />
           </div>

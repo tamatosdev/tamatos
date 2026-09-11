@@ -3,7 +3,6 @@ import Link from "next/link";
 import aboutHeader1 from "@/assets/about-header-1.png";
 import aboutHeader2 from "@/assets/about-header-2.png";
 import footerShade1 from "@/assets/footer-shade1.png";
-import bigShade from "@/assets/big-shade.png";
 import AboutMarquee from "@/components/AboutMarquee";
 import ClientLogos from "@/components/ClientLogos";
 import workFun from "@/assets/work-fun.png";
@@ -11,15 +10,25 @@ import SmilyFace from "@/assets/Smily Face.png";
 import lightGreenBox from "@/assets/lighr-green-box.png";
 import darkGreenBox from "@/assets/dark-green-box.png";
 import orangeBox from "@/assets/orange box.png";
+import blueBg from "@/assets/blue-bg.png";
 import creativeIcon from "@/assets/creative-icon.png";
 import developmentIcon from "@/assets/development-icon.png";
 import webDesignIcon from "@/assets/web-design-icon.png";
+import thinkIcon from "@/assets/think-icon.png";
 import Asterisk from "@/assets/asteric.png";
 import pill2 from "@/assets/pill2.png";
 import TeamSection from "@/components/TeamSection";
 import ReviewTab from "@/components/ReviewTab";
 import BlogSection from "@/components/BlogSection";
 import CtaSection2 from "@/components/CtaSection2";
+import ServicesSection from "@/components/ServicesSection";
+import StatsSection from "@/components/StatsSection";
+import CaseStudySection from "@/components/CaseStudySection";
+import BodyBgOnView from "@/components/BodyBgOnView";
+import arrowShade2 from "@/assets/arrow-shade2.png";
+import shade4 from "@/assets/Shade-4.png";
+import shade2 from "@/assets/Shade-2.png";
+import blogShade from "@/assets/blog-shade.png";
 
 export default function AboutPage() {
   return (
@@ -43,7 +52,7 @@ export default function AboutPage() {
             <div
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-white/70 font-medium"
               style={{
-                fontSize: "18px",
+                fontSize: "16px",
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid #ffffff26",
                 boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",
@@ -55,31 +64,49 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Heading + Images wrapper — flex row, items centered */}
-          <div className="flex items-center relative" style={{ minHeight: "clamp(280px, 32vw, 440px)" }}>
+          {/* Heading + Images wrapper */}
+          <div className="relative mt-8 lg:mt-0 lg:flex lg:items-center lg:min-h-[clamp(280px,32vw,440px)]">
 
-            {/* Heading — full width, overlaps images */}
-            <h1
-              className="text-white font-medium leading-[1.1] relative flex-1"
-              style={{ fontSize: "clamp(36px, 4.8vw, 80px)", letterSpacing: "-0.04em", zIndex: 3 }}
-            >
-              <span className="block">Stay Ahead of the{" "}<em className="italic text-white/50">Curve</em></span>
-              <span className="block">with Tamatos{" "}<span className="text-[#9DF560]">Edge-Cutting</span></span>
-              <span className="flex flex-wrap items-center gap-4 lg:gap-6">
-                <span>Expertise<span className="text-[#9DF560]">.</span></span>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-full bg-white text-[#0A0A0C] font-medium hover:bg-[#9df560] transition-colors duration-300"
-                  style={{ fontSize: "18px", padding: "18px 40px", letterSpacing: "-0.02em" }}
-                >
-                  Tell Us About Your Project
-                </Link>
-              </span>
-            </h1>
+            {/* Heading — natural wrap on mobile; desktop line breaks preserved */}
+            <div className="relative flex-1" style={{ zIndex: 3 }}>
+              <h1
+                className="text-white font-medium leading-[1.15] lg:leading-[1.1]"
+                style={{ fontSize: "clamp(26px, 4.8vw, 71.11px)", letterSpacing: "-0.04em" }}
+              >
+                <span className="lg:block">
+                  We Bring{" "}
+                  <em className="italic font-normal text-white/50">Strategy, Creativity</em>
+                </span>{" "}
+                <span className="lg:block">
+                  <em className="italic font-normal text-white/50">&amp; Technology</em> Together To Build
+                </span>{" "}
+                <span className="lg:block">Digital Products That</span>{" "}
+                <span className="mt-1 flex flex-wrap items-center gap-4 lg:mt-0 lg:gap-6">
+                  <span>
+                    Perform
+                    <span className="text-[#9DF560]">.</span>
+                  </span>
+                  <Link
+                    href="/contact"
+                    className="hidden lg:inline-flex items-center justify-center rounded-full bg-white text-[#0A0A0C] font-medium hover:bg-[#9DF560] transition-colors duration-300"
+                    style={{ fontSize: "16px", padding: "18px 40px", letterSpacing: "-0.02em" }}
+                  >
+                    Start a Project
+                  </Link>
+                </span>
+              </h1>
 
-            {/* Images — absolutely on the right, centered vertically */}
+              <Link
+                href="/contact"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-white text-[#0A0A0C] font-medium hover:bg-[#9DF560] transition-colors duration-300 lg:hidden"
+                style={{ fontSize: "16px", padding: "12px 28px", letterSpacing: "-0.02em" }}
+              >
+                Start a Project
+              </Link>
+            </div>
+
+            {/* Images — desktop: absolute right */}
             <div className="hidden lg:block absolute inset-y-0 right-0 pointer-events-none select-none" style={{ zIndex: 2, width: "45%" }}>
-              {/* Back card */}
               <div
                 className="absolute rounded-[20px] overflow-hidden shadow-2xl"
                 style={{
@@ -92,7 +119,6 @@ export default function AboutPage() {
               >
                 <Image src={aboutHeader2} alt="" className="w-full h-full object-cover" priority />
               </div>
-              {/* Front card */}
               <div
                 className="absolute rounded-[20px] overflow-hidden shadow-2xl"
                 style={{
@@ -106,16 +132,35 @@ export default function AboutPage() {
                 <Image src={aboutHeader1} alt="" className="w-full h-full object-cover" priority />
               </div>
             </div>
-
           </div>
 
-          {/* Mobile images (shifted up by -100px) */}
-          <div className="relative flex items-center justify-center h-75 mt-10 lg:hidden" style={{ top: "-100px" }}>
-            <div className="absolute rounded-[20px] overflow-hidden shadow-2xl" style={{ width: "170px", height: "210px", right: "20px", top: 0, transform: "rotate(6deg)", zIndex: 1 }}>
-              <Image src={aboutHeader2} alt="" className="w-full h-full object-cover" />
+          {/* Mobile images */}
+          <div className="relative mx-auto mt-10 flex h-[220px] w-full max-w-[300px] items-start justify-center lg:hidden">
+            <div
+              className="absolute overflow-hidden rounded-[18px] shadow-2xl"
+              style={{
+                width: "148px",
+                height: "186px",
+                left: "52%",
+                top: "0",
+                transform: "rotate(7deg)",
+                zIndex: 1,
+              }}
+            >
+              <Image src={aboutHeader2} alt="" className="h-full w-full object-cover" priority />
             </div>
-            <div className="absolute rounded-[20px] overflow-hidden shadow-2xl" style={{ width: "170px", height: "210px", right: "110px", top: "30px", transform: "rotate(-2deg)", zIndex: 2 }}>
-              <Image src={aboutHeader1} alt="" className="w-full h-full object-cover" />
+            <div
+              className="absolute overflow-hidden rounded-[18px] shadow-2xl"
+              style={{
+                width: "148px",
+                height: "186px",
+                left: "8%",
+                top: "28px",
+                transform: "rotate(-3deg)",
+                zIndex: 2,
+              }}
+            >
+              <Image src={aboutHeader1} alt="" className="h-full w-full object-cover" priority />
             </div>
           </div>
 
@@ -123,7 +168,7 @@ export default function AboutPage() {
           <div className="mt-10 lg:mt-16 pb-8 lg:pb-12 flex flex-col items-center gap-4">
             <p
               className="text-white/80 font-normal text-center leading-snug"
-              style={{ fontSize: "clamp(18px, 1vw, 16px)", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.02em" }}
             >
               Delivering World-Class Quality<br />Beyond the Ordinary.
             </p>
@@ -135,195 +180,257 @@ export default function AboutPage() {
 
       
 
-      <section className="relative py-12 lg:py-20 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none select-none" style={{ zIndex: 0 }}>
-          <div className="absolute left-1/2 top-[68%] w-[150%] lg:w-[140%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-90">
-            <Image
-              src={bigShade}
-              alt=""
-              className="w-full h-auto object-contain"
-            />
-          </div>
+      {/* Intro → How we work */}
+      <div className="relative py-12 lg:py-20">
+        <div className="about-flow-shades pointer-events-none select-none absolute inset-0 overflow-visible" aria-hidden>
+          {/* What We Do — soft left glow (Shade-4) */}
+          <Image
+            src={shade4}
+            alt=""
+            className="absolute left-0 top-[58%] w-[min(36vw,420px)] opacity-70"
+            style={{
+              height: "auto",
+              WebkitMaskImage:
+                "linear-gradient(to right, #000 40%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 20%, #000 85%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to right, #000 40%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 20%, #000 85%, transparent 100%)",
+              WebkitMaskComposite: "source-in",
+              maskComposite: "intersect",
+            }}
+          />
+          {/* How we work — soft right glow */}
+          <Image
+            src={shade2}
+            alt=""
+            className="absolute right-0 bottom-[4%] w-[min(42vw,520px)] opacity-50"
+            style={{
+              height: "auto",
+              WebkitMaskImage:
+                "linear-gradient(to top, #000 50%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to top, #000 50%, transparent 100%)",
+            }}
+          />
         </div>
 
-        <div className="relative" style={{ zIndex: 1 }}>
+        <div className="relative z-10">
           <section className="relative py-6 lg:py-12">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6">
-              <h2 className="text-white font-normal text-center leading-snug" style={{ fontSize: "clamp(24px, 2.2vw, 50px)", letterSpacing: "-0.04em" }}>
-                Tamatos is a <span className="text-white/50 italic">design-led</span> agency that combines bold branding, intuitive UX<span className="text-[#9DF560]">, & </span>clean code so your brand doesn&apos;t just look good.
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <h2 className="text-white font-normal text-center leading-snug" style={{ fontSize: "clamp(21.33px, 2.2vw, 44.44px)", letterSpacing: "-0.04em" }}>
+                <span className="text-white/50">At Tamatos, </span>
+                we believe good work should do more than look good
+                <span className="text-[#9DF560]">.</span> It should have a purpose
+                <span className="text-[#9DF560]">,</span> it should solve a problem
+                <span className="text-[#9DF560]">,</span>{" "}
+                <span className="text-[#9DF560]">&amp;</span> it should make a difference to the
+                business behind it
+                <span className="text-[#9DF560]">.</span>
               </h2>
             </div>
           </section>
 
           <AboutMarquee />
 
-          <div className="py-20 lg:py-40">
-            <ClientLogos />
-          </div>
-        </div>
-      </section>
-
-      {/* We Believe Work Should be Fun section */}
-      <section className="container py-14 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-
-          {/* Left — image */}
-          <div className="rounded-3xl overflow-hidden w-full">
-            <Image
-              src={workFun}
-              alt="Work should be fun"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-
-          {/* Right — content */}
-          <div className="flex flex-col gap-6">
-
-            {/* Heading */}
-            <h2
-              className="text-white font-medium leading-[1.15]"
-              style={{ fontSize: "clamp(28px, 3vw, 52px)", letterSpacing: "-0.04em" }}
-            >
-              We Believe{" "}
-              <em className="italic text-white/50">Work</em>{" "}
-              Should be Fun{" "}
-              <Image
-                src={SmilyFace}
+          {/* Logos + We believe — light blog-shade on the right only */}
+          <div className="relative">
+            <div className="about-flow-shades pointer-events-none select-none absolute inset-0 overflow-visible" aria-hidden>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={blogShade.src}
                 alt=""
-                className="inline-block h-[0.9em] w-auto"
-                style={{ verticalAlign: "middle" }}
-              />{" "}
-              too<span className="text-[#9DF560]">.</span>
+                className="absolute right-0 top-[8%] max-w-none opacity-55"
+                style={{
+                  width: "min(58vw, 720px)",
+                  height: "auto",
+                  WebkitMaskImage:
+                    "linear-gradient(to left, #000 35%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+                  maskImage:
+                    "linear-gradient(to left, #000 35%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+                  WebkitMaskComposite: "source-in",
+                  maskComposite: "intersect",
+                }}
+              />
+            </div>
+            <div className="relative z-10">
+              <ClientLogos className="!pb-8 lg:!pb-12" />
+
+              <section className="container pb-14 pt-2 lg:pb-24 lg:pt-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                  <div className="rounded-3xl overflow-hidden w-full">
+                    <Image
+                      src={workFun}
+                      alt="Work should be fun"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-6">
+                    <h2
+                      className="text-white font-medium leading-[1.15]"
+                      style={{ fontSize: "clamp(24.89px, 3vw, 46.22px)", letterSpacing: "-0.04em" }}
+                    >
+                      We believe good{" "}
+                      <em className="italic text-white/50">work</em>
+                      <br />
+                      should do more than
+                      <br />
+                      look good
+                      <Image
+                        src={SmilyFace}
+                        alt=""
+                        className="inline-block h-[0.9em] w-auto ml-2"
+                        style={{ verticalAlign: "middle" }}
+                      />
+                      <span className="text-[#9DF560]">.</span>
+                    </h2>
+
+                    <div className="flex flex-col mt-2">
+                      {[
+                        "It should have a purpose.",
+                        "It should solve a problem.",
+                        "And it should make a difference to the business behind it.",
+                      ].map((text, i) => (
+                        <div
+                          key={i}
+                          className="flex items-start gap-4 py-5"
+                          style={{ borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.2)" : "none" }}
+                        >
+                          <div className="shrink-0 mt-0.5">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                              <circle cx="11" cy="11" r="11" fill="#9DF560" />
+                              <path d="M6.5 11.5L9.5 14.5L15.5 8" stroke="#0A0A0C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </div>
+                          <p
+                            className="text-white font-normal leading-snug"
+                            style={{ fontSize: "clamp(15px, 1.1vw, 16px)", letterSpacing: "-0.02em" }}
+                          >
+                            {text}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <ServicesSection />
+          <StatsSection />
+
+          {/* How we work */}
+          <section className="container py-14 lg:py-24">
+            <h2
+              className="text-white font-normal leading-[1.15] mb-12 lg:mb-16"
+              style={{ fontSize: "clamp(24.89px, 3.5vw, 50.06px)", letterSpacing: "-0.04em" }}
+            >
+              How <em className="italic text-white/50">we</em> work
+              <span className="text-[#9DF560]">.</span>
             </h2>
 
-            {/* Description */}
-            <p
-              className="text-white/80 font-normal leading-relaxed"
-              style={{ fontSize: "clamp(15px, 1vw, 18px)", letterSpacing: "-0.01em" }}
-            >
-              We believe great work happens when talented people are genuinely excited about what they&apos;re building. Our culture blends ambition with creativity, and every project is a chance to do something that truly matters.
-            </p>
-
-            {/* Feature list */}
-            <div className="flex flex-col mt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:items-start">
               {[
                 {
-                  title: "Strategy before execution",
-                  desc: "We apply system thinking to reduce fragmentation across teams and workflows.",
+                  bg: lightGreenBox,
+                  icon: creativeIcon,
+                  title: "Think First",
+                  desc: "We start with the problem, not the solution, so every decision has a clear purpose.",
+                  mt: "",
                 },
                 {
-                  title: "Design that drives results",
-                  desc: "Every pixel we place is intentional, tied to real user needs and business outcomes.",
+                  bg: darkGreenBox,
+                  icon: developmentIcon,
+                  title: "Make It Simple",
+                  desc: "We turn complex ideas into simple experiences that feel intuitive, useful, and easy to understand.",
+                  mt: "lg:mt-[40px]",
                 },
                 {
-                  title: "Built for long-term growth",
-                  desc: "We build systems that scale with you, not just solutions that work today.",
+                  bg: orangeBox,
+                  icon: webDesignIcon,
+                  title: "Build With Purpose.",
+                  desc: "We create with intention, making sure everything we build has a clear job to do.",
+                  mt: "lg:mt-[80px]",
                 },
-              ].map((item, i) => (
+                {
+                  bg: blueBg,
+                  icon: thinkIcon,
+                  title: "Think Ahead And Grow",
+                  desc: "We think of the outcome and continue to make the products better.",
+                  mt: "lg:mt-[120px]",
+                },
+              ].map((card) => (
                 <div
-                  key={i}
-                  className="flex gap-4 py-5"
-                  style={{ borderBottom: i < 2 ? "1px solid white/20 " : "none" }}
+                  key={card.title}
+                  className={`relative flex flex-col justify-center overflow-hidden rounded-3xl p-7 ${card.mt}`}
+                  style={{ minHeight: "280px" }}
                 >
-                  {/* Green check icon */}
-                  <div className="shrink-0 mt-2">
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                      <circle cx="11" cy="11" r="11" fill="#9DF560" />
-                      <path d="M6.5 11.5L9.5 14.5L15.5 8" stroke="#0A0A0C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p
-                      className="text-white font-normal mb-1"
-                      style={{ fontSize: "clamp(15px, 1.1vw, 18px)", letterSpacing: "-0.02em" }}
+                  <Image src={card.bg} alt="" fill className="object-cover object-top" />
+                  <Image src={card.icon} alt="" className="relative z-10 mb-5 h-auto w-16" />
+                  <div className="relative z-10">
+                    <h3
+                      className="mb-3 font-semibold text-white"
+                      style={{ fontSize: "clamp(16px, 1.4vw, 21.33px)", letterSpacing: "-0.03em" }}
                     >
-                      {item.title}
-                    </p>
+                      {card.title}
+                    </h3>
                     <p
-                      className="text-white/80 font-normal leading-relaxed"
-                      style={{ fontSize: "clamp(13px, 0.9vw, 16px)", letterSpacing: "-0.01em" }}
+                      className="font-normal leading-relaxed text-white/70"
+                      style={{ fontSize: "clamp(13px, 0.95vw, 15px)" }}
                     >
-                      {item.desc}
+                      {card.desc}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
-
-          </div>
+          </section>
         </div>
-      </section>
+      </div>
 
-      {/* Built to Make Brands section */}
-      <section className="container py-14 lg:py-24">
-
-        {/* Heading */}
-        <h2
-          className="text-white font-normal leading-[1.15] mb-12 lg:mb-16"
-          style={{ fontSize: "clamp(28px, 3.5vw, 60px)", letterSpacing: "-0.04em" }}
-        >
-          Built to{" "}
-          <em className="italic text-white/50">Make</em>{" "}
-          <Image src={Asterisk} alt="" className="inline-block w-7 lg:w-10 h-auto" style={{ verticalAlign: "middle" }} />{" "}
-          <em className="italic text-white/50">Brands</em>
-          <br />
-          Impossible to Ignore<span className="text-[#9DF560]">.</span>
-        </h2>
-
-        {/* Staggered cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:items-start">
-
-          {/* Card 1 — Creative */}
-          <div className="relative rounded-3xl overflow-hidden p-7 flex flex-col justify-center lg:mt-0" style={{ minHeight: "360px" }}>
-            <Image src={lightGreenBox} alt="" fill className="object-cover object-top" />
-            <Image src={creativeIcon} alt="" className="relative w-16 h-auto z-10 mb-5" />
-            <div className="relative z-10">
-              <h3 className="text-white font-semibold mb-3" style={{ fontSize: "clamp(18px, 1.4vw, 24px)", letterSpacing: "-0.03em" }}>
-                Creative That Connects
-              </h3>
-              <p className="text-white/70 font-normal leading-relaxed" style={{ fontSize: "clamp(13px, 0.95vw, 15px)" }}>
-                From branding and social media creatives to pitch decks and visuals, we create bold digital experiences that help brands stand out and stay memorable.
-              </p>
-            </div>
+      {/* Case studies */}
+      <section className="relative pt-14 lg:pt-24 overflow-x-clip">
+        <Image
+          src={arrowShade2}
+          alt=""
+          className="case-shade pointer-events-none select-none absolute opacity-55"
+          style={{
+            right: "-5%",
+            top: "15%",
+            zIndex: 0,
+            width: "min(50vw, 640px)",
+            height: "auto",
+          }}
+          aria-hidden
+        />
+        <div className="relative z-10">
+          <div className="container text-left">
+            <h2
+              className="font-medium leading-[1.15] tracking-[-0.04em] text-white"
+              style={{ fontSize: "clamp(28.44px, 3.5vw, 50.06px)" }}
+            >
+              Work We Are <em className="italic font-normal text-white/50">Proud</em> Of
+              <span className="text-[#9DF560]">.</span>
+            </h2>
+            <p className="mt-5 max-w-[720px] text-[16px] leading-[1.55] tracking-[-0.02em] text-white/80 lg:mt-6 lg:text-[16px]">
+              From websites and digital products to brands and campaigns, we&apos;ve helped businesses
+              turn ideas into things people can actually experience.
+            </p>
           </div>
-
-          {/* Card 2 — Development */}
-          <div className="relative rounded-3xl overflow-hidden p-7 flex flex-col justify-center lg:mt-14" style={{ minHeight: "360px" }}>
-            <Image src={darkGreenBox} alt="" fill className="object-cover object-top" />
-            <Image src={developmentIcon} alt="" className="relative w-16 h-auto z-10 mb-5" />
-            <div className="relative z-10">
-              <h3 className="text-white font-semibold mb-3" style={{ fontSize: "clamp(18px, 1.4vw, 24px)", letterSpacing: "-0.03em" }}>
-                Development That Performs
-              </h3>
-              <p className="text-white/70 font-normal leading-relaxed" style={{ fontSize: "clamp(13px, 0.95vw, 15px)" }}>
-                Using modern technologies like Next.js, we build fast, scalable, and responsive websites and applications designed for performance and growth.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 3 — Web Design */}
-          <div className="relative rounded-3xl overflow-hidden p-7 flex flex-col justify-center lg:mt-28" style={{ minHeight: "360px" }}>
-            <Image src={orangeBox} alt="" fill className="object-cover object-top" />
-            <Image src={webDesignIcon} alt="" className="relative w-16 h-auto z-10 mb-5" />
-            <div className="relative z-10">
-              <h3 className="text-white font-semibold mb-3" style={{ fontSize: "clamp(18px, 1.4vw, 24px)", letterSpacing: "-0.03em" }}>
-                Web Design That Converts
-              </h3>
-              <p className="text-white/70 font-normal leading-relaxed" style={{ fontSize: "clamp(13px, 0.95vw, 15px)" }}>
-                We design clean, user-focused websites that combine strong visuals, seamless UX, and SEO-driven structure to turn visitors into customers.
-              </p>
-            </div>
-          </div>
-
+          <CaseStudySection className="!pt-8 md:!pt-12" />
         </div>
       </section>
 
       {/* Team statement section */}
-      <section className="py-40 lg:py-64" style={{ background: "#1D17E0" }}>
+      <BodyBgOnView
+        color="#1D17E0"
+        className="py-40 lg:py-64"
+        style={{ background: "#1D17E0" }}
+      >
         <div className="container">
           <p
             className="font-medium leading-[1.2] "
-            style={{ fontSize: "clamp(32px, 3.2vw, 60px)", letterSpacing: "-0.03em" }}
+            style={{ fontSize: "clamp(28.44px, 3.2vw, 50.06px)", letterSpacing: "-0.03em" }}
           >
             {/* Asterisk + bold white opening */}
             <Image
@@ -355,7 +462,7 @@ export default function AboutPage() {
             <span className="text-white">Just Like You.</span>
           </p>
         </div>
-      </section>
+      </BodyBgOnView>
 
       <TeamSection />
       <div className="about-last-3 pt-14 lg:pt-24">

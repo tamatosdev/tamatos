@@ -19,7 +19,6 @@ import PFlag from "@/assets/p-flag.png";
 import USFlag from "@/assets/us-flag.png";
 import UAEFlag from "@/assets/uae-flag.png";
 import CanadaFlag from "@/assets/canada-flag.png";
-import AuthorImg from "@/assets/CEO.png";
 import type { CaseStudyData } from "@/lib/home";
 
 const pillStyle: React.CSSProperties = {
@@ -31,7 +30,6 @@ type CaseStudy = {
   pills: { label?: string; flag?: StaticImageData | string; flagAlt?: string }[];
   heading: string;
   paragraphs: string[];
-  author: { name: string; designation: string; image?: string };
   images: { src: StaticImageData | string; alt: string }[];
 };
 
@@ -44,7 +42,6 @@ const defaultCaseStudies: CaseStudy[] = [
       "The objective was to revamp the digital presence to better communicate the group's diverse business verticals, legacy, and forward-looking vision while ensuring a seamless user experience for stakeholders, investors, and general audiences.",
       "The website was designed with a strong emphasis on structured storytelling—highlighting key sectors such as fertilizers, energy, textiles, and trading through clearly defined sections and intuitive navigation. Content architecture was carefully organized to ensure easy access to corporate information, company insights, and operational highlights.",
     ],
-    author: { name: "Aetienne Sardon", designation: "Founder, CEO" },
     images: [
       { src: Fatima1, alt: "Fatima Group — desktop" },
       { src: Fatima2, alt: "Fatima Group — mobile" },
@@ -58,7 +55,6 @@ const defaultCaseStudies: CaseStudy[] = [
       "For MUCHO Burrito, the website needed to capture the vibrant fusion of authentic Mexican flavors and modern dining aesthetics. Using WordPress Elementor page builder, we revamped their site to deliver a seamless user experience with visually engaging design.",
       "Key features include intuitive navigation, a clean UI design, and functional artistry through dynamic artworks. We implemented a customizable burrito catering form using Forminator, tailored to enhance customer interaction, and added a nutrition calculator for personalized meal planning.",
     ],
-    author: { name: "Aetienne Sardon", designation: "Founder, CEO" },
     images: [
       { src: Mucho1, alt: "MUCHO Burrito — desktop" },
       { src: Mucho2, alt: "MUCHO Burrito — mobile" },
@@ -72,7 +68,6 @@ const defaultCaseStudies: CaseStudy[] = [
       "The objective was to create a digital presence that communicates platform value clearly and supports lead generation through an organized and informative structure.",
       "Developed on WordPress, the site structure prioritizes direct access to information. UI and layout choices were built around simplifying service categories such as workforce tracking, sales enforcement, and payment systems.",
     ],
-    author: { name: "Aetienne Sardon", designation: "Founder, CEO" },
     images: [
       { src: Sep1, alt: "Sales Enforcement Platform — desktop" },
       { src: Sep2, alt: "Sales Enforcement Platform — mobile" },
@@ -86,7 +81,6 @@ const defaultCaseStudies: CaseStudy[] = [
       "The goal was to develop a digital presence that captures the experimental nature of the platform while maintaining structural clarity and strong UI sensibility.",
       "The website was developed on WordPress with a custom UI/UX framework that reflects the fast-paced, creator-led nature of the project. Information architecture was planned to highlight the core pillars: AI agents, tokenomics, and community participation.",
     ],
-    author: { name: "Aetienne Sardon", designation: "Founder, CEO" },
     images: [
       { src: A471, alt: "A47 — desktop" },
       { src: A472, alt: "A47 — mobile" },
@@ -105,11 +99,6 @@ function mapCmsCaseStudies(items: CaseStudyData[]): CaseStudy[] {
       })) ?? [],
     heading: item.heading ?? "",
     paragraphs: item.paragraphs ?? [],
-    author: {
-      name: item.author?.name ?? "",
-      designation: item.author?.designation ?? "",
-      image: item.author?.image?.url,
-    },
     images:
       item.images
         ?.filter((img) => img.url)
@@ -128,15 +117,13 @@ function StudyImage({ src, alt, className }: { src: StaticImageData | string; al
   return <Image src={src} alt={alt} className={className} />;
 }
 
-function AuthorAvatar({ src, alt, className }: { src?: string | StaticImageData; alt: string; className?: string }) {
-  if (typeof src === "string") {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} className={className} />;
-  }
-  return <Image src={src ?? AuthorImg} alt={alt} width={48} height={48} className={className} />;
-}
-
-export default function CaseStudySection({ items }: { items?: CaseStudyData[] }) {
+export default function CaseStudySection({
+  items,
+  className = "",
+}: {
+  items?: CaseStudyData[];
+  className?: string;
+}) {
   const caseStudies =
     items?.length ? mapCmsCaseStudies(items) : defaultCaseStudies;
 
@@ -148,7 +135,7 @@ export default function CaseStudySection({ items }: { items?: CaseStudyData[] })
   if (!caseStudies.length) return null;
 
   return (
-    <section className="container py-12 md:py-24">
+    <section className={`container py-12 md:py-24 ${className}`}>
       <div className="lg:hidden flex flex-col gap-6">
         <div key={activeIndex} className="animate-slide-in flex flex-col gap-6">
           {cs.images[0] && (
@@ -169,20 +156,13 @@ export default function CaseStudySection({ items }: { items?: CaseStudyData[] })
               )
             )}
           </div>
-          <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "20px", letterSpacing: "-0.04em" }}>{cs.heading}</h2>
+          <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "17.78px", letterSpacing: "-0.04em" }}>{cs.heading}</h2>
           <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.15)" }} />
           <div>
             <p className="text-white/60 font-normal leading-relaxed line-clamp-4" style={{ fontSize: "14px", letterSpacing: "-0.03em" }}>
               {cs.paragraphs.join(" ")}
             </p>
             <span className="text-white/80 font-medium text-[14px] cursor-pointer">Read More</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <AuthorAvatar src={cs.author.image} alt={cs.author.name} className="rounded-full object-cover shrink-0 w-11 h-11" />
-            <div>
-              <p className="text-white font-medium leading-tight text-[14px]" style={{ letterSpacing: "-0.03em" }}>{cs.author.name}</p>
-              <p className="text-white/50 text-[12px] mt-0.5" style={{ letterSpacing: "-0.02em" }}>{cs.author.designation}</p>
-            </div>
           </div>
         </div>
         <div className="flex items-center gap-3 pt-2">
@@ -198,7 +178,7 @@ export default function CaseStudySection({ items }: { items?: CaseStudyData[] })
       <div className="hidden lg:flex flex-col gap-32">
         {caseStudies.map((study, idx) => (
           <div key={idx} className="grid grid-cols-2 gap-16 items-start">
-            <div className="lg:sticky lg:top-28 flex flex-col gap-8">
+            <div className="lg:sticky lg:top-28 flex flex-col gap-8 self-start">
               <div className="flex items-center gap-3 flex-wrap">
                 {study.pills.map((pill, i) =>
                   pill.flag ? (
@@ -212,19 +192,12 @@ export default function CaseStudySection({ items }: { items?: CaseStudyData[] })
                   )
                 )}
               </div>
-              <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "clamp(20px, 2vw, 36px)", letterSpacing: "-0.04em" }}>{study.heading}</h2>
+              <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "clamp(17.78px, 2vw, 32px)", letterSpacing: "-0.04em" }}>{study.heading}</h2>
               <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.15)" }} />
               <div className="flex flex-col gap-5">
                 {study.paragraphs.map((p, i) => (
-                  <p key={i} className="text-white/60 font-normal leading-relaxed" style={{ fontSize: "clamp(14px, 1.3vw, 18px)", letterSpacing: "-0.03em" }}>{p}</p>
+                  <p key={i} className="text-white/60 font-normal leading-relaxed" style={{ fontSize: "clamp(14px, 1.3vw, 16px)", letterSpacing: "-0.03em" }}>{p}</p>
                 ))}
-              </div>
-              <div className="flex items-center gap-4 pt-2">
-                <AuthorAvatar src={study.author.image} alt={study.author.name} className="rounded-full object-cover shrink-0 w-12 h-12" />
-                <div>
-                  <p className="text-white font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", letterSpacing: "-0.03em" }}>{study.author.name}</p>
-                  <p className="text-white/50 font-normal mt-0.5" style={{ fontSize: "clamp(12px, 1vw, 14px)", letterSpacing: "-0.02em" }}>{study.author.designation}</p>
-                </div>
               </div>
             </div>
             <div className="flex flex-col gap-6">

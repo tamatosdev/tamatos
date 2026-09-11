@@ -118,7 +118,7 @@ export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
     <section className="py-16 lg:py-30 overflow-hidden">
       <div className="container mx-auto px-5">
         <div className="review-main-heading max-w-250 mx-auto text-center">
-          <h2 className="text-white leading-[1.2] font-medium tracking-[-0.04em]" style={{ fontSize: "clamp(22px, 3.2vw, 60px)" }}>
+          <h2 className="text-white leading-[1.2] font-medium tracking-[-0.04em]" style={{ fontSize: "clamp(19.56px, 3.2vw, 50.06px)" }}>
             {headingStart}{" "}
             <span className="text-[#9DF560]">{headingHighlight}</span> {headingMiddle}{" "}
             <span className="italic text-white/70">{headingItalic}</span>
@@ -169,7 +169,7 @@ export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
                   </button>
                 </div>
 
-                <p className="text-[#0A0A0C] font-medium leading-[1.3] tracking-[-0.04em] max-w-250" style={{ fontSize: "clamp(18px, 2vw, 36px)" }}>
+                <p className="text-[#0A0A0C] font-medium leading-[1.3] tracking-[-0.04em] max-w-250" style={{ fontSize: "clamp(16px, 2vw, 32px)" }}>
                   {cmsTestimonials && active.content && Array.isArray(active.content) ? (
                     <PortableText value={active.content} components={testimonialPortableTextComponents} />
                   ) : (
@@ -186,8 +186,8 @@ export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
                       <Image src={(active as (typeof defaultTestimonials)[0]).image} alt="" className="max-h-12.5 md:max-h-17.75 object-contain" />
                     )}
                     <div>
-                      <h4 className="text-[#0A0A0C] text-[16px] md:text-[24px] italic font-medium leading-none">{active.author}</h4>
-                      <p className="text-[#0A0A0C]/70 text-[12px] md:text-[18px]">{active.role}</p>
+                      <h4 className="text-[#0A0A0C] text-[16px] md:text-[21.33px] italic font-medium leading-none">{active.author}</h4>
+                      <p className="text-[#0A0A0C]/70 text-[12px] md:text-[16px]">{active.role}</p>
                     </div>
                   </div>
                   <div className="hidden lg:flex items-center gap-3 shrink-0">

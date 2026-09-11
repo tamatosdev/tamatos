@@ -3,40 +3,67 @@ import type { ServicesData } from "@/lib/home";
 
 const defaultServices = [
   {
-    category: "Branding",
+    category: "Design",
+    description: "Identities That Give Businesses Something To Be Remembered By.",
     bg: "#FFFFFF1A",
     hoverBg: "#9DF560",
-    items: ["Pitch Deck Design", "Brand Identity", "Logo Design", "Graphic Design", "Rebranding"],
-  },
-  {
-    category: "Design",
-    bg: "#FFFFFF1A",
-    hoverBg: "#FC7031",
-    items: ["UX/UI Design", "Web Design", "Mobile App Design", "Website Redesign", "UX/UI Audit"],
+    items: [
+      "Brand Strategy",
+      "Brand Identity",
+      "Logo Design",
+      "Social Media Design",
+      "Print & Marketing Collateral",
+      "Pitch Deck Design",
+    ],
   },
   {
     category: "Development",
+    description:
+      "Websites That Turn Visitors Into Customers. Products Built Around People, Not Just Features.",
+    bg: "#FFFFFF1A",
+    hoverBg: "#FC7031",
+    items: [
+      "Websites",
+      "Mobile Applications",
+      "E-Commerce Solutions",
+      "SaaS Platforms",
+      "ODOO Implementation",
+      "AI Workflows & Agents",
+    ],
+  },
+  {
+    category: "Digital",
+    description: "Work That Gets Your Business Seen By The Right People.",
     bg: "#FFFFFF1A",
     hoverBg: "#03E4AC",
-    items: ["Web Development", "MVP Development", "WebFlow Development", "Landing Page", "Mobile Development"],
+    items: [
+      "Social Media Marketing",
+      "Search Engine Optimization",
+      "Influencer Marketing",
+      "Email & WhatsApp Automation",
+      "Content Strategy & Production",
+      "Analytics & Growth Optimization",
+    ],
   },
 ];
 
 export default function ServicesSection({ data }: { data?: ServicesData }) {
-  const titleLine1 = data?.titleLine1 ?? "Design & Development";
-  const titleEmphasis = data?.titleEmphasis ?? "Services";
-  const titleLine2 = data?.titleLine2 ?? "We Offer";
+  const titleLine1 = data?.titleLine1 ?? "What";
+  const titleEmphasis = data?.titleEmphasis ?? "We";
+  const titleLine2 = (data?.titleLine2 ?? "Do").replace(/\.$/, "");
 
   const services =
     data?.categories?.length
       ? data.categories.map((cat) => ({
           category: cat.title ?? "",
+          description: cat.description ?? "",
           bg: cat.backgroundColor ?? "#FFFFFF1A",
           hoverBg: cat.hoverColor ?? "#9DF560",
-          items: cat.items?.map((item) => ({
-            label: item.label ?? "",
-            href: item.href ?? "/services",
-          })) ?? [],
+          items:
+            cat.items?.map((item) => ({
+              label: item.label ?? "",
+              href: item.href ?? "/services",
+            })) ?? [],
         }))
       : defaultServices.map((s) => ({
           ...s,
@@ -44,19 +71,20 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
         }));
 
   return (
-    <section className="container py-12 md:py-24 relative z-1">
+    <section className="container py-12 md:py-24 relative z-1" data-aos-skip>
       <h2
-        className="text-white font-medium text-center leading-[1.15] mb-10 md:mb-14"
-        style={{ fontSize: "clamp(32px, 4.44vw, 64px)", letterSpacing: "-0.04em" }}
+        className="text-white font-medium text-center leading-[1.15] mb-10 sm:whitespace-nowrap md:mb-14"
+        style={{ fontSize: "clamp(28.44px, 4.44vw, 50.06px)", letterSpacing: "-0.04em" }}
+        data-aos="fade-up"
+        data-aos-duration="900"
       >
-        {titleLine1}
-        <br />
-        <span className="text-white/70 italic">{titleEmphasis} </span>
-        {titleLine2}
+        {titleLine1}{" "}
+        <span className="text-white/50">{titleEmphasis}</span> {titleLine2}
+        <span className="text-[#9DF560]">.</span>
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {services.map((service) => (
+        {services.map((service, index) => (
           <div
             key={service.category}
             className="rounded-3xl p-6 md:p-8 flex flex-col shadow-[inset_5.33px_4px_10px_0_#FFFFFF1A] mix-blend-plus-lighter"
@@ -66,13 +94,25 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
                 "--hover-color": service.hoverBg,
               } as React.CSSProperties
             }
+            data-aos="fade-up"
+            data-aos-duration="1100"
+            data-aos-delay={120 + index * 200}
+            data-aos-easing="ease-out-cubic"
           >
             <h3
-              className="text-white font-medium mb-5 md:mb-6"
-              style={{ fontSize: "clamp(24px, 2.5vw, 48px)", letterSpacing: "-0.04em" }}
+              className="text-white font-medium"
+              style={{ fontSize: "37.55px", letterSpacing: "-0.04em" }}
             >
               {service.category}
             </h3>
+
+            {service.description ? (
+              <p className="mt-3 mb-5 text-[14px] leading-[1.5] tracking-[-0.02em] text-white/60 md:mb-6 md:text-[16px]">
+                {service.description}
+              </p>
+            ) : (
+              <div className="mb-5 md:mb-6" />
+            )}
 
             <ul className="flex flex-col">
               {service.items.map((item, index) => (
@@ -80,15 +120,16 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
                   <Link
                     href={item.href}
                     className={`
-                      group/item flex items-center justify-between py-4 md:py-5 px-3 rounded-xl transition-all duration-300 ease-out
+                      group/item flex items-center justify-between px-3 rounded-xl transition-all duration-300 ease-out
                        lg:text-white
                       ${index === 0 ? "bg-[var(--hover-color)] text-[#0A0A0C]" : "bg-transparent"}
                       lg:bg-transparent lg:hover:bg-[var(--hover-color)] lg:hover:text-[#0A0A0C] lg:hover:px-5
                     `}
+                    style={{ paddingBlock: "1.15rem" }}
                   >
                     <span
                       className="font-medium"
-                      style={{ fontSize: "clamp(16px, 1.25vw, 24px)", letterSpacing: "-0.03em" }}
+                      style={{ fontSize: "18.77px", letterSpacing: "-0.03em" }}
                     >
                       {item.label}
                     </span>

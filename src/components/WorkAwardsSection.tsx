@@ -61,7 +61,7 @@ export default function WorkAwardsSection({ data }: { data?: AwardsData }) {
               <div className="text-center">
                 <p
                   className="text-white font-semibold leading-tight"
-                  style={{ fontSize: "clamp(14px, 1.5vw, 24px)", letterSpacing: "-0.04em" }}
+                  style={{ fontSize: "clamp(14px, 1.5vw, 21.33px)", letterSpacing: "-0.04em" }}
                 >
                   {award.year}
                 </p>

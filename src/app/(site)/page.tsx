@@ -9,10 +9,15 @@ import ScrollTextReveal from "@/components/ScrollTextReveal";
 import BlogSection from "@/components/BlogSection";
 import CaseStudySection from "@/components/CaseStudySection";
 import Image from "next/image";
-import textimage from "@/assets/text-image2.png";
+import Link from "next/link";
 import Asterisk from "@/assets/asteric.png";
 import shade1 from "@/assets/shade-1.png";
 import shade2 from "@/assets/Shade-2.png";
+import teamIcon from "@/assets/team-icon.png";
+import bracesIcon from "@/assets/3rd-bracket.png";
+import ideaIcon from "@/assets/ai-idea.png";
+import buttonTamatos from "@/assets/button-tamatos.svg";
+import StatsSection from "@/components/StatsSection";
 import AwardsSection from "@/components/AwardsSection";
 import ReviewTab from "@/components/ReviewTab";
 import Industries from "@/components/Industries";
@@ -26,6 +31,29 @@ import TeamOrbits from "@/components/Teamorbit";
 import { getHomePage } from "@/lib/home";
 import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import type { StaticImageData } from "next/image";
+
+const agencyHighlights: {
+  icon: StaticImageData;
+  title: string;
+  description: string;
+}[] = [
+  {
+    icon: teamIcon,
+    title: "Have one team that gets the bigger picture",
+    description: "Hiring system with immediate start.",
+  },
+  {
+    icon: bracesIcon,
+    title: "Build digital that means something",
+    description: "Websites and products designed around people, purpose and performance.",
+  },
+  {
+    icon: ideaIcon,
+    title: "Think beyond the brief",
+    description: "We challenge the expectation to find ideas that actually move your brand forward.",
+  },
+];
 
 export async function generateMetadata() {
   const home = await getHomePage();
@@ -35,29 +63,16 @@ export async function generateMetadata() {
 export default async function Home() {
   const home = await getHomePage();
 
-  const agencyMain =
-    home?.agencyStatement?.mainText ??
-    "Tamatos is a design-led agency that combines bold branding,";
-  const agencyDim =
-    home?.agencyStatement?.dimText ??
-    "intuitive UX, & clean code so your brand doesn't just look good. It performs.";
-  const agencyInlineImage = home?.agencyStatement?.inlineImage?.url;
-
-  const stats = home?.stats?.items?.length
-    ? home.stats.items
-    : [
-        { value: "+200%", title: "Avg. engagement uplift", description: "Flows redesigned to turn curious visitors into paying customers" },
-        { value: "3.8×", title: "Revenue growth after brand overhaul", description: "Identity systems that build instant trust and command attention" },
-        { value: "-40%", title: "Drop-off rate reduced", description: "Smarter UX and onboarding that keeps users from walking away" },
-      ];
-
   const compareLeft = home?.compareStrip?.leftText ?? "Most agencies = Either design well OR market well";
   const compareRight = home?.compareStrip?.rightText ?? "tamatos = Bridges Product + Growth";
 
-  const teamHeadingLine1 = home?.team?.headingLine1 ?? "Digital Design Experts";
-  const teamHeadingAccent = home?.team?.headingAccent ?? "Fuel Growth.";
-  const teamCol1 = home?.team?.column1Text ?? "Your digital design and development partner for high-impact results";
-  const teamCol2 = home?.team?.column2Text ?? "A global team that understands your market, users, and how to make products win";
+  const teamRoles =
+    home?.team?.rolesText ??
+    "Strategists. Designers. Developers. Brand thinkers. SEO nerds.";
+  const teamBody =
+    home?.team?.bodyText ??
+    "We work together because the best ideas usually happen somewhere between what a business needs, what people want and what technology can make possible.";
+  const teamButtonHref = home?.team?.button?.href ?? "/about";
 
   const jsonLd = buildJsonLd(home?.seo);
 
@@ -85,7 +100,7 @@ export default async function Home() {
           <LogoMarquee data={home?.logoMarquee} />
         </div>
 
-        <section className="relative py-12 lg:py-24">
+        <section className="relative py-12 lg:py-24" data-aos-skip>
           <Image
             src={shade2}
             alt=""
@@ -105,43 +120,65 @@ export default async function Home() {
 
           <div className="container relative" style={{ zIndex: 1 }}>
             <div className="flex flex-col lg:flex-row">
-              <div className="hidden lg:block lg:w-2/5" />
-              <div className="w-full lg:w-3/5">
+              <div className="hidden lg:block lg:w-1/4" />
+              <div className="w-full lg:w-3/4">
                 <h2
-                  className="text-white font-medium leading-[1.4] tracking-[-0.04em] mb-6"
-                  style={{ fontSize: "clamp(22px, 2.5vw, 46px)" }}
+                  className="text-white font-medium leading-[1.15] tracking-[-0.04em]"
+                  style={{ fontSize: "clamp(24.89px, 3.2vw, 49.78px)", marginLeft: "5.5rem" }}
+                  data-aos="fade-up"
+                  data-aos-duration="900"
                 >
+                  <span className="block">
+                    <em className="italic text-white/50 font-normal">Tamatos</em> Is Your{" "}
+                    <span className="text-[#9DF560]">Go-To</span> Agency
+                  </span>
                   <Image
                     src={Asterisk}
                     alt="*"
-                    width={39}
-                    height={41}
-                    className="inline-block w-5 sm:w-7 lg:w-9.75 h-auto mr-2 sm:mr-5 lg:mr-25"
+                    width={52}
+                    height={52}
+                    className="inline-block w-6 sm:w-8 lg:w-10 h-auto mr-2 sm:mr-3"
                     style={{ verticalAlign: "middle" }}
                   />
-                  {agencyMain}{" "}
-                  <span className="text-white/70">
-                    {agencyDim}{" "}
-                    {agencyInlineImage ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={agencyInlineImage}
-                        alt={home?.agencyStatement?.inlineImage?.alt ?? ""}
-                        className="inline-block w-17.5 sm:w-23.75 lg:w-34.25 h-auto"
-                        style={{ verticalAlign: "middle" }}
-                      />
-                    ) : (
-                      <Image
-                        src={textimage}
-                        alt="*"
-                        width={137}
-                        height={51}
-                        className="inline-block w-17.5 sm:w-23.75 lg:w-34.25 h-auto"
-                        style={{ verticalAlign: "middle" }}
-                      />
-                    )}
-                  </span>
+                  If You Want To
                 </h2>
+
+                <ul className="mt-10 lg:mt-14 flex flex-col">
+                  {agencyHighlights.map((item, index) => (
+                    <li
+                      key={item.title}
+                      className={`flex items-start gap-4 sm:gap-5 py-6 lg:py-7 ${
+                        index < agencyHighlights.length - 1 ? "border-b border-white/15" : ""
+                      }`}
+                      data-aos="fade-left"
+                      data-aos-duration="1000"
+                      data-aos-delay={150 + index * 220}
+                      data-aos-easing="ease-out-cubic"
+                    >
+                      <Image
+                        src={item.icon}
+                        alt=""
+                        width={28}
+                        height={28}
+                        className="shrink-0 w-7 h-7 object-contain mt-0.5"
+                      />
+                      <div className="min-w-0">
+                        <p
+                          className="text-white font-medium leading-[1.35]"
+                          style={{ fontSize: "21.33px", letterSpacing: "-0.03em" }}
+                        >
+                          {item.title}
+                        </p>
+                        <p
+                          className="text-white/50 font-normal leading-[1.5] mt-1.5"
+                          style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -158,37 +195,18 @@ export default async function Home() {
 
         <CtaSection data={home?.ctaSection} />
 
-        <section className="container py-12 lg:py-24 relative">
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            {stats.map((stat, index) => (
-              <div
-                key={stat.title ?? index}
-                className={`${index === 0 ? "md:pr-6 lg:pr-16 pb-10 md:pb-0" : ""} ${index === 1 ? "md:px-6 lg:px-16 pt-10 md:pt-0 pb-10 md:pb-0" : ""} ${index === 2 ? "md:pl-6 lg:pl-16 pt-10 md:pt-0" : ""}`}
-              >
-                <p className="text-white font-normal leading-none" style={{ fontSize: "clamp(64px, 6.2vw, 120px)", letterSpacing: "-0.05em" }}>
-                  {stat.value}
-                </p>
-                <p className="text-white font-medium mt-4 lg:mt-6 mb-3" style={{ fontSize: "clamp(18px, 1.2vw, 22px)", letterSpacing: "-0.03em" }}>
-                  {stat.title}
-                </p>
-                <p className="text-white/60 font-normal leading-normal" style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.03em" }}>
-                  {stat.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <StatsSection data={home?.stats} />
 
         <ServicesSection data={home?.services} />
 
         <div className="relative overflow-hidden">
           <section className="container py-8 lg:py-16 relative z-10">
             <div className="flex items-start sm:items-center justify-between gap-5 sm:gap-0">
-              <p className="text-white/70 font-normal leading-normal" style={{ fontSize: "clamp(16px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
+              <p className="text-white/70 font-normal leading-normal" style={{ fontSize: "clamp(16px, 1.2vw, 16px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
                 {compareLeft}
               </p>
               <div className="hidden sm:block self-stretch w-px mx-8 lg:mx-16" style={{ background: "#FFFFFF80" }} />
-              <p className="text-white text-left sm:text-right font-medium" style={{ fontSize: "clamp(16px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
+              <p className="text-white text-left sm:text-right font-medium" style={{ fontSize: "clamp(16px, 1.2vw, 16px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
                 {compareRight}
               </p>
             </div>
@@ -213,40 +231,52 @@ export default async function Home() {
           style={{ transform: "translateY(-50%)", zIndex: 0 }}
         />
         <div className="container relative" style={{ zIndex: 1 }}>
-          <div className="block lg:hidden mb-6">
-            <h2 className="leading-[1.1] font-medium tracking-[-0.03em]" style={{ fontSize: "clamp(32px, 3.3vw, 60px)" }}>
-              {teamHeadingLine1} <br />
-              who<span className="text-[#9DF560] italic"> {teamHeadingAccent}</span>
-            </h2>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <TeamOrbits members={home?.team?.members} />
             </div>
-            <div className="pl-3.5">
-              <h2 className="hidden lg:block leading-[1.1] font-medium tracking-[-0.03em]" style={{ fontSize: "clamp(32px, 3.3vw, 60px)" }}>
-                {teamHeadingLine1} <br />
-                who<span className="text-[#9DF560] italic"> {teamHeadingAccent}</span>
+            <div className="pl-0 lg:pl-3.5">
+              <h2
+                className="font-normal leading-[1.12] tracking-[-0.04em] text-white"
+                style={{ fontSize: "clamp(28.44px, 3.3vw, 50.06px)" }}
+              >
+                Team of People Who Like Making{" "}
+                <span className="text-[#9DF560]">Complicated</span> Things{" "}
+                <em className="font-normal italic text-white/50">Simpler.</em>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 lg:pt-10">
-                <div>
-                  <p className="text-[18px] leading-[1.5] text-white/80">{teamCol1}</p>
-                </div>
-                <div>
-                  <p className="text-[18px] leading-[1.5] text-white/80">{teamCol2}</p>
-                </div>
-              </div>
+
+              <p className="mt-5 max-w-[520px] text-[16px] leading-[1.55] tracking-[-0.02em] text-white/70 lg:mt-6">
+                {teamRoles} {teamBody}
+              </p>
+
+              <Link
+                href={teamButtonHref}
+                className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-[#1D17E0] px-7 py-3.5 text-[16px] font-medium leading-none tracking-[-0.02em] text-white transition-colors duration-300 hover:bg-white hover:text-[#0A0A0C] lg:mt-10 lg:gap-3 lg:px-8 lg:py-4 lg:text-[16px]"
+              >
+                Meet
+                <Image
+                  src={buttonTamatos}
+                  alt="tamatos"
+                  width={98}
+                  height={14}
+                  className="h-[12px] w-auto transition-[filter] duration-300 lg:h-[14px] group-hover:brightness-0"
+                />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       <AwardsSection data={home?.awards} />
-      <ReviewTab data={home?.reviews} />
-      <div className="relative overflow-hidden">
-        <Image src={circleShade2} alt="" className="absolute pointer-events-none select-none" style={{ left: 0, top: "80%", transform: "translateY(-50%)", zIndex: 0 }} />
-        <div className="relative" style={{ zIndex: 1 }}>
+      <div className="relative">
+        <Image
+          src={circleShade2}
+          alt=""
+          className="pointer-events-none absolute left-0 z-0 select-none w-full max-w-none"
+          style={{ top: "220px" }}
+        />
+        <div className="relative z-[1]">
+          <ReviewTab data={home?.reviews} />
           <Industries data={home?.industries} />
           <BlogSection data={home?.blogSection} />
           <CtaSection2 data={home?.finalCta} />

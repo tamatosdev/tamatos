@@ -72,7 +72,7 @@ export const heroSection = defineType({
       name: 'line3',
       title: 'Headline line 3',
       type: 'string',
-      initialValue: 'Grow With.',
+      initialValue: 'Growth With.',
     }),
     defineField({
       name: 'boldHighlightColor',
@@ -102,6 +102,12 @@ export const heroSection = defineType({
       name: 'cta',
       title: 'CTA button',
       type: 'link',
+    }),
+    defineField({
+      name: 'secondaryCta',
+      title: 'Secondary CTA link',
+      type: 'link',
+      description: 'Text link shown next to the main CTA (e.g. See Our Work)',
     }),
   ],
 })
@@ -213,12 +219,32 @@ export const statItem = defineType({
   title: 'Stat',
   type: 'object',
   fields: [
-    defineField({ name: 'value', title: 'Value', type: 'string', validation: (r) => r.required() }),
-    defineField({ name: 'title', title: 'Title', type: 'string', validation: (r) => r.required() }),
-    defineField({ name: 'description', title: 'Description', type: 'text', rows: 2 }),
+    defineField({
+      name: 'value',
+      title: 'Value',
+      type: 'string',
+      validation: (r) => r.required(),
+      description: 'Large number shown below the pills (e.g. 100+)',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 2,
+      description:
+        'Text under the number. Include the phrase that should appear italic (e.g. Multiple Markets).',
+    }),
+    // Kept for existing documents that still store copy in `title`
+    defineField({
+      name: 'title',
+      title: 'Description (legacy)',
+      type: 'string',
+      hidden: true,
+      readOnly: true,
+    }),
   ],
   preview: {
-    select: { title: 'value', subtitle: 'title' },
+    select: { title: 'value', subtitle: 'description' },
   },
 })
 
@@ -227,6 +253,19 @@ export const statsSection = defineType({
   title: 'Stats / Numbers',
   type: 'object',
   fields: [
+    defineField({
+      name: 'headingBefore',
+      title: 'Heading (before italic)',
+      type: 'string',
+      initialValue: 'Tamatos In',
+    }),
+    defineField({
+      name: 'headingEmphasis',
+      title: 'Heading (italic)',
+      type: 'string',
+      initialValue: 'Numbers',
+      description: 'Shown in italic / muted style, followed by a green period',
+    }),
     defineField({
       name: 'items',
       title: 'Stats',
@@ -254,6 +293,13 @@ export const serviceCategory = defineType({
   fields: [
     defineField({ name: 'title', title: 'Category title', type: 'string', validation: (r) => r.required() }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 3,
+      description: 'Short text shown under the category title',
+    }),
+    defineField({
       name: 'backgroundColor',
       title: 'Card background color',
       type: 'string',
@@ -273,7 +319,7 @@ export const serviceCategory = defineType({
     }),
   ],
   preview: {
-    select: { title: 'title' },
+    select: { title: 'title', subtitle: 'description' },
   },
 })
 
@@ -282,9 +328,9 @@ export const servicesSection = defineType({
   title: 'Services',
   type: 'object',
   fields: [
-    defineField({ name: 'titleLine1', title: 'Title line 1', type: 'string', initialValue: 'Design & Development' }),
-    defineField({ name: 'titleEmphasis', title: 'Title emphasis (italic)', type: 'string', initialValue: 'Services' }),
-    defineField({ name: 'titleLine2', title: 'Title line 2', type: 'string', initialValue: 'We Offer' }),
+    defineField({ name: 'titleLine1', title: 'Title before emphasis', type: 'string', initialValue: 'What' }),
+    defineField({ name: 'titleEmphasis', title: 'Title emphasis', type: 'string', initialValue: 'We' }),
+    defineField({ name: 'titleLine2', title: 'Title after emphasis', type: 'string', initialValue: 'Do' }),
     defineField({
       name: 'categories',
       title: 'Categories',
@@ -418,10 +464,29 @@ export const teamSection = defineType({
   title: 'Team / Orbit',
   type: 'object',
   fields: [
-    defineField({ name: 'headingLine1', title: 'Heading line 1', type: 'string', initialValue: 'Digital Design Experts' }),
-    defineField({ name: 'headingAccent', title: 'Heading accent (italic)', type: 'string', initialValue: 'Fuel Growth.' }),
-    defineField({ name: 'column1Text', title: 'Column 1 text', type: 'text', rows: 2 }),
-    defineField({ name: 'column2Text', title: 'Column 2 text', type: 'text', rows: 2 }),
+    defineField({
+      name: 'rolesText',
+      title: 'Roles line',
+      type: 'string',
+      initialValue: 'Strategists. Designers. Developers. Brand thinkers. SEO nerds.',
+    }),
+    defineField({
+      name: 'bodyText',
+      title: 'Body text',
+      type: 'text',
+      rows: 3,
+      initialValue:
+        'We work together because the best ideas usually happen somewhere between what a business needs, what people want and what technology can make possible.',
+    }),
+    defineField({
+      name: 'button',
+      title: 'Button',
+      type: 'object',
+      fields: [
+        defineField({ name: 'label', title: 'Label', type: 'string', initialValue: 'Meet ÷ tamatos' }),
+        defineField({ name: 'href', title: 'URL', type: 'string', initialValue: '/about' }),
+      ],
+    }),
     defineField({
       name: 'members',
       title: 'Team members',
@@ -515,16 +580,33 @@ export const industryItem = defineType({
   title: 'Industry',
   type: 'object',
   fields: [
-    defineField({ name: 'title', title: 'Title', type: 'string', validation: (r) => r.required() }),
+    defineField({ name: 'title', title: 'Tab title', type: 'string', validation: (r) => r.required() }),
     defineField({
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [defineArrayMember({ type: 'string' })],
+      name: 'icon',
+      title: 'Tab icon',
+      type: 'imageWithAlt',
+      description: 'Upload icons like industrial-icon, Saas-and-tech-icon, etc.',
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Panel subtitle',
+      type: 'string',
+      description: 'e.g. Manufacturing · Engineering · Logistics.',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Panel description',
+      type: 'text',
+      rows: 4,
+    }),
+    defineField({
+      name: 'image',
+      title: 'Panel background image',
+      type: 'imageWithAlt',
     }),
   ],
   preview: {
-    select: { title: 'title' },
+    select: { title: 'title', subtitle: 'subtitle', media: 'icon' },
   },
 })
 
@@ -533,20 +615,27 @@ export const industriesSection = defineType({
   title: 'Industries',
   type: 'object',
   fields: [
-    defineField({ name: 'headingBefore', title: 'Heading before emphasis', type: 'string', initialValue: "We've" }),
-    defineField({ name: 'headingEmphasis', title: 'Heading emphasis (italic)', type: 'string', initialValue: 'Shipped' }),
+    defineField({ name: 'headingBefore', title: 'Heading before emphasis', type: 'string', initialValue: 'Industries' }),
+    defineField({ name: 'headingEmphasis', title: 'Heading emphasis', type: 'string', initialValue: 'We' }),
     defineField({
       name: 'headingAfter',
       title: 'Heading after emphasis',
       type: 'string',
-      initialValue: "for Industries that Don't Forgive Average",
+      initialValue: 'Serve.',
     }),
-    defineField({ name: 'image', title: 'Section image', type: 'imageWithAlt' }),
+    defineField({
+      name: 'subheading',
+      title: 'Subheading',
+      type: 'text',
+      rows: 2,
+      initialValue: 'We partner with ambitious businesses across a diverse range of industries.',
+    }),
     defineField({
       name: 'items',
       title: 'Industries',
       type: 'array',
       of: [defineArrayMember({ type: 'industryItem' })],
+      description: 'Each item = left tab + right panel content',
     }),
   ],
 })

@@ -135,13 +135,13 @@ export default function TeamOrbits({ members }: { members?: TeamMemberData[] }) 
       >
         <p
           className="font-normal text-white leading-none tracking-tight"
-          style={{ fontSize: "clamp(100px, 6.5vw, 100px)" }}
+          style={{ fontSize: "clamp(88.89px, 6.5vw, 88.89px)" }}
         >
           20+
         </p>
         <p
           className="text-white font-medium mt-2 tracking-widest uppercase"
-          style={{ fontSize: "clamp(16px, 1.3vw, 20px)" }}
+          style={{ fontSize: "clamp(16px, 1.3vw, 17.78px)" }}
         >
           Team Members
         </p>

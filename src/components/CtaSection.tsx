@@ -20,7 +20,7 @@ export default function CtaSection({ data }: { data?: CtaCardData }) {
   return (
     <section className="container py-16 md:py-32 lg:py-48 relative z-1">
       <div
-        className="flex flex-col lg:grid items-start gap-3 md:gap-6 lg:gap-0 py-4 px-4 sm:px-6 md:px-8 lg:py-8 lg:px-0 text-left"
+        className="flex flex-col lg:grid items-center gap-3 md:gap-6 lg:gap-0 py-4 px-4 sm:px-6 md:px-8 lg:py-8 lg:px-0 text-left"
         style={{
           background: "#fff",
           borderRadius: "30px",
@@ -48,7 +48,7 @@ export default function CtaSection({ data }: { data?: CtaCardData }) {
           <div>
             <p
               className="text-[#0A0A0C] font-medium leading-tight tracking-[-0.03em]"
-              style={{ fontSize: "clamp(16px, 1.4vw, 20px)" }}
+              style={{ fontSize: "clamp(16px, 1.4vw, 17.78px)" }}
             >
               {personName}
             </p>
@@ -64,7 +64,7 @@ export default function CtaSection({ data }: { data?: CtaCardData }) {
         <div className="text-left w-full lg:px-10">
           <h2
             className="text-[#0A0A0C] font-medium leading-[1.2] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(20px, 2.2vw, 30px)" }}
+            style={{ fontSize: "clamp(17.78px, 2.2vw, 26.67px)" }}
           >
             {headingLines.map((line, i) => (
               <span key={i}>
@@ -98,7 +98,7 @@ export default function CtaSection({ data }: { data?: CtaCardData }) {
             </span>
             <span
               className="text-[#0A0A0C] font-medium leading-none tracking-[-0.03em] whitespace-nowrap"
-              style={{ fontSize: "clamp(14px, 1.3vw, 18px)" }}
+              style={{ fontSize: "clamp(14px, 1.3vw, 16px)" }}
             >
               {buttonLabel}
             </span>

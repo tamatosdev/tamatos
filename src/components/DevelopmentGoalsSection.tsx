@@ -1,0 +1,68 @@
+const questions = [
+  { number: "01", text: "What are your business goals?" },
+  { number: "02", text: "Who are the users?" },
+  { number: "03", text: "What are your workflows?" },
+  { number: "04", text: "What are the opportunities for growth?" },
+];
+
+export default function DevelopmentGoalsSection() {
+  return (
+    <section className="relative overflow-x-clip pt-20 pb-10 lg:pt-28 lg:pb-12">
+      <div className="container relative">
+        <div className="mx-auto mb-14 h-16 w-px bg-white/20 lg:mb-20" />
+
+        <div className="mx-auto max-w-[980px] text-center">
+          <h2
+            className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
+            style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
+          >
+            We Build Technology Around Your{" "}
+            <em className="font-normal italic text-white/45">Business</em>, Not The Other{" "}
+            <span className="font-semibold text-[var(--service-accent,#FC7031)]">Way Around</span>
+            <span className="text-[var(--service-accent,#FC7031)]">.</span>
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-[760px] text-[16px] leading-[1.55] tracking-[-0.02em] text-white/80">
+            Every successful digital product begins with understanding the people who will use it
+            and the business it needs to support.
+          </p>
+        </div>
+
+        <div className="mx-auto mt-14 max-w-[1100px] py-10 lg:mt-16 lg:py-14">
+          <div className="relative grid grid-cols-1 md:grid-cols-2">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 hidden md:block"
+            >
+              <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/12" />
+              <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-white/12" />
+            </div>
+
+            {questions.map((item, index) => (
+              <div
+                key={item.number}
+                className={`relative flex items-center gap-4 px-4 py-7 sm:gap-5 sm:px-8 sm:py-10 lg:gap-6 lg:px-12 lg:py-12 ${
+                  index < questions.length - 1 ? "border-b border-white/12 md:border-b-0" : ""
+                }`}
+              >
+                <span
+                  className="shrink-0 font-medium leading-none tracking-[-0.04em] text-[var(--service-accent,#FC7031)]"
+                  style={{ fontSize: "clamp(28px, 4vw, 50.06px)" }}
+                >
+                  {item.number}
+                </span>
+                <span
+                  aria-hidden
+                  className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/35"
+                />
+                <span className="text-[17px] font-medium leading-snug tracking-[-0.03em] text-white sm:text-[20px] lg:text-[23.11px]">
+                  {item.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

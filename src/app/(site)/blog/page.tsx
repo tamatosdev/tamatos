@@ -50,7 +50,7 @@ export default async function BlogPage() {
             <div
               className="inline-flex items-center gap-2 px-7 py-2 rounded-full text-white/70 font-medium"
               style={{
-                fontSize: "20px",
+                fontSize: "17.78px",
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid #ffffff26",
                 boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",
@@ -66,7 +66,7 @@ export default async function BlogPage() {
           <div className="relative">
             <h1
               className="text-white font-medium leading-[1.1] tracking-[-0.04em]"
-              style={{ fontSize: "clamp(36px, 5.5vw, 90px)" }}
+              style={{ fontSize: "clamp(32px, 5.5vw, 80px)" }}
             >
               <span className="block">Musings On{" "}<em className="italic text-white/50">Design,</em></span>
               <span className="block"><em className="italic text-white/50">Experience</em>{" "}And Technology<span className="text-[#9DF560]">.</span></span>
@@ -125,14 +125,14 @@ export default async function BlogPage() {
                       <div className="flex items-center gap-3">
                         <span
                           className="text-white font-medium"
-                          style={{ fontSize: "clamp(16px, 1.25vw, 20px)", letterSpacing: "-0.02em" }}
+                          style={{ fontSize: "clamp(16px, 1.25vw, 17.78px)", letterSpacing: "-0.02em" }}
                         >
                           {category}
                         </span>
                         <span className="text-[#9DF560] text-2xl leading-none">✱</span>
                         <span
                           className="text-white font-medium"
-                          style={{ fontSize: "clamp(16px, 1.25vw, 20px)", letterSpacing: "-0.02em" }}
+                          style={{ fontSize: "clamp(16px, 1.25vw, 17.78px)", letterSpacing: "-0.02em" }}
                         >
                           {readingTime}
                         </span>
@@ -142,7 +142,7 @@ export default async function BlogPage() {
                       <Link href={`/blog/${post.slug}`}>
                         <h2
                           className="text-white font-medium leading-tight hover:text-white/80 transition-colors duration-200"
-                          style={{ fontSize: "clamp(24px, 2.6vw, 50px)", letterSpacing: "-0.03em" }}
+                          style={{ fontSize: "clamp(21.33px, 2.6vw, 44.44px)", letterSpacing: "-0.03em" }}
                         >
                           {post.title}
                         </h2>
@@ -152,7 +152,7 @@ export default async function BlogPage() {
                       {excerpt && (
                         <p
                           className="text-white/80 font-normal leading-relaxed flex-1"
-                          style={{ fontSize: "clamp(16px, 0.94vw, 18px)", letterSpacing: "-0.01em" }}
+                          style={{ fontSize: "clamp(16px, 0.94vw, 16px)", letterSpacing: "-0.01em" }}
                         >
                           {excerpt}
                         </p>
@@ -181,14 +181,14 @@ export default async function BlogPage() {
                           )}
                           <span
                             className="text-white font-medium"
-                            style={{ fontSize: "clamp(14px, 2vw, 18px)", letterSpacing: "-0.02em" }}
+                            style={{ fontSize: "clamp(14px, 2vw, 16px)", letterSpacing: "-0.02em" }}
                           >
                             {authorGroup?.authorName ?? "Tamatos"}
                           </span>
                           <span className="text-[#9DF560]">•</span>
                           <span
                             className="text-white font-normal"
-                            style={{ fontSize: "clamp(14px, 2vw, 18px)", letterSpacing: "-0.02em" }}
+                            style={{ fontSize: "clamp(14px, 2vw, 16px)", letterSpacing: "-0.02em" }}
                           >
                             {formatDate(post.date)}
                           </span>

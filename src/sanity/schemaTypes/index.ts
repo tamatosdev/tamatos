@@ -40,12 +40,23 @@ import {
   seoSchemaSettings,
   seoFields,
 } from './home/sections'
+import {
+  megaMenuItem,
+  megaMenuCategory,
+  navItem,
+  siteNavigation,
+} from './navigation'
 
 export const schemaTypes = [
   // Shared objects
   blockContent,
   link,
   imageWithAlt,
+
+  // Navigation
+  megaMenuItem,
+  megaMenuCategory,
+  navItem,
 
   // Home page sections
   heroDesktopPill,
@@ -81,6 +92,7 @@ export const schemaTypes = [
   seoFields,
 
   // Documents
+  siteNavigation,
   homePage,
   portfolio,
   portfolioServiceTag,

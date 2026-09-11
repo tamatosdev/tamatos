@@ -47,7 +47,7 @@ export default function ContactPage() {
                     <Image src={nabeel} alt="Nabeel Danish Rafiq" className="w-full h-full object-cover object-top" />
                   </div>
                   <div>
-                    <p className="text-white font-medium text-[24px] leading-tight">Nabeel Danish Rafiq</p>
+                    <p className="text-white font-medium text-[21.33px] leading-tight">Nabeel Danish Rafiq</p>
                     <p className="text-white/50 text-[16px] font-normal tracking-widest uppercase mt-0.5"
                       style={{ letterSpacing: "-0.03em" }}
                     >Co-Founder & CEO</p>
@@ -57,7 +57,7 @@ export default function ContactPage() {
                 {/* Heading */}
                 <h2
                   className="text-white font-medium leading-[1.2] flex-1"
-                  style={{ fontSize: "clamp(28px, 2.5vw, 50px)", letterSpacing: "-0.04em" }}
+                  style={{ fontSize: "clamp(24.89px, 2.5vw, 44.44px)", letterSpacing: "-0.04em" }}
                 >
                   Ready to{" "}
                   <em className="italic text-white/50">sauce up</em>
@@ -70,18 +70,18 @@ export default function ContactPage() {
                   <div>
                     <p className="text-white/50 text-[16px] font-medium mb-2">Call us for expert solutions.</p>
                     <div className="flex items-center gap-3 flex-wrap">
-                      <a href="tel:+923356787927" className="text-white font-medium text-[20px] sm:text-[24px] hover:text-[#9DF560] transition-colors duration-200">
+                      <a href="tel:+923356787927" className="text-white font-medium text-[17.78px] sm:text-[21.33px] hover:text-[#9DF560] transition-colors duration-200">
                         +92 335 6787927
                       </a>
                       <span className="text-white/30">|</span>
-                      <a href="tel:+16194320949" className="text-white font-medium text-[20px] sm:text-[24px] hover:text-[#9DF560] transition-colors duration-200">
+                      <a href="tel:+16194320949" className="text-white font-medium text-[17.78px] sm:text-[21.33px] hover:text-[#9DF560] transition-colors duration-200">
                         +1 (619) 4320949
                       </a>
                     </div>
                   </div>
                   <div>
                     <p className="text-white/50 text-[16px] font-medium mb-2">Our friendly team here to help.</p>
-                    <a href="mailto:hello@tamatos.com" className="text-white font-medium text-[20px] sm:text-[24px] hover:text-[#9DF560] transition-colors duration-200">
+                    <a href="mailto:hello@tamatos.com" className="text-white font-medium text-[17.78px] sm:text-[21.33px] hover:text-[#9DF560] transition-colors duration-200">
                       hello@tamatos.com
                     </a>
                   </div>

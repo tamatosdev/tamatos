@@ -31,7 +31,7 @@ export default function AboutStrip({ data }: { data?: AboutStripData }) {
           )}
           <p
             className="text-white font-normal max-w-full sm:max-w-127.5"
-            style={{ fontSize: "clamp(14px, 1.3vw, 18px)", letterSpacing: "-0.03em" }}
+            style={{ fontSize: "clamp(14px, 1.3vw, 16px)", letterSpacing: "-0.03em" }}
           >
             {text}
           </p>

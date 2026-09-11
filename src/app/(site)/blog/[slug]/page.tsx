@@ -84,7 +84,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <div
                 className="inline-flex items-center gap-2 px-7 py-2 rounded-full text-white/70 font-medium"
                 style={{
-                  fontSize: "clamp(16px, 1.04vw, 20px)",
+                  fontSize: "clamp(16px, 1.04vw, 17.78px)",
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid #ffffff26",
                   boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",
@@ -123,7 +123,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   {/* Title */}
                   <h1
                     className="text-white font-semibold leading-[1.15]"
-                    style={{ fontSize: "clamp(28px, 3vw, 54px)", letterSpacing: "-0.04em" }}
+                    style={{ fontSize: "clamp(24.89px, 3vw, 48px)", letterSpacing: "-0.04em" }}
                   >
                     {post.title}
                   </h1>
@@ -132,14 +132,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   <div className="flex items-center gap-3">
                     <span
                       className="text-white font-medium"
-                      style={{ fontSize: "22px", letterSpacing: "-0.02em" }}
+                      style={{ fontSize: "19.56px", letterSpacing: "-0.02em" }}
                     >
                       {category}
                     </span>
                     <span className="text-[#9DF560] text-2xl leading-none">✱</span>
                     <span
                       className="text-white font-medium"
-                      style={{ fontSize: "22px", letterSpacing: "-0.02em" }}
+                      style={{ fontSize: "19.56px", letterSpacing: "-0.02em" }}
                     >
                       {readingTime}
                     </span>
@@ -148,7 +148,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
                 {/* Summarize with */}
                 <div className="flex items-center gap-3 flex-wrap">
-                  <span className="text-white font-normal" style={{ fontSize: "24px", letterSpacing: "-0.02em" }}>
+                  <span className="text-white font-normal" style={{ fontSize: "21.33px", letterSpacing: "-0.02em" }}>
                     Summarize with
                   </span>
                   {(() => {
@@ -187,14 +187,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   )}
                   <span
                     className="text-white font-medium"
-                    style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+                    style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
                   >
                     {authorGroup?.authorName ?? "Tamatos"}
                   </span>
                   <span className="text-white/40">•</span>
                   <span
                     className="text-white font-normal"
-                    style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+                    style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
                   >
                     {formatDate(post.date)}
                   </span>
@@ -244,7 +244,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               {/* Section heading */}
               <h2
                 className="text-white font-medium mb-0"
-                style={{ fontSize: "clamp(24px, 2.5vw, 50px)", letterSpacing: "-0.04em" }}
+                style={{ fontSize: "clamp(21.33px, 2.5vw, 44.44px)", letterSpacing: "-0.04em" }}
               >
                 Up Next
               </h2>
@@ -276,21 +276,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   <Link href={`/blog/${np.slug}`}>
                     <h3
                       className="text-white font-medium leading-tight hover:text-white/80 transition-colors duration-200"
-                      style={{ fontSize: "clamp(24px, 2.6vw, 50px)", letterSpacing: "-0.03em" }}
+                      style={{ fontSize: "clamp(21.33px, 2.6vw, 44.44px)", letterSpacing: "-0.03em" }}
                     >
                       {np.title}
                     </h3>
                   </Link>
 
                   <div className="flex items-center gap-3">
-                    <span className="text-white font-medium" style={{ fontSize: "24px", letterSpacing: "-0.02em" }}>{npCategory}</span>
+                    <span className="text-white font-medium" style={{ fontSize: "21.33px", letterSpacing: "-0.02em" }}>{npCategory}</span>
                     <span className="text-[#9DF560] text-2xl leading-none">✱</span>
-                    <span className="text-white font-medium" style={{ fontSize: "24px", letterSpacing: "-0.02em" }}>{npReadingTime}</span>
+                    <span className="text-white font-medium" style={{ fontSize: "21.33px", letterSpacing: "-0.02em" }}>{npReadingTime}</span>
                   </div>
 
                   {npExcerpt && (
                     <p className="text-white/80 font-normal leading-relaxed flex-1" 
-                    style={{ fontSize: "clamp(16px, 0.94vw, 18px)", 
+                    style={{ fontSize: "clamp(16px, 0.94vw, 16px)", 
                     letterSpacing: "-0.01em" }}>
                       {npExcerpt}
                     </p>
@@ -299,7 +299,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   <div className="flex items-center justify-between gap-4 mt-2">
                     <Link
                       href={`/blog/${np.slug}`}
-                      className="inline-flex items-center justify-center gap-2.5 rounded-full bg-white text-black font-medium text-[18px] hover:bg-white/80 transition-colors duration-300"
+                      className="inline-flex items-center justify-center gap-2.5 rounded-full bg-white text-black font-medium text-[16px] hover:bg-white/80 transition-colors duration-300"
                       style={{ padding: "15px 30px", letterSpacing: "-0.02em" }}
                     >
                       Read More
@@ -312,9 +312,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                       ) : (
                         <div className="w-10.75 h-10.75 rounded-full bg-white/20 shrink-0" />
                       )}
-                      <span className="text-white font-medium" style={{ fontSize: "clamp(16px, 0.94vw, 18px)", letterSpacing: "-0.02em" }}>{npAuthor?.authorName ?? "Tamatos"}</span>
+                      <span className="text-white font-medium" style={{ fontSize: "clamp(16px, 0.94vw, 16px)", letterSpacing: "-0.02em" }}>{npAuthor?.authorName ?? "Tamatos"}</span>
                       <span className="text-white/30">•</span>
-                      <span className="text-white font-normal" style={{ fontSize: "clamp(16px, 0.94vw, 18px)", letterSpacing: "-0.02em" }}>{formatDate(np.date)}</span>
+                      <span className="text-white font-normal" style={{ fontSize: "clamp(16px, 0.94vw, 16px)", letterSpacing: "-0.02em" }}>{formatDate(np.date)}</span>
                     </div>
                   </div>
                 </div>

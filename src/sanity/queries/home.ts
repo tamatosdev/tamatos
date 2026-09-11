@@ -43,7 +43,8 @@ export const homePageQuery = defineQuery(/* groq */ `
       leftPills[] { label, top, left, right, insetNarrow },
       rightPills[] { label, top, left, right, insetNarrow },
       mobilePills[] { label, top, bottom, left, right },
-      cta { label, href }
+      cta { label, href },
+      secondaryCta { label, href }
     },
     aboutStrip {
       icon { ${imageFields} },
@@ -72,7 +73,9 @@ export const homePageQuery = defineQuery(/* groq */ `
       button { label, href }
     },
     stats {
-      items[] { value, title, description }
+      headingBefore,
+      headingEmphasis,
+      items[] { value, description, title }
     },
     services {
       titleLine1,
@@ -80,6 +83,7 @@ export const homePageQuery = defineQuery(/* groq */ `
       titleLine2,
       categories[] {
         title,
+        description,
         backgroundColor,
         hoverColor,
         items[] { label, href }
@@ -110,10 +114,9 @@ export const homePageQuery = defineQuery(/* groq */ `
       }
     },
     team {
-      headingLine1,
-      headingAccent,
-      column1Text,
-      column2Text,
+      rolesText,
+      bodyText,
+      button { label, href },
       members[] {
         orbit,
         baseAngle,
@@ -151,8 +154,14 @@ export const homePageQuery = defineQuery(/* groq */ `
       headingBefore,
       headingEmphasis,
       headingAfter,
-      image { ${imageFields} },
-      items[] { title, tags }
+      subheading,
+      items[] {
+        title,
+        subtitle,
+        description,
+        icon { ${imageFields} },
+        image { ${imageFields} }
+      }
     },
     blogSection {
       headingBefore,

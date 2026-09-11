@@ -17,7 +17,7 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
   return (
     <section className="container py-14 lg:py-24">
       <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-0 mb-8 md:mb-12">
-        <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "clamp(32px, 3.13vw, 60px)", letterSpacing: "-0.05em" }}>
+        <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "clamp(28.44px, 3.13vw, 50.06px)", letterSpacing: "-0.05em" }}>
           {headingBefore}{" "}
           <span className="text-white/50 italic">{headingEmphasis}</span>{" "}
           {headingAfter}
@@ -26,7 +26,7 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
         <Link
           href={buttonHref}
           className="text-white/100 font-normal hover:bg-white hover:text-black transition-colors duration-200 shrink-0 px-[40px] py-[10px] border border-white/40 rounded-full"
-          style={{ fontSize: "clamp(14px, 1.2vw, 18px)", letterSpacing: "-0.03em" }}
+          style={{ fontSize: "clamp(14px, 1.2vw, 16px)", letterSpacing: "-0.03em" }}
         >
           {buttonLabel}
         </Link>
@@ -53,10 +53,10 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
               </div>
 
               <div className="flex flex-col gap-3 p-0 pt-5 sm:p-5 flex-1">
-                <p className="text-white/80 font-medium" style={{ fontSize: "18px", letterSpacing: "-0.02em" }}>
+                <p className="text-white/80 font-medium" style={{ fontSize: "16px", letterSpacing: "-0.02em" }}>
                   {formatDate(post.date)}&nbsp;&nbsp;•&nbsp;&nbsp;{readingTime}
                 </p>
-                <h3 className="text-white font-semibold leading-tight flex-1" style={{ fontSize: "clamp(16px, 1.25vw, 24px)", letterSpacing: "-0.03em" }}>
+                <h3 className="text-white font-semibold leading-tight flex-1" style={{ fontSize: "clamp(16px, 1.25vw, 21.33px)", letterSpacing: "-0.03em" }}>
                   {post.title}
                 </h3>
                 <div className="flex items-center gap-3 pt-6">
@@ -71,7 +71,7 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
                     <div className="w-9 h-9 rounded-full bg-white/20 shrink-0" />
                   )}
                   <div>
-                    <p className="text-white font-medium leading-tight" style={{ fontSize: "18px", letterSpacing: "-0.02em" }}>
+                    <p className="text-white font-medium leading-tight" style={{ fontSize: "16px", letterSpacing: "-0.02em" }}>
                       {authorGroup?.authorName ?? "Tamatos"}
                     </p>
                   </div>

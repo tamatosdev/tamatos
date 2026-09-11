@@ -35,19 +35,19 @@ export default function AwardsSection({ data }: { data?: AwardsData }) {
 
   return (
     <section className="relative py-14 lg:py-24 overflow-hidden">
-      <Image src={MapImage} alt="" fill className="hidden lg:block object-cover object-top opacity-50 pointer-events-none" />
+      <Image src={MapImage} alt="" fill className="hidden lg:block object-cover object-top opacity-80 pointer-events-none" />
       <Image src={MapMobile} alt="" fill className="block lg:hidden object-contain object-top opacity-60 pointer-events-none" />
 
       <div className="container relative z-10">
         <div className="mb-8 lg:mb-16">
-          <h2 className="text-white font-medium leading-[1.1]" style={{ fontSize: "clamp(32px, 3.3vw, 60px)", letterSpacing: "-0.05em" }}>
+          <h2 className="text-white font-medium leading-[1.1]" style={{ fontSize: "clamp(28.44px, 3.3vw, 50.06px)", letterSpacing: "-0.05em" }}>
             <span>{headingMain} </span>
             <em className="italic text-white/60">{headingEmphasis}</em>
             <Image src={Asterisk} alt="*" width={52} height={52} className="inline-block ml-3" style={{ verticalAlign: "middle" }} />
             <br />
             {headingEnd}
           </h2>
-          <p className="text-white/50 font-normal mt-5 leading-normal" style={{ fontSize: "18px", letterSpacing: "-0.03em" }}>
+          <p className="text-white/50 font-normal mt-5 leading-normal" style={{ fontSize: "16px", letterSpacing: "-0.03em" }}>
             {subheading}
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function AwardsSection({ data }: { data?: AwardsData }) {
                   <Image src={defaultAwardImages[index] ?? ClutchDeveloper} alt={award.text} width={100} height={120} className="object-contain w-17 lg:w-25 h-auto" />
                 )}
                 <div>
-                  <p className="text-white font-semibold leading-tight text-center" style={{ fontSize: "clamp(14px, 1.5vw, 24px)", letterSpacing: "-0.04em" }}>
+                  <p className="text-white font-semibold leading-tight text-center" style={{ fontSize: "clamp(14px, 1.5vw, 21.33px)", letterSpacing: "-0.04em" }}>
                     {award.year}
                   </p>
                   <p className="text-white font-normal mt-1 text-center" style={{ fontSize: "clamp(10px, 1vw, 16px)", letterSpacing: "-0.03em" }}>

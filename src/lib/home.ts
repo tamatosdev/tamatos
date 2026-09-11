@@ -40,6 +40,7 @@ export type HeroData = {
   rightPills?: HeroDesktopPill[];
   mobilePills?: HeroMobilePill[];
   cta?: CmsLink;
+  secondaryCta?: CmsLink;
 };
 
 export type AboutStripData = {
@@ -67,12 +68,21 @@ export type CtaCardData = {
 
 export type StatItem = {
   value?: string;
-  title?: string;
   description?: string;
+  /** Legacy field — older documents stored copy here */
+  title?: string;
 };
+
+export type StatsData = {
+  headingBefore?: string;
+  headingEmphasis?: string;
+  items?: StatItem[];
+};
+
 
 export type ServiceCategory = {
   title?: string;
+  description?: string;
   backgroundColor?: string;
   hoverColor?: string;
   items?: { label?: string; href?: string }[];
@@ -111,11 +121,15 @@ export type TeamMemberData = {
 };
 
 export type TeamData = {
+  rolesText?: string;
+  bodyText?: string;
+  button?: { label?: string; href?: string };
+  members?: TeamMemberData[];
+  /** @deprecated kept for older Sanity docs */
   headingLine1?: string;
   headingAccent?: string;
   column1Text?: string;
   column2Text?: string;
-  members?: TeamMemberData[];
 };
 
 export type AwardItem = {
@@ -152,14 +166,17 @@ export type ReviewsData = {
 
 export type IndustryItem = {
   title?: string;
-  tags?: string[];
+  subtitle?: string;
+  description?: string;
+  icon?: CmsImage;
+  image?: CmsImage;
 };
 
 export type IndustriesData = {
   headingBefore?: string;
   headingEmphasis?: string;
   headingAfter?: string;
-  image?: CmsImage;
+  subheading?: string;
   items?: IndustryItem[];
 };
 
@@ -185,7 +202,7 @@ export type HomePageData = {
   logoMarquee?: LogoMarqueeData;
   agencyStatement?: AgencyStatementData;
   ctaSection?: CtaCardData;
-  stats?: { items?: StatItem[] };
+  stats?: StatsData;
   services?: ServicesData;
   compareStrip?: CompareStripData;
   scrollReveal?: ScrollRevealData;

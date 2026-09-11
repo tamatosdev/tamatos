@@ -5,6 +5,7 @@ import AosProvider from "@/components/AosProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FaviconAnimator from "@/components/FaviconAnimator";
+import { getSiteNavigation } from "@/lib/navigation";
 import "../globals.css";
 
 const inter = Inter({
@@ -17,11 +18,13 @@ export const metadata: Metadata = {
   description: "Full Stack Digital Marketing agency in USA",
 };
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navigation = await getSiteNavigation();
+
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head />
@@ -29,7 +32,7 @@ export default function SiteLayout({
         <FaviconAnimator />
         <LenisProvider>
           <AosProvider>
-            <Header />
+            <Header navigation={navigation} />
             {children}
             <Footer />
           </AosProvider>

@@ -2,13 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import BannerGradient from "@/assets/banner-gradient.png";
 import BgGrid from "@/assets/bg-grid.png";
 import GridMobile from "@/assets/grid-mobile.png";
 import Asterisk from "@/assets/asteric.png";
 import Frame1 from "@/assets/button-frame-1.png";
 import Frame2 from "@/assets/button-frame-2.png";
+import OrangeArrow from "@/assets/orange-arrow.svg";
 import type { HeroData } from "@/lib/home";
 
 const pillStyle: React.CSSProperties = {
@@ -38,8 +40,19 @@ const defaultMobilePills: { label: string; top?: string; bottom?: string; left?:
   { label: "Web & App Dev", bottom: "7%", left: "-1%" },
 ];
 
+const heroFadeUp = {
+  hidden: { opacity: 0, y: 48 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const heroTransition = {
+  duration: 0.9,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
+
 export default function Banner({ data }: { data?: HeroData }) {
-  const contentRef = useRef<HTMLDivElement>(null);
+  const pillsRef = useRef<HTMLDivElement>(null);
+  const [isReady, setIsReady] = useState(false);
 
   const leftPills = data?.leftPills?.length ? data.leftPills : defaultLeftPills;
   const rightPills = data?.rightPills?.length ? data.rightPills : defaultRightPills;
@@ -50,15 +63,23 @@ export default function Banner({ data }: { data?: HeroData }) {
   const line1AfterBold = data?.line1AfterBold ?? "Ideas Into Digital";
   const line2Word = data?.line2Word ?? "Experiences";
   const line2ItalicWord = data?.line2ItalicWord ?? "Businesses";
-  const line3 = data?.line3 ?? "Grow With.";
+  const line3 = data?.line3 ?? "Growth With.";
   const boldHighlightColor = data?.boldHighlightColor ?? "#E8601C";
   const ctaLabel = data?.cta?.label ?? "Begin Now";
   const ctaHref = data?.cta?.href ?? "/contact";
+  const secondaryCtaLabel = data?.secondaryCta?.label ?? "See Our Work";
+  const secondaryCtaHref = data?.secondaryCta?.href ?? "/work";
+
+  useEffect(() => {
+    // Start after PageTransition (0.8s) so the hero animation is visible
+    const timer = window.setTimeout(() => setIsReady(true), 850);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
-      if (contentRef.current) {
-        contentRef.current.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+      if (pillsRef.current) {
+        pillsRef.current.style.transform = `translateY(${window.scrollY * 0.25}px)`;
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -94,11 +115,7 @@ export default function Banner({ data }: { data?: HeroData }) {
         </span>
       ))}
 
-      <div
-        ref={contentRef}
-        className="relative z-10 text-left lg:text-center pt-36 lg:pt-28 w-full max-w-[860px] xl:max-w-[1100px] 2xl:max-w-[1500px] mx-auto px-4"
-        style={{ willChange: "transform" }}
-      >
+      <div className="relative z-10 text-left lg:text-center pt-36 lg:pt-28 w-full max-w-[860px] xl:max-w-[1100px] 2xl:max-w-[1500px] mx-auto px-4">
         <Image src={BgGrid} alt="" fill className="hidden lg:block object-fill pointer-events-none" />
         <Image
           src={GridMobile}
@@ -107,6 +124,7 @@ export default function Banner({ data }: { data?: HeroData }) {
           style={{ top: "20%" }}
         />
 
+        <div ref={pillsRef} className="absolute inset-0" style={{ willChange: "transform" }}>
         {leftPills.map((pill) => (
           <span
             key={pill.label}
@@ -146,8 +164,14 @@ export default function Banner({ data }: { data?: HeroData }) {
             {pill.label}
           </span>
         ))}
+        </div>
 
-        <h1 className="text-white font-normal leading-[1.1] tracking-[-0.05em] text-[44px] sm:text-[50px] md:text-[64px] lg:text-[72px] xl:text-[84px] 2xl:text-[96px]">
+        <motion.h1
+          initial={heroFadeUp.hidden}
+          animate={isReady ? heroFadeUp.visible : heroFadeUp.hidden}
+          transition={heroTransition}
+          className="relative text-white font-normal leading-[1.1] tracking-[-0.05em] text-[39.11px] sm:text-[44.44px] md:text-[56.89px] lg:text-[64px] xl:text-[74.67px] 2xl:text-[85.33px]"
+        >
           <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap">
             <span>{line1BeforeBold}</span>
             <span
@@ -160,7 +184,6 @@ export default function Banner({ data }: { data?: HeroData }) {
                 transform: "rotate(-10deg)",
                 display: "inline-block",
               }}
-              data-aos="zoom-in"
             >
               {boldWord}
             </span>
@@ -176,23 +199,25 @@ export default function Banner({ data }: { data?: HeroData }) {
               height={80}
               className="inline-block w-[28px] sm:w-[40px] md:w-[55px] lg:w-[62px] xl:w-[72px] 2xl:w-[80px] h-auto"
               style={{ verticalAlign: "middle" }}
-              data-aos="flip-right"
-              data-aos-duration="1500"
             />
-            <span className="italic font-normal text-white/70">{line2ItalicWord}</span>
           </span>
 
-          <span className="block mt-1">{line3}</span>
-        </h1>
+          <span className="block mt-1 whitespace-nowrap">
+            <span className="italic font-normal text-white/70">{line2ItalicWord}</span> {line3}
+          </span>
+        </motion.h1>
 
-        <div className="mt-8 sm:mt-12 flex justify-start lg:justify-center">
+        <motion.div
+          initial={heroFadeUp.hidden}
+          animate={isReady ? heroFadeUp.visible : heroFadeUp.hidden}
+          transition={{ ...heroTransition, delay: 0.2 }}
+          className="relative mt-8 sm:mt-12 flex flex-wrap items-center justify-start lg:justify-center gap-6 sm:gap-8"
+        >
           <Link
             href={ctaHref}
             className="group inline-flex items-center gap-4 sm:gap-6 rounded-full pl-[20px] sm:pl-[26px] pr-[12px] sm:pr-[15px] py-[10px] bg-white hover:bg-[#9DF560] transition-colors duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
-            data-aos="fade-up"
-            data-aos-duration="1500"
           >
-            <span className="text-[#0A0A0C] font-medium text-[18px] sm:text-[24px] leading-none tracking-[-0.05em]">
+            <span className="text-[#0A0A0C] font-medium text-[16px] sm:text-[21.33px] leading-none tracking-[-0.05em]">
               {ctaLabel}
             </span>
             <div className="relative w-[64px] sm:w-[80px] h-[36px] sm:h-[43px] rounded-[40px] overflow-hidden flex-shrink-0 transform-[translateZ(0)]">
@@ -204,7 +229,15 @@ export default function Banner({ data }: { data?: HeroData }) {
               </div>
             </div>
           </Link>
-        </div>
+
+          <Link
+            href={secondaryCtaHref}
+            className="inline-flex items-center gap-3 text-[19.56px] font-medium leading-none tracking-[-0.05em] text-white transition-colors duration-300 hover:text-white/80"
+          >
+            {secondaryCtaLabel}
+            <Image src={OrangeArrow} alt="" width={20} height={16} className="h-4 w-5" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

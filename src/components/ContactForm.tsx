@@ -113,7 +113,7 @@ export default function ContactForm() {
       {/* Heading */}
       <h1
         className="text-[#0A0A0C] font-semibold leading-tight mb-6"
-        style={{ fontSize: "clamp(28px, 3vw, 48px)", letterSpacing: "-0.04em" }}
+        style={{ fontSize: "clamp(24.89px, 3vw, 42.67px)", letterSpacing: "-0.04em" }}
       >
         Tell us <em className="italic text-black/70">about</em> you<span className="text-[#9DF560]">.</span>
       </h1>
@@ -177,7 +177,7 @@ export default function ContactForm() {
               type="submit"
               disabled={status === "sending"}
               className="w-full  rounded-full bg-[#9DF560] text-[#0A0A0C] font-semibold hover:bg-[#8ae84d] transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-              style={{ fontSize: "18px", padding: "14px 42px" }}
+              style={{ fontSize: "16px", padding: "14px 42px" }}
             >
               {status === "sending" ? "Sending..." : "Submit Query"}
             </button>
@@ -234,7 +234,7 @@ export default function ContactForm() {
               type="submit"
               disabled={status === "sending"}
               className="w-full rounded-full bg-[#9DF560] text-[#0A0A0C] font-semibold hover:bg-[#8ae84d] transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-              style={{ fontSize: "17px", padding: "14px 42px" }}
+              style={{ fontSize: "16px", padding: "14px 42px" }}
             >
               {status === "sending" ? "Sending..." : "Submit"}
             </button>
