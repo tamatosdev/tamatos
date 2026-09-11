@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import type { StaticImageData } from "next/image";
 import brandStrategyIcon from "@/assets/Brand Strategy icon.png";
 import brandIdentityIcon from "@/assets/Brand Identity.png";
@@ -9,12 +8,10 @@ import logoDesignIcon from "@/assets/logo Design.png";
 import socialMediaDesignIcon from "@/assets/Social Media Design.png";
 import printMarketingIcon from "@/assets/Print & Marketing Collateral.png";
 import pitchDeckIcon from "@/assets/Pitch Deck Design.png";
-import greenArrow from "@/assets/green-arrow.svg";
 
 type BrandingService = {
   title: string;
   description: string;
-  href: string;
   icon: StaticImageData;
 };
 
@@ -23,42 +20,36 @@ const services: BrandingService[] = [
     title: "Brand Strategy",
     description:
       "We define your brand's purpose, positioning, and messaging to build a strong foundation for growth.",
-    href: "/services/brand-strategy",
     icon: brandStrategyIcon,
   },
   {
     title: "Brand Identity",
     description:
       "We create cohesive visual systems with colours, typography, and guidelines that make your brand recognizable.",
-    href: "/services/brand-identity",
     icon: brandIdentityIcon,
   },
   {
     title: "Logo Design",
     description:
       "We design distinctive, memorable logos that capture your brand essence across every touchpoint.",
-    href: "/services/logo-design",
     icon: logoDesignIcon,
   },
   {
     title: "Social Media Design",
     description:
       "We craft scroll-stopping social assets and templates that keep your brand consistent across platforms.",
-    href: "/services/social-media-design",
     icon: socialMediaDesignIcon,
   },
   {
     title: "Print & Marketing Collateral",
     description:
       "From business cards to brochures, we design polished print materials that leave a lasting impression.",
-    href: "/services/print-marketing",
     icon: printMarketingIcon,
   },
   {
     title: "Pitch Deck Design",
     description:
       "We build compelling pitch decks that tell your story clearly and help you win investors and clients.",
-    href: "/services/pitch-deck",
     icon: pitchDeckIcon,
   },
 ];
@@ -139,20 +130,6 @@ export default function DesignBrandingSolutionsSection() {
                 <p className="mt-4 flex-1 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/65">
                   {service.description}
                 </p>
-
-                <Link
-                  href={service.href}
-                  className="mt-8 inline-flex w-fit items-center gap-2 text-[17.78px] font-medium tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[var(--service-accent,#03E4AC)]"
-                >
-                  Learn More
-                  <Image
-                    src={greenArrow}
-                    alt=""
-                    width={20}
-                    height={16}
-                    className="transition-transform duration-200 group-hover:translate-x-1"
-                  />
-                </Link>
               </div>
             </article>
           ))}

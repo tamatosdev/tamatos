@@ -1,5 +1,6 @@
 import { sanityClient } from '@/sanity/lib/client'
 import { siteNavigationQuery } from '@/sanity/queries/navigation'
+import { isLivePath, serviceCategoryPath } from '@/lib/routes'
 
 export type MegaMenuItem = {
   label: string
@@ -39,7 +40,7 @@ export const defaultSiteNavigation: SiteNavigation = {
     { label: 'Works', href: '/work', menuType: 'link' },
     {
       label: 'Services',
-      href: '/services',
+      // No /services index page yet — open via mega menu / category pages
       menuType: 'megaMenu',
       megaMenuCategories: [
         {
@@ -50,32 +51,32 @@ export const defaultSiteNavigation: SiteNavigation = {
             {
               label: 'Social Media Marketing',
               subtext: 'Grow your social presence',
-              href: '/services/social-media-marketing',
+              href: '/services/digital',
             },
             {
               label: 'Influencer Marketing',
               subtext: 'Connect with trusted voices',
-              href: '/services/influencer-marketing',
+              href: '/services/digital',
             },
             {
               label: 'Email & WhatsApp Automation',
               subtext: 'Automate customer communication',
-              href: '/services/email-whatsapp-automation',
+              href: '/services/digital',
             },
             {
               label: 'Analytics & Growth Optimization',
               subtext: 'Turn data into growth',
-              href: '/services/analytics-growth-optimization',
+              href: '/services/digital',
             },
             {
               label: 'Search Engine Optimization',
               subtext: 'Boost search visibility',
-              href: '/services/seo',
+              href: '/services/digital',
             },
             {
               label: 'Content Strategy & Production',
               subtext: 'Content that drives results',
-              href: '/services/content-strategy',
+              href: '/services/digital',
             },
           ],
         },
@@ -87,32 +88,32 @@ export const defaultSiteNavigation: SiteNavigation = {
             {
               label: 'Web Development',
               subtext: 'Fast, scalable websites',
-              href: '/services/web-development',
+              href: '/services/development',
             },
             {
               label: 'MVP Development',
               subtext: 'Launch products quickly',
-              href: '/services/mvp-development',
+              href: '/services/development',
             },
             {
               label: 'Mobile App Development',
               subtext: 'Native & cross-platform apps',
-              href: '/services/mobile-development',
+              href: '/services/development',
             },
             {
               label: 'Webflow Development',
               subtext: 'No-code meets custom build',
-              href: '/services/webflow-development',
+              href: '/services/development',
             },
             {
               label: 'Landing Pages',
               subtext: 'Pages built to convert',
-              href: '/services/landing-pages',
+              href: '/services/development',
             },
             {
               label: 'Team Extension',
               subtext: 'Scale your dev capacity',
-              href: '/services/team-extension',
+              href: '/services/development',
             },
           ],
         },
@@ -124,39 +125,37 @@ export const defaultSiteNavigation: SiteNavigation = {
             {
               label: 'UI/UX Design',
               subtext: 'Experiences users love',
-              href: '/services/ui-ux-design',
+              href: '/services/design',
             },
             {
               label: 'Web Design',
               subtext: 'Beautiful, conversion-focused sites',
-              href: '/services/web-design',
+              href: '/services/design',
             },
             {
               label: 'Brand Identity',
               subtext: 'Visual systems that stand out',
-              href: '/services/brand-identity',
+              href: '/services/design',
             },
             {
               label: 'Logo Design',
               subtext: 'Memorable brand marks',
-              href: '/services/logo-design',
+              href: '/services/design',
             },
             {
               label: 'Pitch Deck Design',
               subtext: 'Presentations that persuade',
-              href: '/services/pitch-deck',
+              href: '/services/design',
             },
             {
               label: 'Website Redesign',
               subtext: 'Refresh and elevate your site',
-              href: '/services/website-redesign',
+              href: '/services/design',
             },
           ],
         },
       ],
     },
-    { label: 'Industries', href: '/industries', menuType: 'link' },
-    { label: 'Pricing', href: '/pricing', menuType: 'link' },
     { label: 'About', href: '/about', menuType: 'link' },
     { label: 'Blog', href: '/blog', menuType: 'link' },
   ],
@@ -181,8 +180,8 @@ export function navItemHasMegaMenu(item: NavItem) {
   return item.menuType === 'megaMenu' || item.hasMegaMenu === true
 }
 
-/** Fill missing mega-menu category hrefs from local defaults (Sanity often omits them). */
-function withDefaultCategoryHrefs(items: NavItem[]): NavItem[] {
+/** Fill missing mega-menu category hrefs and remap dead item links to live category pages. */
+function withSafeNavigationLinks(items: NavItem[]): NavItem[] {
   const defaultServices = defaultSiteNavigation.items?.find(
     (item) => item.label === 'Services' && navItemHasMegaMenu(item)
   )
@@ -195,25 +194,54 @@ function withDefaultCategoryHrefs(items: NavItem[]): NavItem[] {
       .map((category) => [category.label.toLowerCase(), category.href!])
   )
 
-  return items.map((item) => {
-    const categories = item.megaMenuCategories ?? item.megaMenu?.categories
-    if (!categories?.length) return item
+  return items
+    .map((item) => {
+      const categories = item.megaMenuCategories ?? item.megaMenu?.categories
 
-    const patched = categories.map((category) => {
-      if (category.href) return category
-      const fallbackHref = hrefByLabel.get(category.label.toLowerCase())
-      return fallbackHref ? { ...category, href: fallbackHref } : category
+      if (categories?.length) {
+        const patched = categories.map((category) => {
+          const categoryHref =
+            category.href && isLivePath(category.href)
+              ? category.href
+              : hrefByLabel.get(category.label.toLowerCase()) ??
+                serviceCategoryPath(category.label)
+
+          return {
+            ...category,
+            href: categoryHref,
+            items: (category.items ?? []).map((menuItem) => ({
+              ...menuItem,
+              href: isLivePath(menuItem.href) ? menuItem.href : categoryHref,
+            })),
+          }
+        })
+
+        const next: NavItem = {
+          ...item,
+          // Drop dead /services index until that page exists
+          href: item.href && isLivePath(item.href) ? item.href : undefined,
+        }
+
+        if (item.megaMenuCategories) {
+          return { ...next, megaMenuCategories: patched }
+        }
+
+        return {
+          ...next,
+          megaMenu: item.megaMenu
+            ? { ...item.megaMenu, categories: patched }
+            : { categories: patched },
+        }
+      }
+
+      // Plain links: keep only live routes
+      if (item.href && !isLivePath(item.href)) {
+        return null
+      }
+
+      return item
     })
-
-    if (item.megaMenuCategories) {
-      return { ...item, megaMenuCategories: patched }
-    }
-
-    return {
-      ...item,
-      megaMenu: item.megaMenu ? { ...item.megaMenu, categories: patched } : { categories: patched },
-    }
-  })
+    .filter((item): item is NavItem => item != null)
 }
 
 export async function getSiteNavigation(): Promise<SiteNavigation> {
@@ -221,7 +249,7 @@ export async function getSiteNavigation(): Promise<SiteNavigation> {
     const data = await sanityClient.fetch<SiteNavigation | null>(siteNavigationQuery)
     if (!data?.items?.length) return defaultSiteNavigation
     return {
-      items: withDefaultCategoryHrefs(data.items),
+      items: withSafeNavigationLinks(data.items),
       contactButton: data.contactButton ?? defaultSiteNavigation.contactButton,
     }
   } catch (error) {

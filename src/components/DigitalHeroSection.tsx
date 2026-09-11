@@ -19,9 +19,7 @@ export default function DigitalHeroSection() {
             Home
           </Link>
           <span className="text-white/30">/</span>
-          <Link href="/services" className="transition-colors duration-200 hover:text-white">
-            Services
-          </Link>
+          <span className="text-white/70">Services</span>
           <span className="text-white/30">/</span>
           <span className="text-white">Digital</span>
         </div>

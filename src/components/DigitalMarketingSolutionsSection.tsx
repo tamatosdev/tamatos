@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import type { StaticImageData } from "next/image";
 import socialMediaIcon from "@/assets/social-media-marketing-icon.png";
 import searchEngineIcon from "@/assets/Search-engine-icon.png";
@@ -9,12 +8,10 @@ import influencerIcon from "@/assets/Influencer-marketing-icon.png";
 import emailWhatsappIcon from "@/assets/email-whatsapp-icon.png";
 import contentStrategyIcon from "@/assets/content-strategy-icon.png";
 import analyticsGrowthIcon from "@/assets/analytics-growth-icon.png";
-import greenArrow from "@/assets/green-arrow.svg";
 
 type DigitalService = {
   title: string;
   description: string;
-  href: string;
   icon: StaticImageData;
 };
 
@@ -23,42 +20,36 @@ const services: DigitalService[] = [
     title: "Social Media Marketing",
     description:
       "Build a consistent and engaging presence with platform-specific strategies, content creation, and community management.",
-    href: "/services/social-media-marketing",
     icon: socialMediaIcon,
   },
   {
     title: "Search Engine Optimization",
     description:
       "Increase your visibility, attract qualified traffic, and improve long-term search performance through technical, on-page, and content SEO.",
-    href: "/services/seo",
     icon: searchEngineIcon,
   },
   {
     title: "Influencer Marketing",
     description:
       "Partner with the right creators to build trust, expand your reach, and connect with audiences authentically.",
-    href: "/services/influencer-marketing",
     icon: influencerIcon,
   },
   {
     title: "Email & WhatsApp Automation",
     description:
       "Automate personalized email and WhatsApp campaigns to engage your audience, nurture leads, and drive conversions.",
-    href: "/services/email-whatsapp-automation",
     icon: emailWhatsappIcon,
   },
   {
     title: "Content Strategy & Production",
     description:
       "Create purposeful content that educates, engages, and supports your customers throughout their journey.",
-    href: "/services/content-strategy",
     icon: contentStrategyIcon,
   },
   {
     title: "Analytics & Growth Optimization",
     description:
       "Track performance, uncover insights, and continuously optimize campaigns to maximize your return on investment.",
-    href: "/services/analytics-growth-optimization",
     icon: analyticsGrowthIcon,
   },
 ];
@@ -133,24 +124,6 @@ export default function DigitalMarketingSolutionsSection() {
                 <p className="mt-4 flex-1 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/65">
                   {service.description}
                 </p>
-
-                <Link
-                  href={service.href}
-                  className="mt-8 inline-flex w-fit items-center gap-2 text-[17.78px] font-medium tracking-[-0.02em] text-[var(--service-accent,#9DF560)] transition-opacity duration-200 hover:opacity-80"
-                >
-                  Learn More
-                  <Image
-                    src={greenArrow}
-                    alt=""
-                    width={20}
-                    height={16}
-                    className="transition-transform duration-200 group-hover:translate-x-1"
-                    style={{
-                      filter:
-                        "brightness(0) saturate(100%) invert(86%) sepia(47%) saturate(519%) hue-rotate(41deg) brightness(103%) contrast(94%)",
-                    }}
-                  />
-                </Link>
               </div>
             </article>
           ))}

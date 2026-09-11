@@ -16,57 +16,62 @@ import FooterShade2 from "@/assets/footer-shade2.png";
 const navColumns = [
   {
     title: "Branding Services",
+    titleHref: "/services/design",
     links: [
-      { label: "Pitch Deck", href: "/services/pitch-deck" },
-      { label: "Brand Identity", href: "/services/brand-identity" },
-      { label: "Logo Design", href: "/services/logo-design" },
-      { label: "Graphic Design", href: "/services/graphic-design" },
-      { label: "Rebranding", href: "/services/rebranding" },
+      { label: "Pitch Deck", href: "/services/design" },
+      { label: "Brand Identity", href: "/services/design" },
+      { label: "Logo Design", href: "/services/design" },
+      { label: "Graphic Design", href: "/services/design" },
+      { label: "Rebranding", href: "/services/design" },
     ],
   },
   {
     title: "Design Services",
+    titleHref: "/services/design",
     links: [
-      { label: "UI/UX Design", href: "/services/ui-ux-design" },
-      { label: "Web Design", href: "/services/web-design" },
-      { label: "Mobile App Design", href: "/services/mobile-app-design" },
-      { label: "Website Redesign", href: "/services/website-redesign" },
-      { label: "UX/UI Audit", href: "/services/ux-ui-audit" },
+      { label: "UI/UX Design", href: "/services/design" },
+      { label: "Web Design", href: "/services/design" },
+      { label: "Mobile App Design", href: "/services/design" },
+      { label: "Website Redesign", href: "/services/design" },
+      { label: "UX/UI Audit", href: "/services/design" },
     ],
   },
   {
     title: "Development Services",
+    titleHref: "/services/development",
     links: [
-      { label: "Web Development", href: "/services/web-development" },
-      { label: "MVP Development", href: "/services/mvp-development" },
-      { label: "Webflow Development", href: "/services/webflow-development" },
-      { label: "Landing Page", href: "/services/landing-page" },
-      { label: "Mobile Development", href: "/services/mobile-development" },
+      { label: "Web Development", href: "/services/development" },
+      { label: "MVP Development", href: "/services/development" },
+      { label: "Webflow Development", href: "/services/development" },
+      { label: "Landing Page", href: "/services/development" },
+      { label: "Mobile Development", href: "/services/development" },
     ],
   },
   {
-    title: "Solutions",
+    title: "Digital Services",
+    titleHref: "/services/digital",
     links: [
-      { label: "MVP Design", href: "/solutions/mvp-design" },
-      { label: "Product Redesign", href: "/solutions/product-redesign" },
-      { label: "Team Extension", href: "/solutions/team-extension" },
+      { label: "Social Media Marketing", href: "/services/digital" },
+      { label: "SEO", href: "/services/digital" },
+      { label: "Influencer Marketing", href: "/services/digital" },
+      { label: "Content Strategy", href: "/services/digital" },
+      { label: "Growth Optimization", href: "/services/digital" },
     ],
   },
 ];
 
 const industryLinks = [
-  { label: "Web 3, Blockchain", href: "/industries/web3" },
-  { label: "SaaS", href: "/industries/saas" },
-  { label: "Fintech", href: "/industries/fintech" },
-  { label: "AI & ML", href: "/industries/ai-ml" },
-  { label: "Healthcare & Wellness", href: "/industries/healthcare" },
+  { label: "Web 3, Blockchain" },
+  { label: "SaaS" },
+  { label: "Fintech" },
+  { label: "AI & ML" },
+  { label: "Healthcare & Wellness" },
 ];
 
 const companyLinks = [
   { label: "Works", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Referral", href: "/referral" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -78,9 +83,9 @@ const clutchBadges = [
 ];
 
 const legalLinks = [
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Cookie Policy", href: "/cookie-policy" },
-  { label: "Editorial Policy", href: "/editorial-policy" },
+  { label: "Privacy Policy" },
+  { label: "Cookie Policy" },
+  { label: "Editorial Policy" },
 ];
 
 function CopyButton({ text }: { text: string }) {
@@ -152,12 +157,22 @@ export default function Footer() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
             {navColumns.map((col) => (
               <div key={col.title} className="flex flex-col gap-3 lg:gap-4">
-                <p
-                  className="text-white font-medium"
-                  style={{ fontSize: "clamp(16px, 1.2vw, 19.56px)", letterSpacing: "-0.05em" }}
-                >
-                  {col.title}
-                </p>
+                {col.titleHref ? (
+                  <Link
+                    href={col.titleHref}
+                    className="text-white font-medium transition-colors duration-200 hover:text-white/80"
+                    style={{ fontSize: "clamp(16px, 1.2vw, 19.56px)", letterSpacing: "-0.05em" }}
+                  >
+                    {col.title}
+                  </Link>
+                ) : (
+                  <p
+                    className="text-white font-medium"
+                    style={{ fontSize: "clamp(16px, 1.2vw, 19.56px)", letterSpacing: "-0.05em" }}
+                  >
+                    {col.title}
+                  </p>
+                )}
                 <ul className="flex flex-col gap-2">
                   {col.links.map((link) => (
                     <li key={link.label}>
@@ -187,13 +202,12 @@ export default function Footer() {
               <ul className="flex flex-col gap-2">
                 {industryLinks.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
+                    <span
+                      className="text-white/70 font-normal"
                       style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
                     >
                       {link.label}
-                    </Link>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -274,14 +288,13 @@ export default function Footer() {
           {/* Legal links */}
           <div className="flex items-center gap-4 flex-wrap justify-center order-2 sm:order-1">
             {legalLinks.map((link) => (
-              <Link
+              <span
                 key={link.label}
-                href={link.href}
-                className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
+                className="text-white/70 font-normal"
                 style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.05em" }}
               >
                 {link.label}
-              </Link>
+              </span>
             ))}
           </div>
 

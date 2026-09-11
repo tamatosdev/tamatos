@@ -148,14 +148,26 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
               : "text-white"
           }`}
         >
-          <Link
-            href={link.href || "#"}
-            className={`text-[15px] xl:text-[16px] font-medium whitespace-nowrap transition-colors duration-200 ${
-              isActive || isMegaOpen ? "text-[#0A0A0C]" : "text-white hover:text-white/70"
-            }`}
-          >
-            {link.label}
-          </Link>
+          {link.href ? (
+            <Link
+              href={link.href}
+              className={`text-[15px] xl:text-[16px] font-medium whitespace-nowrap transition-colors duration-200 ${
+                isActive || isMegaOpen ? "text-[#0A0A0C]" : "text-white hover:text-white/70"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setOpenMegaMenu(isMegaOpen ? null : link.label)}
+              className={`text-[15px] xl:text-[16px] font-medium whitespace-nowrap transition-colors duration-200 ${
+                isActive || isMegaOpen ? "text-[#0A0A0C]" : "text-white hover:text-white/70"
+              }`}
+            >
+              {link.label}
+            </button>
+          )}
           <button
             type="button"
             aria-expanded={isMegaOpen}
@@ -173,10 +185,12 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
       );
     }
 
+    if (!link.href) return null;
+
     return (
       <Link
         key={link.label}
-        href={link.href || "#"}
+        href={link.href}
         className={`text-[15px] xl:text-[16px] font-medium transition-all duration-200 whitespace-nowrap px-[15px] py-2.5 rounded-full ${
           isActive ? "bg-white text-[#0A0A0C]" : "text-white hover:text-white/70"
         }`}
@@ -415,10 +429,12 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
               );
             }
 
+            if (!link.href) return null;
+
             return (
               <Link
                 key={link.label}
-                href={link.href || "#"}
+                href={link.href}
                 onClick={() => setSidebarOpen(false)}
                 className="py-3.5 text-[20px] font-medium tracking-[-0.03em] text-white/70 transition-colors duration-200 hover:text-white sm:text-[22px]"
                 style={{

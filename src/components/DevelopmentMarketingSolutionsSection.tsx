@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import type { StaticImageData } from "next/image";
 import webIcon from "@/assets/web-icon.png";
 import mobileAppIcon from "@/assets/mobile-app.png";
@@ -12,12 +11,10 @@ import customerPortalIcon from "@/assets/customer-portal.png";
 import odooIcon from "@/assets/odoo.png";
 import apiSystemIcon from "@/assets/api-system.png";
 import aliWorkflowIcon from "@/assets/ali-workflow.png";
-import greenArrow from "@/assets/green-arrow.svg";
 
 type DevelopmentService = {
   title: string;
   description: string;
-  href: string;
   icon: StaticImageData | string;
 };
 
@@ -26,63 +23,54 @@ const services: DevelopmentService[] = [
     title: "Websites",
     description:
       "Fast, responsive websites built to strengthen your brand, engage users, and drive business growth.",
-    href: "/services/web-development",
     icon: webIcon,
   },
   {
     title: "Mobile Applications",
     description:
       "Native and cross-platform mobile applications designed to deliver seamless experiences, strengthen customer engagement, and support business growth.",
-    href: "/services/mobile-development",
     icon: mobileAppIcon,
   },
   {
     title: "E-Commerce Solutions",
     description:
       "Conversion-focused online stores built to deliver seamless shopping experiences and increase sales.",
-    href: "/services/web-development",
     icon: ecommerceIcon,
   },
   {
     title: "SaaS Platforms",
     description:
       "Scalable software products designed with intuitive user experiences and long-term growth in mind.",
-    href: "/services/mvp-development",
     icon: saasPlatformIcon,
   },
   {
     title: "Custom Web Applications",
     description:
       "Tailor-made solutions built around your unique workflows, processes, and business objectives.",
-    href: "/services/web-development",
     icon: customWebIcon,
   },
   {
     title: "Customer Portals & Dashboards",
     description:
       "Track performance, uncover insights, and make informed decisions with powerful analytics, dashboards, and reporting.",
-    href: "/services/web-development",
     icon: customerPortalIcon,
   },
   {
     title: "ODOO Implementation",
     description:
       "Implement and customize Odoo to manage your website, e-commerce, and business operations from one integrated platform.",
-    href: "/services/web-development",
     icon: odooIcon,
   },
   {
     title: "API & System Integrations",
     description:
       "Connect your website or application with CRMs, ERPs, payment gateways, marketing platforms, and third-party services.",
-    href: "/services/web-development",
     icon: apiSystemIcon,
   },
   {
     title: "AI Workflows & Agents",
     description:
       "Integrate AI capabilities, automations, APIs, and third-party systems to streamline operations, improve efficiency, and create smarter digital experiences.",
-    href: "/services/web-development",
     icon: aliWorkflowIcon,
   },
 ];
@@ -157,24 +145,6 @@ export default function DevelopmentMarketingSolutionsSection() {
                 <p className="mt-4 flex-1 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/65">
                   {service.description}
                 </p>
-
-                <Link
-                  href={service.href}
-                  className="mt-8 inline-flex w-fit items-center gap-2 text-[17.78px] font-medium tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[var(--service-accent,#FC7031)]"
-                >
-                  Learn More
-                  <Image
-                    src={greenArrow}
-                    alt=""
-                    width={20}
-                    height={16}
-                    className="transition-transform duration-200 group-hover:translate-x-1"
-                    style={{
-                      filter:
-                        "brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(1800%) hue-rotate(346deg) brightness(101%) contrast(98%)",
-                    }}
-                  />
-                </Link>
               </div>
             </article>
           ))}

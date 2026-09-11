@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ServicesData } from "@/lib/home";
+import { isLivePath, serviceCategoryPath } from "@/lib/routes";
 
 const defaultServices = [
   {
@@ -7,6 +8,7 @@ const defaultServices = [
     description: "Identities That Give Businesses Something To Be Remembered By.",
     bg: "#FFFFFF1A",
     hoverBg: "#9DF560",
+    href: "/services/design",
     items: [
       "Brand Strategy",
       "Brand Identity",
@@ -22,6 +24,7 @@ const defaultServices = [
       "Websites That Turn Visitors Into Customers. Products Built Around People, Not Just Features.",
     bg: "#FFFFFF1A",
     hoverBg: "#FC7031",
+    href: "/services/development",
     items: [
       "Websites",
       "Mobile Applications",
@@ -36,6 +39,7 @@ const defaultServices = [
     description: "Work That Gets Your Business Seen By The Right People.",
     bg: "#FFFFFF1A",
     hoverBg: "#03E4AC",
+    href: "/services/digital",
     items: [
       "Social Media Marketing",
       "Search Engine Optimization",
@@ -54,20 +58,27 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
 
   const services =
     data?.categories?.length
-      ? data.categories.map((cat) => ({
-          category: cat.title ?? "",
-          description: cat.description ?? "",
-          bg: cat.backgroundColor ?? "#FFFFFF1A",
-          hoverBg: cat.hoverColor ?? "#9DF560",
-          items:
-            cat.items?.map((item) => ({
-              label: item.label ?? "",
-              href: item.href ?? "/services",
-            })) ?? [],
-        }))
+      ? data.categories.map((cat) => {
+          const categoryHref = serviceCategoryPath(cat.title);
+          return {
+            category: cat.title ?? "",
+            description: cat.description ?? "",
+            bg: cat.backgroundColor ?? "#FFFFFF1A",
+            hoverBg: cat.hoverColor ?? "#9DF560",
+            href: categoryHref,
+            items:
+              cat.items?.map((item) => {
+                const raw = item.href ?? "";
+                return {
+                  label: item.label ?? "",
+                  href: isLivePath(raw) ? raw : categoryHref,
+                };
+              }) ?? [],
+          };
+        })
       : defaultServices.map((s) => ({
           ...s,
-          items: s.items.map((label) => ({ label, href: "/services" })),
+          items: s.items.map((label) => ({ label, href: s.href })),
         }));
 
   return (
@@ -99,12 +110,22 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
             data-aos-delay={120 + index * 200}
             data-aos-easing="ease-out-cubic"
           >
-            <h3
-              className="text-white font-medium"
-              style={{ fontSize: "37.55px", letterSpacing: "-0.04em" }}
-            >
-              {service.category}
-            </h3>
+            {isLivePath(service.href) ? (
+              <Link
+                href={service.href}
+                className="text-white font-medium transition-opacity hover:opacity-80"
+                style={{ fontSize: "37.55px", letterSpacing: "-0.04em" }}
+              >
+                {service.category}
+              </Link>
+            ) : (
+              <h3
+                className="text-white font-medium"
+                style={{ fontSize: "37.55px", letterSpacing: "-0.04em" }}
+              >
+                {service.category}
+              </h3>
+            )}
 
             {service.description ? (
               <p className="mt-3 mb-5 text-[14px] leading-[1.5] tracking-[-0.02em] text-white/60 md:mb-6 md:text-[16px]">
@@ -115,14 +136,14 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
             )}
 
             <ul className="flex flex-col">
-              {service.items.map((item, index) => (
+              {service.items.map((item, itemIndex) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}
                     className={`
                       group/item flex items-center justify-between px-3 rounded-xl transition-all duration-300 ease-out
                        lg:text-white
-                      ${index === 0 ? "bg-[var(--hover-color)] text-[#0A0A0C]" : "bg-transparent"}
+                      ${itemIndex === 0 ? "bg-[var(--hover-color)] text-[#0A0A0C]" : "bg-transparent"}
                       lg:bg-transparent lg:hover:bg-[var(--hover-color)] lg:hover:text-[#0A0A0C] lg:hover:px-5
                     `}
                     style={{ paddingBlock: "1.15rem" }}
