@@ -8,18 +8,29 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
 
   if (!posts.length) return null;
 
-  const headingBefore = data?.headingBefore ?? "Get Real";
-  const headingEmphasis = data?.headingEmphasis ?? "Growth Insights";
-  const headingAfter = data?.headingAfter ?? "and Proven Tactics For Digital Success";
+  const cmsBefore = data?.headingBefore?.trim();
+  const cmsEmphasis = data?.headingEmphasis?.trim();
+  const cmsAfter = data?.headingAfter?.trim();
+  const headingBefore =
+    !cmsBefore || cmsBefore === "Get Real" ? "The" : cmsBefore;
+  const headingEmphasis =
+    !cmsEmphasis || cmsEmphasis === "Growth Insights" ? "Internet" : cmsEmphasis;
+  const headingAfter =
+    !cmsAfter || cmsAfter === "and Proven Tactics For Digital Success"
+      ? "Does Not Stand Still, Neither Do We"
+      : cmsAfter;
   const buttonLabel = data?.button?.label ?? "Read More";
   const buttonHref = data?.button?.href ?? "/blog";
 
   return (
     <section className="container py-14 lg:py-24">
       <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-0 mb-8 md:mb-12">
-        <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "clamp(28.44px, 3.13vw, 50.06px)", letterSpacing: "-0.05em" }}>
+        <h2
+          className="text-white font-medium leading-[1.2] max-w-[962px]"
+          style={{ fontSize: "clamp(28.44px, 3.13vw, 50.06px)", letterSpacing: "-0.05em" }}
+        >
           {headingBefore}{" "}
-          <span className="text-white/50 italic">{headingEmphasis}</span>{" "}
+          <em className="italic text-white/50 font-medium">{headingEmphasis}</em>{" "}
           {headingAfter}
           <span className="text-[#9DF560]">.</span>
         </h2>

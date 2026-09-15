@@ -1,33 +1,40 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 
 import pakistanFlag from "@/assets/p-flag.png";
 import uaeFlag from "@/assets/uae-flag.png";
-import canadaFlag from "@/assets/canada-flag.png";
+import usaFlag from "@/assets/usa-flag.png";
+import type { GlobalFootprintData } from "@/lib/contact";
 
 const GEO_URL = "/countries-110m.json";
+const AUTO_LOOP_MS = 8000;
 
-// ISO numeric codes
-const COUNTRY_IDS: Record<string, number> = {
-  pakistan: 586,
-  uae: 784,
-  canada: 124,
+type FootprintLocation = {
+  id: string;
+  city: string;
+  countryName: string;
+  countryCode: string;
+  flagSrc: string | StaticImageData;
+  location: string;
+  coords: [number, number];
+  isoNumericId: number;
+  labelOffset: { x: number; y: number };
 };
 
-const locations = [
+const defaultLocations: FootprintLocation[] = [
   {
     id: "pakistan",
     city: "Karachi, Pakistan",
     countryName: "Pakistan",
     countryCode: "PK",
-    flag: pakistanFlag,
-    role: "Head Office",
-    desc: "Our founding home — strategy, branding, and UX all flow from here.",
-    location: "Level 1, Yas Mall, Yas Island, Abu Dhabi, United Arab Emirates",
-    coords: [67.01, 24.86] as [number, number],
+    flagSrc: pakistanFlag,
+    location:
+      "C-46, Block 13, Gulberg Town, F.B. Area, FB, Area Block 13 Gulberg Town, Karachi, 75950",
+    coords: [67.01, 24.86],
+    isoNumericId: 586,
     labelOffset: { x: 50, y: -45 },
   },
   {
@@ -35,50 +42,143 @@ const locations = [
     city: "Dubai, UAE",
     countryName: "United Arab Emirates",
     countryCode: "AE",
-    flag: uaeFlag,
-    role: "Global UAE",
-    desc: "Serving clients across the Gulf with a local market-first mindset.",
-    location: "Level 1, Yas Mall, Yas Island, Abu Dhabi, United Arab Emirates.",
-    coords: [55.27, 25.2] as [number, number],
+    flagSrc: uaeFlag,
+    location:
+      "Business Central Towers - Tower B, Dubai Internet City, Dubai, United Arab Emirates",
+    coords: [55.27, 25.2],
+    isoNumericId: 784,
     labelOffset: { x: 50, y: 30 },
   },
   {
-    id: "canada",
-    city: "Toronto, Canada",
-    countryName: "Canada",
-    countryCode: "CA",
-    flag: canadaFlag,
-    role: "North America",
-    desc: "Reaching North American markets with world-class digital products.",
-    location: "Level 1, Yas Mall, Yas Island, Abu Dhabi, United Arab Emirates",
-    coords: [-79.38, 43.65] as [number, number],
+    id: "usa",
+    city: "Wyoming, USA",
+    countryName: "United States",
+    countryCode: "US",
+    flagSrc: usaFlag,
+    location:
+      "1021 E Lincolnway Suite #8014, Cheyenne, Wyoming 82001, United States",
+    coords: [-104.82, 41.14],
+    isoNumericId: 840,
     labelOffset: { x: 0, y: -25 },
   },
 ];
 
-export default function GlobalFootprint() {
-  const [active, setActive] = useState("pakistan");
+function normalizeLocation(loc: FootprintLocation): FootprintLocation {
+  // Migrate old Canada entry → USA
+  if (loc.id === "canada" || loc.countryCode === "CA") {
+    return defaultLocations.find((d) => d.id === "usa")!;
+  }
 
-  const activeCountryId = COUNTRY_IDS[active];
+  const fallback = defaultLocations.find((d) => d.id === loc.id);
+  if (!fallback) return loc;
+
+  // Replace stale placeholder addresses from earlier CMS content
+  if (loc.location.toLowerCase().includes("yas mall")) {
+    return {
+      ...loc,
+      city: fallback.city,
+      countryName: fallback.countryName,
+      countryCode: fallback.countryCode,
+      location: fallback.location,
+      coords: fallback.coords,
+      isoNumericId: fallback.isoNumericId,
+      flagSrc: loc.flagSrc || fallback.flagSrc,
+      labelOffset: fallback.labelOffset,
+    };
+  }
+
+  return loc;
+}
+
+function resolveLocations(data?: GlobalFootprintData): FootprintLocation[] {
+  const cms = data?.locations?.filter(
+    (loc) =>
+      loc?.key &&
+      loc.city &&
+      loc.countryName &&
+      loc.countryCode &&
+      loc.location &&
+      typeof loc.longitude === "number" &&
+      typeof loc.latitude === "number" &&
+      typeof loc.isoNumericId === "number"
+  );
+
+  if (!cms?.length) return defaultLocations;
+
+  return cms
+    .map((loc, index) => {
+      const fallback = defaultLocations[index] ?? defaultLocations[0];
+      return {
+        id: loc.key!,
+        city: loc.city!,
+        countryName: loc.countryName!,
+        countryCode: loc.countryCode!,
+        flagSrc: loc.flag?.url || fallback.flagSrc,
+        location: loc.location!,
+        coords: [loc.longitude!, loc.latitude!] as [number, number],
+        isoNumericId: loc.isoNumericId!,
+        labelOffset: {
+          x: loc.labelOffsetX ?? fallback.labelOffset.x,
+          y: loc.labelOffsetY ?? fallback.labelOffset.y,
+        },
+      };
+    })
+    .map(normalizeLocation);
+}
+
+export default function GlobalFootprint({ data }: { data?: GlobalFootprintData }) {
+  const locations = useMemo(() => resolveLocations(data), [data]);
+  const [active, setActive] = useState(locations[0]?.id ?? "pakistan");
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (locations.length && !locations.some((loc) => loc.id === active)) {
+      setActive(locations[0].id);
+    }
+  }, [locations, active]);
+
+  useEffect(() => {
+    if (paused || locations.length <= 1) return;
+    const id = window.setInterval(() => {
+      setActive((current) => {
+        const index = locations.findIndex((loc) => loc.id === current);
+        const next = (index + 1) % locations.length;
+        return locations[next]?.id ?? locations[0].id;
+      });
+    }, AUTO_LOOP_MS);
+    return () => window.clearInterval(id);
+  }, [paused, locations]);
+
+  const activeLocation = locations.find((loc) => loc.id === active) ?? locations[0];
+  const activeCountryId = activeLocation?.isoNumericId;
+
+  const headingBefore = data?.headingBefore ?? "Our";
+  const headingAccent = data?.headingAccent ?? "Global";
+  const headingAfter = data?.headingAfter ?? "Footprint";
+  const description =
+    data?.description ??
+    "Delivering excellence across multiple regions with a strong commitment to quality, reliability, and global collaboration.";
 
   return (
-    <section className="container py-14 lg:py-24">
-
-      {/* Heading */}
+    <section
+      className="container py-14 lg:py-24"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <h2
         className="text-white font-medium text-center leading-tight mb-3"
         style={{ fontSize: "clamp(28.44px, 3vw, 50.06px)", letterSpacing: "-0.04em" }}
       >
-        Our <span className="text-[#9DF560]">Global</span> Footprint
+        {headingBefore} <span className="text-[#9DF560]">{headingAccent}</span> {headingAfter}
       </h2>
 
-      {/* Paragraph */}
-      <p className="text-center text-white/80 max-w-2xl mx-auto leading-relaxed"
-        style={{ letterSpacing: "-0.02em", fontSize: "clamp(16px, 0.94vw, 16px)" }}>
-        Delivering excellence across multiple regions with a strong commitment to quality, reliability, and global collaboration.
+      <p
+        className="text-center text-white/80 max-w-2xl mx-auto leading-relaxed"
+        style={{ letterSpacing: "-0.02em", fontSize: "clamp(16px, 0.94vw, 16px)" }}
+      >
+        {description}
       </p>
 
-      {/* Map */}
       <div
         className="relative overflow-hidden h-[420px] sm:h-[520px] lg:h-[640px] lg:-mt-56"
         style={{ marginTop: 0 }}
@@ -127,7 +227,6 @@ export default function GlobalFootprint() {
             }
           </Geographies>
 
-          {/* Markers */}
           {locations.map((loc) => {
             const labelOffset = loc.labelOffset || { x: 0, y: -22 };
             const labelText = loc.countryName;
@@ -135,6 +234,8 @@ export default function GlobalFootprint() {
             const rectX = labelOffset.x - labelWidth / 2;
             const imageX = rectX + 10;
             const textX = imageX + 26;
+            const flagHref =
+              typeof loc.flagSrc === "string" ? loc.flagSrc : loc.flagSrc.src;
 
             return (
               <Marker key={loc.id} coordinates={loc.coords}>
@@ -153,8 +254,8 @@ export default function GlobalFootprint() {
                     onClick={() => setActive(loc.id)}
                   />
                   <image
-                    xlinkHref={loc.flag.src}
-                    href={loc.flag.src}
+                    xlinkHref={flagHref}
+                    href={flagHref}
                     x={imageX}
                     y={labelOffset.y - 9}
                     width={18}
@@ -183,29 +284,37 @@ export default function GlobalFootprint() {
         </ComposableMap>
       </div>
 
-      {/* Location cards */}
       <div className="grid grid-cols-1 relative z-10 sm:grid-cols-3 gap-4 mt-0">
         {locations.map((loc) => {
           const isActive = active === loc.id;
           return (
             <button
               key={loc.id}
+              type="button"
               onClick={() => setActive(loc.id)}
               className="text-left rounded-2xl p-5 transition-all duration-300 cursor-pointer group"
               style={{
                 background: isActive ? "#9DF560" : "rgba(255,255,255,0.04)",
-                border: isActive ? "1px solid rgba(255,255,255,0.16)" : "1px solid rgba(255,255,255,0.08)",
-                boxShadow: isActive ? "inset 0 0 0 1px rgba(255,255,255,0.12)" : "inset 0 1px 28px rgba(255,255,255,0.08)",
+                border: isActive
+                  ? "1px solid rgba(255,255,255,0.16)"
+                  : "1px solid rgba(255,255,255,0.08)",
+                boxShadow: isActive
+                  ? "inset 0 0 0 1px rgba(255,255,255,0.12)"
+                  : "inset 0 1px 28px rgba(255,255,255,0.08)",
               }}
             >
               <div className="flex items-start gap-3 mb-3">
                 <div className="w-8 h-6 relative flex-shrink-0 mt-1.5">
-                  <Image
-                    src={loc.flag}
-                    alt={loc.city}
-                    fill
-                    className="object-contain"
-                  />
+                  {typeof loc.flagSrc === "string" ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={loc.flagSrc}
+                      alt={loc.city}
+                      className="absolute inset-0 h-full w-full object-contain"
+                    />
+                  ) : (
+                    <Image src={loc.flagSrc} alt={loc.city} fill className="object-contain" />
+                  )}
                 </div>
                 <div className="flex-1">
                   <p
@@ -232,20 +341,28 @@ export default function GlobalFootprint() {
               </div>
 
               <div className="ml-11">
-                <p className="font-normal mb-2" style={{ color: isActive ? "#0b1721" : "#ffffff80", fontSize: "clamp(16px, 0.94vw, 16px)" }}>
-                  Location: <span className="" 
+                <p
+                  className="font-normal mb-2"
                   style={{
-                     color: isActive ? "#0b1721" : "#ffffffcc",
-                     letterSpacing: "-0.03em",
-
-                  }}>{loc.location}</span>
+                    color: isActive ? "#0b1721" : "#ffffff80",
+                    fontSize: "clamp(16px, 0.94vw, 16px)",
+                  }}
+                >
+                  Location:{" "}
+                  <span
+                    style={{
+                      color: isActive ? "#0b1721" : "#ffffffcc",
+                      letterSpacing: "-0.03em",
+                    }}
+                  >
+                    {loc.location}
+                  </span>
                 </p>
               </div>
             </button>
           );
         })}
       </div>
-
     </section>
   );
 }

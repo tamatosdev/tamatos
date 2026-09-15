@@ -41,7 +41,7 @@ const services: DigitalService[] = [
     icon: emailWhatsappIcon,
   },
   {
-    title: "Content Strategy & Production",
+    title: "Content Creation and Strategy",
     description:
       "Create purposeful content that educates, engages, and supports your customers throughout their journey.",
     icon: contentStrategyIcon,

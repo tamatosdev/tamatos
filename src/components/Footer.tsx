@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "@/assets/Logo.svg";
-import ClutchDev from "@/assets/clutch-developer.png";
-import ClutchPPC from "@/assets/clutch-ppc.png";
-import ClutchMarketing from "@/assets/clutch-marketing.png";
-import ClutchSEO from "@/assets/clutch-seo.png";
+import Clutch50Badge from "@/assets/clutch-50.png";
+import KlaviyoBadge from "@/assets/klaviyo-bedge.png";
+import OdooBadge from "@/assets/odoo-bedge.png";
+import ShopifyPartnerBadge from "@/assets/shopify-parthner-bedge.png";
 import BehanceIcon from "@/assets/behance.svg";
 import ClutchIcon from "@/assets/clutch.svg";
 import FooterShade1 from "@/assets/footer-shade1.png";
@@ -15,36 +15,18 @@ import FooterShade2 from "@/assets/footer-shade2.png";
 
 const navColumns = [
   {
-    title: "Branding Services",
-    titleHref: "/services/design",
-    links: [
-      { label: "Pitch Deck", href: "/services/design" },
-      { label: "Brand Identity", href: "/services/design" },
-      { label: "Logo Design", href: "/services/design" },
-      { label: "Graphic Design", href: "/services/design" },
-      { label: "Rebranding", href: "/services/design" },
-    ],
-  },
-  {
-    title: "Design Services",
-    titleHref: "/services/design",
-    links: [
-      { label: "UI/UX Design", href: "/services/design" },
-      { label: "Web Design", href: "/services/design" },
-      { label: "Mobile App Design", href: "/services/design" },
-      { label: "Website Redesign", href: "/services/design" },
-      { label: "UX/UI Audit", href: "/services/design" },
-    ],
-  },
-  {
     title: "Development Services",
     titleHref: "/services/development",
     links: [
-      { label: "Web Development", href: "/services/development" },
-      { label: "MVP Development", href: "/services/development" },
-      { label: "Webflow Development", href: "/services/development" },
-      { label: "Landing Page", href: "/services/development" },
-      { label: "Mobile Development", href: "/services/development" },
+      { label: "Websites", href: "/services/development" },
+      { label: "Mobile Applications", href: "/services/development" },
+      { label: "E-Commerce Solutions", href: "/services/development" },
+      { label: "SaaS Platforms", href: "/services/development" },
+      { label: "Custom Web Application", href: "/services/development" },
+      { label: "Customer Portals & Dashboards", href: "/services/development" },
+      { label: "ODOO Implementation", href: "/services/development" },
+      { label: "API & System Integrations", href: "/services/development" },
+      { label: "AI Workflows & Agents", href: "/services/development" },
     ],
   },
   {
@@ -52,20 +34,33 @@ const navColumns = [
     titleHref: "/services/digital",
     links: [
       { label: "Social Media Marketing", href: "/services/digital" },
-      { label: "SEO", href: "/services/digital" },
+      { label: "Search Engine Optimization", href: "/services/digital" },
       { label: "Influencer Marketing", href: "/services/digital" },
-      { label: "Content Strategy", href: "/services/digital" },
-      { label: "Growth Optimization", href: "/services/digital" },
+      { label: "Email & WhatsApp Automation", href: "/services/digital" },
+      { label: "Content Creation & Strategy", href: "/services/digital" },
+      { label: "Analytics & Growth Analysis", href: "/services/digital" },
+    ],
+  },
+  {
+    title: "Design Services",
+    titleHref: "/services/design",
+    links: [
+      { label: "Website UX/UI Design", href: "/services/design" },
+      { label: "Mobile App Design", href: "/services/design" },
+      { label: "Brand Strategy", href: "/services/design" },
+      { label: "Brand Identity", href: "/services/design" },
+      { label: "Pitch Deck Design", href: "/services/design" },
+      { label: "Print & Marketing Collateral", href: "/services/design" },
     ],
   },
 ];
 
 const industryLinks = [
-  { label: "Web 3, Blockchain" },
-  { label: "SaaS" },
-  { label: "Fintech" },
-  { label: "AI & ML" },
-  { label: "Healthcare & Wellness" },
+  { label: "Industrial & Energy" },
+  { label: "SaaS & Tech Startups" },
+  { label: "E-Commerce & Retail" },
+  { label: "Food & Beverage" },
+  { label: "Healthcare" },
 ];
 
 const companyLinks = [
@@ -75,11 +70,11 @@ const companyLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-const clutchBadges = [
-  { src: ClutchDev, alt: "Clutch 2026 — Top Web Developers", label: "Top Web Developers" },
-  { src: ClutchPPC, alt: "Clutch 2026 — Top PPC Company", label: "Top PPC Company" },
-  { src: ClutchMarketing, alt: "Clutch 2026 — Top Digital Marketing Company", label: "Top Digital Marketing Company" },
-  { src: ClutchSEO, alt: "Clutch 2026 — Top SEO Company", label: "Top SEO Company" },
+const partnerBadges = [
+  { src: Clutch50Badge, alt: "Clutch — 5 Star Rated", label: "5 Star Rated" },
+  { src: KlaviyoBadge, alt: "Klaviyo Partner", label: "Klaviyo Partners" },
+  { src: OdooBadge, alt: "Odoo Partner", label: "Odoo Partners" },
+  { src: ShopifyPartnerBadge, alt: "Shopify Partners", label: "Shopify Partners" },
 ];
 
 const legalLinks = [
@@ -154,7 +149,7 @@ export default function Footer() {
           </div>
 
           {/* Right — nav columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:gap-8">
             {navColumns.map((col) => (
               <div key={col.title} className="flex flex-col gap-3 lg:gap-4">
                 {col.titleHref ? (
@@ -194,7 +189,7 @@ export default function Footer() {
         {/* Second row — Industries + Company */}
         <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 lg:gap-16 py-8 lg:py-16">
           <div className="hidden lg:block" /> {/* spacer — desktop only */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
             <div className="flex flex-col gap-3 lg:gap-4">
               <p className="text-white font-medium" style={{ fontSize: "clamp(16px, 1.2vw, 17.78px)", letterSpacing: "-0.05em" }}>
                 Industries
@@ -233,23 +228,27 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Clutch badges */}
+        {/* Partner badges */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4 py-6 lg:py-8">
-          {clutchBadges.map((badge) => (
+          {partnerBadges.map((badge) => (
             <div
               key={badge.label}
-              className="flex flex-col items-center gap-2 lg:gap-3 rounded-2xl py-5 lg:py-10 px-3 lg:px-4"
+              className="flex h-[247px] flex-col items-center justify-center gap-3 rounded-2xl px-3 lg:px-4"
               style={{ background: "rgb(255 255 255 / 5%)" }}
             >
-              <Image src={badge.src} alt={badge.alt} width={80} height={120} className="object-contain  " />
-              <div className="text-center">
-                <p className="text-white font-semibold" style={{ fontSize: "clamp(14px, 1.2vw, 17.78px)", letterSpacing: "-0.05em" }}>
-                  Clutch 2026
-                </p>
-                <p className="text-white font-normal mt-0.5" style={{ fontSize: "clamp(10px, 0.9vw, 14px)", letterSpacing: "-0.05em" }}>
-                  {badge.label}
-                </p>
-              </div>
+              <Image
+                src={badge.src}
+                alt={badge.alt}
+                width={140}
+                height={60}
+                className="h-8 w-auto object-contain sm:h-9 lg:h-10"
+              />
+              <p
+                className="text-center text-white font-medium"
+                style={{ fontSize: "clamp(14px, 1.4667vw, 21.12px)", letterSpacing: "-0.05em" }}
+              >
+                {badge.label}
+              </p>
             </div>
           ))}
         </div>

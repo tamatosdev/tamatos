@@ -5,9 +5,9 @@ export const LIVE_PATHS = new Set([
   "/blog",
   "/contact",
   "/work",
-  "/services/design",
-  "/services/digital",
   "/services/development",
+  "/services/digital",
+  "/services/design",
 ]);
 
 export function normalizePath(href?: string | null): string | null {
@@ -32,4 +32,22 @@ export function serviceCategoryPath(category?: string | null): string {
   if (key.includes("develop")) return "/services/development";
   if (key.includes("digital")) return "/services/digital";
   return "/services/design";
+}
+
+/** Preferred display order: Development → Digital → Design */
+export function serviceCategoryOrder(category?: string | null): number {
+  const key = (category ?? "").trim().toLowerCase();
+  if (key.includes("develop")) return 0;
+  if (key.includes("digital")) return 1;
+  if (key.includes("design")) return 2;
+  return 99;
+}
+
+export function sortByServiceCategoryOrder<T>(
+  items: T[],
+  getLabel: (item: T) => string | null | undefined
+): T[] {
+  return [...items].sort(
+    (a, b) => serviceCategoryOrder(getLabel(a)) - serviceCategoryOrder(getLabel(b))
+  );
 }

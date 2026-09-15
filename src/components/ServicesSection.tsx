@@ -1,23 +1,8 @@
 import Link from "next/link";
 import type { ServicesData } from "@/lib/home";
-import { isLivePath, serviceCategoryPath } from "@/lib/routes";
+import { isLivePath, serviceCategoryPath, sortByServiceCategoryOrder } from "@/lib/routes";
 
 const defaultServices = [
-  {
-    category: "Design",
-    description: "Identities That Give Businesses Something To Be Remembered By.",
-    bg: "#FFFFFF1A",
-    hoverBg: "#9DF560",
-    href: "/services/design",
-    items: [
-      "Brand Strategy",
-      "Brand Identity",
-      "Logo Design",
-      "Social Media Design",
-      "Print & Marketing Collateral",
-      "Pitch Deck Design",
-    ],
-  },
   {
     category: "Development",
     description:
@@ -45,8 +30,23 @@ const defaultServices = [
       "Search Engine Optimization",
       "Influencer Marketing",
       "Email & WhatsApp Automation",
-      "Content Strategy & Production",
+      "Content Creation and Strategy",
       "Analytics & Growth Optimization",
+    ],
+  },
+  {
+    category: "Design",
+    description: "Identities That Give Businesses Something To Be Remembered By.",
+    bg: "#FFFFFF1A",
+    hoverBg: "#9DF560",
+    href: "/services/design",
+    items: [
+      "Brand Strategy",
+      "Brand Identity",
+      "Logo Design",
+      "Social Media Design",
+      "Print & Marketing Collateral",
+      "Pitch Deck Design",
     ],
   },
 ];
@@ -58,24 +58,27 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
 
   const services =
     data?.categories?.length
-      ? data.categories.map((cat) => {
-          const categoryHref = serviceCategoryPath(cat.title);
-          return {
-            category: cat.title ?? "",
-            description: cat.description ?? "",
-            bg: cat.backgroundColor ?? "#FFFFFF1A",
-            hoverBg: cat.hoverColor ?? "#9DF560",
-            href: categoryHref,
-            items:
-              cat.items?.map((item) => {
-                const raw = item.href ?? "";
-                return {
-                  label: item.label ?? "",
-                  href: isLivePath(raw) ? raw : categoryHref,
-                };
-              }) ?? [],
-          };
-        })
+      ? sortByServiceCategoryOrder(
+          data.categories.map((cat) => {
+            const categoryHref = serviceCategoryPath(cat.title);
+            return {
+              category: cat.title ?? "",
+              description: cat.description ?? "",
+              bg: cat.backgroundColor ?? "#FFFFFF1A",
+              hoverBg: cat.hoverColor ?? "#9DF560",
+              href: categoryHref,
+              items:
+                cat.items?.map((item) => {
+                  const raw = item.href ?? "";
+                  return {
+                    label: item.label ?? "",
+                    href: isLivePath(raw) ? raw : categoryHref,
+                  };
+                }) ?? [],
+            };
+          }),
+          (s) => s.category
+        )
       : defaultServices.map((s) => ({
           ...s,
           items: s.items.map((label) => ({ label, href: s.href })),

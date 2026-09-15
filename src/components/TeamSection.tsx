@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import BodyBgOnView from "@/components/BodyBgOnView";
 import nabeel from "@/assets/Team images/nabeel-danish.png";
 import akbar from "@/assets/Team images/akbar.png";
 import ali from "@/assets/Team images/ali asad.png";
@@ -23,18 +24,18 @@ const team = [
   { name: "Shehroz",      role: "Sr. Web Developer",        image: shehroz  },
   { name: "Shahzaib",     role: "Sr. Web Developer",        image: shahzaib },
   { name: "Muneer",       role: "Sr. Graphic Designer",     image: muneer   },
+  { name: "Maheen",       role: "Account Manager",          image: maheen   },
   { name: "Huzaifa",      role: "Web Developer",            image: huzaifa  },
   { name: "Hammad Razi",  role: "Sr. SEO Specialist",       image: hammad   },
   { name: "Rayyan",       role: "Content Writer",           image: rayyan   },
-  { name: "Maheen",       role: "Account Manager",          image: maheen   },
 ];
 
 /* Each column gets a unique y range for parallax */
 const colYRanges: [number, number][] = [
-  [60, -60],   // col 0 — moves up
-  [-60, 60],   // col 1 — moves down
-  [40, -40],   // col 2 — moves up (less)
-  [-40, 40],   // col 3 — moves down (less)
+  [60, -60],
+  [-60, 60],
+  [40, -40],
+  [-40, 40],
 ];
 
 function TeamCard({
@@ -44,7 +45,7 @@ function TeamCard({
 }: {
   member: (typeof team)[0];
   colIndex: number;
-  sectionRef: React.RefObject<HTMLElement | null>;
+  sectionRef: React.RefObject<HTMLDivElement | null>;
 }) {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -95,12 +96,19 @@ function TeamCard({
 }
 
 export default function TeamSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section ref={sectionRef} className="py-14 lg:py-24 bg-white overflow-hidden">
+    <BodyBgOnView
+      color="#FFFFFF"
+      className="py-14 lg:py-24 overflow-hidden"
+      threshold={0.2}
+    >
       <div className="container">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5 items-start">
+        <div
+          ref={sectionRef}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5 items-start"
+        >
           {team.map((member, index) => (
             <TeamCard
               key={index}
@@ -111,6 +119,6 @@ export default function TeamSection() {
           ))}
         </div>
       </div>
-    </section>
+    </BodyBgOnView>
   );
 }

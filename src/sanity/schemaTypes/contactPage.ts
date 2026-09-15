@@ -1,0 +1,406 @@
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { EnvelopeIcon } from '@sanity/icons'
+
+export const contactPage = defineType({
+  name: 'contactPage',
+  title: 'Contact Page',
+  type: 'document',
+  icon: EnvelopeIcon,
+  groups: [
+    { name: 'seo', title: 'SEO' },
+    { name: 'info', title: '1. Info card', default: true },
+    { name: 'form', title: '2. Contact form' },
+    { name: 'footprint', title: '3. Global Footprint' },
+  ],
+  fields: [
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seoFields',
+      group: 'seo',
+    }),
+
+    // ── Info card ──────────────────────────────────────────────
+    defineField({
+      name: 'breadcrumbLabel',
+      title: 'Breadcrumb label',
+      type: 'string',
+      group: 'info',
+      initialValue: 'Contact Us',
+    }),
+    defineField({
+      name: 'cardBackground',
+      title: 'Info card background',
+      type: 'imageWithAlt',
+      group: 'info',
+      description: 'Background image behind the left contact card',
+    }),
+    defineField({
+      name: 'profileImage',
+      title: 'Profile photo',
+      type: 'imageWithAlt',
+      group: 'info',
+    }),
+    defineField({
+      name: 'profileName',
+      title: 'Profile name',
+      type: 'string',
+      group: 'info',
+      initialValue: 'Nabeel Danish Rafiq',
+    }),
+    defineField({
+      name: 'profileRole',
+      title: 'Profile role',
+      type: 'string',
+      group: 'info',
+      initialValue: 'Co-Founder & CEO',
+    }),
+    defineField({
+      name: 'headingBefore',
+      title: 'Heading — before italic',
+      type: 'string',
+      group: 'info',
+      initialValue: 'Ready to',
+    }),
+    defineField({
+      name: 'headingItalic',
+      title: 'Heading — italic word(s)',
+      type: 'string',
+      group: 'info',
+      initialValue: 'sauce up',
+    }),
+    defineField({
+      name: 'headingAfter',
+      title: 'Heading — after italic',
+      type: 'string',
+      group: 'info',
+      initialValue: 'your Digital Presence?',
+    }),
+    defineField({
+      name: 'phoneLabel',
+      title: 'Phone section label',
+      type: 'string',
+      group: 'info',
+      initialValue: 'Call us for expert solutions.',
+    }),
+    defineField({
+      name: 'phones',
+      title: 'Phone numbers',
+      type: 'array',
+      group: 'info',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'phone',
+          fields: [
+            defineField({
+              name: 'label',
+              title: 'Display label',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'href',
+              title: 'tel: link',
+              type: 'string',
+              description: 'e.g. +923356787927 (without spaces)',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: { title: 'label', subtitle: 'href' },
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'emailLabel',
+      title: 'Email section label',
+      type: 'string',
+      group: 'info',
+      initialValue: 'Or email us your query.',
+    }),
+    defineField({
+      name: 'email',
+      title: 'Email address',
+      type: 'string',
+      group: 'info',
+      initialValue: 'hello@tamatos.com',
+    }),
+    defineField({
+      name: 'infoCtaLabel',
+      title: 'Info card CTA label',
+      type: 'string',
+      group: 'info',
+      initialValue: 'Book your meeting',
+    }),
+    defineField({
+      name: 'infoCtaHref',
+      title: 'Info card CTA link',
+      type: 'string',
+      group: 'info',
+      description: 'Calendly or any external URL',
+      initialValue: 'https://calendly.com/nabeeldanishrafiq/tamatos',
+    }),
+
+    // ── Form ───────────────────────────────────────────────────
+    defineField({
+      name: 'formHeadingBefore',
+      title: 'Form heading — before italic',
+      type: 'string',
+      group: 'form',
+      initialValue: 'Tell us',
+    }),
+    defineField({
+      name: 'formHeadingItalic',
+      title: 'Form heading — italic word',
+      type: 'string',
+      group: 'form',
+      initialValue: 'about',
+    }),
+    defineField({
+      name: 'formHeadingAfter',
+      title: 'Form heading — after italic',
+      type: 'string',
+      group: 'form',
+      initialValue: 'you',
+    }),
+    defineField({
+      name: 'queryTabLabel',
+      title: 'Query tab label',
+      type: 'string',
+      group: 'form',
+      initialValue: 'I have a Query',
+    }),
+    defineField({
+      name: 'projectTabLabel',
+      title: 'Project tab label',
+      type: 'string',
+      group: 'form',
+      initialValue: 'I have a Project',
+    }),
+    defineField({
+      name: 'querySubmitLabel',
+      title: 'Query submit button',
+      type: 'string',
+      group: 'form',
+      initialValue: 'Submit Query',
+    }),
+    defineField({
+      name: 'projectSubmitLabel',
+      title: 'Project submit button',
+      type: 'string',
+      group: 'form',
+      initialValue: 'Submit Project',
+    }),
+    defineField({
+      name: 'consentText',
+      title: 'Consent checkbox text',
+      type: 'text',
+      rows: 3,
+      group: 'form',
+      initialValue:
+        'I agree to be contacted by team Tamatos, regarding my inquiry. I understand I can reached out at any time.',
+    }),
+    defineField({
+      name: 'budgetLabel',
+      title: 'Budget question label',
+      type: 'string',
+      group: 'form',
+      initialValue: 'What is your budget?',
+    }),
+    defineField({
+      name: 'budgetOptions',
+      title: 'Budget options',
+      type: 'array',
+      group: 'form',
+      of: [defineArrayMember({ type: 'string' })],
+      initialValue: ['Up to $5K', '$5K - $10K', '$10K - $15K', '$15K - $20K'],
+    }),
+    defineField({
+      name: 'serviceInterestLabel',
+      title: 'Service interest label',
+      type: 'string',
+      group: 'form',
+      initialValue: 'Which service are you interested in?',
+    }),
+    defineField({
+      name: 'projectDetailsLabel',
+      title: 'Project details label',
+      type: 'string',
+      group: 'form',
+      initialValue: 'Tell us about your project',
+    }),
+
+    // ── Global Footprint (flat fields so the Studio tab shows content immediately)
+    defineField({
+      name: 'footprintHeadingBefore',
+      title: 'Heading — before accent',
+      type: 'string',
+      group: 'footprint',
+      initialValue: 'Our',
+    }),
+    defineField({
+      name: 'footprintHeadingAccent',
+      title: 'Heading — accent word',
+      type: 'string',
+      group: 'footprint',
+      initialValue: 'Global',
+    }),
+    defineField({
+      name: 'footprintHeadingAfter',
+      title: 'Heading — after accent',
+      type: 'string',
+      group: 'footprint',
+      initialValue: 'Footprint',
+    }),
+    defineField({
+      name: 'footprintDescription',
+      title: 'Description',
+      type: 'text',
+      rows: 3,
+      group: 'footprint',
+      initialValue:
+        'Delivering excellence across multiple regions with a strong commitment to quality, reliability, and global collaboration.',
+    }),
+    defineField({
+      name: 'footprintLocations',
+      title: 'Locations',
+      type: 'array',
+      group: 'footprint',
+      description:
+        'Office locations shown on the map and cards. ISO ids: Pakistan 586, UAE 784, USA 840.',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'footprintLocation',
+          fields: [
+            defineField({
+              name: 'key',
+              title: 'Map key',
+              type: 'string',
+              description: 'Unique id used for map highlight (e.g. pakistan, uae, usa)',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'isoNumericId',
+              title: 'Country ISO numeric id',
+              type: 'number',
+              description: 'Used to highlight the country on the map (Pakistan 586, UAE 784, USA 840)',
+              validation: (Rule) => Rule.required().integer(),
+            }),
+            defineField({
+              name: 'city',
+              title: 'City label',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'countryName',
+              title: 'Country name (map pin)',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'countryCode',
+              title: 'Country code',
+              type: 'string',
+              description: 'e.g. PK, AE, CA',
+              validation: (Rule) => Rule.required().max(4),
+            }),
+            defineField({
+              name: 'flag',
+              title: 'Flag',
+              type: 'imageWithAlt',
+              description: 'Optional — site falls back to built-in flags if empty',
+            }),
+            defineField({
+              name: 'location',
+              title: 'Address / location text',
+              type: 'text',
+              rows: 2,
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'longitude',
+              title: 'Map longitude',
+              type: 'number',
+              validation: (Rule) => Rule.required().min(-180).max(180),
+            }),
+            defineField({
+              name: 'latitude',
+              title: 'Map latitude',
+              type: 'number',
+              validation: (Rule) => Rule.required().min(-90).max(90),
+            }),
+            defineField({
+              name: 'labelOffsetX',
+              title: 'Pin label offset X',
+              type: 'number',
+              initialValue: 0,
+            }),
+            defineField({
+              name: 'labelOffsetY',
+              title: 'Pin label offset Y',
+              type: 'number',
+              initialValue: -22,
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'city',
+              subtitle: 'countryCode',
+              media: 'flag',
+            },
+          },
+        }),
+      ],
+      initialValue: [
+        {
+          key: 'pakistan',
+          isoNumericId: 586,
+          city: 'Karachi, Pakistan',
+          countryName: 'Pakistan',
+          countryCode: 'PK',
+          location:
+            'C-46, Block 13, Gulberg Town, F.B. Area, FB, Area Block 13 Gulberg Town, Karachi, 75950',
+          longitude: 67.01,
+          latitude: 24.86,
+          labelOffsetX: 50,
+          labelOffsetY: -45,
+        },
+        {
+          key: 'uae',
+          isoNumericId: 784,
+          city: 'Dubai, UAE',
+          countryName: 'United Arab Emirates',
+          countryCode: 'AE',
+          location:
+            'Business Central Towers - Tower B, Dubai Internet City, Dubai, United Arab Emirates',
+          longitude: 55.27,
+          latitude: 25.2,
+          labelOffsetX: 50,
+          labelOffsetY: 30,
+        },
+        {
+          key: 'usa',
+          isoNumericId: 840,
+          city: 'Wyoming, USA',
+          countryName: 'United States',
+          countryCode: 'US',
+          location:
+            '1021 E Lincolnway Suite #8014, Cheyenne, Wyoming 82001, United States',
+          longitude: -104.82,
+          latitude: 41.14,
+          labelOffsetX: 0,
+          labelOffsetY: -25,
+        },
+      ],
+    }),
+  ],
+  preview: {
+    prepare() {
+      return { title: 'Contact Page' }
+    },
+  },
+})

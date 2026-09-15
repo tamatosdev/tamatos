@@ -29,7 +29,7 @@ type DefaultStat = {
 
 const defaultStats: DefaultStat[] = [
   {
-    value: "100+",
+    value: "200+",
     before: "Projects Launched Across ",
     italic: "Multiple Markets",
     after: ".",
@@ -53,7 +53,7 @@ const defaultStats: DefaultStat[] = [
     ],
   },
   {
-    value: "50+",
+    value: "85+",
     before: "SMEs, SaaS Companies & ",
     italic: "Established Brands",
     after: " Served Worldwide.",
@@ -63,6 +63,15 @@ const defaultStats: DefaultStat[] = [
     ],
   },
 ];
+
+/** Prefer updated defaults when CMS still has the old figures. */
+function resolveStatValue(cmsValue: string | undefined, fallback: string) {
+  const raw = cmsValue?.trim();
+  if (!raw) return fallback;
+  if (raw === "100+") return "200+";
+  if (raw === "50+") return "85+";
+  return raw;
+}
 
 function renderDescription(
   cmsDescription: string | undefined,
@@ -119,7 +128,7 @@ export default function StatsSection({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-12">
         {defaultStats.map((fallback, index) => {
           const cms = items[index];
-          const value = cms?.value?.trim() || fallback.value;
+          const value = resolveStatValue(cms?.value, fallback.value);
           const description = cms?.description || cms?.title;
 
           return (

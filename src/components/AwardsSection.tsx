@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Asterisk from "@/assets/asteric.png";
+import Clutch5Star from "@/assets/clutch-5star.png";
 import MapImage from "@/assets/map-image.png";
 import MapMobile from "@/assets/map-mobile.png";
 import ClutchBg from "@/assets/clutch-bg.png";
@@ -17,10 +18,11 @@ const defaultAwards = [
 ];
 
 export default function AwardsSection({ data }: { data?: AwardsData }) {
-  const headingMain = data?.headingMain ?? "Not just";
-  const headingEmphasis = data?.headingEmphasis ?? "Trusted.";
-  const headingEnd = data?.headingEnd ?? "Officially recognized.";
-  const subheading = data?.subheading ?? "Four Global Awards. One agency that earned them all.";
+  const cmsHeading = data?.headingMain?.trim();
+  const heading =
+    !cmsHeading || cmsHeading === "Not just"
+      ? "We Don't Like To Brag But..."
+      : cmsHeading;
 
   const awards =
     data?.items?.length
@@ -39,17 +41,29 @@ export default function AwardsSection({ data }: { data?: AwardsData }) {
       <Image src={MapMobile} alt="" fill className="block lg:hidden object-contain object-top opacity-60 pointer-events-none" />
 
       <div className="container relative z-10">
-        <div className="mb-8 lg:mb-16">
-          <h2 className="text-white font-medium leading-[1.1]" style={{ fontSize: "clamp(28.44px, 3.3vw, 50.06px)", letterSpacing: "-0.05em" }}>
-            <span>{headingMain} </span>
-            <em className="italic text-white/60">{headingEmphasis}</em>
-            <Image src={Asterisk} alt="*" width={52} height={52} className="inline-block ml-3" style={{ verticalAlign: "middle" }} />
-            <br />
-            {headingEnd}
+        <div className="mb-8 lg:mb-16 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <h2
+            className="text-white font-medium leading-[1.1] max-w-[18ch] sm:max-w-none"
+            style={{ fontSize: "clamp(28.44px, 3.3vw, 50.06px)", letterSpacing: "-0.05em" }}
+          >
+            {heading}
+            <Image
+              src={Asterisk}
+              alt=""
+              width={52}
+              height={52}
+              className="inline-block ml-2 lg:ml-3 w-7 sm:w-9 lg:w-[52px] h-auto"
+              style={{ verticalAlign: "middle" }}
+            />
           </h2>
-          <p className="text-white/50 font-normal mt-5 leading-normal" style={{ fontSize: "16px", letterSpacing: "-0.03em" }}>
-            {subheading}
-          </p>
+
+          <Image
+            src={Clutch5Star}
+            alt="Clutch 5/5"
+            width={160}
+            height={72}
+            className="h-10 w-auto object-contain sm:h-12 lg:h-14 shrink-0 self-start sm:mt-1"
+          />
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">

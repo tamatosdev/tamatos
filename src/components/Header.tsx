@@ -80,36 +80,20 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
   }, [sidebarOpen]);
 
   useEffect(() => {
-    const originalBodyOverflow = document.body.style.overflow;
-    const originalHtmlOverflow = document.documentElement.style.overflow;
-
     if (sidebarOpen) {
+      window.dispatchEvent(new Event("lenis:stop"));
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
     } else {
-      if (originalBodyOverflow) {
-        document.body.style.overflow = originalBodyOverflow;
-      } else {
-        document.body.style.removeProperty("overflow");
-      }
-      if (originalHtmlOverflow) {
-        document.documentElement.style.overflow = originalHtmlOverflow;
-      } else {
-        document.documentElement.style.removeProperty("overflow");
-      }
+      document.body.style.removeProperty("overflow");
+      document.documentElement.style.removeProperty("overflow");
+      window.dispatchEvent(new Event("lenis:start"));
     }
 
     return () => {
-      if (originalBodyOverflow) {
-        document.body.style.overflow = originalBodyOverflow;
-      } else {
-        document.body.style.removeProperty("overflow");
-      }
-      if (originalHtmlOverflow) {
-        document.documentElement.style.overflow = originalHtmlOverflow;
-      } else {
-        document.documentElement.style.removeProperty("overflow");
-      }
+      document.body.style.removeProperty("overflow");
+      document.documentElement.style.removeProperty("overflow");
+      window.dispatchEvent(new Event("lenis:start"));
     };
   }, [sidebarOpen]);
 

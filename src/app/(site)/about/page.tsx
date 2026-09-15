@@ -316,9 +316,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <ServicesSection />
-          <StatsSection />
-
           {/* How we work */}
           <section className="container py-14 lg:py-24">
             <h2
@@ -385,6 +382,60 @@ export default function AboutPage() {
               ))}
             </div>
           </section>
+
+          {/* Culture statement — bg reveals blue on scroll */}
+          <BodyBgOnView color="#1D17E0" className="py-40 lg:py-64">
+            <div className="container">
+              <div
+                className="font-medium leading-[1.2]"
+                style={{ fontSize: "clamp(28.44px, 3.2vw, 50.06px)", letterSpacing: "-0.03em" }}
+              >
+                <p className="mb-0">
+                  <Image
+                    src={Asterisk}
+                    alt=""
+                    width={52}
+                    height={52}
+                    className="inline-block w-8 lg:w-12 h-auto mr-2 lg:mr-3"
+                    style={{ verticalAlign: "middle" }}
+                  />
+                  <span className="text-white">We Take Work Seriously. </span>
+                  <span className="text-white/50">Ourselves? </span>
+                  <em className="italic text-white font-medium">Not Always</em>
+                  <span className="text-[#9DF560]">.</span>
+                </p>
+
+                <p className="mt-1 text-white/50">
+                  We Got Big Ideas, Cut Chai, Fiery Biryani,{" "}
+                  <Image
+                    src={pill2}
+                    alt=""
+                    className="inline-block h-[0.75em] w-auto mx-1"
+                    style={{ verticalAlign: "middle" }}
+                  />{" "}
+                  Questionable Jokes And, Allegedly, Reading Manga When The Boss
+                  Isn&apos;t Looking.
+                </p>
+
+                <p className="mt-10 lg:mt-14 text-white">
+                  It&apos;s Chaotic<span className="text-[#9DF560]">.</span> It&apos;s
+                  Collaborative<span className="text-[#9DF560]">.</span> It&apos;s Tamatos
+                  <span className="text-[#9DF560]">.</span>
+                </p>
+
+                <p className="mt-1">
+                  <span className="text-white/50">Come Take A Look At Our </span>
+                  <em className="italic text-white font-medium">Unhinged Side</em>
+                  <span className="text-[#9DF560]">.</span>
+                </p>
+              </div>
+            </div>
+          </BodyBgOnView>
+
+          <TeamSection />
+
+          <ServicesSection />
+          <StatsSection />
         </div>
       </div>
 
@@ -421,50 +472,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team statement section */}
-      <BodyBgOnView
-        color="#1D17E0"
-        className="py-40 lg:py-64"
-        style={{ background: "#1D17E0" }}
-      >
-        <div className="container">
-          <p
-            className="font-medium leading-[1.2] "
-            style={{ fontSize: "clamp(28.44px, 3.2vw, 50.06px)", letterSpacing: "-0.03em" }}
-          >
-            {/* Asterisk + bold white opening */}
-            <Image
-              src={Asterisk}
-              alt=""
-              className="inline-block w-8 lg:w-12 h-auto mr-3"
-              style={{ verticalAlign: "middle" }}
-            />
-            <span className="text-white">
-              We&apos;re A Team Of Makers, Thinkers, Explorers And Theatre Singers.
-            </span>
-            {" "}
-            {/* Dimmer second sentence */}
-            <span className="text-white/50">
-              We Approach Work And Play With Curiosity And Experimentation, Using What We Learn To Create Meaningful
-            </span>
-            {" "}
-            <Image
-              src={pill2}
-              alt=""
-              className="inline-block h-[0.75em] w-auto"
-              style={{ verticalAlign: "middle" }}
-            />
-            {" "}
-            <span className="text-white/50">
-              Digital Products That Connect With People,
-            </span>
-            {" "}
-            <span className="text-white">Just Like You.</span>
-          </p>
-        </div>
-      </BodyBgOnView>
-
-      <TeamSection />
       <div className="about-last-3 pt-14 lg:pt-24">
 
       <ReviewTab />

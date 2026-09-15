@@ -196,7 +196,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
-  overflow-x: hidden;
+  /* clip avoids Lenis + overflow-x:hidden scroll lock bugs */
+  overflow-x: clip;
 }
 
 /* Banner hero pills — only adjust horizontal on lg–1600; vertical (top) unchanged */

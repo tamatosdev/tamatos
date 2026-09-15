@@ -224,7 +224,7 @@ export const statItem = defineType({
       title: 'Value',
       type: 'string',
       validation: (r) => r.required(),
-      description: 'Large number shown below the pills (e.g. 100+)',
+      description: 'Large number shown below the pills (e.g. 200+)',
     }),
     defineField({
       name: 'description',
@@ -515,10 +515,30 @@ export const awardsSection = defineType({
   title: 'Awards',
   type: 'object',
   fields: [
-    defineField({ name: 'headingMain', title: 'Heading (main)', type: 'string', initialValue: 'Not just' }),
-    defineField({ name: 'headingEmphasis', title: 'Heading (italic)', type: 'string', initialValue: 'Trusted.' }),
-    defineField({ name: 'headingEnd', title: 'Heading (end)', type: 'string', initialValue: 'Officially recognized.' }),
-    defineField({ name: 'subheading', title: 'Subheading', type: 'string' }),
+    defineField({
+      name: 'headingMain',
+      title: 'Heading',
+      type: 'string',
+      initialValue: "We Don't Like To Brag But...",
+    }),
+    defineField({
+      name: 'headingEmphasis',
+      title: 'Heading (italic) — unused',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'headingEnd',
+      title: 'Heading (end) — unused',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'subheading',
+      title: 'Subheading — unused',
+      type: 'string',
+      hidden: true,
+    }),
     defineField({
       name: 'items',
       title: 'Awards',
@@ -645,13 +665,18 @@ export const homeBlogSection = defineType({
   title: 'Home Blog Section',
   type: 'object',
   fields: [
-    defineField({ name: 'headingBefore', title: 'Heading start', type: 'string', initialValue: 'Get Real' }),
-    defineField({ name: 'headingEmphasis', title: 'Heading emphasis (italic)', type: 'string' }),
+    defineField({ name: 'headingBefore', title: 'Heading start', type: 'string', initialValue: 'The' }),
+    defineField({
+      name: 'headingEmphasis',
+      title: 'Heading emphasis (italic)',
+      type: 'string',
+      initialValue: 'Internet',
+    }),
     defineField({
       name: 'headingAfter',
       title: 'Heading end',
       type: 'string',
-      initialValue: 'and Proven Tactics For Digital Success',
+      initialValue: 'Does Not Stand Still, Neither Do We',
     }),
     defineField({ name: 'button', title: 'Read more button', type: 'link' }),
     defineField({

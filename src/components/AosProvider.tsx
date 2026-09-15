@@ -94,17 +94,21 @@ export default function AosProvider({ children }: { children: React.ReactNode })
       if (cancelled) return;
       applyRevealAnimations(pathname);
       AOS.refreshHard();
+      // Keep Lenis in sync after AOS mutates transforms / layout
+      window.dispatchEvent(new Event("lenis:resize"));
     };
 
     const raf = window.requestAnimationFrame(run);
     const t1 = window.setTimeout(run, 120);
     const t2 = window.setTimeout(run, 450);
+    const t3 = window.setTimeout(run, 1000);
 
     return () => {
       cancelled = true;
       window.cancelAnimationFrame(raf);
       window.clearTimeout(t1);
       window.clearTimeout(t2);
+      window.clearTimeout(t3);
     };
   }, [pathname]);
 

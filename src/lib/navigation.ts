@@ -1,6 +1,6 @@
 import { sanityClient } from '@/sanity/lib/client'
 import { siteNavigationQuery } from '@/sanity/queries/navigation'
-import { isLivePath, serviceCategoryPath } from '@/lib/routes'
+import { isLivePath, serviceCategoryPath, sortByServiceCategoryOrder } from '@/lib/routes'
 
 export type MegaMenuItem = {
   label: string
@@ -44,43 +44,6 @@ export const defaultSiteNavigation: SiteNavigation = {
       menuType: 'megaMenu',
       megaMenuCategories: [
         {
-          label: 'Digital',
-          hoverColor: '#9DF560',
-          href: '/services/digital',
-          items: [
-            {
-              label: 'Social Media Marketing',
-              subtext: 'Grow your social presence',
-              href: '/services/digital',
-            },
-            {
-              label: 'Influencer Marketing',
-              subtext: 'Connect with trusted voices',
-              href: '/services/digital',
-            },
-            {
-              label: 'Email & WhatsApp Automation',
-              subtext: 'Automate customer communication',
-              href: '/services/digital',
-            },
-            {
-              label: 'Analytics & Growth Optimization',
-              subtext: 'Turn data into growth',
-              href: '/services/digital',
-            },
-            {
-              label: 'Search Engine Optimization',
-              subtext: 'Boost search visibility',
-              href: '/services/digital',
-            },
-            {
-              label: 'Content Strategy & Production',
-              subtext: 'Content that drives results',
-              href: '/services/digital',
-            },
-          ],
-        },
-        {
           label: 'Development',
           hoverColor: '#FC7031',
           href: '/services/development',
@@ -114,6 +77,43 @@ export const defaultSiteNavigation: SiteNavigation = {
               label: 'Team Extension',
               subtext: 'Scale your dev capacity',
               href: '/services/development',
+            },
+          ],
+        },
+        {
+          label: 'Digital',
+          hoverColor: '#9DF560',
+          href: '/services/digital',
+          items: [
+            {
+              label: 'Social Media Marketing',
+              subtext: 'Grow your social presence',
+              href: '/services/digital',
+            },
+            {
+              label: 'Influencer Marketing',
+              subtext: 'Connect with trusted voices',
+              href: '/services/digital',
+            },
+            {
+              label: 'Email & WhatsApp Automation',
+              subtext: 'Automate customer communication',
+              href: '/services/digital',
+            },
+            {
+              label: 'Analytics & Growth Optimization',
+              subtext: 'Turn data into growth',
+              href: '/services/digital',
+            },
+            {
+              label: 'Search Engine Optimization',
+              subtext: 'Boost search visibility',
+              href: '/services/digital',
+            },
+            {
+              label: 'Content Creation and Strategy',
+              subtext: 'Content that drives results',
+              href: '/services/digital',
             },
           ],
         },
@@ -199,22 +199,25 @@ function withSafeNavigationLinks(items: NavItem[]): NavItem[] {
       const categories = item.megaMenuCategories ?? item.megaMenu?.categories
 
       if (categories?.length) {
-        const patched = categories.map((category) => {
-          const categoryHref =
-            category.href && isLivePath(category.href)
-              ? category.href
-              : hrefByLabel.get(category.label.toLowerCase()) ??
-                serviceCategoryPath(category.label)
+        const patched = sortByServiceCategoryOrder(
+          categories.map((category) => {
+            const categoryHref =
+              category.href && isLivePath(category.href)
+                ? category.href
+                : hrefByLabel.get(category.label.toLowerCase()) ??
+                  serviceCategoryPath(category.label)
 
-          return {
-            ...category,
-            href: categoryHref,
-            items: (category.items ?? []).map((menuItem) => ({
-              ...menuItem,
-              href: isLivePath(menuItem.href) ? menuItem.href : categoryHref,
-            })),
-          }
-        })
+            return {
+              ...category,
+              href: categoryHref,
+              items: (category.items ?? []).map((menuItem) => ({
+                ...menuItem,
+                href: isLivePath(menuItem.href) ? menuItem.href : categoryHref,
+              })),
+            }
+          }),
+          (category) => category.label
+        )
 
         const next: NavItem = {
           ...item,

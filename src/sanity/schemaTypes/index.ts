@@ -6,6 +6,7 @@ import { blockContent } from './blockContent'
 import { link } from './objects/link'
 import { imageWithAlt } from './objects/imageWithAlt'
 import { homePage } from './homePage'
+import { contactPage } from './contactPage'
 import { portfolio, portfolioServiceTag, portfolioIndustryTag } from './portfolio'
 import {
   heroDesktopPill,
@@ -94,6 +95,7 @@ export const schemaTypes = [
   // Documents
   siteNavigation,
   homePage,
+  contactPage,
   portfolio,
   portfolioServiceTag,
   portfolioIndustryTag,

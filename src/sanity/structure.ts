@@ -1,6 +1,6 @@
 import type { StructureResolver } from "sanity/structure";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
-import { FileText, User, Tag, FolderOpen, Plus, Home, Briefcase, Menu } from "lucide-react";
+import { FileText, User, Tag, FolderOpen, Plus, Home, Briefcase, Menu, Mail } from "lucide-react";
 
 const hiddenTypes = [
   "post",
@@ -8,6 +8,7 @@ const hiddenTypes = [
   "tag",
   "author",
   "homePage",
+  "contactPage",
   "siteNavigation",
   "portfolio",
   "portfolioServiceTag",
@@ -26,6 +27,16 @@ export const structure: StructureResolver = (S, context) =>
             .schemaType("homePage")
             .documentId("homePage")
             .title("Home Page")
+        ),
+
+      S.listItem()
+        .title("Contact Page")
+        .icon(Mail)
+        .child(
+          S.document()
+            .schemaType("contactPage")
+            .documentId("contactPage")
+            .title("Contact Page")
         ),
 
       S.listItem()
