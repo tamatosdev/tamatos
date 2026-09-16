@@ -44,7 +44,7 @@ export default async function WorkPage() {
               <div
                 className="inline-flex w-fit items-center gap-2 px-5 py-2 rounded-full text-white/70 font-medium mb-8 lg:mb-10"
                 style={{
-                  fontSize: "16px",
+                  fontSize: "18px",
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid #ffffff26",
                   boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",
@@ -73,7 +73,7 @@ export default async function WorkPage() {
                   <Link
                     href="/contact"
                     className="inline-flex items-center justify-center rounded-full bg-white text-[#0A0A0C] font-medium hover:bg-[#9DF560] transition-colors duration-300 shrink-0"
-                    style={{ fontSize: "clamp(16px, 1.15vw, 19.56px)", padding: "16px 32px", letterSpacing: "-0.02em" }}
+                    style={{ fontSize: "clamp(18px, 1.15vw, 19.56px)", padding: "16px 32px", letterSpacing: "-0.02em" }}
                   >
                     Tell Us About Your Project
                   </Link>

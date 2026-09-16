@@ -14,8 +14,13 @@ const postFields = /* groq */ `
   },
   author->{
     name,
+    designation,
     image {
       asset->{ url }
+    },
+    socialProfiles[] {
+      name,
+      url
     }
   }
 `;

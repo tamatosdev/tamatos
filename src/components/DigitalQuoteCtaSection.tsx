@@ -54,7 +54,7 @@ export default function DigitalQuoteCtaSection() {
                 <div>
                   <p
                     className="font-medium leading-tight tracking-[-0.03em] text-[#0A0A0C]"
-                    style={{ fontSize: "clamp(16px, 1.2vw, 17.78px)" }}
+                    style={{ fontSize: "clamp(18px, 1.2vw, 18px)" }}
                   >
                     Nabeel Danish Rafiq
                   </p>
@@ -73,7 +73,7 @@ export default function DigitalQuoteCtaSection() {
                 href="/contact"
                 className="group inline-flex w-fit shrink-0 items-center gap-2"
               >
-                <span className="inline-flex items-center justify-center rounded-full bg-[var(--service-accent,#9DF560)] px-7 py-3.5 text-[16px] font-medium leading-none tracking-[-0.03em] text-[#0A0A0C] transition-colors duration-300 group-hover:bg-[#0A0A0C] group-hover:text-white lg:px-8 lg:text-[16px]">
+                <span className="inline-flex items-center justify-center rounded-full bg-[var(--service-accent,#9DF560)] px-7 py-3.5 text-[18px] font-medium leading-none tracking-[-0.03em] text-[#0A0A0C] transition-colors duration-300 group-hover:bg-[#0A0A0C] group-hover:text-white lg:px-8 lg:text-[18px]">
                   Book a Strategy Session
                 </span>
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#0A0A0C] text-white transition-colors duration-300 group-hover:bg-[var(--service-accent,#9DF560)] group-hover:text-[#0A0A0C]">

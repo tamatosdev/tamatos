@@ -38,7 +38,7 @@ export default function DigitalGoalsCtaSection() {
             <div className="flex flex-1 items-center px-6 py-8 lg:px-10 lg:py-10">
               <p
                 className="font-medium leading-[1.45] tracking-[-0.02em] text-[#0A0A0C]/85"
-                style={{ fontSize: "16px" }}
+                style={{ fontSize: "18px" }}
               >
                 This enables us to create marketing strategies that are purposeful, measurable, and
                 built around real business outcomes. Because great marketing isn&apos;t about chasing

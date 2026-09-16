@@ -135,7 +135,7 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
           {link.href ? (
             <Link
               href={link.href}
-              className={`text-[15px] xl:text-[16px] font-medium whitespace-nowrap transition-colors duration-200 ${
+              className={`text-[18px] xl:text-[18px] font-medium whitespace-nowrap transition-colors duration-200 ${
                 isActive || isMegaOpen ? "text-[#0A0A0C]" : "text-white hover:text-white/70"
               }`}
             >
@@ -145,7 +145,7 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
             <button
               type="button"
               onClick={() => setOpenMegaMenu(isMegaOpen ? null : link.label)}
-              className={`text-[15px] xl:text-[16px] font-medium whitespace-nowrap transition-colors duration-200 ${
+              className={`text-[18px] xl:text-[18px] font-medium whitespace-nowrap transition-colors duration-200 ${
                 isActive || isMegaOpen ? "text-[#0A0A0C]" : "text-white hover:text-white/70"
               }`}
             >
@@ -175,7 +175,7 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
       <Link
         key={link.label}
         href={link.href}
-        className={`text-[15px] xl:text-[16px] font-medium transition-all duration-200 whitespace-nowrap px-[15px] py-2.5 rounded-full ${
+        className={`text-[18px] xl:text-[18px] font-medium transition-all duration-200 whitespace-nowrap px-[15px] py-2.5 rounded-full ${
           isActive ? "bg-white text-[#0A0A0C]" : "text-white hover:text-white/70"
         }`}
       >
@@ -252,7 +252,7 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
 
           <Link
             href={contactButton?.href || "/contact"}
-            className={`hidden lg:inline-flex px-6 xl:px-10 py-4 xl:py-5 rounded-full text-[15px] xl:text-[16px] font-medium text-white border border-white/30 hover:bg-white hover:text-black hover:border-white leading-none transition-all duration-500 ${scrolled ? "opacity-0 pointer-events-none -translate-y-2" : "opacity-100 translate-y-0"}`}
+            className={`hidden lg:inline-flex px-6 xl:px-10 py-4 xl:py-5 rounded-full text-[18px] xl:text-[18px] font-medium text-white border border-white/30 hover:bg-white hover:text-black hover:border-white leading-none transition-all duration-500 ${scrolled ? "opacity-0 pointer-events-none -translate-y-2" : "opacity-100 translate-y-0"}`}
           >
             {contactButton?.label || "Contact Us"}
           </Link>
@@ -450,7 +450,7 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
           <Link
             href={contactButton?.href || "/contact"}
             onClick={() => setSidebarOpen(false)}
-            className="flex w-full items-center justify-center rounded-full py-3.5 text-[15px] font-medium text-white transition-all duration-300 hover:bg-white hover:text-black"
+            className="flex w-full items-center justify-center rounded-full py-3.5 text-[18px] font-medium text-white transition-all duration-300 hover:bg-white hover:text-black"
             style={{ border: "1px solid rgba(255,255,255,0.25)" }}
           >
             {contactButton?.label || "Contact Us"}

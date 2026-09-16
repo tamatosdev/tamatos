@@ -48,13 +48,13 @@ export default function CtaSection({ data }: { data?: CtaCardData }) {
           <div>
             <p
               className="text-[#0A0A0C] font-medium leading-tight tracking-[-0.03em]"
-              style={{ fontSize: "clamp(16px, 1.4vw, 17.78px)" }}
+              style={{ fontSize: "clamp(18px, 1.4vw, 18px)" }}
             >
               {personName}
             </p>
             <p
               className="text-[#0A0A0C]/80 font-normal uppercase tracking-[-0.03em] mt-0.5"
-              style={{ fontSize: "clamp(13px, 1.1vw, 16px)" }}
+              style={{ fontSize: "clamp(18px, 1.1vw, 18px)" }}
             >
               {personRole}
             </p>
@@ -78,7 +78,7 @@ export default function CtaSection({ data }: { data?: CtaCardData }) {
         <div className="flex flex-col items-start gap-2 text-left w-full lg:px-10">
           <p
             className="text-[#0A0A0C]/80 font-normal leading-normal tracking-[-0.03em]"
-            style={{ fontSize: "clamp(14px, 1.3vw, 16px)" }}
+            style={{ fontSize: "clamp(18px, 1.3vw, 18px)" }}
           >
             {description}
           </p>
@@ -91,14 +91,14 @@ export default function CtaSection({ data }: { data?: CtaCardData }) {
               <span className="w-10 h-10 rounded-full bg-[#0A0A0C] flex items-center justify-center shrink-0 overflow-hidden">
                 <Image src={buttonicon1} alt="" width={32} height={32} className="object-cover" />
               </span>
-              <span className="text-[#0A0A0C] font-bold text-[16px] leading-none shrink-0">+</span>
+              <span className="text-[#0A0A0C] font-bold text-[18px] leading-none shrink-0">+</span>
               <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden">
                 <Image src={buttonicon2} alt="" width={32} height={32} className="object-cover" />
               </span>
             </span>
             <span
               className="text-[#0A0A0C] font-medium leading-none tracking-[-0.03em] whitespace-nowrap"
-              style={{ fontSize: "clamp(14px, 1.3vw, 16px)" }}
+              style={{ fontSize: "clamp(18px, 1.3vw, 18px)" }}
             >
               {buttonLabel}
             </span>

@@ -90,7 +90,7 @@ export default function DesignFaqSection() {
                   >
                     <span
                       className="pr-2 font-medium leading-[1.35] tracking-[-0.03em] text-white"
-                      style={{ fontSize: "clamp(16px, 1.2vw, 18px)" }}
+                      style={{ fontSize: "clamp(18px, 1.2vw, 18px)" }}
                     >
                       <span className="text-[var(--service-accent,#03E4AC)]">Q. </span>
                       {faq.question}
@@ -104,7 +104,7 @@ export default function DesignFaqSection() {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p className="max-w-[560px] pb-6 text-[14px] leading-[1.55] tracking-[-0.02em] text-white/55 lg:pb-7 lg:text-[15px]">
+                      <p className="max-w-[560px] pb-6 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/55 lg:pb-7">
                         {faq.answer}
                       </p>
                     </div>

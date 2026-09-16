@@ -217,7 +217,7 @@ export default function Banner({ data }: { data?: HeroData }) {
             href={ctaHref}
             className="group inline-flex items-center gap-4 sm:gap-6 rounded-full pl-[20px] sm:pl-[26px] pr-[12px] sm:pr-[15px] py-[10px] bg-white hover:bg-[#9DF560] transition-colors duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
           >
-            <span className="text-[#0A0A0C] font-medium text-[16px] sm:text-[21.33px] leading-none tracking-[-0.05em]">
+            <span className="text-[#0A0A0C] font-medium text-[18px] sm:text-[21.33px] leading-none tracking-[-0.05em]">
               {ctaLabel}
             </span>
             <div className="relative w-[64px] sm:w-[80px] h-[36px] sm:h-[43px] rounded-[40px] overflow-hidden flex-shrink-0 transform-[translateZ(0)]">

@@ -84,7 +84,7 @@ export default async function ContactPage() {
             <div
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-white/70 font-medium"
               style={{
-                fontSize: "16px",
+                fontSize: "18px",
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid #ffffff26",
                 boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",
@@ -138,7 +138,7 @@ export default async function ContactPage() {
                       {profileName}
                     </p>
                     <p
-                      className="text-white/50 text-[16px] font-normal tracking-widest uppercase mt-0.5"
+                      className="text-white/50 text-[18px] font-normal tracking-widest uppercase mt-0.5"
                       style={{ letterSpacing: "-0.03em" }}
                     >
                       {profileRole}
@@ -158,7 +158,7 @@ export default async function ContactPage() {
 
                 <div className="flex flex-1 flex-col justify-center gap-8 lg:gap-10">
                   <div>
-                    <p className="text-white/50 text-[16px] font-medium mb-2">{phoneLabel}</p>
+                    <p className="text-white/50 text-[18px] font-medium mb-2">{phoneLabel}</p>
                     <div className="flex items-center gap-3 flex-wrap">
                       {phones.map((phone, index) => (
                         <span key={`${phone.href}-${index}`} className="contents">
@@ -175,7 +175,7 @@ export default async function ContactPage() {
                   </div>
 
                   <div>
-                    <p className="text-white/50 text-[16px] font-medium mb-2">{emailLabel}</p>
+                    <p className="text-white/50 text-[18px] font-medium mb-2">{emailLabel}</p>
                     <a
                       href={`mailto:${email}`}
                       className="text-white font-medium text-[17.78px] sm:text-[21.33px] hover:text-[#9DF560] transition-colors duration-200"
@@ -191,7 +191,7 @@ export default async function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex w-full items-center justify-center rounded-full bg-[#9DF560] text-[#0A0A0C] font-semibold hover:bg-[#8ae84d] transition-colors duration-200"
-                    style={{ fontSize: "16px", padding: "14px 28px" }}
+                    style={{ fontSize: "18px", padding: "14px 28px" }}
                   >
                     {infoCtaLabel}
                   </a>

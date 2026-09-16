@@ -92,10 +92,10 @@ function FloatingInput({
         placeholder=" "
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="peer w-full bg-transparent border-b border-black/20 pt-5 pb-2 text-[#0A0A0C] text-[16px] font-normal outline-none focus:border-black/60 transition-colors duration-200"
+        className="peer w-full bg-transparent border-b border-black/20 pt-5 pb-2 text-[#0A0A0C] text-[18px] font-normal outline-none focus:border-black/60 transition-colors duration-200"
         suppressHydrationWarning
       />
-      <label className="absolute left-0 top-3.5 text-black font-medium text-[16px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-black/50">
+      <label className="absolute left-0 top-3.5 text-black font-medium text-[18px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-black/50">
         {label}
         {required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
@@ -122,10 +122,10 @@ function FloatingTextarea({
         rows={3}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="peer w-full bg-transparent border-b border-black/20 pt-5 pb-2 text-[#0A0A0C] text-[16px] font-normal outline-none focus:border-black/60 transition-colors duration-200 resize-none"
+        className="peer w-full bg-transparent border-b border-black/20 pt-5 pb-2 text-[#0A0A0C] text-[18px] font-normal outline-none focus:border-black/60 transition-colors duration-200 resize-none"
         suppressHydrationWarning
       />
-      <label className="absolute left-0 top-3.5 text-black font-medium text-[16px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-black/50">
+      <label className="absolute left-0 top-3.5 text-black font-medium text-[18px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-black/50">
         {label}
         {required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
@@ -318,7 +318,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
         <button
           type="button"
           onClick={() => setTab("project")}
-          className="rounded-full px-5 py-2.5 text-[16px] font-medium transition-all duration-200"
+          className="rounded-full px-5 py-2.5 text-[18px] font-medium transition-all duration-200"
           style={{
             background: tab === "project" ? "#0A0A0C" : "transparent",
             color: tab === "project" ? "#fff" : "#0A0A0C",
@@ -330,7 +330,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
         <button
           type="button"
           onClick={() => setTab("query")}
-          className="rounded-full px-5 py-2.5 text-[16px] font-medium transition-all duration-200"
+          className="rounded-full px-5 py-2.5 text-[18px] font-medium transition-all duration-200"
           style={{
             background: tab === "query" ? "#0A0A0C" : "transparent",
             color: tab === "query" ? "#fff" : "#0A0A0C",
@@ -391,7 +391,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             />
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-2">
-              <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer text-black/70 text-[13px] leading-snug">
+              <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer text-black/70 text-[18px] leading-snug">
                 <input
                   type="checkbox"
                   required
@@ -405,7 +405,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                 type="submit"
                 disabled={status === "sending"}
                 className="w-full rounded-full bg-[#9DF560] text-[#0A0A0C] font-semibold hover:bg-[#8ae84d] transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-                style={{ fontSize: "16px", padding: "14px 42px" }}
+                style={{ fontSize: "18px", padding: "14px 42px" }}
               >
                 {status === "sending" ? "Sending..." : querySubmitLabel}
               </button>
@@ -440,7 +440,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             </div>
 
             <div>
-              <p className="text-[#0A0A0C] font-medium text-[16px] mb-3">
+              <p className="text-[#0A0A0C] font-medium text-[18px] mb-3">
                 {budgetLabel}
                 <span className="text-red-500 ml-0.5">*</span>
               </p>
@@ -450,7 +450,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                     key={opt}
                     type="button"
                     onClick={() => setProject((p) => ({ ...p, budget: opt }))}
-                    className="rounded-full px-5 py-2.5 text-[14px] font-medium transition-all duration-200"
+                    className="rounded-full px-5 py-2.5 text-[18px] font-medium transition-all duration-200"
                     style={{
                       border: "1.5px solid",
                       borderColor: project.budget === opt ? "#0A0A0C" : "rgba(10,10,12,0.2)",
@@ -465,7 +465,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             </div>
 
             <div className="relative">
-              <label className="block text-[#0A0A0C] font-medium text-[16px] mb-2">
+              <label className="block text-[#0A0A0C] font-medium text-[18px] mb-2">
                 {serviceInterestLabel}
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
@@ -473,7 +473,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                 required
                 value={project.service}
                 onChange={(e) => setProject((p) => ({ ...p, service: e.target.value }))}
-                className="w-full appearance-none bg-transparent border-b border-black/20 pt-1 pb-2.5 text-[#0A0A0C] text-[16px] font-normal outline-none focus:border-black/60 transition-colors duration-200 pr-8"
+                className="w-full appearance-none bg-transparent border-b border-black/20 pt-1 pb-2.5 text-[#0A0A0C] text-[18px] font-normal outline-none focus:border-black/60 transition-colors duration-200 pr-8"
               >
                 <option value="" disabled>
                   Select a service
@@ -496,7 +496,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             </div>
 
             <div>
-              <p className="text-[#0A0A0C] font-medium text-[16px] mb-3">
+              <p className="text-[#0A0A0C] font-medium text-[18px] mb-3">
                 {projectDetailsLabel}
                 <span className="text-red-500 ml-0.5">*</span>
               </p>
@@ -508,7 +508,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                 <button
                   type="button"
                   onClick={() => setProjectDetailMode("text")}
-                  className="rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-200"
+                  className="rounded-full px-4 py-1.5 text-[18px] font-medium transition-all duration-200"
                   style={{
                     background: projectDetailMode === "text" ? "#0A0A0C" : "transparent",
                     color: projectDetailMode === "text" ? "#fff" : "#0A0A0C",
@@ -519,7 +519,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                 <button
                   type="button"
                   onClick={() => setProjectDetailMode("upload")}
-                  className="rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-200"
+                  className="rounded-full px-4 py-1.5 text-[18px] font-medium transition-all duration-200"
                   style={{
                     background: projectDetailMode === "upload" ? "#0A0A0C" : "transparent",
                     color: projectDetailMode === "upload" ? "#fff" : "#0A0A0C",
@@ -560,23 +560,23 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                       </svg>
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-[15px] font-medium text-[#0A0A0C]">
+                      <span className="block text-[18px] font-medium text-[#0A0A0C]">
                         {projectFile ? projectFile.name : "Upload brief / deck"}
                       </span>
-                      <span className="block text-[12px] text-black/55 mt-0.5">
+                      <span className="block text-[18px] text-black/55 mt-0.5">
                         PDF, DOC, or PPT — max 2MB
                       </span>
                     </span>
                   </label>
                   {fileError && (
-                    <p className="mt-2 text-[13px] text-red-600">{fileError}</p>
+                    <p className="mt-2 text-[18px] text-red-600">{fileError}</p>
                   )}
                 </div>
               )}
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-2">
-              <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer text-black/70 text-[13px] leading-snug">
+              <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer text-black/70 text-[18px] leading-snug">
                 <input
                   type="checkbox"
                   required
@@ -590,7 +590,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                 type="submit"
                 disabled={status === "sending"}
                 className="w-full rounded-full bg-[#9DF560] text-[#0A0A0C] font-semibold hover:bg-[#8ae84d] transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-                style={{ fontSize: "16px", padding: "14px 42px" }}
+                style={{ fontSize: "18px", padding: "14px 42px" }}
               >
                 {status === "sending" ? "Sending..." : projectSubmitLabel}
               </button>

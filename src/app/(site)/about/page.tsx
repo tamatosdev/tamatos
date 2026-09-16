@@ -52,7 +52,7 @@ export default function AboutPage() {
             <div
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-white/70 font-medium"
               style={{
-                fontSize: "16px",
+                fontSize: "18px",
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid #ffffff26",
                 boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",
@@ -89,7 +89,7 @@ export default function AboutPage() {
                   <Link
                     href="/contact"
                     className="hidden lg:inline-flex items-center justify-center rounded-full bg-white text-[#0A0A0C] font-medium hover:bg-[#9DF560] transition-colors duration-300"
-                    style={{ fontSize: "16px", padding: "18px 40px", letterSpacing: "-0.02em" }}
+                    style={{ fontSize: "18px", padding: "18px 40px", letterSpacing: "-0.02em" }}
                   >
                     Start a Project
                   </Link>
@@ -99,7 +99,7 @@ export default function AboutPage() {
               <Link
                 href="/contact"
                 className="mt-6 inline-flex items-center justify-center rounded-full bg-white text-[#0A0A0C] font-medium hover:bg-[#9DF560] transition-colors duration-300 lg:hidden"
-                style={{ fontSize: "16px", padding: "12px 28px", letterSpacing: "-0.02em" }}
+                style={{ fontSize: "18px", padding: "12px 28px", letterSpacing: "-0.02em" }}
               >
                 Start a Project
               </Link>
@@ -168,7 +168,7 @@ export default function AboutPage() {
           <div className="mt-10 lg:mt-16 pb-8 lg:pb-12 flex flex-col items-center gap-4">
             <p
               className="text-white/80 font-normal text-center leading-snug"
-              style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.02em" }}
             >
               Delivering World-Class Quality<br />Beyond the Ordinary.
             </p>
@@ -303,7 +303,7 @@ export default function AboutPage() {
                           </div>
                           <p
                             className="text-white font-normal leading-snug"
-                            style={{ fontSize: "clamp(15px, 1.1vw, 16px)", letterSpacing: "-0.02em" }}
+                            style={{ fontSize: "clamp(18px, 1.1vw, 18px)", letterSpacing: "-0.02em" }}
                           >
                             {text}
                           </p>
@@ -367,13 +367,13 @@ export default function AboutPage() {
                   <div className="relative z-10">
                     <h3
                       className="mb-3 font-semibold text-white"
-                      style={{ fontSize: "clamp(16px, 1.4vw, 21.33px)", letterSpacing: "-0.03em" }}
+                      style={{ fontSize: "clamp(18px, 1.4vw, 21.33px)", letterSpacing: "-0.03em" }}
                     >
                       {card.title}
                     </h3>
                     <p
                       className="font-normal leading-relaxed text-white/70"
-                      style={{ fontSize: "clamp(13px, 0.95vw, 15px)" }}
+                      style={{ fontSize: "clamp(18px, 0.95vw, 18px)" }}
                     >
                       {card.desc}
                     </p>
@@ -463,7 +463,7 @@ export default function AboutPage() {
               Work We Are <em className="italic font-normal text-white/50">Proud</em> Of
               <span className="text-[#9DF560]">.</span>
             </h2>
-            <p className="mt-5 max-w-[720px] text-[16px] leading-[1.55] tracking-[-0.02em] text-white/80 lg:mt-6 lg:text-[16px]">
+            <p className="mt-5 max-w-[720px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/80 lg:mt-6 lg:text-[18px]">
               From websites and digital products to brands and campaigns, we&apos;ve helped businesses
               turn ideas into things people can actually experience.
             </p>

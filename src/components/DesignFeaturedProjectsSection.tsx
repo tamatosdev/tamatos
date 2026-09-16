@@ -87,7 +87,7 @@ function FeaturedProjectCard({ project }: { project: FeaturedProject }) {
         <div className="flex flex-col justify-end gap-8 pb-2 lg:order-4 lg:gap-10 lg:pb-4 lg:pr-2">
           <p
             className="max-w-[520px] font-normal leading-[1.4] tracking-[-0.03em] text-white"
-            style={{ fontSize: "clamp(16px, 1.55vw, 21.33px)" }}
+            style={{ fontSize: "clamp(18px, 1.55vw, 21.33px)" }}
           >
             {project.description}
             <span className="text-[var(--service-accent,#03E4AC)]">.</span>
@@ -95,7 +95,7 @@ function FeaturedProjectCard({ project }: { project: FeaturedProject }) {
 
           <Link
             href={project.href}
-            className="group inline-flex w-fit items-center gap-2.5 text-[16px] font-medium tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[var(--service-accent,#03E4AC)] lg:text-[17.78px]"
+            className="group inline-flex w-fit items-center gap-2.5 text-[18px] font-medium tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[var(--service-accent,#03E4AC)] lg:text-[17.78px]"
           >
             Read full Case Study
             <Image

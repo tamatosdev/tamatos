@@ -133,7 +133,7 @@ export default function Footer() {
             <Link href="/">
               <Image src={Logo} alt="Tamatos" width={160} height={20} className="w-40 lg:w-60" />
             </Link>
-            <p className="text-white font-medium leading-relaxed mt-3 lg:mt-7.5" style={{ fontSize: "clamp(16px, 1.3vw, 17.78px)", letterSpacing: "-0.02em" }}>
+            <p className="text-white font-medium leading-relaxed mt-3 lg:mt-7.5" style={{ fontSize: "clamp(18px, 1.3vw, 18px)", letterSpacing: "-0.02em" }}>
               Ready to Thrive Online?<br />Drop us a Line
             </p>
             <div className="flex items-center">
@@ -156,14 +156,14 @@ export default function Footer() {
                   <Link
                     href={col.titleHref}
                     className="text-white font-medium transition-colors duration-200 hover:text-white/80"
-                    style={{ fontSize: "clamp(16px, 1.2vw, 19.56px)", letterSpacing: "-0.05em" }}
+                    style={{ fontSize: "clamp(18px, 1.2vw, 19.56px)", letterSpacing: "-0.05em" }}
                   >
                     {col.title}
                   </Link>
                 ) : (
                   <p
                     className="text-white font-medium"
-                    style={{ fontSize: "clamp(16px, 1.2vw, 19.56px)", letterSpacing: "-0.05em" }}
+                    style={{ fontSize: "clamp(18px, 1.2vw, 19.56px)", letterSpacing: "-0.05em" }}
                   >
                     {col.title}
                   </p>
@@ -174,7 +174,7 @@ export default function Footer() {
                       <Link
                         href={link.href}
                         className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
-                        style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
+                        style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
                       >
                         {link.label}
                       </Link>
@@ -191,7 +191,7 @@ export default function Footer() {
           <div className="hidden lg:block" /> {/* spacer — desktop only */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
             <div className="flex flex-col gap-3 lg:gap-4">
-              <p className="text-white font-medium" style={{ fontSize: "clamp(16px, 1.2vw, 17.78px)", letterSpacing: "-0.05em" }}>
+              <p className="text-white font-medium" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.05em" }}>
                 Industries
               </p>
               <ul className="flex flex-col gap-2">
@@ -199,7 +199,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <span
                       className="text-white/70 font-normal"
-                      style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
+                      style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
                     >
                       {link.label}
                     </span>
@@ -208,7 +208,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="flex flex-col gap-3 lg:gap-4">
-              <p className="text-white font-medium" style={{ fontSize: "clamp(16px, 1.2vw, 17.78px)", letterSpacing: "-0.05em" }}>
+              <p className="text-white font-medium" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.05em" }}>
                 Company
               </p>
               <ul className="flex flex-col gap-2">
@@ -217,7 +217,7 @@ export default function Footer() {
                     <Link
                       href={link.href}
                       className="text-white/70 hover:text-white transition-colors duration-200 font-normal"
-                      style={{ fontSize: "clamp(16px, 1vw, 16px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
+                      style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.05em", lineHeight: "1.8" }}
                     >
                       {link.label}
                     </Link>
@@ -245,7 +245,7 @@ export default function Footer() {
               />
               <p
                 className="text-center text-white font-medium"
-                style={{ fontSize: "clamp(14px, 1.4667vw, 21.12px)", letterSpacing: "-0.05em" }}
+                style={{ fontSize: "clamp(18px, 1.4667vw, 21.12px)", letterSpacing: "-0.05em" }}
               >
                 {badge.label}
               </p>
@@ -290,7 +290,7 @@ export default function Footer() {
               <span
                 key={link.label}
                 className="text-white/70 font-normal"
-                style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.05em" }}
+                style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.05em" }}
               >
                 {link.label}
               </span>
@@ -298,7 +298,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-white/70 font-normal text-center order-3" style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.01em" }}>
+          <p className="text-white/70 font-normal text-center order-3" style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.01em" }}>
             © 2021 - 2026 Tamatos — All Rights Reserved
           </p>
         </div>

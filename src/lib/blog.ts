@@ -18,7 +18,9 @@ export type BlogPost = {
   featuredImage?: { node: { sourceUrl: string; altText: string } };
   authorGroup?: {
     authorName?: string;
+    designation?: string;
     authorImage?: { node: { sourceUrl: string } };
+    socialProfiles?: { name?: string; url?: string }[];
   };
 };
 
@@ -33,7 +35,9 @@ type SanityPost = {
   mainImage?: { alt?: string; asset?: { url?: string } };
   author?: {
     name?: string;
+    designation?: string;
     image?: { asset?: { url?: string } };
+    socialProfiles?: { name?: string; url?: string }[];
   };
 };
 
@@ -80,9 +84,13 @@ function mapSanityPost(post: SanityPost): BlogPost {
     authorGroup: post.author
       ? {
           authorName: post.author.name,
+          designation: post.author.designation,
           authorImage: post.author.image?.asset?.url
             ? { node: { sourceUrl: post.author.image.asset.url } }
             : undefined,
+          socialProfiles: post.author.socialProfiles
+            ?.filter((p): p is { name: string; url: string } => Boolean(p?.name && p?.url))
+            .map((p) => ({ name: p.name, url: p.url })),
         }
       : undefined,
   };

@@ -29,7 +29,7 @@ export default function DigitalChallengesSection() {
             </span>
           </h2>
 
-          <p className="mt-6 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/80 lg:text-[17.78px]">
+          <p className="mt-6 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/80 lg:text-[17.78px]">
             If you&apos;re facing challenges like:
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function DigitalChallengesSection() {
                   />
                   <p
                     className="font-medium leading-[1.4] tracking-[-0.03em] text-white"
-                    style={{ fontSize: "clamp(16px, 1.4vw, 21.33px)" }}
+                    style={{ fontSize: "clamp(18px, 1.4vw, 21.33px)" }}
                   >
                     {text}
                   </p>
@@ -68,7 +68,7 @@ export default function DigitalChallengesSection() {
 
         <Link
           href="/contact"
-          className="mt-10 inline-flex items-center justify-center rounded-full bg-[var(--service-accent,#9DF560)] py-3 px-7 text-[15px] font-medium leading-none tracking-[-0.03em] text-[#0A0A0C] transition-colors duration-300 hover:bg-white lg:mt-14 lg:px-8 lg:py-4 lg:text-[16px]"
+          className="mt-10 inline-flex items-center justify-center rounded-full bg-[var(--service-accent,#9DF560)] py-3 px-7 text-[18px] font-medium leading-none tracking-[-0.03em] text-[#0A0A0C] transition-colors duration-300 hover:bg-white lg:mt-14 lg:px-8 lg:py-4 lg:text-[18px]"
         >
           Let&apos;s Fix Your Marketing Funnel
         </Link>

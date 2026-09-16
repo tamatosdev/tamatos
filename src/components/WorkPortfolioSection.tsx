@@ -165,7 +165,7 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
         {item.excerpt && (
           <p
             className="text-white font-normal leading-[1.65] line-clamp-4"
-            style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.02em" }}
           >
             {item.excerpt}
           </p>
@@ -268,7 +268,7 @@ export default function WorkPortfolioSection({
             <Link
               href="/contact"
               className="flex items-center justify-center w-full rounded-full bg-white text-[#0A0A0C] font-medium hover:bg-[#9DF560] transition-colors duration-300 mt-1 lg:mt-2"
-              style={{ fontSize: "clamp(16px, 1.15vw, 19.56px)", padding: "20px 28px", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(18px, 1.15vw, 19.56px)", padding: "20px 28px", letterSpacing: "-0.02em" }}
             >
               Have a Project?
             </Link>
@@ -290,7 +290,7 @@ export default function WorkPortfolioSection({
               </div>
             ) : (
               <div className="rounded-[20px] border border-white/10 bg-white/5 p-10 text-center">
-                <p className="text-white/60 text-[16px]">
+                <p className="text-white/60 text-[18px]">
                   No portfolio items match these filters. Try selecting &quot;All Services&quot; and
                   &quot;All Industries&quot;.
                 </p>

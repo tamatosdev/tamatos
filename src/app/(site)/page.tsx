@@ -171,7 +171,7 @@ export default async function Home() {
                         </p>
                         <p
                           className="text-white/50 font-normal leading-[1.5] mt-1.5"
-                          style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
+                          style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
                         >
                           {item.description}
                         </p>
@@ -202,11 +202,11 @@ export default async function Home() {
         <div className="relative overflow-hidden">
           <section className="container py-8 lg:py-16 relative z-10">
             <div className="flex items-start sm:items-center justify-between gap-5 sm:gap-0">
-              <p className="text-white/70 font-normal leading-normal" style={{ fontSize: "clamp(16px, 1.2vw, 16px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
+              <p className="text-white/70 font-normal leading-normal" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
                 {compareLeft}
               </p>
               <div className="hidden sm:block self-stretch w-px mx-8 lg:mx-16" style={{ background: "#FFFFFF80" }} />
-              <p className="text-white text-left sm:text-right font-medium" style={{ fontSize: "clamp(16px, 1.2vw, 16px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
+              <p className="text-white text-left sm:text-right font-medium" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
                 {compareRight}
               </p>
             </div>
@@ -245,13 +245,13 @@ export default async function Home() {
                 <em className="font-normal italic text-white/50">Simpler.</em>
               </h2>
 
-              <p className="mt-5 max-w-[520px] text-[16px] leading-[1.55] tracking-[-0.02em] text-white/70 lg:mt-6">
+              <p className="mt-5 max-w-[520px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/70 lg:mt-6">
                 {teamRoles} {teamBody}
               </p>
 
               <Link
                 href={teamButtonHref}
-                className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-[#1D17E0] px-7 py-3.5 text-[16px] font-medium leading-none tracking-[-0.02em] text-white transition-colors duration-300 hover:bg-white hover:text-[#0A0A0C] lg:mt-10 lg:gap-3 lg:px-8 lg:py-4 lg:text-[16px]"
+                className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-[#1D17E0] px-7 py-3.5 text-[18px] font-medium leading-none tracking-[-0.02em] text-white transition-colors duration-300 hover:bg-white hover:text-[#0A0A0C] lg:mt-10 lg:gap-3 lg:px-8 lg:py-4 lg:text-[18px]"
               >
                 Meet
                 <Image

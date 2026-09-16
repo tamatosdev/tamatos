@@ -56,7 +56,7 @@ export default function DevelopmentFinalCtaSection() {
 
             <p
               className="mt-6 max-w-[820px] font-medium leading-[1.55] tracking-[-0.02em] text-[#0A0A0C]/75"
-              style={{ fontSize: "clamp(15px, 1.15vw, 16px)" }}
+              style={{ fontSize: "clamp(18px, 1.15vw, 18px)" }}
             >
               Whether you&apos;re launching a website, mobile application, SaaS platform, eCommerce
               solution, or custom digital product, we&apos;ll help you build technology that
@@ -66,13 +66,13 @@ export default function DevelopmentFinalCtaSection() {
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center lg:mt-10 lg:gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#1D17E0] py-3 px-7 text-[15px] font-medium leading-none tracking-[-0.02em] text-white transition-colors duration-300 hover:bg-[#0A0A0C] lg:px-8 lg:py-4 lg:text-[16px]"
+                className="inline-flex items-center justify-center rounded-full bg-[#1D17E0] py-3 px-7 text-[18px] font-medium leading-none tracking-[-0.02em] text-white transition-colors duration-300 hover:bg-[#0A0A0C] lg:px-8 lg:py-4 lg:text-[18px]"
               >
                 Start Branding Project
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full border border-black/20 bg-white py-3 px-7 text-[15px] font-medium leading-none tracking-[-0.02em] text-[#0A0A0C] transition-colors duration-300 hover:border-[var(--service-accent,#FC7031)] hover:bg-[var(--service-accent,#FC7031)] lg:px-8 lg:py-4 lg:text-[16px]"
+                className="inline-flex items-center justify-center rounded-full border border-black/20 bg-white py-3 px-7 text-[18px] font-medium leading-none tracking-[-0.02em] text-[#0A0A0C] transition-colors duration-300 hover:border-[var(--service-accent,#FC7031)] hover:bg-[var(--service-accent,#FC7031)] lg:px-8 lg:py-4 lg:text-[18px]"
               >
                 Book a Strategy Session with Nabeel Danish
               </Link>

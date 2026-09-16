@@ -142,7 +142,7 @@ export default function DevelopmentMarketingSolutionsSection() {
                   {service.title}
                 </h3>
 
-                <p className="mt-4 flex-1 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/65">
+                <p className="mt-4 flex-1 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/65">
                   {service.description}
                 </p>
               </div>

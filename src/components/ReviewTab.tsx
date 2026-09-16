@@ -169,7 +169,7 @@ export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
                   </button>
                 </div>
 
-                <p className="text-[#0A0A0C] font-medium leading-[1.3] tracking-[-0.04em] max-w-250" style={{ fontSize: "clamp(16px, 2vw, 32px)" }}>
+                <p className="text-[#0A0A0C] font-medium leading-[1.3] tracking-[-0.04em] max-w-250" style={{ fontSize: "clamp(18px, 2vw, 32px)" }}>
                   {cmsTestimonials && active.content && Array.isArray(active.content) ? (
                     <PortableText value={active.content} components={testimonialPortableTextComponents} />
                   ) : (
@@ -186,8 +186,8 @@ export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
                       <Image src={(active as (typeof defaultTestimonials)[0]).image} alt="" className="max-h-12.5 md:max-h-17.75 object-contain" />
                     )}
                     <div>
-                      <h4 className="text-[#0A0A0C] text-[16px] md:text-[21.33px] italic font-medium leading-none">{active.author}</h4>
-                      <p className="text-[#0A0A0C]/70 text-[12px] md:text-[16px]">{active.role}</p>
+                      <h4 className="text-[#0A0A0C] text-[18px] md:text-[21.33px] italic font-medium leading-none">{active.author}</h4>
+                      <p className="text-[#0A0A0C]/70 text-[18px]">{active.role}</p>
                     </div>
                   </div>
                   <div className="hidden lg:flex items-center gap-3 shrink-0">

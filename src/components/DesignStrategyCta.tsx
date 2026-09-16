@@ -32,7 +32,7 @@ export default function DesignStrategyCta() {
           </motion.div>
         </div>
 
-        <p className="flex-1 px-4 py-6 text-[16px] font-medium leading-[1.35] tracking-[-0.03em] text-[#0A0A0C]/85 sm:px-6 sm:py-8 sm:text-[20px] lg:px-10 lg:py-10 lg:text-[23.11px]">
+        <p className="flex-1 px-4 py-6 text-[18px] font-medium leading-[1.35] tracking-[-0.03em] text-[#0A0A0C]/85 sm:px-6 sm:py-8 sm:text-[20px] lg:px-10 lg:py-10 lg:text-[23.11px]">
           Only once we understand the business do we begin designing the brand. Because great
           branding isn&apos;t decoration,{" "}
           <span className="relative inline font-semibold text-[#0A0A0C]">

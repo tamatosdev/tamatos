@@ -196,6 +196,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
+  font-size: 18px;
   /* clip avoids Lenis + overflow-x:hidden scroll lock bugs */
   overflow-x: clip;
 }
@@ -216,7 +217,7 @@ body {
 .blog-content {
   color: rgba(255,255,255,0.75) !important;
   line-height: 1.8;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .blog-content * { box-sizing: border-box; }
@@ -238,9 +239,9 @@ body {
 .blog-content h1 { font-size: clamp(28.44px, 3.5vw, 49.78px) !important; }
 .blog-content h2 { font-size: clamp(23.11px, 2.8vw, 39.11px) !important; }
 .blog-content h3 { font-size: clamp(19.56px, 2.2vw, 32px) !important; }
-.blog-content h4 { font-size: clamp(17.78px, 1.8vw, 24.89px) !important; }
+.blog-content h4 { font-size: clamp(18px, 1.8vw, 24.89px) !important; }
 .blog-content h5,
-.blog-content h6 { font-size: clamp(16px, 1.4vw, 19.56px) !important; }
+.blog-content h6 { font-size: clamp(18px, 1.4vw, 19.56px) !important; }
 
 .blog-content p { margin-bottom: 1.4em; color: rgba(255,255,255,0.75) !important; }
 

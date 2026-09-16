@@ -45,22 +45,22 @@ export default function CtaSection2({ data }: { data?: FinalCtaData }) {
             })}
           </h2>
 
-          <p className="block lg:hidden font-medium leading-relaxed" style={{ fontSize: "16px", letterSpacing: "-0.02em", color: "rgba(10,10,12,0.8)" }}>
+          <p className="block lg:hidden font-medium leading-relaxed" style={{ fontSize: "18px", letterSpacing: "-0.02em", color: "rgba(10,10,12,0.8)" }}>
             {description}
           </p>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3 lg:gap-4">
-            <Link href={primaryHref} className="inline-flex items-center justify-center rounded-full font-medium text-white bg-[#1D17E0] hover:bg-[#0A0A0C] transition-colors duration-300 py-4 px-5 lg:py-4 lg:px-8" style={{ fontSize: "clamp(16px, 1.2vw, 16px)", letterSpacing: "-0.02em" }}>
+            <Link href={primaryHref} className="inline-flex items-center justify-center rounded-full font-medium text-white bg-[#1D17E0] hover:bg-[#0A0A0C] transition-colors duration-300 py-4 px-5 lg:py-4 lg:px-8" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.02em" }}>
               {primaryLabel}
             </Link>
-            <Link href={secondaryHref} className="inline-flex items-center justify-center rounded-full border border-black/20 font-medium bg-white text-[#0A0A0C] transition-colors duration-300 hover:bg-[#9DF560] hover:border-[#9DF560] py-4 px-5 lg:py-4 lg:px-8" style={{ fontSize: "clamp(16px, 1.2vw, 16px)", letterSpacing: "-0.02em" }}>
+            <Link href={secondaryHref} className="inline-flex items-center justify-center rounded-full border border-black/20 font-medium bg-white text-[#0A0A0C] transition-colors duration-300 hover:bg-[#9DF560] hover:border-[#9DF560] py-4 px-5 lg:py-4 lg:px-8" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.02em" }}>
               {secondaryLabel}
             </Link>
           </div>
         </div>
 
         <div className="hidden lg:block lg:max-w-85 relative z-10">
-          <p className="font-medium leading-relaxed" style={{ fontSize: "clamp(14px, 1.2vw, 16px)", letterSpacing: "-0.02em", color: "rgba(10,10,12,0.8)" }}>
+          <p className="font-medium leading-relaxed" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.02em", color: "rgba(10,10,12,0.8)" }}>
             {description}
           </p>
         </div>

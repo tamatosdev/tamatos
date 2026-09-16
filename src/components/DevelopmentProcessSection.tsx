@@ -57,7 +57,7 @@ const steps: ProcessStep[] = [
 function ProcessCard({ step }: { step: ProcessStep }) {
   return (
     <article className="w-[340px] shrink-0 lg:w-[380px]">
-      <span className="text-[16px] font-medium tracking-[-0.02em] text-[var(--service-accent,#FC7031)]">
+      <span className="text-[18px] font-medium tracking-[-0.02em] text-[var(--service-accent,#FC7031)]">
         {step.number}
       </span>
 
@@ -74,7 +74,7 @@ function ProcessCard({ step }: { step: ProcessStep }) {
         </h3>
       </div>
 
-      <p className="mt-4 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/65">
+      <p className="mt-4 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/65">
         {step.description}
       </p>
     </article>

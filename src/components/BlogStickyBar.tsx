@@ -71,14 +71,14 @@ export default function BlogStickyBar({ title, slug }: Props) {
         <div className="flex items-center justify-between py-4 px-4 sm:py-10 sm:px-10 gap-6">
           <p
             className="text-[#0A0A0C] font-medium leading-tight flex-1"
-            style={{ fontSize: "clamp(16px, 1.25vw, 21.33px)", letterSpacing: "-0.03em" }}
+            style={{ fontSize: "clamp(18px, 1.25vw, 21.33px)", letterSpacing: "-0.03em" }}
           >
             {title}
           </p>
           <button
             onClick={handleShare}
             className="shrink-0 rounded-full bg-[#0A0A0C] text-white font-medium hover:bg-black/70 transition-colors duration-200"
-            style={{ fontSize: "16px", padding: "8px 20px", letterSpacing: "-0.01em" }}
+            style={{ fontSize: "18px", padding: "8px 20px", letterSpacing: "-0.01em" }}
           >
             {copied ? "Copied!" : "Share"}
           </button>

@@ -133,7 +133,7 @@ export default function IndustriesSection({ data }: { data?: IndustriesData }) {
           >
             Industries <span className="text-[var(--service-accent,#9DF560)]">We</span> Serve.
           </h2>
-          <p className="mt-4 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/70 lg:mt-5 lg:text-[16px]">
+          <p className="mt-4 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/70 lg:mt-5 lg:text-[18px]">
             {subheading}
           </p>
         </div>
@@ -176,7 +176,7 @@ export default function IndustriesSection({ data }: { data?: IndustriesData }) {
 
                   <span
                     className="min-w-0 flex-1 font-medium leading-snug tracking-[-0.03em]"
-                    style={{ fontSize: "clamp(16px, 1.25vw, 19.56px)" }}
+                    style={{ fontSize: "clamp(18px, 1.25vw, 19.56px)" }}
                   >
                     {item.title}
                   </span>
@@ -216,7 +216,7 @@ export default function IndustriesSection({ data }: { data?: IndustriesData }) {
             <div className="relative z-10 flex h-full min-h-[320px] flex-col justify-start p-7 lg:min-h-[420px] lg:p-10">
               <Subtitle text={active.subtitle} />
               <div className="mt-5 h-px w-1/2 bg-white/25 lg:mt-6" />
-              <p className="mt-5 max-w-[480px] text-[16px] leading-[1.55] tracking-[-0.02em] text-white/85 lg:mt-6 lg:text-[16px]">
+              <p className="mt-5 max-w-[480px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/85 lg:mt-6 lg:text-[18px]">
                 {active.description}
               </p>
             </div>

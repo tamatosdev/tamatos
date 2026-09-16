@@ -73,7 +73,7 @@ export default async function BlogPage() {
             </h1>
             <p
               className="mt-6 lg:mt-0 lg:absolute lg:top-0 lg:right-0 lg:max-w-70 text-white/60 font-normal leading-relaxed"
-              style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
             >
               Fresh insights, great ideas, bold trends, and revolutionary innovations in business, software, and tech.
             </p>
@@ -125,14 +125,14 @@ export default async function BlogPage() {
                       <div className="flex items-center gap-3">
                         <span
                           className="text-white font-medium"
-                          style={{ fontSize: "clamp(16px, 1.25vw, 17.78px)", letterSpacing: "-0.02em" }}
+                          style={{ fontSize: "clamp(18px, 1.25vw, 18px)", letterSpacing: "-0.02em" }}
                         >
                           {category}
                         </span>
                         <span className="text-[#9DF560] text-2xl leading-none">✱</span>
                         <span
                           className="text-white font-medium"
-                          style={{ fontSize: "clamp(16px, 1.25vw, 17.78px)", letterSpacing: "-0.02em" }}
+                          style={{ fontSize: "clamp(18px, 1.25vw, 18px)", letterSpacing: "-0.02em" }}
                         >
                           {readingTime}
                         </span>
@@ -152,7 +152,7 @@ export default async function BlogPage() {
                       {excerpt && (
                         <p
                           className="text-white/80 font-normal leading-relaxed flex-1"
-                          style={{ fontSize: "clamp(16px, 0.94vw, 16px)", letterSpacing: "-0.01em" }}
+                          style={{ fontSize: "clamp(18px, 0.94vw, 18px)", letterSpacing: "-0.01em" }}
                         >
                           {excerpt}
                         </p>
@@ -179,16 +179,26 @@ export default async function BlogPage() {
                           ) : (
                             <div className="w-10 h-10 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full bg-white/20 shrink-0" />
                           )}
-                          <span
-                            className="text-white font-medium"
-                            style={{ fontSize: "clamp(14px, 2vw, 16px)", letterSpacing: "-0.02em" }}
-                          >
-                            {authorGroup?.authorName ?? "Tamatos"}
-                          </span>
+                          <div className="min-w-0">
+                            <span
+                              className="block text-white font-medium leading-tight"
+                              style={{ fontSize: "clamp(18px, 2vw, 18px)", letterSpacing: "-0.02em" }}
+                            >
+                              {authorGroup?.authorName ?? "Tamatos"}
+                            </span>
+                            {authorGroup?.designation ? (
+                              <span
+                                className="block text-white/55 font-normal mt-0.5"
+                                style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
+                              >
+                                {authorGroup.designation}
+                              </span>
+                            ) : null}
+                          </div>
                           <span className="text-[#9DF560]">•</span>
                           <span
                             className="text-white font-normal"
-                            style={{ fontSize: "clamp(14px, 2vw, 16px)", letterSpacing: "-0.02em" }}
+                            style={{ fontSize: "clamp(18px, 2vw, 18px)", letterSpacing: "-0.02em" }}
                           >
                             {formatDate(post.date)}
                           </span>

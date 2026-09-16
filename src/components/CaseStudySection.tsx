@@ -159,10 +159,10 @@ export default function CaseStudySection({
           <h2 className="text-white font-medium leading-[1.2]" style={{ fontSize: "17.78px", letterSpacing: "-0.04em" }}>{cs.heading}</h2>
           <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.15)" }} />
           <div>
-            <p className="text-white/60 font-normal leading-relaxed line-clamp-4" style={{ fontSize: "14px", letterSpacing: "-0.03em" }}>
+            <p className="text-white/60 font-normal leading-relaxed line-clamp-4" style={{ fontSize: "18px", letterSpacing: "-0.03em" }}>
               {cs.paragraphs.join(" ")}
             </p>
-            <span className="text-white/80 font-medium text-[14px] cursor-pointer">Read More</span>
+            <span className="text-white/80 font-medium text-[18px] cursor-pointer">Read More</span>
           </div>
         </div>
         <div className="flex items-center gap-3 pt-2">
@@ -182,11 +182,11 @@ export default function CaseStudySection({
               <div className="flex items-center gap-3 flex-wrap">
                 {study.pills.map((pill, i) =>
                   pill.flag ? (
-                    <span key={i} className="inline-flex items-center gap-2 justify-center px-3 py-2 rounded-[40px] text-white/80 font-normal min-w-[79px] min-h-[42px]" style={{ fontSize: "clamp(14px, 1.3vw, 16px)", letterSpacing: "-0.03em", ...pillStyle }}>
+                    <span key={i} className="inline-flex items-center gap-2 justify-center px-3 py-2 rounded-[40px] text-white/80 font-normal min-w-[79px] min-h-[42px]" style={{ fontSize: "clamp(18px, 1.3vw, 18px)", letterSpacing: "-0.03em", ...pillStyle }}>
                       <StudyImage src={pill.flag} alt={pill.flagAlt ?? ""} className="w-6 h-[18px] rounded-sm object-cover" />
                     </span>
                   ) : (
-                    <span key={i} className="inline-flex items-center px-4 py-2 rounded-full text-white/80 font-normal min-w-[79px] min-h-[42px]" style={{ fontSize: "clamp(14px, 1vw, 16px)", letterSpacing: "-0.03em", ...pillStyle }}>
+                    <span key={i} className="inline-flex items-center px-4 py-2 rounded-full text-white/80 font-normal min-w-[79px] min-h-[42px]" style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.03em", ...pillStyle }}>
                       {pill.label}
                     </span>
                   )
@@ -196,7 +196,7 @@ export default function CaseStudySection({
               <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.15)" }} />
               <div className="flex flex-col gap-5">
                 {study.paragraphs.map((p, i) => (
-                  <p key={i} className="text-white/60 font-normal leading-relaxed" style={{ fontSize: "clamp(14px, 1.3vw, 16px)", letterSpacing: "-0.03em" }}>{p}</p>
+                  <p key={i} className="text-white/60 font-normal leading-relaxed" style={{ fontSize: "clamp(18px, 1.3vw, 18px)", letterSpacing: "-0.03em" }}>{p}</p>
                 ))}
               </div>
             </div>

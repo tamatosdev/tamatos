@@ -165,7 +165,7 @@ export default function StatsSection({
 
               <p
                 className="text-white font-medium leading-[1.45] mt-4 lg:mt-5 max-w-[280px]"
-                style={{ fontSize: "clamp(16px, 1.15vw, 17.78px)", letterSpacing: "-0.03em" }}
+                style={{ fontSize: "clamp(18px, 1.15vw, 18px)", letterSpacing: "-0.03em" }}
               >
                 {renderDescription(description, fallback)}
               </p>

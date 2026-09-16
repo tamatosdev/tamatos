@@ -22,7 +22,7 @@ export default function DevelopmentGoalsSection() {
             <span className="text-[var(--service-accent,#FC7031)]">.</span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-[760px] text-[16px] leading-[1.55] tracking-[-0.02em] text-white/80">
+          <p className="mx-auto mt-6 max-w-[760px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/80">
             Every successful digital product begins with understanding the people who will use it
             and the business it needs to support.
           </p>
@@ -55,7 +55,7 @@ export default function DevelopmentGoalsSection() {
                   aria-hidden
                   className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/35"
                 />
-                <span className="text-[17px] font-medium leading-snug tracking-[-0.03em] text-white sm:text-[20px] lg:text-[23.11px]">
+                <span className="text-[18px] font-medium leading-snug tracking-[-0.03em] text-white sm:text-[20px] lg:text-[23.11px]">
                   {item.text}
                 </span>
               </div>

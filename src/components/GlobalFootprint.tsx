@@ -174,7 +174,7 @@ export default function GlobalFootprint({ data }: { data?: GlobalFootprintData }
 
       <p
         className="text-center text-white/80 max-w-2xl mx-auto leading-relaxed"
-        style={{ letterSpacing: "-0.02em", fontSize: "clamp(16px, 0.94vw, 16px)" }}
+        style={{ letterSpacing: "-0.02em", fontSize: "clamp(18px, 0.94vw, 18px)" }}
       >
         {description}
       </p>
@@ -320,7 +320,7 @@ export default function GlobalFootprint({ data }: { data?: GlobalFootprintData }
                   <p
                     className="font-semibold leading-tight flex justify-between items-center gap-2"
                     style={{
-                      fontSize: "clamp(16px, 1.25vw, 21.33px)",
+                      fontSize: "clamp(18px, 1.25vw, 21.33px)",
                       color: isActive ? "#0b1721" : "#ffffff",
                       letterSpacing: "-0.02em",
                     }}
@@ -331,7 +331,7 @@ export default function GlobalFootprint({ data }: { data?: GlobalFootprintData }
                       style={{
                         letterSpacing: "-0.03em",
                         color: isActive ? "#0b1721" : "#ffffff",
-                        fontSize: "clamp(14px, 1vw, 16px)",
+                        fontSize: "clamp(18px, 1vw, 18px)",
                       }}
                     >
                       {loc.countryCode}
@@ -345,7 +345,7 @@ export default function GlobalFootprint({ data }: { data?: GlobalFootprintData }
                   className="font-normal mb-2"
                   style={{
                     color: isActive ? "#0b1721" : "#ffffff80",
-                    fontSize: "clamp(16px, 0.94vw, 16px)",
+                    fontSize: "clamp(18px, 0.94vw, 18px)",
                   }}
                 >
                   Location:{" "}

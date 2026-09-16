@@ -49,7 +49,7 @@ function MenuItemLink({ item, activeColor, onNavigate }: MenuItemLinkProps) {
       )}
 
       <div className="min-w-0 flex-1">
-        <p className="text-[16px] font-medium leading-snug tracking-[-0.05em] text-white">
+        <p className="text-[18px] font-medium leading-snug tracking-[-0.05em] text-white">
           {item.label}
         </p>
         {item.subtext && (
@@ -103,7 +103,7 @@ export default function ServicesMegaMenu({ megaMenu, onNavigate }: ServicesMegaM
                 <div
                   key={category.label}
                   onMouseEnter={() => setActiveIndex(index)}
-                  className="flex w-full items-center justify-start gap-4 rounded-[12px] px-5 py-3.5 text-left text-[16px] font-medium leading-none tracking-[-0.05em] transition-[background-color,color] duration-300 ease-out"
+                  className="flex w-full items-center justify-start gap-4 rounded-[12px] px-5 py-3.5 text-left text-[18px] font-medium leading-none tracking-[-0.05em] transition-[background-color,color] duration-300 ease-out"
                   style={{
                     background: isActive ? color : 'transparent',
                     color: isActive ? '#0A0A0C' : 'rgba(255,255,255,0.55)',

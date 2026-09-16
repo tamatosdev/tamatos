@@ -92,7 +92,7 @@ export default function DesignBrandingSolutionsSection() {
             <span className="text-[var(--service-accent,#03E4AC)]">.</span>
           </h2>
 
-          <p className="mt-6 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/80">
+          <p className="mt-6 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/80">
             Whether you&apos;re launching a new business or redefining an existing one, we create
             cohesive brand experiences that build trust, improve recognition, and support long-term
             growth.
@@ -127,7 +127,7 @@ export default function DesignBrandingSolutionsSection() {
                   {service.title}
                 </h3>
 
-                <p className="mt-4 flex-1 text-[16px] leading-[1.55] tracking-[-0.02em] text-white/65">
+                <p className="mt-4 flex-1 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/65">
                   {service.description}
                 </p>
               </div>

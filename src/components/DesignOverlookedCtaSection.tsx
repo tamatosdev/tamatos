@@ -26,14 +26,14 @@ export default function DesignOverlookedCtaSection() {
             </span>
           </h2>
 
-          <p className="mt-5 text-[17px] leading-[1.55] tracking-[-0.02em] text-white sm:mt-6 sm:text-[22px] lg:text-[26.67px]">
+          <p className="mt-5 text-[18px] leading-[1.55] tracking-[-0.02em] text-white sm:mt-6 sm:text-[22px] lg:text-[26.67px]">
             A <span className="font-semibold text-[var(--service-accent,#03E4AC)]">weak</span>
             {" "}brand doesn&apos;t just affect perception, it affects growth.
           </p>
 
           <Link
             href="/contact"
-            className="mt-8 inline-flex items-center gap-3 rounded-full bg-[var(--service-accent,#03E4AC)] py-3 px-7 text-[15px] font-medium leading-none tracking-[-0.03em] text-[#0A0A0C] transition-colors duration-300 hover:bg-white sm:mt-10 lg:px-8 lg:py-4 lg:text-[17.78px]"
+            className="mt-8 inline-flex items-center gap-3 rounded-full bg-[var(--service-accent,#03E4AC)] py-3 px-7 text-[18px] font-medium leading-none tracking-[-0.03em] text-[#0A0A0C] transition-colors duration-300 hover:bg-white sm:mt-10 lg:px-8 lg:py-4 lg:text-[17.78px]"
           >
             Let&apos;s Build Towards Your Business Goals
             <svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden>

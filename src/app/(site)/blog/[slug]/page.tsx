@@ -84,7 +84,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <div
                 className="inline-flex items-center gap-2 px-7 py-2 rounded-full text-white/70 font-medium"
                 style={{
-                  fontSize: "clamp(16px, 1.04vw, 17.78px)",
+                  fontSize: "clamp(18px, 1.04vw, 18px)",
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid #ffffff26",
                   boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",
@@ -174,30 +174,59 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 </div>
 
                 {/* Bottom — Author + Date on one line */}
-                <div className="flex items-center gap-3">
-                  {authorGroup?.authorImage?.node?.sourceUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={authorGroup.authorImage.node.sourceUrl}
-                      alt={authorGroup.authorName || "Author"}
-                      className="w-10.75 h-10.75 rounded-full object-cover shrink-0"
-                    />
-                  ) : (
-                    <div className="w-10.75 h-10.75 rounded-full bg-white/20 shrink-0" />
-                  )}
-                  <span
-                    className="text-white font-medium"
-                    style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
-                  >
-                    {authorGroup?.authorName ?? "Tamatos"}
-                  </span>
-                  <span className="text-white/40">•</span>
-                  <span
-                    className="text-white font-normal"
-                    style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
-                  >
-                    {formatDate(post.date)}
-                  </span>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-3">
+                    {authorGroup?.authorImage?.node?.sourceUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={authorGroup.authorImage.node.sourceUrl}
+                        alt={authorGroup.authorName || "Author"}
+                        className="w-10.75 h-10.75 rounded-full object-cover shrink-0"
+                      />
+                    ) : (
+                      <div className="w-10.75 h-10.75 rounded-full bg-white/20 shrink-0" />
+                    )}
+                    <div className="min-w-0">
+                      <span
+                        className="block text-white font-medium leading-tight"
+                        style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+                      >
+                        {authorGroup?.authorName ?? "Tamatos"}
+                      </span>
+                      {authorGroup?.designation ? (
+                        <span
+                          className="block text-white/55 font-normal mt-0.5"
+                          style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
+                        >
+                          {authorGroup.designation}
+                        </span>
+                      ) : null}
+                    </div>
+                    <span className="text-white/40">•</span>
+                    <span
+                      className="text-white font-normal"
+                      style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+                    >
+                      {formatDate(post.date)}
+                    </span>
+                  </div>
+
+                  {authorGroup?.socialProfiles?.length ? (
+                    <div className="flex flex-wrap items-center gap-3">
+                      {authorGroup.socialProfiles.map((profile) => (
+                        <a
+                          key={`${profile.name}-${profile.url}`}
+                          href={profile.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white/70 font-medium hover:text-[#9DF560] transition-colors duration-200"
+                          style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
+                        >
+                          {profile.name}
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
 
               </div>
@@ -290,7 +319,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
                   {npExcerpt && (
                     <p className="text-white/80 font-normal leading-relaxed flex-1" 
-                    style={{ fontSize: "clamp(16px, 0.94vw, 16px)", 
+                    style={{ fontSize: "clamp(18px, 0.94vw, 18px)", 
                     letterSpacing: "-0.01em" }}>
                       {npExcerpt}
                     </p>
@@ -299,7 +328,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   <div className="flex items-center justify-between gap-4 mt-2">
                     <Link
                       href={`/blog/${np.slug}`}
-                      className="inline-flex items-center justify-center gap-2.5 rounded-full bg-white text-black font-medium text-[16px] hover:bg-white/80 transition-colors duration-300"
+                      className="inline-flex items-center justify-center gap-2.5 rounded-full bg-white text-black font-medium text-[18px] hover:bg-white/80 transition-colors duration-300"
                       style={{ padding: "15px 30px", letterSpacing: "-0.02em" }}
                     >
                       Read More
@@ -312,9 +341,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                       ) : (
                         <div className="w-10.75 h-10.75 rounded-full bg-white/20 shrink-0" />
                       )}
-                      <span className="text-white font-medium" style={{ fontSize: "clamp(16px, 0.94vw, 16px)", letterSpacing: "-0.02em" }}>{npAuthor?.authorName ?? "Tamatos"}</span>
+                      <span className="text-white font-medium" style={{ fontSize: "clamp(18px, 0.94vw, 18px)", letterSpacing: "-0.02em" }}>{npAuthor?.authorName ?? "Tamatos"}</span>
                       <span className="text-white/30">•</span>
-                      <span className="text-white font-normal" style={{ fontSize: "clamp(16px, 0.94vw, 16px)", letterSpacing: "-0.02em" }}>{formatDate(np.date)}</span>
+                      <span className="text-white font-normal" style={{ fontSize: "clamp(18px, 0.94vw, 18px)", letterSpacing: "-0.02em" }}>{formatDate(np.date)}</span>
                     </div>
                   </div>
                 </div>

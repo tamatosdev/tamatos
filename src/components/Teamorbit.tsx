@@ -141,7 +141,7 @@ export default function TeamOrbits({ members }: { members?: TeamMemberData[] }) 
         </p>
         <p
           className="text-white font-medium mt-2 tracking-widest uppercase"
-          style={{ fontSize: "clamp(16px, 1.3vw, 17.78px)" }}
+          style={{ fontSize: "clamp(18px, 1.3vw, 18px)" }}
         >
           Team Members
         </p>

@@ -43,7 +43,7 @@ export default function DevelopmentDifferenceSection() {
             <em className="font-normal italic text-white/45">Difference</em>
             <span className="text-white/45">.</span>
           </h2>
-          <p className="mt-5 text-[16px] leading-[1.5] tracking-[-0.02em] text-white/55 lg:text-[17.78px]">
+          <p className="mt-5 text-[18px] leading-[1.5] tracking-[-0.02em] text-white/55 lg:text-[17.78px]">
             We Don&apos;t Just Design Brands. We Build Businesses People Believe In.
           </p>
         </div>
@@ -73,7 +73,7 @@ export default function DevelopmentDifferenceSection() {
                   className={`font-medium leading-[1.25] tracking-[-0.03em] ${
                     isActive ? "text-[#0A0A0C]" : "text-white"
                   }`}
-                  style={{ fontSize: "clamp(16px, 1.15vw, 17.78px)" }}
+                  style={{ fontSize: "clamp(18px, 1.15vw, 18px)" }}
                 >
                   {card.title}
                 </span>
@@ -89,7 +89,7 @@ export default function DevelopmentDifferenceSection() {
                   </span>
 
                   <p
-                    className={`min-w-0 text-[15px] leading-[1.45] tracking-[-0.02em] lg:text-[16px] ${
+                    className={`min-w-0 text-[18px] leading-[1.45] tracking-[-0.02em] lg:text-[18px] ${
                       isActive
                         ? "max-w-[300px] text-[#0A0A0C]/90"
                         : "line-clamp-2 overflow-hidden text-ellipsis text-white/70"
