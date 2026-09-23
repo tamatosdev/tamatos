@@ -139,6 +139,14 @@ export function formatDate(dateStr: string) {
   return `${day}${suffix} ${month} ${year}`;
 }
 
+export function formatDateNumeric(dateStr: string) {
+  const d = new Date(dateStr);
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const year = d.getFullYear();
+  return `${day}.${month}.${year}`;
+}
+
 export function getReadingTime(text: string) {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
   const mins = Math.max(1, Math.round(words / 200));

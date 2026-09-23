@@ -184,6 +184,7 @@ export type HomeBlogData = {
   headingBefore?: string;
   headingEmphasis?: string;
   headingAfter?: string;
+  description?: string;
   button?: CmsLink;
   postsLimit?: number;
 };

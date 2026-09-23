@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import BodyBgOnView from "@/components/BodyBgOnView";
+import orangeStar from "@/assets/orange-star.png";
 import nabeel from "@/assets/Team images/nabeel-danish.png";
 import akbar from "@/assets/Team images/akbar.png";
 import ali from "@/assets/Team images/ali asad.png";
@@ -105,6 +106,31 @@ export default function TeamSection() {
       threshold={0.2}
     >
       <div className="container">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2
+            className="text-[#0A0A0C] font-medium leading-[1.15]"
+            style={{ fontSize: "clamp(28.44px, 3.5vw, 50.06px)", letterSpacing: "-0.04em" }}
+          >
+            The People{" "}
+            <Image
+              src={orangeStar}
+              alt=""
+              className="inline-block h-[0.75em] w-auto mx-1"
+              style={{ verticalAlign: "middle" }}
+            />{" "}
+            <em className="italic text-[#0A0A0C]/50">Behind</em> Tamatos
+            <span className="text-[#FF6A00]">.</span>
+          </h2>
+          <p
+            className="mt-4 text-[#0A0A0C]/55 font-normal leading-relaxed mx-auto max-w-2xl"
+            style={{ fontSize: "clamp(16px, 1.15vw, 18px)", letterSpacing: "-0.02em" }}
+          >
+            A team of designers, developers, strategists and marketers who like making things
+            <br className="hidden sm:block" />
+            better.
+          </p>
+        </div>
+
         <div
           ref={sectionRef}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5 items-start"

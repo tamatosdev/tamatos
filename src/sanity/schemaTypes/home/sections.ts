@@ -678,6 +678,13 @@ export const homeBlogSection = defineType({
       type: 'string',
       initialValue: 'Does Not Stand Still, Neither Do We',
     }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 2,
+      initialValue: "Read what we're learning, questioning and thinking about.",
+    }),
     defineField({ name: 'button', title: 'Read more button', type: 'link' }),
     defineField({
       name: 'postsLimit',
@@ -694,8 +701,21 @@ export const finalCtaSection = defineType({
   title: 'Final CTA',
   type: 'object',
   fields: [
-    defineField({ name: 'heading', title: 'Heading', type: 'text', rows: 2 }),
-    defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
+    defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'text',
+      rows: 2,
+      initialValue: "Got a Kickass Idea?\nWe'll help you make it Real.",
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 3,
+      initialValue:
+        "You've now seen what we've built and what our clients say. The only thing left for you is starting. Drop us your brief or just say hi. Either works.",
+    }),
     defineField({ name: 'primaryButton', title: 'Primary button', type: 'link' }),
     defineField({ name: 'secondaryButton', title: 'Secondary button', type: 'link' }),
   ],

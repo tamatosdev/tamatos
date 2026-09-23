@@ -8,32 +8,38 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
 
   if (!posts.length) return null;
 
-  const cmsBefore = data?.headingBefore?.trim();
-  const cmsEmphasis = data?.headingEmphasis?.trim();
-  const cmsAfter = data?.headingAfter?.trim();
-  const headingBefore =
-    !cmsBefore || cmsBefore === "Get Real" ? "The" : cmsBefore;
-  const headingEmphasis =
-    !cmsEmphasis || cmsEmphasis === "Growth Insights" ? "Internet" : cmsEmphasis;
-  const headingAfter =
-    !cmsAfter || cmsAfter === "and Proven Tactics For Digital Success"
-      ? "Does Not Stand Still, Neither Do We"
-      : cmsAfter;
+  const headingBefore = "The";
+  const headingEmphasis = "Internet";
+  const description =
+    data?.description?.trim() ||
+    "Read what we're learning, questioning and thinking about.";
   const buttonLabel = data?.button?.label ?? "Read More";
   const buttonHref = data?.button?.href ?? "/blog";
 
   return (
     <section className="container py-14 lg:py-24">
       <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-0 mb-8 md:mb-12">
-        <h2
-          className="text-white font-medium leading-[1.2] max-w-[962px]"
-          style={{ fontSize: "clamp(28.44px, 3.13vw, 50.06px)", letterSpacing: "-0.05em" }}
-        >
-          {headingBefore}{" "}
-          <em className="italic text-white/50 font-medium">{headingEmphasis}</em>{" "}
-          {headingAfter}
-          <span className="text-[#9DF560]">.</span>
-        </h2>
+        <div className="max-w-[962px]">
+          <h2
+            className="text-white font-medium leading-[1.2]"
+            style={{ fontSize: "clamp(28.44px, 3.13vw, 50.06px)", letterSpacing: "-0.05em" }}
+          >
+            <span className="block">
+              {headingBefore}{" "}
+              <em className="italic text-white/50 font-medium">{headingEmphasis}</em> Does
+            </span>
+            <span className="block">
+              Not Stand Still, Neither Do We
+              <span className="text-[#9DF560]">.</span>
+            </span>
+          </h2>
+          <p
+            className="mt-4 text-white/60 font-normal leading-relaxed"
+            style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+          >
+            {description}
+          </p>
+        </div>
         <Link
           href={buttonHref}
           className="text-white/100 font-normal hover:bg-white hover:text-black transition-colors duration-200 shrink-0 px-[40px] py-[10px] border border-white/40 rounded-full"

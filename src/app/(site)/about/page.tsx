@@ -5,8 +5,6 @@ import aboutHeader2 from "@/assets/about-header-2.png";
 import footerShade1 from "@/assets/footer-shade1.png";
 import AboutMarquee from "@/components/AboutMarquee";
 import ClientLogos from "@/components/ClientLogos";
-import workFun from "@/assets/work-fun.png";
-import SmilyFace from "@/assets/Smily Face.png";
 import lightGreenBox from "@/assets/lighr-green-box.png";
 import darkGreenBox from "@/assets/dark-green-box.png";
 import orangeBox from "@/assets/orange box.png";
@@ -217,7 +215,7 @@ export default function AboutPage() {
           <section className="relative py-6 lg:py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <h2 className="text-white font-normal text-center leading-snug" style={{ fontSize: "clamp(21.33px, 2.2vw, 44.44px)", letterSpacing: "-0.04em" }}>
-                <span className="text-white/50">At Tamatos, </span>
+                <span className="italic text-white/50">At Tamatos, </span>
                 we believe good work should do more than look good
                 <span className="text-[#9DF560]">.</span> It should have a purpose
                 <span className="text-[#9DF560]">,</span> it should solve a problem
@@ -231,7 +229,7 @@ export default function AboutPage() {
 
           <AboutMarquee />
 
-          {/* Logos + We believe — light blog-shade on the right only */}
+          {/* Logos — light blog-shade on the right only */}
           <div className="relative">
             <div className="about-flow-shades pointer-events-none select-none absolute inset-0 overflow-visible" aria-hidden>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -253,66 +251,6 @@ export default function AboutPage() {
             </div>
             <div className="relative z-10">
               <ClientLogos className="!pb-8 lg:!pb-12" />
-
-              <section className="container pb-14 pt-2 lg:pb-24 lg:pt-4">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-                  <div className="rounded-3xl overflow-hidden w-full">
-                    <Image
-                      src={workFun}
-                      alt="Work should be fun"
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-6">
-                    <h2
-                      className="text-white font-medium leading-[1.15]"
-                      style={{ fontSize: "clamp(24.89px, 3vw, 46.22px)", letterSpacing: "-0.04em" }}
-                    >
-                      We believe good{" "}
-                      <em className="italic text-white/50">work</em>
-                      <br />
-                      should do more than
-                      <br />
-                      look good
-                      <Image
-                        src={SmilyFace}
-                        alt=""
-                        className="inline-block h-[0.9em] w-auto ml-2"
-                        style={{ verticalAlign: "middle" }}
-                      />
-                      <span className="text-[#9DF560]">.</span>
-                    </h2>
-
-                    <div className="flex flex-col mt-2">
-                      {[
-                        "It should have a purpose.",
-                        "It should solve a problem.",
-                        "And it should make a difference to the business behind it.",
-                      ].map((text, i) => (
-                        <div
-                          key={i}
-                          className="flex items-start gap-4 py-5"
-                          style={{ borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.2)" : "none" }}
-                        >
-                          <div className="shrink-0 mt-0.5">
-                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                              <circle cx="11" cy="11" r="11" fill="#9DF560" />
-                              <path d="M6.5 11.5L9.5 14.5L15.5 8" stroke="#0A0A0C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          </div>
-                          <p
-                            className="text-white font-normal leading-snug"
-                            style={{ fontSize: "clamp(18px, 1.1vw, 18px)", letterSpacing: "-0.02em" }}
-                          >
-                            {text}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </section>
             </div>
           </div>
 

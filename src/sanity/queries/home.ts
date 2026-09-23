@@ -167,6 +167,7 @@ export const homePageQuery = defineQuery(/* groq */ `
       headingBefore,
       headingEmphasis,
       headingAfter,
+      description,
       button { label, href },
       postsLimit
     },
