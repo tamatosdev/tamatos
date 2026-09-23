@@ -123,8 +123,8 @@ export default async function Home() {
               <div className="hidden lg:block lg:w-1/4" />
               <div className="w-full lg:w-3/4">
                 <h2
-                  className="text-white font-medium leading-[1.15] tracking-[-0.04em]"
-                  style={{ fontSize: "clamp(24.89px, 3.2vw, 49.78px)", marginLeft: "5.5rem" }}
+                  className="text-white font-medium leading-[1.15] tracking-[-0.04em] ml-0 lg:ml-[5.5rem]"
+                  style={{ fontSize: "clamp(16px, 3.2vw, 49.78px)" }}
                   data-aos="fade-up"
                   data-aos-duration="900"
                 >
@@ -165,13 +165,13 @@ export default async function Home() {
                       <div className="min-w-0">
                         <p
                           className="text-white font-medium leading-[1.35]"
-                          style={{ fontSize: "21.33px", letterSpacing: "-0.03em" }}
+                          style={{ fontSize: "clamp(16px, 1.4vw, 21.33px)", letterSpacing: "-0.03em" }}
                         >
                           {item.title}
                         </p>
                         <p
                           className="text-white/50 font-normal leading-[1.5] mt-1.5"
-                          style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+                          style={{ fontSize: "clamp(16px, 1.2vw, 18px)", letterSpacing: "-0.02em" }}
                         >
                           {item.description}
                         </p>

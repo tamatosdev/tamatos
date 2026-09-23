@@ -11,6 +11,7 @@ export type BlogPost = {
   title: string;
   slug: string;
   date: string;
+  updatedAt?: string;
   excerpt?: string;
   contentText?: string;
   body?: PortableTextBlock[];
@@ -19,6 +20,7 @@ export type BlogPost = {
   authorGroup?: {
     authorName?: string;
     designation?: string;
+    bio?: string;
     authorImage?: { node: { sourceUrl: string } };
     socialProfiles?: { name?: string; url?: string }[];
   };
@@ -29,6 +31,7 @@ type SanityPost = {
   title: string;
   slug: string;
   publishedAt?: string;
+  _updatedAt?: string;
   excerpt?: string;
   body?: PortableTextBlock[];
   categories?: { title: string }[];
@@ -36,6 +39,7 @@ type SanityPost = {
   author?: {
     name?: string;
     designation?: string;
+    bio?: string;
     image?: { asset?: { url?: string } };
     socialProfiles?: { name?: string; url?: string }[];
   };
@@ -67,6 +71,7 @@ function mapSanityPost(post: SanityPost): BlogPost {
     title: post.title,
     slug: post.slug,
     date: post.publishedAt ?? new Date().toISOString(),
+    updatedAt: post._updatedAt,
     excerpt: post.excerpt,
     contentText,
     body: post.body,
@@ -85,6 +90,7 @@ function mapSanityPost(post: SanityPost): BlogPost {
       ? {
           authorName: post.author.name,
           designation: post.author.designation,
+          bio: post.author.bio,
           authorImage: post.author.image?.asset?.url
             ? { node: { sourceUrl: post.author.image.asset.url } }
             : undefined,

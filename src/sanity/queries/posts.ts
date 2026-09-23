@@ -5,6 +5,7 @@ const postFields = /* groq */ `
   title,
   "slug": slug.current,
   publishedAt,
+  _updatedAt,
   excerpt,
   body,
   "categories": categories[]->{ title },
@@ -15,6 +16,7 @@ const postFields = /* groq */ `
   author->{
     name,
     designation,
+    bio,
     image {
       asset->{ url }
     },

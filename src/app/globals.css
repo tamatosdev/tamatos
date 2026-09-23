@@ -228,6 +228,7 @@ body {
 .blog-content h4,
 .blog-content h5,
 .blog-content h6 {
+  scroll-margin-top: 120px;
   color: #ffffff !important;
   font-weight: 600 !important;
   line-height: 1.2 !important;

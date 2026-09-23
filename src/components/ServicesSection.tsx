@@ -131,7 +131,7 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
             )}
 
             {service.description ? (
-              <p className="mt-3 mb-5 text-[18px] leading-[1.5] tracking-[-0.02em] text-white/60 md:mb-6">
+              <p className="mt-3 mb-5 text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.02em] text-white/60 md:mb-6">
                 {service.description}
               </p>
             ) : (
