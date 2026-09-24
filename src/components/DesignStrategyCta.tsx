@@ -14,9 +14,9 @@ export default function DesignStrategyCta() {
     <div className="mx-auto mt-10 max-w-[1100px] lg:mt-12">
       <div
         ref={cardRef}
-        className="flex overflow-hidden rounded-[20px] bg-[#E9EDF5]"
+        className="relative flex overflow-hidden rounded-[20px] bg-[#E9EDF5] pb-[60px] lg:pb-0"
       >
-        <div className="flex shrink-0 items-end self-stretch pl-4 sm:pl-6 lg:pl-10">
+        <div className="absolute bottom-0 left-4 z-10 sm:left-6 lg:static lg:flex lg:shrink-0 lg:items-end lg:self-stretch lg:pl-10 lg:left-auto">
           <motion.div
             initial={{ y: 90 }}
             animate={isInView ? { y: 0 } : { y: 90 }}

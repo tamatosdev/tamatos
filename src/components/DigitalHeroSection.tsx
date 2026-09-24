@@ -8,7 +8,7 @@ export default function DigitalHeroSection() {
     <section className="relative overflow-x-clip pt-28 pb-12 lg:pt-40 lg:pb-24">
       <div className="container relative">
         <div
-          className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full px-4 py-2 text-[18px] font-medium text-white/70 sm:px-5"
+          className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full px-4 py-2 text-[16px] font-medium text-white/70 sm:px-5 sm:text-[18px]"
           style={{
             background: "rgba(255, 255, 255, 0.05)",
             border: "1px solid rgba(255, 255, 255, 0.15)",

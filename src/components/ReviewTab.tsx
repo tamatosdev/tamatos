@@ -118,7 +118,7 @@ export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
     <section className="py-16 lg:py-30 overflow-hidden">
       <div className="container mx-auto px-5">
         <div className="review-main-heading max-w-250 mx-auto text-center">
-          <h2 className="text-white leading-[1.2] font-medium tracking-[-0.04em]" style={{ fontSize: "clamp(19.56px, 3.2vw, 50.06px)" }}>
+          <h2 className="text-white leading-[1.2] font-medium tracking-[-0.04em]" style={{ fontSize: "clamp(22px, 3.2vw, 50.06px)" }}>
             {headingStart}{" "}
             <span className="text-[#9DF560]">{headingHighlight}</span> {headingMiddle}{" "}
             <span className="italic text-white/70">{headingItalic}</span>

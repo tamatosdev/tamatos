@@ -124,7 +124,7 @@ export default async function Home() {
               <div className="w-full lg:w-3/4">
                 <h2
                   className="text-white font-medium leading-[1.15] tracking-[-0.04em] ml-0 lg:ml-[5.5rem]"
-                  style={{ fontSize: "clamp(16px, 3.2vw, 49.78px)" }}
+                  style={{ fontSize: "clamp(25px, 3.2vw, 49.78px)" }}
                   data-aos="fade-up"
                   data-aos-duration="900"
                 >

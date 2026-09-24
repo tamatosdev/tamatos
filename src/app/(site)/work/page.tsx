@@ -42,9 +42,8 @@ export default async function WorkPage() {
           <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-6 xl:gap-10">
             <div className="w-full lg:basis-[60%] lg:shrink-0">
               <div
-                className="inline-flex w-fit items-center gap-2 px-5 py-2 rounded-full text-white/70 font-medium mb-8 lg:mb-10"
+                className="inline-flex w-fit items-center gap-2 px-5 py-2 rounded-full text-[16px] sm:text-[18px] text-white/70 font-medium mb-8 lg:mb-10"
                 style={{
-                  fontSize: "18px",
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid #ffffff26",
                   boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",

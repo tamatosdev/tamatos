@@ -36,7 +36,7 @@ const defaultMobilePills: { label: string; top?: string; bottom?: string; left?:
   { label: "Branding", top: "18%", left: "42%" },
   { label: "Product Design", top: "100px", right: "-6%" },
   { label: "SEO", top: "44%", right: "2%" },
-  { label: "Social Media Marketing", bottom: "20%", right: "-11%" },
+  { label: "Social Media Marketing", bottom: "11%", right: "-1%" },
   { label: "Web & App Dev", bottom: "7%", left: "-1%" },
 ];
 
@@ -56,7 +56,12 @@ export default function Banner({ data }: { data?: HeroData }) {
 
   const leftPills = data?.leftPills?.length ? data.leftPills : defaultLeftPills;
   const rightPills = data?.rightPills?.length ? data.rightPills : defaultRightPills;
-  const mobilePills = data?.mobilePills?.length ? data.mobilePills : defaultMobilePills;
+  const mobilePills = (data?.mobilePills?.length ? data.mobilePills : defaultMobilePills).map(
+    (pill) =>
+      pill.label === "Social Media Marketing"
+        ? { ...pill, bottom: "11%", right: "-1%", top: undefined, left: undefined }
+        : pill,
+  );
 
   const line1BeforeBold = data?.line1BeforeBold ?? "We Turn";
   const boldWord = data?.boldWord ?? "BOLD";

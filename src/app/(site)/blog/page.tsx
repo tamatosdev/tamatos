@@ -42,9 +42,8 @@ export default async function BlogPage() {
           <div className="container">
             <div className="mb-8 lg:mb-12">
               <div
-                className="inline-flex items-center gap-2 px-7 py-2 rounded-full text-white/70 font-medium"
+                className="inline-flex items-center gap-2 px-7 py-2 rounded-full text-[16px] sm:text-[18px] text-white/70 font-medium"
                 style={{
-                  fontSize: "17.78px",
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid #ffffff26",
                   boxShadow: "inset 5.33px 4px 12px 0px rgba(255,255,255,0.15)",

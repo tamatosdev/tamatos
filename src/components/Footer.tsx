@@ -233,7 +233,7 @@ export default function Footer() {
           {partnerBadges.map((badge) => (
             <div
               key={badge.label}
-              className="flex h-[247px] flex-col items-center justify-center gap-3 rounded-2xl px-3 lg:px-4"
+              className="flex h-[200px] sm:h-[247px] flex-col items-center justify-center gap-3 rounded-2xl px-3 lg:px-4"
               style={{ background: "rgb(255 255 255 / 5%)" }}
             >
               <Image
@@ -290,7 +290,7 @@ export default function Footer() {
               <span
                 key={link.label}
                 className="text-white/70 font-normal"
-                style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.05em" }}
+                style={{ fontSize: "16px", letterSpacing: "-0.05em" }}
               >
                 {link.label}
               </span>
@@ -298,7 +298,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-white/70 font-normal text-center order-3" style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.01em" }}>
+          <p className="text-white/70 font-normal text-center order-3" style={{ fontSize: "16px", letterSpacing: "-0.01em" }}>
             © 2021 - 2026 Tamatos — All Rights Reserved
           </p>
         </div>

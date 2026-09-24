@@ -104,7 +104,7 @@ export default function CtaSection2({ data }: { data?: FinalCtaData }) {
 
           <p
             className="block lg:hidden font-medium leading-relaxed"
-            style={{ fontSize: "18px", letterSpacing: "-0.02em", color: "rgba(10,10,12,0.8)" }}
+            style={{ fontSize: "16px", letterSpacing: "-0.02em", color: "rgba(10,10,12,0.8)" }}
           >
             {description}
           </p>

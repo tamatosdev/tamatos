@@ -47,7 +47,7 @@ export default function DevelopmentGoalsSection() {
               >
                 <span
                   className="shrink-0 font-medium leading-none tracking-[-0.04em] text-[var(--service-accent,#FC7031)]"
-                  style={{ fontSize: "clamp(28px, 4vw, 50.06px)" }}
+                  style={{ fontSize: "clamp(18px, 4vw, 50.06px)" }}
                 >
                   {item.number}
                 </span>

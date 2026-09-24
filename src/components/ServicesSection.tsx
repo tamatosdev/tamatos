@@ -88,7 +88,7 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
     <section className="container py-12 md:py-24 relative z-1" data-aos-skip>
       <h2
         className="text-white font-medium text-center leading-[1.15] mb-10 sm:whitespace-nowrap md:mb-14"
-        style={{ fontSize: "clamp(28.44px, 4.44vw, 50.06px)", letterSpacing: "-0.04em" }}
+        style={{ fontSize: "clamp(35px, 4.44vw, 50.06px)", letterSpacing: "-0.04em" }}
         data-aos="fade-up"
         data-aos-duration="900"
       >
@@ -117,14 +117,14 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
               <Link
                 href={service.href}
                 className="text-white font-medium transition-opacity hover:opacity-80"
-                style={{ fontSize: "37.55px", letterSpacing: "-0.04em" }}
+                style={{ fontSize: "clamp(28px, 2.6vw, 37.55px)", letterSpacing: "-0.04em" }}
               >
                 {service.category}
               </Link>
             ) : (
               <h3
                 className="text-white font-medium"
-                style={{ fontSize: "37.55px", letterSpacing: "-0.04em" }}
+                style={{ fontSize: "clamp(28px, 2.6vw, 37.55px)", letterSpacing: "-0.04em" }}
               >
                 {service.category}
               </h3>
@@ -153,7 +153,7 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
                   >
                     <span
                       className="font-medium"
-                      style={{ fontSize: "18.77px", letterSpacing: "-0.03em" }}
+                      style={{ fontSize: "clamp(16px, 1.3vw, 18.77px)", letterSpacing: "-0.03em" }}
                     >
                       {item.label}
                     </span>

@@ -70,12 +70,12 @@ function TeamCard({
       </div>
 
       <div
-        className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2"
+        className="absolute bottom-3 left-3 right-3 flex flex-col items-start gap-2"
         style={{
           backdropFilter: "blur(10px)",
           backgroundColor: "#00000005",
           padding: "10px",
-          borderRadius: "40px",
+          borderRadius: "20px",
           border: "1px solid #ffffff2b",
         }}
       >

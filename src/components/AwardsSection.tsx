@@ -78,10 +78,10 @@ export default function AwardsSection({ data }: { data?: AwardsData }) {
                   <Image src={defaultAwardImages[index] ?? ClutchDeveloper} alt={award.text} width={100} height={120} className="object-contain w-17 lg:w-25 h-auto" />
                 )}
                 <div>
-                  <p className="text-white font-semibold leading-tight text-center" style={{ fontSize: "clamp(18px, 1.5vw, 21.33px)", letterSpacing: "-0.04em" }}>
+                  <p className="text-white font-semibold leading-tight text-center" style={{ fontSize: "16px", letterSpacing: "-0.04em" }}>
                     {award.year}
                   </p>
-                  <p className="text-white font-normal mt-1 text-center" style={{ fontSize: "clamp(18px, 1vw, 18px)", letterSpacing: "-0.03em" }}>
+                  <p className="text-white font-normal mt-1 text-center" style={{ fontSize: "16px", letterSpacing: "-0.03em" }}>
                     {award.text}
                   </p>
                 </div>

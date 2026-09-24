@@ -14,12 +14,11 @@ export default function DigitalGoalsCtaSection() {
     <section className="relative overflow-x-clip pb-10 lg:pb-14">
       <div className="container relative">
         <div className="mx-auto max-w-[1100px]">
-          {/* Same structure as DesignStrategyCta — arrow bottom-left, text beside it */}
           <div
             ref={cardRef}
-            className="flex overflow-hidden rounded-[20px] bg-gradient-to-r from-[#E9EDF5] to-white lg:rounded-[24px]"
+            className="relative flex overflow-hidden rounded-[20px] bg-gradient-to-r from-[#E9EDF5] to-white pb-[60px] lg:rounded-[24px] lg:pb-0"
           >
-            <div className="flex shrink-0 items-end self-stretch pl-6 lg:pl-10">
+            <div className="absolute bottom-0 left-6 z-10 lg:static lg:flex lg:shrink-0 lg:items-end lg:self-stretch lg:pl-10 lg:left-auto">
               <motion.div
                 initial={{ y: 90 }}
                 animate={isInView ? { y: 0 } : { y: 90 }}
