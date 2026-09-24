@@ -55,7 +55,7 @@ export default function DigitalChallengesSection() {
                     className="mt-1 h-5 w-5 shrink-0 object-contain lg:mt-1.5 lg:h-6 lg:w-6"
                   />
                   <p
-                    className="font-medium leading-[1.4] tracking-[-0.03em] text-white"
+                    className="w-full font-normal leading-[1.4] tracking-[-0.03em] text-white md:w-[60%]"
                     style={{ fontSize: "clamp(18px, 1.4vw, 21.33px)" }}
                   >
                     {text}

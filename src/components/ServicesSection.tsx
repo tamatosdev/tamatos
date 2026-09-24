@@ -1,12 +1,12 @@
 import Link from "next/link";
 import type { ServicesData } from "@/lib/home";
-import { isLivePath, serviceCategoryPath, sortByServiceCategoryOrder } from "@/lib/routes";
+import { isLivePath } from "@/lib/routes";
 
 const defaultServices = [
   {
     category: "Development",
     description:
-      "Websites That Turn Visitors Into Customers. Products Built Around People, Not Just Features.",
+      "Websites that turn visitors into customers. Products built around people, not just features.",
     bg: "#FFFFFF1A",
     hoverBg: "#FC7031",
     href: "/services/development",
@@ -21,7 +21,7 @@ const defaultServices = [
   },
   {
     category: "Digital",
-    description: "Work That Gets Your Business Seen By The Right People.",
+    description: "Work that gets your business seen by the right people.",
     bg: "#FFFFFF1A",
     hoverBg: "#03E4AC",
     href: "/services/digital",
@@ -30,21 +30,21 @@ const defaultServices = [
       "Search Engine Optimization",
       "Influencer Marketing",
       "Email & WhatsApp Automation",
-      "Content Creation and Strategy",
+      "Content Creation And Strategy",
       "Analytics & Growth Optimization",
     ],
   },
   {
     category: "Design",
-    description: "Identities That Give Businesses Something To Be Remembered By.",
+    description: "Identities that give businesses something to be remembered by.",
     bg: "#FFFFFF1A",
     hoverBg: "#9DF560",
     href: "/services/design",
     items: [
+      "Website UX/UI Design",
+      "Mobile App Design",
       "Brand Strategy",
       "Brand Identity",
-      "Logo Design",
-      "Social Media Design",
       "Print & Marketing Collateral",
       "Pitch Deck Design",
     ],
@@ -56,33 +56,11 @@ export default function ServicesSection({ data }: { data?: ServicesData }) {
   const titleEmphasis = data?.titleEmphasis ?? "We";
   const titleLine2 = (data?.titleLine2 ?? "Do").replace(/\.$/, "");
 
-  const services =
-    data?.categories?.length
-      ? sortByServiceCategoryOrder(
-          data.categories.map((cat) => {
-            const categoryHref = serviceCategoryPath(cat.title);
-            return {
-              category: cat.title ?? "",
-              description: cat.description ?? "",
-              bg: cat.backgroundColor ?? "#FFFFFF1A",
-              hoverBg: cat.hoverColor ?? "#9DF560",
-              href: categoryHref,
-              items:
-                cat.items?.map((item) => {
-                  const raw = item.href ?? "";
-                  return {
-                    label: item.label ?? "",
-                    href: isLivePath(raw) ? raw : categoryHref,
-                  };
-                }) ?? [],
-            };
-          }),
-          (s) => s.category
-        )
-      : defaultServices.map((s) => ({
-          ...s,
-          items: s.items.map((label) => ({ label, href: s.href })),
-        }));
+  // Screenshot-accurate service cards (order + copy)
+  const services = defaultServices.map((s) => ({
+    ...s,
+    items: s.items.map((label) => ({ label, href: s.href })),
+  }));
 
   return (
     <section className="container py-12 md:py-24 relative z-1" data-aos-skip>

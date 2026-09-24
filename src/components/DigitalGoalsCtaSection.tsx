@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import silverArrow from "@/assets/silver-arrow.png";
-import directionUnderline from "@/assets/direction-underline.svg";
+import greenBrush from "@/assets/green-brush.svg";
 
 export default function DigitalGoalsCtaSection() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -42,19 +42,16 @@ export default function DigitalGoalsCtaSection() {
                 This enables us to create marketing strategies that are purposeful, measurable, and
                 built around real business outcomes. Because great marketing isn&apos;t about chasing
                 trends, it&apos;s about{" "}
-                <span className="relative inline font-semibold text-[#0A0A0C]">
+                <span className="relative inline-block font-semibold text-[#0A0A0C] pb-1.5">
                   building sustainable growth.
                   <Image
-                    src={directionUnderline}
+                    src={greenBrush}
                     alt=""
-                    width={280}
-                    height={12}
+                    width={268}
+                    height={14}
+                    unoptimized
                     aria-hidden
-                    className="pointer-events-none absolute -bottom-0.5 left-0 h-[10px] w-[105%] max-w-none object-cover object-left"
-                    style={{
-                      filter:
-                        "brightness(0) saturate(100%) invert(86%) sepia(47%) saturate(519%) hue-rotate(41deg) brightness(103%) contrast(94%)",
-                    }}
+                    className="pointer-events-none absolute bottom-0 left-0 h-[12px] w-[110%] max-w-none object-fill object-left"
                   />
                 </span>
               </p>

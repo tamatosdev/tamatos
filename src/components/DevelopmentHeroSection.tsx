@@ -2,11 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import developmentBanner from "@/assets/development-banner-image.png";
 import greenArrow from "@/assets/green-arrow.svg";
+import leftShade from "@/assets/left-shade.png";
 
 export default function DevelopmentHeroSection() {
   return (
     <section className="relative overflow-x-clip pt-28 pb-12 lg:pt-40 lg:pb-24">
-      <div className="container relative">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={leftShade.src}
+        alt=""
+        className="pointer-events-none absolute left-0 bottom-0 z-0 max-w-none select-none"
+        aria-hidden
+      />
+
+      <div className="container relative z-10">
         <div
           className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full px-4 py-2 text-[16px] font-medium text-white/70 sm:px-5 sm:text-[18px]"
           style={{

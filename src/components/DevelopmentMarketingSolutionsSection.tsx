@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import type { StaticImageData } from "next/image";
 import webIcon from "@/assets/web-icon.png";
 import mobileAppIcon from "@/assets/mobile-app.png";
@@ -11,6 +12,7 @@ import customerPortalIcon from "@/assets/customer-portal.png";
 import odooIcon from "@/assets/odoo.png";
 import apiSystemIcon from "@/assets/api-system.png";
 import aliWorkflowIcon from "@/assets/ali-workflow.png";
+import orangeArrow from "@/assets/orange-arrow.svg";
 
 type DevelopmentService = {
   title: string;
@@ -145,6 +147,20 @@ export default function DevelopmentMarketingSolutionsSection() {
                 <p className="mt-4 flex-1 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/65">
                   {service.description}
                 </p>
+
+                <Link
+                  href="/contact"
+                  className="mt-6 inline-flex items-center gap-3 text-[18px] font-medium leading-none tracking-[-0.03em] text-white transition-colors duration-300 hover:text-white/80"
+                >
+                  Learn More
+                  <Image
+                    src={orangeArrow}
+                    alt=""
+                    width={20}
+                    height={16}
+                    className="h-4 w-5"
+                  />
+                </Link>
               </div>
             </article>
           ))}

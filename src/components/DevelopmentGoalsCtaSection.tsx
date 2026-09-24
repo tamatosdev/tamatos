@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import silverArrow from "@/assets/silver-arrow.png";
-import directionUnderline from "@/assets/direction-underline.svg";
+import orangeBrush from "@/assets/orange-brush.svg";
 
 export default function DevelopmentGoalsCtaSection() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -42,19 +42,16 @@ export default function DevelopmentGoalsCtaSection() {
                 This enables us to build digital products that are intuitive, scalable, and aligned
                 with measurable business outcomes. Because great development isn&apos;t about writing
                 code - It&apos;s about{" "}
-                <span className="relative inline font-semibold text-[#0A0A0C]">
+                <span className="relative inline-block font-semibold text-[#0A0A0C] pb-1.5">
                   solving business problems.
                   <Image
-                    src={directionUnderline}
+                    src={orangeBrush}
                     alt=""
-                    width={280}
-                    height={12}
+                    width={308}
+                    height={14}
+                    unoptimized
                     aria-hidden
-                    className="pointer-events-none absolute -bottom-0.5 left-0 h-[5px] w-[105%] max-w-none object-cover object-left"
-                    style={{
-                      filter:
-                        "brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(1800%) hue-rotate(346deg) brightness(101%) contrast(98%)",
-                    }}
+                    className="pointer-events-none absolute bottom-0 left-0 h-[12px] w-[110%] max-w-none object-fill object-left"
                   />
                 </span>
               </p>

@@ -66,11 +66,8 @@ export default async function Home() {
   const compareLeft = home?.compareStrip?.leftText ?? "Most agencies = Either design well OR market well";
   const compareRight = home?.compareStrip?.rightText ?? "tamatos = Bridges Product + Growth";
 
-  const teamRoles =
-    home?.team?.rolesText ??
-    "Strategists. Designers. Developers. Brand thinkers. SEO nerds.";
+  const teamRoles = "Strategists. Designers. Developers. Brand thinkers. SEO nerds.";
   const teamBody =
-    home?.team?.bodyText ??
     "We work together because the best ideas usually happen somewhere between what a business needs, what people want and what technology can make possible.";
   const teamButtonHref = home?.team?.button?.href ?? "/about";
 
@@ -246,7 +243,10 @@ export default async function Home() {
               </h2>
 
               <p className="mt-5 max-w-[520px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/70 lg:mt-6">
-                {teamRoles} {teamBody}
+                {teamRoles}
+              </p>
+              <p className="mt-4 max-w-[520px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/70">
+                {teamBody}
               </p>
 
               <Link

@@ -70,7 +70,7 @@ function TeamCard({
       </div>
 
       <div
-        className="absolute bottom-3 left-3 right-3 flex flex-col items-start gap-2"
+        className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row sm:items-center items-start gap-2"
         style={{
           backdropFilter: "blur(10px)",
           backgroundColor: "#00000005",
@@ -122,11 +122,10 @@ export default function TeamSection() {
             <span className="text-[#FF6A00]">.</span>
           </h2>
           <p
-            className="mt-4 text-[#0A0A0C]/55 font-normal leading-relaxed mx-auto max-w-2xl"
+            className="mt-4 text-[#0A0A0C]/55 font-normal leading-relaxed mx-auto"
             style={{ fontSize: "clamp(16px, 1.15vw, 18px)", letterSpacing: "-0.02em" }}
           >
             A team of designers, developers, strategists and marketers who like making things
-            <br className="hidden sm:block" />
             better.
           </p>
         </div>
