@@ -108,19 +108,23 @@ export default function BlogAuthorProfile({ author }: { author?: AuthorProfile }
 
           {author.socialProfiles?.length ? (
             <div className="flex flex-wrap items-center gap-3 mt-5">
-              {author.socialProfiles.map((profile) => (
-                <a
-                  key={`${profile.name}-${profile.url}`}
-                  href={profile.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white hover:text-[#0A0A0C] transition-colors duration-200"
-                  title={profile.name}
-                  aria-label={profile.name}
-                >
-                  <SocialIcon name={profile.name} />
-                </a>
-              ))}
+              {author.socialProfiles
+                .filter((profile): profile is { name: string; url: string } =>
+                  Boolean(profile.name && profile.url),
+                )
+                .map((profile) => (
+                  <a
+                    key={`${profile.name}-${profile.url}`}
+                    href={profile.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white hover:text-[#0A0A0C] transition-colors duration-200"
+                    title={profile.name}
+                    aria-label={profile.name}
+                  >
+                    <SocialIcon name={profile.name} />
+                  </a>
+                ))}
             </div>
           ) : null}
         </div>
