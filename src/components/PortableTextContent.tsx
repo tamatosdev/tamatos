@@ -6,9 +6,14 @@ import { slugifyHeading } from "@/lib/blogHeadings";
 function createComponents(): PortableTextComponents {
   const used = new Map<string, number>();
 
-  const headingIdFromValue = (value?: { children?: { text?: string }[] }) => {
-    const text = (value?.children ?? [])
-      .map((child) => (typeof child?.text === "string" ? child.text : ""))
+  const headingIdFromValue = (value?: PortableTextBlock) => {
+    const children = Array.isArray(value?.children) ? value.children : [];
+    const text = children
+      .map((child) =>
+        child && typeof child === "object" && "text" in child && typeof child.text === "string"
+          ? child.text
+          : ""
+      )
       .join("")
       .trim();
     let id = slugifyHeading(text) || "section";
