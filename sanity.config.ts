@@ -1,9 +1,8 @@
 import { defineConfig } from 'sanity';
 import { buildLegacyTheme } from 'sanity'
 import { structureTool } from 'sanity/structure';
-import { schema } from './src/sanity/schema';
-import { structure } from './src/sanity/structure';
-import './src/sanity/studio-custom.css';
+import { schema } from './src/sanity/schema'
+import { structure } from './src/sanity/structure'
 
 const myTheme = buildLegacyTheme({
   '--black': '#0f0f0f',
