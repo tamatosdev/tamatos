@@ -38,8 +38,11 @@ export default async function ContactPage() {
   const profileImageAlt = page?.profileImage?.alt || profileName;
   const cardBgUrl = page?.cardBackground?.url;
   const headingBefore = page?.headingBefore ?? "Ready to";
-  const headingItalic = page?.headingItalic ?? "sauce up";
-  const headingAfter = page?.headingAfter ?? "your Digital Presence?";
+  const cmsItalic = page?.headingItalic?.trim();
+  const headingItalic =
+    !cmsItalic || cmsItalic.toLowerCase() === "sauce up" ? "Sauce Up" : cmsItalic;
+  const headingAfterRaw = page?.headingAfter ?? "your Digital Presence";
+  const headingAfter = headingAfterRaw.replace(/\?+\s*$/, "");
   const phoneLabel = page?.phoneLabel ?? "Call us for expert solutions.";
   const phones = (
     page?.phones?.filter((p) => p.label && p.href)?.length
@@ -153,6 +156,7 @@ export default async function ContactPage() {
                   <em className="italic text-white/50">{headingItalic}</em>
                   <br />
                   {headingAfter}
+                  <span className="text-[#9DF560]">?</span>
                 </h2>
 
                 <div className="flex flex-1 flex-col justify-center gap-8 lg:gap-10">

@@ -43,7 +43,7 @@ const services: DigitalService[] = [
     icon: emailWhatsappIcon,
   },
   {
-    title: "Content Creation and Strategy",
+    title: "Content Strategy & Production",
     description:
       "Create purposeful content that educates, engages, and supports your customers throughout their journey.",
     icon: contentStrategyIcon,
@@ -80,13 +80,15 @@ export default function DigitalMarketingSolutionsSection() {
       <div className="container relative">
         <div className="max-w-[900px]">
           <h2
-            className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
+            className="max-w-[16em] font-medium leading-[1.12] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
             <span className="font-semibold text-[var(--service-accent,#9DF560)]">
               Digital Marketing
             </span>{" "}
-            Solutions Designed For Growth
+            Solutions
+            <br />
+            Designed For Growth
             <span className="text-[var(--service-accent,#9DF560)]">.</span>
           </h2>
 

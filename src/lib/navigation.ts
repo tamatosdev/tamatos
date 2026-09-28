@@ -111,7 +111,7 @@ export const defaultSiteNavigation: SiteNavigation = {
               href: '/services/digital',
             },
             {
-              label: 'Content Creation and Strategy',
+              label: 'Content Strategy & Production',
               subtext: 'Content that drives results',
               href: '/services/digital',
             },

@@ -27,7 +27,7 @@ const serviceGroups = [
       "Search Engine Optimization",
       "Influencer Marketing",
       "Email & WhatsApp Automation",
-      "Content Creation & Strategy",
+      "Content Strategy & Production",
       "Analytics & Growth Analysis",
     ],
   },

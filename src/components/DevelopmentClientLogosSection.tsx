@@ -33,7 +33,7 @@ export default function DevelopmentClientLogosSection() {
           className="mx-auto max-w-[900px] text-center font-medium leading-[1.12] tracking-[-0.04em] text-white"
           style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
         >
-          Loved By Teams{" "}
+          Trusted By Brands{" "}
           <em className="font-normal italic text-white/45">Worldwide</em>
           <span className="text-[var(--service-accent,#FC7031)]">.</span>
         </h2>

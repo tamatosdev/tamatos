@@ -28,13 +28,15 @@ export default function DigitalChallengesSection() {
               Meaningful Business Results.
             </span>
           </h2>
-
-          <p className="mt-6 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/80 lg:text-[17.78px]">
-            If you&apos;re facing challenges like:
-          </p>
         </div>
 
         <div className="mt-10 lg:mt-14">
+          <p
+            className="pb-7 text-[18px] font-normal leading-[1.55] tracking-[-0.02em] text-white lg:pb-9 lg:text-[17.78px]"
+          >
+            If you&apos;re facing challenges like:
+          </p>
+
           <div className="grid grid-cols-1 md:grid-cols-2">
             {challenges.map((text, index) => {
               const isLastRow = index >= challenges.length - 2;
@@ -55,7 +57,7 @@ export default function DigitalChallengesSection() {
                     className="mt-1 h-5 w-5 shrink-0 object-contain lg:mt-1.5 lg:h-6 lg:w-6"
                   />
                   <p
-                    className="w-full font-normal leading-[1.4] tracking-[-0.03em] text-white md:w-[60%]"
+                    className="w-full font-normal leading-[1.4] tracking-[-0.03em] text-white/80 md:w-[60%]"
                     style={{ fontSize: "clamp(18px, 1.4vw, 21.33px)" }}
                   >
                     {text}

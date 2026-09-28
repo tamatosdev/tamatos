@@ -42,7 +42,7 @@ const projects: FeaturedProject[] = [
     image2: mucho22,
     image2Alt: "Mucho Burrito website mobile view",
     description:
-      "The Fatima Group Website is a corporate digital platform designed to represent one of Pakistan's leading industrial conglomerates with clarity, credibility, and modern visual appeal",
+      "MUCHO Burrito is a Canadian Mexican restaurant brand. We brought their fresh rebrand to life through a vibrant Modern Mexicana digital experience.",
     href: "/work",
   },
 ];

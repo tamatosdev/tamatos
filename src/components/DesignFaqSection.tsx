@@ -89,8 +89,7 @@ export default function DesignFaqSection() {
                     className="flex w-full items-start justify-between gap-5 py-6 text-left lg:py-7"
                   >
                     <span
-                      className="pr-2 font-medium leading-[1.35] tracking-[-0.03em] text-white"
-                      style={{ fontSize: "clamp(18px, 1.2vw, 18px)" }}
+                      className="pr-2 text-[18px] font-medium leading-[1.35] tracking-[-0.03em] text-white lg:text-[22px]"
                     >
                       <span className="text-[var(--service-accent,#03E4AC)]">Q. </span>
                       {faq.question}

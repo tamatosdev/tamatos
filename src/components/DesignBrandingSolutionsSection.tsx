@@ -19,39 +19,39 @@ type BrandingService = {
 
 const services: BrandingService[] = [
   {
-    title: "Brand Strategy",
+    title: "Website UX/UI Design",
     description:
-      "We define your brand's purpose, positioning, and messaging to build a strong foundation for growth.",
-    icon: brandStrategyIcon,
+      "Designing intuitive, engaging websites that look and feel effortless to navigate, and turn every interaction into a better user experience.",
+    icon: socialMediaDesignIcon,
+  },
+  {
+    title: "Mobile App Design",
+    description:
+      "Build engaging mobile experiences that are easy to navigate, visually appealing, and designed around your users' needs.",
+    icon: logoDesignIcon,
   },
   {
     title: "Brand Identity",
     description:
-      "We create cohesive visual systems with colours, typography, and guidelines that make your brand recognizable.",
+      "Develop a distinctive visual identity that reflects your brand's personality and creates lasting recognition.",
     icon: brandIdentityIcon,
   },
   {
-    title: "Logo Design",
+    title: "Brand Strategy",
     description:
-      "We design distinctive, memorable logos that capture your brand essence across every touchpoint.",
-    icon: logoDesignIcon,
-  },
-  {
-    title: "Social Media Design",
-    description:
-      "We craft scroll-stopping social assets and templates that keep your brand consistent across platforms.",
-    icon: socialMediaDesignIcon,
+      "Define your purpose, positioning, messaging, and competitive advantage to build a brand with a clear direction.",
+    icon: brandStrategyIcon,
   },
   {
     title: "Print & Marketing Collateral",
     description:
-      "From business cards to brochures, we design polished print materials that leave a lasting impression.",
+      "Business cards, brochures, packaging, stationery, and marketing materials that keep your brand consistent online and offline.",
     icon: printMarketingIcon,
   },
   {
     title: "Pitch Deck Design",
     description:
-      "We build compelling pitch decks that tell your story clearly and help you win investors and clients.",
+      "Investor, sales, and corporate presentations that communicate your ideas with clarity, confidence, and impact.",
     icon: pitchDeckIcon,
   },
 ];

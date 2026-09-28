@@ -26,7 +26,7 @@ export default function DevelopmentQuoteCtaSection() {
 
           <div className="relative z-10">
             <div
-              className="font-normal leading-[1.45] tracking-[-0.03em] text-[#0A0A0C]"
+              className="w-full font-normal leading-[1.45] tracking-[-0.03em] text-[#0A0A0C] lg:w-[75%]"
               style={{ fontSize: "clamp(17.78px, 1.8vw, 24.89px)" }}
             >
               <p>

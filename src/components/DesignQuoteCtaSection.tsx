@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import CEO from "@/assets/CEO.png";
+import nabeel from "@/assets/digital-nabeel.png";
 import ctaShade from "@/assets/cta-2-shadow.png";
 
 export default function DesignQuoteCtaSection() {
@@ -22,14 +22,14 @@ export default function DesignQuoteCtaSection() {
               style={{ fontSize: "clamp(17.78px, 1.8vw, 24.89px)" }}
             >
               <p>
-                The biggest branding mistake I see isn&apos;t poor design, it&apos;s lack of
+                &ldquo;The biggest branding mistake I see isn&apos;t poor design, it&apos;s lack of
                 clarity. Businesses often rush into creating a logo before defining what they
                 stand for and why customers should choose them.
               </p>
               <p className="mt-5 italic text-[#0A0A0C]/85">
                 At Tamatos, we reverse that process. We build brands on a strong strategic
                 foundation, because that&apos;s what creates brands people recognize, trust, and
-                remember.
+                remember.&rdquo;
               </p>
             </div>
 
@@ -37,7 +37,7 @@ export default function DesignQuoteCtaSection() {
               <div className="flex shrink-0 items-center gap-3.5">
                 <div className="rounded-full p-[2px] ring-2 ring-[var(--service-accent,#03E4AC)]">
                   <Image
-                    src={CEO}
+                    src={nabeel}
                     alt="Nabeel Danish Rafiq"
                     width={56}
                     height={56}

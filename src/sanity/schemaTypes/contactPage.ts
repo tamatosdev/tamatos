@@ -67,14 +67,14 @@ export const contactPage = defineType({
       title: 'Heading — italic word(s)',
       type: 'string',
       group: 'info',
-      initialValue: 'sauce up',
+      initialValue: 'Sauce Up',
     }),
     defineField({
       name: 'headingAfter',
       title: 'Heading — after italic',
       type: 'string',
       group: 'info',
-      initialValue: 'your Digital Presence?',
+      initialValue: 'your Digital Presence',
     }),
     defineField({
       name: 'phoneLabel',

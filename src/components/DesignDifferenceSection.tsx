@@ -67,7 +67,7 @@ export default function DesignDifferenceSection() {
                 className={`flex min-h-[280px] min-w-0 flex-col justify-between rounded-[24px] p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:min-h-0 lg:rounded-[28px] lg:p-8 ${
                   isActive
                     ? "border border-transparent bg-[var(--service-accent,#03E4AC)] text-[#0A0A0C] lg:flex-[1.45_1_0%]"
-                    : "border border-white/12 bg-white/[0.02] text-white lg:flex-[1_1_0%]"
+                    : "border border-white/12 bg-white/[0.02] text-white shadow-[inset_5.33px_4px_10px_#FFFFFF1A] mix-blend-plus-lighter lg:flex-[1_1_0%]"
                 }`}
               >
                 <span

@@ -3,6 +3,9 @@ import Link from "next/link";
 import smileGreen from "@/assets/smile-green.png";
 
 export default function DesignOverlookedCtaSection() {
+  // Hidden for now — restore by removing this early return
+  return null;
+
   return (
     <section className="relative overflow-hidden py-20 lg:py-28">
       <div className="container relative">

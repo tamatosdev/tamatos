@@ -69,7 +69,7 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
                 )}
               </div>
 
-              <div className="flex flex-col gap-3 p-0 pt-5 sm:p-5 flex-1">
+              <div className="flex flex-col gap-3 p-0 pt-5 flex-1">
                 <p className="text-white/80 font-medium" style={{ fontSize: "18px", letterSpacing: "-0.02em" }}>
                   {formatDate(post.date)}&nbsp;&nbsp;•&nbsp;&nbsp;{readingTime}
                 </p>

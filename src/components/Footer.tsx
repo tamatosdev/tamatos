@@ -37,7 +37,7 @@ const navColumns = [
       { label: "Search Engine Optimization", href: "/services/digital" },
       { label: "Influencer Marketing", href: "/services/digital" },
       { label: "Email & WhatsApp Automation", href: "/services/digital" },
-      { label: "Content Creation & Strategy", href: "/services/digital" },
+      { label: "Content Strategy & Production", href: "/services/digital" },
       { label: "Analytics & Growth Analysis", href: "/services/digital" },
     ],
   },

@@ -50,10 +50,10 @@ const defaultCaseStudies: CaseStudy[] = [
   },
   {
     pills: [{ label: "UX/UI Design" }, { label: "Web Development" }, { flag: CanadaFlag, flagAlt: "Canada" }],
-    heading: "MUCHO Burrito is a Mexican cuisine restaurant that blends traditional Mexican flavors with modern innovation.",
+    heading:
+      "MUCHO Burrito is a Canadian Mexican restaurant brand. We brought their fresh rebrand to life through a vibrant Modern Mexicana digital experience.",
     paragraphs: [
-      "For MUCHO Burrito, the website needed to capture the vibrant fusion of authentic Mexican flavors and modern dining aesthetics. Using WordPress Elementor page builder, we revamped their site to deliver a seamless user experience with visually engaging design.",
-      "Key features include intuitive navigation, a clean UI design, and functional artistry through dynamic artworks. We implemented a customizable burrito catering form using Forminator, tailored to enhance customer interaction, and added a nutrition calculator for personalized meal planning.",
+      "MUCHO Burrito is a Canadian Mexican restaurant brand. We brought their fresh rebrand to life through a vibrant Modern Mexicana digital experience.",
     ],
     images: [
       { src: Mucho1, alt: "MUCHO Burrito — desktop" },

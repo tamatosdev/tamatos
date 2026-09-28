@@ -40,8 +40,9 @@ const agencyHighlights: {
 }[] = [
   {
     icon: teamIcon,
-    title: "Have one team that gets the bigger picture",
-    description: "Hiring system with immediate start.",
+    title: "Have One Team That Gets The Bigger Picture",
+    description:
+      "Strategy, Branding, Design, Digital And SEO Working Together Not In Silos.",
   },
   {
     icon: bracesIcon,
@@ -63,8 +64,8 @@ export async function generateMetadata() {
 export default async function Home() {
   const home = await getHomePage();
 
-  const compareLeft = home?.compareStrip?.leftText ?? "Most agencies = Either design well OR market well";
-  const compareRight = home?.compareStrip?.rightText ?? "tamatos = Bridges Product + Growth";
+  const compareLeft = home?.compareStrip?.leftText ?? "Most Agencies = Either Design Well OR Market Well";
+  const compareRight = home?.compareStrip?.rightText ?? "Tamatos = Bridges Product + Growth";
 
   const teamRoles = "Strategists. Designers. Developers. Brand thinkers. SEO nerds.";
   const teamBody =

@@ -104,7 +104,7 @@ export default function DigitalProcessSection() {
             Every{" "}
             <span className="font-semibold text-[var(--service-accent,#9DF560)]">Great</span> brand
             starts from a{" "}
-            <em className="font-normal italic text-[var(--service-accent,#9DF560)]">
+            <em className="font-normal italic text-white">
               Clear Process.
             </em>
           </h2>

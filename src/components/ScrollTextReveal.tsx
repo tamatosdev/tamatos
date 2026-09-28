@@ -16,7 +16,7 @@ export default function ScrollTextReveal({
   const text =
     data?.text ??
     textProp ??
-    "So, We don't just design pretty interfaces we build products that convert, scale, and grow.";
+    "So, We Don't Just Design Pretty Interfaces We Build Products That Convert, Scale, And Grow.";
   const highlights = data?.highlights?.length
     ? scrollRevealHighlightsToMap(data.highlights)
     : highlightsProp ?? { grow: "#9DF560" };
