@@ -60,14 +60,14 @@ export default function WorkAwardsSection({ data }: { data?: AwardsData }) {
 
               <div className="text-center">
                 <p
-                  className="text-white font-semibold leading-tight"
-                  style={{ fontSize: "16px", letterSpacing: "-0.04em" }}
+                  className="text-white font-semibold leading-tight text-[16px] lg:text-[18px]"
+                  style={{ letterSpacing: "-0.04em" }}
                 >
                   {award.year}
                 </p>
                 <p
-                  className="text-white/80 font-normal mt-1"
-                  style={{ fontSize: "16px", letterSpacing: "-0.03em" }}
+                  className="text-white/80 font-normal mt-1 text-[16px] lg:text-[18px]"
+                  style={{ letterSpacing: "-0.03em" }}
                 >
                   {award.title}
                 </p>

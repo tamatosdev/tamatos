@@ -13,7 +13,7 @@ import {
   getPortfolioServiceTags,
 } from "@/lib/portfolio";
 
-const WORK_HERO_VIDEO = "/videos/we.mp4";
+const WORK_HERO_VIDEO = "/videos/tamatos-work-video.mp4";
 
 export const metadata: Metadata = {
   title: "Works — Tamatos",

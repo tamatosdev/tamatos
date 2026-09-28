@@ -355,9 +355,9 @@ export default function AboutPage() {
                 </p>
 
                 <p className="mt-10 lg:mt-14 text-white">
-                  It&apos;s Chaotic<span className="text-[#9DF560]">.</span> It&apos;s
-                  Collaborative<span className="text-[#9DF560]">.</span> It&apos;s Tamatos
-                  <span className="text-[#9DF560]">.</span>
+                  It&apos;s Chaotic<span className="text-[#9DF560]">.</span>
+                  {" "}It&apos;s Collaborative<span className="text-[#9DF560]">.</span>
+                  {" "}It&apos;s Tamatos<span className="text-[#9DF560]">.</span>
                 </p>
 
                 <p className="mt-1">
