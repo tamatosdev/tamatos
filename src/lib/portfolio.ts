@@ -72,7 +72,14 @@ export async function getPortfolioServiceTags(): Promise<PortfolioTag[]> {
 
 export async function getPortfolioIndustryTags(): Promise<PortfolioTag[]> {
   try {
-    return await sanityClient.fetch<PortfolioTag[]>(portfolioIndustryTagsQuery);
+    const tags = await sanityClient.fetch<PortfolioTag[]>(portfolioIndustryTagsQuery);
+    return [...tags].sort((a, b) => {
+      const aOthers = a.title.trim().toLowerCase() === "others" || a.slug === "others";
+      const bOthers = b.title.trim().toLowerCase() === "others" || b.slug === "others";
+      if (aOthers && !bOthers) return 1;
+      if (!aOthers && bOthers) return -1;
+      return a.title.localeCompare(b.title);
+    });
   } catch (error) {
     console.error("Failed to fetch portfolio industry tags:", error);
     return [];

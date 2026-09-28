@@ -33,7 +33,7 @@ export const portfolioServiceTagsQuery = defineQuery(/* groq */ `
 `);
 
 export const portfolioIndustryTagsQuery = defineQuery(/* groq */ `
-  *[_type == "portfolioIndustryTag"] | order(title asc) {
+  *[_type == "portfolioIndustryTag"] | order(lower(title) == "others", title asc) {
     _id,
     title,
     "slug": slug.current
