@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FaviconAnimator from "@/components/FaviconAnimator";
 import { getSiteNavigation } from "@/lib/navigation";
+import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const inter = Inter({
@@ -14,12 +15,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Full Stack Digital Marketing agency",
   description: "Full Stack Digital Marketing agency in USA",
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "64x64" },
+    ],
     shortcut: "/favicon.png",
-    apple: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Tamatos",
+    images: [{ url: "/og-image.png", width: 512, height: 512, alt: "Tamatos" }],
+  },
+  twitter: {
+    card: "summary",
+    images: ["/og-image.png"],
   },
 };
 

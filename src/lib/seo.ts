@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import type { CmsImage } from "@/lib/home";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
+/** Fallback share image when CMS has no ogImage set (Slack/WhatsApp/etc.). */
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+
 export type SeoSchemaSettings = {
   enabled?: boolean;
   type?: "organization" | "website" | "webPage" | "localBusiness" | "custom";
@@ -47,7 +50,7 @@ function resolveOgDescription(seo?: SeoData) {
 }
 
 function resolveOgImage(seo?: SeoData) {
-  return seo?.ogImage?.url ?? seo?.twitterImage?.url;
+  return seo?.ogImage?.url ?? seo?.twitterImage?.url ?? DEFAULT_OG_IMAGE;
 }
 
 function resolveTwitterTitle(seo?: SeoData) {
@@ -76,6 +79,12 @@ export function buildPageMetadata(seo?: SeoData): Metadata {
   return {
     title,
     description,
+    metadataBase: new URL(SITE_URL),
+    icons: {
+      icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
+      shortcut: "/favicon.png",
+      apple: [{ url: "/favicon.png", type: "image/png" }],
+    },
     alternates: { canonical },
     openGraph: {
       title: ogTitle,
@@ -83,15 +92,20 @@ export function buildPageMetadata(seo?: SeoData): Metadata {
       type: (seo?.ogType as "website" | "article") ?? "website",
       siteName: seo?.ogSiteName ?? SITE_NAME,
       url: canonical,
-      images: ogImageUrl
-        ? [{ url: ogImageUrl, alt: seo?.ogImage?.alt ?? seo?.twitterImage?.alt ?? title }]
-        : undefined,
+      images: [
+        {
+          url: ogImageUrl,
+          alt: seo?.ogImage?.alt ?? seo?.twitterImage?.alt ?? title,
+          width: 512,
+          height: 512,
+        },
+      ],
     },
     twitter: {
-      card: seo?.twitterCard ?? "summary_large_image",
+      card: seo?.twitterCard ?? "summary",
       title: twitterTitle,
       description: twitterDescription,
-      images: twitterImageUrl ? [twitterImageUrl] : undefined,
+      images: [twitterImageUrl ?? ogImageUrl],
       site: seo?.twitterSite,
       creator: seo?.twitterCreator,
     },
