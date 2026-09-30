@@ -35,9 +35,9 @@ export default function ClientLogos({ className = "" }: { className?: string }) 
       >
         Since{" "}
         <span className="text-[#9DF560]">2021,</span>{" "}
-        We&apos;ve Partnered with Visionary Clients to{" "}
-        <em className="italic text-white/50">Craft Meaningful Impact</em>{" "}
-        and Unforgettable Experiences.
+        we&apos;ve partnered with visionary clients to{" "}
+        <em className="italic text-white/50">craft meaningful impact</em>{" "}
+        and unforgettable experiences.
       </h2>
 
       {/* Logo grid — 2 cols on mobile, shorter cards */}

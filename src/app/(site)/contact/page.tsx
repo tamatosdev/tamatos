@@ -40,9 +40,11 @@ export default async function ContactPage() {
   const headingBefore = page?.headingBefore ?? "Ready to";
   const cmsItalic = page?.headingItalic?.trim();
   const headingItalic =
-    !cmsItalic || cmsItalic.toLowerCase() === "sauce up" ? "Sauce Up" : cmsItalic;
-  const headingAfterRaw = page?.headingAfter ?? "your Digital Presence";
-  const headingAfter = headingAfterRaw.replace(/\?+\s*$/, "");
+    !cmsItalic || cmsItalic.toLowerCase() === "sauce up" ? "sauce up" : cmsItalic;
+  const headingAfterRaw = page?.headingAfter ?? "your digital presence";
+  const headingAfter = headingAfterRaw
+    .replace(/\?+\s*$/, "")
+    .replace(/^your Digital Presence$/i, "your digital presence");
   const phoneLabel = page?.phoneLabel ?? "Call us for expert solutions.";
   const phones = (
     page?.phones?.filter((p) => p.label && p.href)?.length

@@ -102,10 +102,10 @@ export default function DigitalProcessSection() {
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
             Every{" "}
-            <span className="font-semibold text-[var(--service-accent,#9DF560)]">Great</span> brand
+            <span className="font-semibold text-[var(--service-accent,#9DF560)]">great</span> brand
             starts from a{" "}
             <em className="font-normal italic text-white">
-              Clear Process.
+              clear process.
             </em>
           </h2>
         </div>

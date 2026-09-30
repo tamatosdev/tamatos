@@ -67,14 +67,14 @@ export const contactPage = defineType({
       title: 'Heading — italic word(s)',
       type: 'string',
       group: 'info',
-      initialValue: 'Sauce Up',
+      initialValue: 'sauce up',
     }),
     defineField({
       name: 'headingAfter',
       title: 'Heading — after italic',
       type: 'string',
       group: 'info',
-      initialValue: 'your Digital Presence',
+      initialValue: 'your digital presence',
     }),
     defineField({
       name: 'phoneLabel',
@@ -245,14 +245,14 @@ export const contactPage = defineType({
       title: 'Heading — accent word',
       type: 'string',
       group: 'footprint',
-      initialValue: 'Global',
+      initialValue: 'global',
     }),
     defineField({
       name: 'footprintHeadingAfter',
       title: 'Heading — after accent',
       type: 'string',
       group: 'footprint',
-      initialValue: 'Footprint',
+      initialValue: 'footprint',
     }),
     defineField({
       name: 'footprintDescription',

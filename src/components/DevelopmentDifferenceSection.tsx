@@ -5,24 +5,24 @@ import { useState } from "react";
 const cards = [
   {
     number: "01",
-    title: "Business-First Thinking",
+    title: "Business-first thinking",
     description:
       "Every technical decision starts with your business objectives—not just technical requirements.",
   },
   {
     number: "02",
-    title: "Technology with Purpose",
+    title: "Technology with purpose",
     description:
       "We recommend technologies that solve real business problems—not simply because they're trending.",
   },
   {
     number: "03",
-    title: "Built to Scale",
+    title: "Built to scale",
     description: "Every digital product is designed to evolve alongside your business.",
   },
   {
     number: "04",
-    title: "AI-Enhanced Development",
+    title: "AI-enhanced development",
     description:
       "We leverage AI where it creates genuine value, accelerating workflows, improving efficiency, and enhancing user experiences.",
   },
@@ -40,7 +40,7 @@ export default function DevelopmentDifferenceSection() {
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
             The <span className="text-[var(--service-accent,#FC7031)]">Tamatos</span>{" "}
-            <em className="font-normal italic text-white/45">Difference</em>
+            <em className="font-normal italic text-white/45">difference</em>
             <span className="text-white/45">.</span>
           </h2>
           <p className="mt-5 text-[18px] leading-[1.5] tracking-[-0.02em] text-white/55 lg:text-[17.78px]">

@@ -101,8 +101,8 @@ export default function DesignProcessSection() {
             className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
-            Every <span className="font-semibold text-[var(--service-accent,#03E4AC)]">Great</span> Brand Starts from a{" "}
-            <em className="font-normal italic text-white">Clear Process.</em>
+            Every <span className="font-semibold text-[var(--service-accent,#03E4AC)]">great</span> brand starts from a{" "}
+            <em className="font-normal italic text-white">clear process.</em>
           </h2>
         </div>
 

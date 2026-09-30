@@ -20,8 +20,10 @@ const defaultAwards = [
 export default function AwardsSection({ data }: { data?: AwardsData }) {
   const cmsHeading = data?.headingMain?.trim();
   const heading =
-    !cmsHeading || cmsHeading === "Not just"
-      ? "We Don't Like To Brag But..."
+    !cmsHeading ||
+    cmsHeading === "Not just" ||
+    cmsHeading === "We Don't Like To Brag But..."
+      ? "We don't like to brag but..."
       : cmsHeading;
 
   const awards =

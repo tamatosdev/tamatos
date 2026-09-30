@@ -336,33 +336,33 @@ export default function AboutPage() {
                     className="inline-block w-8 lg:w-12 h-auto mr-2 lg:mr-3"
                     style={{ verticalAlign: "middle" }}
                   />
-                  <span className="text-white">We Take Work Seriously. </span>
+                  <span className="text-white">We take work seriously. </span>
                   <span className="text-white/50">Ourselves? </span>
-                  <em className="italic text-white font-medium">Not Always</em>
+                  <em className="italic text-white font-medium">Not always</em>
                   <span className="text-[#9DF560]">.</span>
                 </p>
 
                 <p className="mt-1 text-white/50">
-                  We Got Big Ideas, Cut Chai, Fiery Biryani,{" "}
+                  We got big ideas, cut chai, fiery biryani,{" "}
                   <Image
                     src={pill2}
                     alt=""
                     className="inline-block h-[0.75em] w-auto mx-1"
                     style={{ verticalAlign: "middle" }}
                   />{" "}
-                  Questionable Jokes And, Allegedly, Reading Manga When The Boss
-                  Isn&apos;t Looking.
+                  questionable jokes and, allegedly, reading manga when the boss
+                  isn&apos;t looking.
                 </p>
 
                 <p className="mt-10 lg:mt-14 text-white">
-                  It&apos;s Chaotic<span className="text-[#9DF560]">.</span>
-                  {" "}It&apos;s Collaborative<span className="text-[#9DF560]">.</span>
+                  It&apos;s chaotic<span className="text-[#9DF560]">.</span>
+                  {" "}It&apos;s collaborative<span className="text-[#9DF560]">.</span>
                   {" "}It&apos;s Tamatos<span className="text-[#9DF560]">.</span>
                 </p>
 
                 <p className="mt-1">
-                  <span className="text-white/50">Come Take A Look At Our </span>
-                  <em className="italic text-white font-medium">Unhinged Side</em>
+                  <span className="text-white/50">Come take a look at our </span>
+                  <em className="italic text-white font-medium">unhinged side</em>
                   <span className="text-[#9DF560]">.</span>
                 </p>
               </div>
@@ -397,7 +397,7 @@ export default function AboutPage() {
               className="font-medium leading-[1.15] tracking-[-0.04em] text-white"
               style={{ fontSize: "clamp(28.44px, 3.5vw, 50.06px)" }}
             >
-              Work We Are <em className="italic font-normal text-white/50">Proud</em> Of
+              Work we are <em className="italic font-normal text-white/50">proud</em> of
               <span className="text-[#9DF560]">.</span>
             </h2>
             <p className="mt-5 max-w-[720px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/80 lg:mt-6 lg:text-[18px]">
@@ -413,7 +413,7 @@ export default function AboutPage() {
 
       <ReviewTab />
       <BlogSection />
-      <CtaSection2 />
+      <CtaSection2 variant="about" />
 
       </div>
     </main>

@@ -279,7 +279,7 @@ export default function WorkPortfolioSection({
               className="text-white font-medium leading-[1.08] mb-10 lg:mb-12"
               style={{ fontSize: "clamp(32px, 3.8vw, 50.06px)", letterSpacing: "-0.04em" }}
             >
-              Works That <span className="text-[#9DF560]">Power</span> Growth.
+              Works that <span className="text-[#9DF560]">power</span> growth.
             </h2>
 
             {filteredItems.length > 0 ? (

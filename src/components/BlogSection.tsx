@@ -9,7 +9,7 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
   if (!posts.length) return null;
 
   const headingBefore = "The";
-  const headingEmphasis = "Internet";
+  const headingEmphasis = "internet";
   const description =
     data?.description?.trim() ||
     "Read what we're learning, questioning and thinking about.";
@@ -26,10 +26,10 @@ export default async function BlogSection({ data }: { data?: HomeBlogData }) {
           >
             <span className="block">
               {headingBefore}{" "}
-              <em className="italic text-white/50 font-medium">{headingEmphasis}</em> Does
+              <em className="italic text-white/50 font-medium">{headingEmphasis}</em> does
             </span>
             <span className="block">
-              Not Stand Still, Neither Do We
+              not stand still, neither do we
               <span className="text-[#9DF560]">.</span>
             </span>
           </h2>

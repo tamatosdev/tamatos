@@ -391,7 +391,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             />
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-2">
-              <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer text-black/70 text-[18px] leading-snug">
+              <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer text-black/70 text-[14px] leading-snug">
                 <input
                   type="checkbox"
                   required
@@ -450,7 +450,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                     key={opt}
                     type="button"
                     onClick={() => setProject((p) => ({ ...p, budget: opt }))}
-                    className="rounded-full px-5 py-2.5 text-[18px] font-medium transition-all duration-200"
+                    className="rounded-full px-5 py-2.5 text-[16px] font-medium transition-all duration-200"
                     style={{
                       border: "1.5px solid",
                       borderColor: project.budget === opt ? "#0A0A0C" : "rgba(10,10,12,0.2)",
@@ -508,7 +508,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                 <button
                   type="button"
                   onClick={() => setProjectDetailMode("text")}
-                  className="rounded-full px-4 py-1.5 text-[18px] font-medium transition-all duration-200"
+                  className="rounded-full px-4 py-1.5 text-[16px] font-medium transition-all duration-200"
                   style={{
                     background: projectDetailMode === "text" ? "#0A0A0C" : "transparent",
                     color: projectDetailMode === "text" ? "#fff" : "#0A0A0C",
@@ -519,7 +519,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                 <button
                   type="button"
                   onClick={() => setProjectDetailMode("upload")}
-                  className="rounded-full px-4 py-1.5 text-[18px] font-medium transition-all duration-200"
+                  className="rounded-full px-4 py-1.5 text-[16px] font-medium transition-all duration-200"
                   style={{
                     background: projectDetailMode === "upload" ? "#0A0A0C" : "transparent",
                     color: projectDetailMode === "upload" ? "#fff" : "#0A0A0C",
@@ -576,7 +576,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-2">
-              <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer text-black/70 text-[18px] leading-snug">
+              <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer text-black/70 text-[14px] leading-snug">
                 <input
                   type="checkbox"
                   required

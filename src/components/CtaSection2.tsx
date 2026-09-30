@@ -48,13 +48,30 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
-export default function CtaSection2({ data }: { data?: FinalCtaData }) {
-  const heading = "Got a Kickass Idea?\nWe'll help you make it Real.";
-  const description =
-    "You've now seen what we've built and what our clients say. The only thing left for you is starting. Drop us your brief or just say hi. Either works.";
+const calendlyHref = "https://calendly.com/nabeeldanishrafiq/tamatos";
+
+const pillButtonClass =
+  "inline-flex items-center justify-center rounded-full font-medium transition-colors duration-300 py-4 px-5 lg:py-4 lg:px-8";
+const pillButtonStyle = {
+  fontSize: "clamp(18px, 1.2vw, 18px)",
+  letterSpacing: "-0.02em",
+} as const;
+
+export default function CtaSection2({
+  data,
+  variant = "default",
+}: {
+  data?: FinalCtaData;
+  variant?: "default" | "about";
+}) {
+  const heading = "Have something\nworth building?";
+  const isAbout = variant === "about";
+  const description = isAbout
+    ? "A website. A digital product. A brand that needs a rethink. Or a business problem you haven't quite figured out yet."
+    : "You've now seen what we've built and what our clients say. The only thing left for you is starting. Drop us your brief or just say hi. Either works.";
   const buttonLabel = data?.primaryButton?.label ?? "Book a Free Consultation";
   const buttonHref =
-    data?.primaryButton?.href ?? "https://calendly.com/nabeeldanishrafiq/tamatos";
+    data?.primaryButton?.href ?? calendlyHref;
   const email = "hello@tamatos.com";
 
   const headingParts = heading.split("\n");
@@ -81,25 +98,16 @@ export default function CtaSection2({ data }: { data?: FinalCtaData }) {
             className="text-[#0A0A0C] font-medium leading-[1.2]"
             style={{ fontSize: "clamp(28.44px, 4.5vw, 50.06px)", letterSpacing: "-0.05em" }}
           >
-            {headingParts.map((line, i) => {
-              const kickassMatch = line.match(/^(.*)(Kickass)(.*)$/i);
-              if (kickassMatch) {
-                return (
-                  <span key={i}>
-                    {kickassMatch[1]}
-                    <em className="italic text-[#0A0A0C]/70">{kickassMatch[2]}</em>
-                    {kickassMatch[3]}
-                    {i < headingParts.length - 1 && <br />}
-                  </span>
-                );
-              }
-              return (
-                <span key={i}>
-                  {line}
-                  {i < headingParts.length - 1 && <br />}
-                </span>
-              );
-            })}
+            {headingParts.map((line, i) => (
+              <span key={i}>
+                {i === 0 ? (
+                  line
+                ) : (
+                  <em className="italic font-medium text-[#0A0A0C]/50">{line}</em>
+                )}
+                {i < headingParts.length - 1 && <br />}
+              </span>
+            ))}
           </h2>
 
           <p
@@ -109,55 +117,82 @@ export default function CtaSection2({ data }: { data?: FinalCtaData }) {
             {description}
           </p>
 
-          {isExternal ? (
+          {isAbout ? (
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Link
+                href="/contact"
+                className={`${pillButtonClass} w-fit text-white bg-[#1D17E0] hover:bg-[#0A0A0C]`}
+                style={pillButtonStyle}
+              >
+                Let&apos;s figure it out
+              </Link>
+              <a
+                href={calendlyHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${pillButtonClass} w-fit border border-[#0A0A0C]/20 bg-transparent text-[#0A0A0C] hover:border-[#0A0A0C]/40`}
+                style={pillButtonStyle}
+              >
+                Book a Meeting with Nabeel Danish
+              </a>
+            </div>
+          ) : isExternal ? (
             <a
               href={buttonHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit items-center justify-center rounded-full font-medium text-white bg-[#1D17E0] hover:bg-[#0A0A0C] transition-colors duration-300 py-4 px-5 lg:py-4 lg:px-8"
-              style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.02em" }}
+              className={`${pillButtonClass} w-fit text-white bg-[#1D17E0] hover:bg-[#0A0A0C]`}
+              style={pillButtonStyle}
             >
               {buttonLabel}
             </a>
           ) : (
             <Link
               href={buttonHref}
-              className="inline-flex w-fit items-center justify-center rounded-full font-medium text-white bg-[#1D17E0] hover:bg-[#0A0A0C] transition-colors duration-300 py-4 px-5 lg:py-4 lg:px-8"
-              style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.02em" }}
+              className={`${pillButtonClass} w-fit text-white bg-[#1D17E0] hover:bg-[#0A0A0C]`}
+              style={pillButtonStyle}
             >
               {buttonLabel}
             </Link>
           )}
 
-          <div className="flex items-center gap-2 lg:hidden">
-            <a
-              href={`mailto:${email}`}
-              className="text-[#0A0A0C] font-semibold"
-              style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
-            >
-              {email}
-            </a>
-            <CopyButton text={email} />
-          </div>
+          {!isAbout && (
+            <div className="flex items-center gap-2 lg:hidden">
+              <a
+                href={`mailto:${email}`}
+                className="text-[#0A0A0C] font-semibold"
+                style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+              >
+                {email}
+              </a>
+              <CopyButton text={email} />
+            </div>
+          )}
         </div>
 
-        <div className="hidden lg:flex lg:flex-col lg:justify-between lg:max-w-85 relative z-10">
+        <div
+          className={`hidden lg:flex relative z-10 ${
+            isAbout ? "lg:max-w-[320px] lg:items-start lg:justify-start" : "lg:flex-col lg:justify-between lg:max-w-85"
+          }`}
+        >
           <p
             className="font-medium leading-relaxed"
             style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.02em", color: "rgba(10,10,12,0.8)" }}
           >
             {description}
           </p>
-          <div className="mt-8 inline-flex items-center gap-2">
-            <a
-              href={`mailto:${email}`}
-              className="text-[#0A0A0C] font-semibold hover:opacity-80 transition-opacity"
-              style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
-            >
-              {email}
-            </a>
-            <CopyButton text={email} />
-          </div>
+          {!isAbout && (
+            <div className="mt-8 inline-flex items-center gap-2">
+              <a
+                href={`mailto:${email}`}
+                className="text-[#0A0A0C] font-semibold hover:opacity-80 transition-opacity"
+                style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+              >
+                {email}
+              </a>
+              <CopyButton text={email} />
+            </div>
+          )}
         </div>
       </div>
     </section>

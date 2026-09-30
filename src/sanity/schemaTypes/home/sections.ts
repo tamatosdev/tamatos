@@ -519,7 +519,7 @@ export const awardsSection = defineType({
       name: 'headingMain',
       title: 'Heading',
       type: 'string',
-      initialValue: "We Don't Like To Brag But...",
+      initialValue: "We don't like to brag but...",
     }),
     defineField({
       name: 'headingEmphasis',
@@ -583,9 +583,9 @@ export const reviewsSection = defineType({
   fields: [
     defineField({ name: 'headingStart', title: 'Heading start', type: 'string', initialValue: 'Verified' }),
     defineField({ name: 'headingHighlight', title: 'Heading highlight', type: 'string', initialValue: 'reviews' }),
-    defineField({ name: 'headingMiddle', title: 'Heading middle', type: 'string', initialValue: 'From' }),
-    defineField({ name: 'headingItalic', title: 'Heading italic text', type: 'string', initialValue: 'Real Clients' }),
-    defineField({ name: 'headingLine2', title: 'Heading line 2', type: 'string', initialValue: 'That Hold us Accountable' }),
+    defineField({ name: 'headingMiddle', title: 'Heading middle', type: 'string', initialValue: 'from' }),
+    defineField({ name: 'headingItalic', title: 'Heading italic text', type: 'string', initialValue: 'real clients' }),
+    defineField({ name: 'headingLine2', title: 'Heading line 2', type: 'string', initialValue: 'that hold us accountable' }),
     defineField({
       name: 'items',
       title: 'Testimonials',
@@ -636,12 +636,12 @@ export const industriesSection = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'headingBefore', title: 'Heading before emphasis', type: 'string', initialValue: 'Industries' }),
-    defineField({ name: 'headingEmphasis', title: 'Heading emphasis', type: 'string', initialValue: 'We' }),
+    defineField({ name: 'headingEmphasis', title: 'Heading emphasis', type: 'string', initialValue: 'we' }),
     defineField({
       name: 'headingAfter',
       title: 'Heading after emphasis',
       type: 'string',
-      initialValue: 'Serve.',
+      initialValue: 'serve.',
     }),
     defineField({
       name: 'subheading',
@@ -670,13 +670,13 @@ export const homeBlogSection = defineType({
       name: 'headingEmphasis',
       title: 'Heading emphasis (italic)',
       type: 'string',
-      initialValue: 'Internet',
+      initialValue: 'internet',
     }),
     defineField({
       name: 'headingAfter',
       title: 'Heading end',
       type: 'string',
-      initialValue: 'Does Not Stand Still, Neither Do We',
+      initialValue: 'does not stand still, neither do we',
     }),
     defineField({
       name: 'description',
@@ -706,7 +706,7 @@ export const finalCtaSection = defineType({
       title: 'Heading',
       type: 'text',
       rows: 2,
-      initialValue: "Got a Kickass Idea?\nWe'll help you make it Real.",
+      initialValue: "Have something\nworth building?",
     }),
     defineField({
       name: 'description',

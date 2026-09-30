@@ -51,8 +51,8 @@ export default function DesignFinalCtaSection() {
               className="font-medium leading-[1.15] tracking-[-0.05em] text-[#0A0A0C]"
               style={{ fontSize: "clamp(28.44px, 4.2vw, 50.06px)" }}
             >
-              Your Brand Is Already Telling A Story. Let&apos;s Make Sure It&apos;s The{" "}
-              <em className="font-normal italic text-[#0A0A0C]/55">Right</em> One.
+              Your brand is already telling a story. Let&apos;s make sure it&apos;s the{" "}
+              <em className="font-normal italic text-[#0A0A0C]/55">right</em> one.
             </h2>
 
             <p

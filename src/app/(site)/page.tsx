@@ -40,7 +40,7 @@ const agencyHighlights: {
 }[] = [
   {
     icon: teamIcon,
-    title: "Have One Team That Gets The Bigger Picture",
+    title: "Have one team that gets the bigger picture",
     description:
       "Strategy, Branding, Design, Digital And SEO Working Together Not In Silos.",
   },
@@ -127,8 +127,8 @@ export default async function Home() {
                   data-aos-duration="900"
                 >
                   <span className="block">
-                    <em className="italic text-white/50 font-normal">Tamatos</em> Is Your{" "}
-                    <span className="text-[#9DF560]">Go-To</span> Agency
+                    <em className="italic text-white/50 font-normal">Tamatos</em> is your{" "}
+                    <span className="text-[#9DF560]">go-to</span> agency
                   </span>
                   <Image
                     src={Asterisk}
@@ -138,7 +138,7 @@ export default async function Home() {
                     className="inline-block w-6 sm:w-8 lg:w-10 h-auto mr-2 sm:mr-3"
                     style={{ verticalAlign: "middle" }}
                   />
-                  If You Want To
+                  If you want to
                 </h2>
 
                 <ul className="mt-10 lg:mt-14 flex flex-col">
@@ -238,9 +238,9 @@ export default async function Home() {
                 className="font-normal leading-[1.12] tracking-[-0.04em] text-white"
                 style={{ fontSize: "clamp(28.44px, 3.3vw, 50.06px)" }}
               >
-                Team of People Who Like Making{" "}
-                <span className="text-[#9DF560]">Complicated</span> Things{" "}
-                <em className="font-normal italic text-white/50">Simpler.</em>
+                A team that makes{" "}
+                <span className="text-[#9DF560]">complicated</span> things{" "}
+                <em className="font-normal italic text-white/50">simpler.</em>
               </h2>
 
               <p className="mt-5 max-w-[520px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/70 lg:mt-6">

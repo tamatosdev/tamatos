@@ -30,8 +30,8 @@ type DefaultStat = {
 const defaultStats: DefaultStat[] = [
   {
     value: "200+",
-    before: "Projects Launched Across ",
-    italic: "Multiple Markets",
+    before: "Projects Launched across ",
+    italic: "multiple markets",
     after: ".",
     pills: [
       // Over "1" / first "0"
@@ -77,19 +77,24 @@ function renderDescription(
   cmsDescription: string | undefined,
   fallback: DefaultStat
 ) {
-  if (cmsDescription?.trim()) {
+  const normalized = cmsDescription
+    ?.trim()
+    .replace(/Projects Launched Across Multiple Markets/i, "Projects Launched across multiple markets")
+    .replace(/Multiple Markets/g, "multiple markets");
+
+  if (normalized) {
     const italic = fallback.italic;
-    const idx = cmsDescription.indexOf(italic);
+    const idx = normalized.indexOf(italic);
     if (idx >= 0) {
       return (
         <>
-          {cmsDescription.slice(0, idx)}
+          {normalized.slice(0, idx)}
           <em className="italic text-white/70">{italic}</em>
-          {cmsDescription.slice(idx + italic.length)}
+          {normalized.slice(idx + italic.length)}
         </>
       );
     }
-    return cmsDescription;
+    return normalized;
   }
 
   return (
@@ -103,28 +108,14 @@ function renderDescription(
 
 export default function StatsSection({
   data,
-  centered = false,
 }: {
   data?: StatsData;
   centered?: boolean;
 }) {
-  const headingBefore = data?.headingBefore ?? "Tamatos in";
-  const headingEmphasis = data?.headingEmphasis ?? "Numbers";
   const items = data?.items?.length ? data.items : [];
 
   return (
     <section className="container py-12 lg:py-24 relative">
-      <h2
-        className={`text-white font-medium leading-[1.1] tracking-[-0.04em] mb-12 lg:mb-16 ${
-          centered ? "text-center" : ""
-        }`}
-        style={{ fontSize: "clamp(28.44px, 3.5vw, 44.44px)" }}
-      >
-        {headingBefore}{" "}
-        <em className="italic text-white/50 font-normal">{headingEmphasis}</em>
-        <span className="text-[#9DF560]">.</span>
-      </h2>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-12">
         {defaultStats.map((fallback, index) => {
           const cms = items[index];

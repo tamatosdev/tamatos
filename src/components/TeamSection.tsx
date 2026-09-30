@@ -111,14 +111,14 @@ export default function TeamSection() {
             className="text-[#0A0A0C] font-medium leading-[1.15]"
             style={{ fontSize: "clamp(28.44px, 3.5vw, 50.06px)", letterSpacing: "-0.04em" }}
           >
-            The People{" "}
+            The people{" "}
             <Image
               src={orangeStar}
               alt=""
               className="inline-block h-[0.75em] w-auto mx-1"
               style={{ verticalAlign: "middle" }}
             />{" "}
-            <em className="italic text-[#0A0A0C]/50">Behind</em> Tamatos
+            <em className="italic text-[#0A0A0C]/50">behind</em> Tamatos
             <span className="text-[#FF6A00]">.</span>
           </h2>
           <p

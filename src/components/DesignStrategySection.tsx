@@ -18,11 +18,11 @@ export default function DesignStrategySection() {
             className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
-            A Logo Can Make You{" "}
-            <em className="font-normal italic text-white/45">Recognizable</em>
+            A logo can make you{" "}
+            <em className="font-normal italic text-white/45">recognizable</em>
             <br className="hidden sm:block" />
-            {` `}Strategy Makes You{" "}
-            <span className="font-semibold text-[var(--service-accent,#03E4AC)]">Unforgettable.</span>
+            {` `}Strategy makes you{" "}
+            <span className="font-semibold text-[var(--service-accent,#03E4AC)]">unforgettable.</span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-[760px] text-[18px] leading-[1.55] tracking-[-0.02em] text-white/80">

@@ -16,9 +16,9 @@ export default function DevelopmentGoalsSection() {
             className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
-            We Build Technology Around Your{" "}
-            <em className="font-normal italic text-white/45">Business</em>, Not The Other{" "}
-            <span className="font-semibold text-[var(--service-accent,#FC7031)]">Way Around</span>
+            We build technology around your{" "}
+            <em className="font-normal italic text-white/45">business</em>, not the other{" "}
+            <span className="font-semibold text-[var(--service-accent,#FC7031)]">way around</span>
             <span className="text-[var(--service-accent,#FC7031)]">.</span>
           </h2>
 

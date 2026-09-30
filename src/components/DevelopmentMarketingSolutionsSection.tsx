@@ -111,8 +111,8 @@ export default function DevelopmentMarketingSolutionsSection() {
             className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
-            What We{" "}
-            <span className="font-semibold text-[var(--service-accent,#FC7031)]">Deliver</span>
+            What we{" "}
+            <span className="font-semibold text-[var(--service-accent,#FC7031)]">deliver</span>
             <span className="text-[var(--service-accent,#FC7031)]">.</span>
           </h2>
         </div>

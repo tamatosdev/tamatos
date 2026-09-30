@@ -5,25 +5,25 @@ import { useState } from "react";
 const cards = [
   {
     number: "01",
-    title: "Strategy Before Execution",
+    title: "Strategy before execution",
     description:
       "Every campaign begins with a clear understanding of your business goals not just a content calendar.",
   },
   {
     number: "02",
-    title: "Creativity That Performs",
+    title: "Creativity that performs",
     description:
       "We combine creative thinking with marketing strategy to produce work that captures attention and inspires action.",
   },
   {
     number: "03",
-    title: "Data-Driven Decisions",
+    title: "Data-driven decisions",
     description:
       "Every decision is guided by insights, testing, and measurable performance—not assumptions.",
   },
   {
     number: "04",
-    title: "Built to Last",
+    title: "Built to last",
     description: "We leverage AI where it creates genuine value...",
   },
 ];
@@ -40,7 +40,7 @@ export default function DigitalDifferenceSection() {
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
             The <span className="text-[var(--service-accent,#9DF560)]">Tamatos</span>{" "}
-            <em className="font-normal italic text-white/45">Difference</em>
+            <em className="font-normal italic text-white/45">difference</em>
             <span className="text-white/45">.</span>
           </h2>
           <p className="mt-5 text-[18px] leading-[1.5] tracking-[-0.02em] text-white/55 lg:text-[17.78px]">

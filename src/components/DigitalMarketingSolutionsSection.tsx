@@ -84,11 +84,11 @@ export default function DigitalMarketingSolutionsSection() {
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
             <span className="font-semibold text-[var(--service-accent,#9DF560)]">
-              Digital Marketing
+              Digital marketing
             </span>{" "}
-            Solutions
+            solutions
             <br />
-            Designed For Growth
+            designed for growth
             <span className="text-[var(--service-accent,#9DF560)]">.</span>
           </h2>
 

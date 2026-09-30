@@ -28,7 +28,7 @@ export default function DesignTechMarqueeSection() {
           className="mx-auto max-w-[900px] text-center font-medium leading-[1.12] tracking-[-0.04em] text-white"
           style={{ fontSize: "clamp(28.44px, 3.5vw, 50.06px)" }}
         >
-          Technologies <span className="text-[var(--service-accent,#03E4AC)]">We</span> Work With
+          Technologies <span className="text-[var(--service-accent,#03E4AC)]">we</span> work with
           <span className="text-white">.</span>
         </h2>
       </div>

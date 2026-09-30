@@ -131,7 +131,7 @@ export default function IndustriesSection({ data }: { data?: IndustriesData }) {
             className="font-normal leading-[1.12] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(28.44px, 3.13vw, 50.06px)" }}
           >
-            Industries <span className="text-[var(--service-accent,#9DF560)]">We</span> Serve.
+            Industries <span className="text-[var(--service-accent,#9DF560)]">we</span> serve.
           </h2>
           <p className="mt-4 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/70 lg:mt-5 lg:text-[18px]">
             {subheading}

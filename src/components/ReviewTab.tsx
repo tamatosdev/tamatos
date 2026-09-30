@@ -91,9 +91,16 @@ const testimonialPortableTextComponents = {
 export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
   const headingStart = data?.headingStart ?? "Verified";
   const headingHighlight = data?.headingHighlight ?? "reviews";
-  const headingMiddle = data?.headingMiddle ?? "From";
-  const headingItalic = data?.headingItalic ?? "Real Clients";
-  const headingLine2 = data?.headingLine2 ?? "That Hold us Accountable";
+  const headingMiddle =
+    !data?.headingMiddle || data.headingMiddle === "From" ? "from" : data.headingMiddle;
+  const headingItalic =
+    !data?.headingItalic || data.headingItalic === "Real Clients"
+      ? "real clients"
+      : data.headingItalic;
+  const headingLine2 =
+    !data?.headingLine2 || data.headingLine2 === "That Hold us Accountable"
+      ? "that hold us accountable"
+      : data.headingLine2;
 
   const cmsTestimonials = data?.items?.length
     ? data.items.map((item, index) => ({

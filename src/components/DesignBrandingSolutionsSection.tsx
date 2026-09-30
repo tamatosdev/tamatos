@@ -89,8 +89,8 @@ export default function DesignBrandingSolutionsSection() {
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
             Holistic{" "}
-            <span className="font-semibold text-[var(--service-accent,#03E4AC)]">Branding Solutions</span> To Help Your
-            Business Stand Out
+            <span className="font-semibold text-[var(--service-accent,#03E4AC)]">branding solutions</span> to help your
+            business stand out
             <span className="text-[var(--service-accent,#03E4AC)]">.</span>
           </h2>
 

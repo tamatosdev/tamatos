@@ -123,7 +123,7 @@ export default function DevelopmentFeaturedProjectsSection() {
           className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
           style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
         >
-          <em className="font-normal italic text-white/45">Featured</em> Projects
+          <em className="font-normal italic text-white/45">Featured</em> projects
           <span className="text-[var(--service-accent,#FC7031)]">.</span>
         </h2>
 

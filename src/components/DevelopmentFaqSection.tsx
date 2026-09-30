@@ -67,8 +67,8 @@ export default function DevelopmentFaqSection() {
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
             Frequently{" "}
-            <em className="font-normal italic text-white/45">Asked</em>{" "}
-            Questions
+            <em className="font-normal italic text-white/45">asked</em>{" "}
+            questions
             <span className="text-[var(--service-accent,#FC7031)]">.</span>
           </h2>
 

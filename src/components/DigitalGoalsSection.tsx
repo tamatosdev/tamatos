@@ -16,11 +16,11 @@ export default function DigitalGoalsSection() {
             className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
-            We Build{" "}
+            We build{" "}
             <span className="font-semibold text-[var(--service-accent,#9DF560)]">
-              Digital Marketing
+              digital marketing
             </span>{" "}
-            Around Your <em className="font-normal italic text-white/45">Business</em> Goals
+            around your <em className="font-normal italic text-white/45">business</em> goals
             <span className="text-[var(--service-accent,#9DF560)]">.</span>
           </h2>
 

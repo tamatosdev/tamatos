@@ -22,8 +22,8 @@ export default function DevelopmentChallengesSection() {
             className="font-medium leading-[1.15] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(28.44px, 3.8vw, 50.06px)" }}
           >
-            Your <em className="font-normal italic text-white/45">Business</em> Has Outgrown Your
-            Technology
+            Your <em className="font-normal italic text-white/45">business</em> has outgrown your
+            technology
             <span className="text-[var(--service-accent,#FC7031)]">.</span>
           </h2>
 

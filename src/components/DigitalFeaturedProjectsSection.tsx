@@ -123,7 +123,7 @@ export default function DigitalFeaturedProjectsSection() {
           className="font-medium leading-[1.12] tracking-[-0.04em] text-white"
           style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
         >
-          <span className="font-normal text-white/50">Featured</span> Projects
+          <span className="font-normal text-white/50">Featured</span> projects
           <span className="text-[var(--service-accent,#9DF560)]">.</span>
         </h2>
 

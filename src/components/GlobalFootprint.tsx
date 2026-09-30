@@ -153,8 +153,10 @@ export default function GlobalFootprint({ data }: { data?: GlobalFootprintData }
   const activeCountryId = activeLocation?.isoNumericId;
 
   const headingBefore = data?.headingBefore ?? "Our";
-  const headingAccent = data?.headingAccent ?? "Global";
-  const headingAfter = data?.headingAfter ?? "Footprint";
+  const headingAccent =
+    !data?.headingAccent || data.headingAccent === "Global" ? "global" : data.headingAccent;
+  const headingAfter =
+    !data?.headingAfter || data.headingAfter === "Footprint" ? "footprint" : data.headingAfter;
   const description =
     data?.description ??
     "Delivering excellence across multiple regions with a strong commitment to quality, reliability, and global collaboration.";

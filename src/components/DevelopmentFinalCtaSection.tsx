@@ -50,8 +50,8 @@ export default function DevelopmentFinalCtaSection() {
               className="font-medium leading-[1.15] tracking-[-0.05em] text-[#0A0A0C]"
               style={{ fontSize: "clamp(28.44px, 4.2vw, 50.06px)" }}
             >
-              Great Digital Products Are{" "}
-              <em className="font-normal italic text-[#0A0A0C]/55">Built</em> With Purpose.
+              Great digital products are{" "}
+              <em className="font-normal italic text-[#0A0A0C]/55">built</em> with purpose.
             </h2>
 
             <p

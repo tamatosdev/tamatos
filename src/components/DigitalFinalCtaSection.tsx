@@ -50,11 +50,11 @@ export default function DigitalFinalCtaSection() {
               className="font-medium leading-[1.15] tracking-[-0.05em] text-[#0A0A0C]"
               style={{ fontSize: "clamp(28.44px, 4.2vw, 50.06px)" }}
             >
-              Great Marketing Doesn&apos;t Happen By Chance,
+              Great marketing doesn&apos;t happen by chance,
               <br className="hidden sm:block" />
               {` `}
               <em className="font-normal italic text-[#0A0A0C]/55">
-                It Happens With Strategy.
+                it happens with strategy.
               </em>
             </h2>
 

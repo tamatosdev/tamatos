@@ -22,10 +22,10 @@ export default function DigitalChallengesSection() {
             className="font-medium leading-[1.15] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(28.44px, 3.8vw, 50.06px)" }}
           >
-            Many Businesses Invest In{" "}
-            <em className="font-normal italic text-white/45">Marketing,</em> Without Seeing{" "}
+            Many businesses invest in{" "}
+            <em className="font-normal italic text-white/45">marketing,</em> without seeing{" "}
             <span className="font-semibold text-[var(--service-accent,#9DF560)]">
-              Meaningful Business Results.
+              meaningful business results.
             </span>
           </h2>
         </div>
