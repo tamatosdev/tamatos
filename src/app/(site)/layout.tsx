@@ -16,6 +16,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Full Stack Digital Marketing agency",
   description: "Full Stack Digital Marketing agency in USA",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
+    shortcut: "/favicon.png",
+    apple: [{ url: "/favicon.png", type: "image/png" }],
+  },
 };
 
 export default async function SiteLayout({
