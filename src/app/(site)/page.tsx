@@ -17,6 +17,7 @@ import teamIcon from "@/assets/team-icon.png";
 import bracesIcon from "@/assets/3rd-bracket.png";
 import ideaIcon from "@/assets/ai-idea.png";
 import buttonTamatos from "@/assets/button-tamatos.svg";
+import tamatosWhite from "@/assets/tamatos-white.png";
 import StatsSection from "@/components/StatsSection";
 import AwardsSection from "@/components/AwardsSection";
 import ReviewTab from "@/components/ReviewTab";
@@ -42,7 +43,7 @@ const agencyHighlights: {
     icon: teamIcon,
     title: "Have one team that gets the bigger picture",
     description:
-      "Strategy, Branding, Design, Digital And SEO Working Together Not In Silos.",
+      "Strategy, branding, design, digital and SEO working together not in silos.",
   },
   {
     icon: bracesIcon,
@@ -65,7 +66,8 @@ export default async function Home() {
   const home = await getHomePage();
 
   const compareLeft = home?.compareStrip?.leftText ?? "Most Agencies = Either Design Well OR Market Well";
-  const compareRight = home?.compareStrip?.rightText ?? "Tamatos = Bridges Product + Growth";
+  const compareRightRaw = home?.compareStrip?.rightText ?? "Tamatos = Bridges Product + Growth";
+  const compareRightRest = compareRightRaw.replace(/^Tamatos\s*/i, "").trim() || "= Bridges Product + Growth";
 
   const teamRoles = "Strategists. Designers. Developers. Brand thinkers. SEO nerds.";
   const teamBody =
@@ -145,7 +147,7 @@ export default async function Home() {
                   {agencyHighlights.map((item, index) => (
                     <li
                       key={item.title}
-                      className={`flex items-start gap-4 sm:gap-5 py-6 lg:py-7 ${
+                      className={`flex items-start gap-8 sm:gap-10 lg:gap-12 py-6 lg:py-7 ${
                         index < agencyHighlights.length - 1 ? "border-b border-white/15" : ""
                       }`}
                       data-aos="fade-left"
@@ -168,8 +170,12 @@ export default async function Home() {
                           {item.title}
                         </p>
                         <p
-                          className="text-white/50 font-normal leading-[1.5] mt-1.5"
-                          style={{ fontSize: "clamp(16px, 1.2vw, 18px)", letterSpacing: "-0.02em" }}
+                          className="font-normal leading-[1.5] mt-1.5"
+                          style={{
+                            fontSize: "clamp(16px, 1.2vw, 18px)",
+                            letterSpacing: "-0.02em",
+                            color: "#FFFFFFCC",
+                          }}
                         >
                           {item.description}
                         </p>
@@ -204,8 +210,19 @@ export default async function Home() {
                 {compareLeft}
               </p>
               <div className="hidden sm:block self-stretch w-px mx-8 lg:mx-16" style={{ background: "#FFFFFF80" }} />
-              <p className="text-white text-left sm:text-right font-medium" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
-                {compareRight}
+              <p
+                className="text-white text-left sm:text-right font-medium inline-flex items-center justify-start sm:justify-end gap-1.5 whitespace-nowrap"
+                style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.03em" }}
+              >
+                <Image
+                  src={tamatosWhite}
+                  alt="Tamatos"
+                  width={90}
+                  height={14}
+                  className="inline-block w-auto shrink-0 object-contain"
+                  style={{ height: "13.6px" }}
+                />
+                <span>{compareRightRest}</span>
               </p>
             </div>
           </section>

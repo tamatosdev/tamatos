@@ -92,7 +92,7 @@ export default function Banner({ data }: { data?: HeroData }) {
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:min-h-[93vh]">
+    <section className="relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:min-h-[1000px]">
       <Image
         src={BannerGradient}
         alt=""
