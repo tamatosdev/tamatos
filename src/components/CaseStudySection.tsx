@@ -36,11 +36,10 @@ type CaseStudy = {
 const defaultCaseStudies: CaseStudy[] = [
   {
     pills: [{ label: "UX/UI Design" }, { label: "WordPress" }, { flag: PFlag, flagAlt: "Pakistan" }],
-    heading:
-      "The Fatima Group Website is a corporate digital platform designed to represent one of Pakistan's leading industrial conglomerates with clarity, credibility, and modern visual appeal.",
+    heading: "Fatima Group",
     paragraphs: [
-      "The objective was to revamp the digital presence to better communicate the group's diverse business verticals, legacy, and forward-looking vision while ensuring a seamless user experience for stakeholders, investors, and general audiences.",
-      "The website was designed with a strong emphasis on structured storytelling—highlighting key sectors such as fertilizers, energy, textiles, and trading through clearly defined sections and intuitive navigation. Content architecture was carefully organized to ensure easy access to corporate information, company insights, and operational highlights.",
+      "Our ongoing digital partnership with one of Pakistan’s leading industrial groups. The objective was to bring Fatima Group’s diverse businesses, legacy, and vision together through a clearer, more modern digital presence.",
+      "From the corporate website to digital experiences across its business verticals, the work continues to shape how Fatima Group communicates online. The website brings sectors including fertilizers, energy, textiles, and trading into one intuitive structure, making a complex group easier to navigate and understand while giving investors, stakeholders, and general audiences a seamless way to explore the group, its businesses, and its work.",
     ],
     images: [
       { src: Fatima1, alt: "Fatima Group — desktop" },
@@ -50,10 +49,10 @@ const defaultCaseStudies: CaseStudy[] = [
   },
   {
     pills: [{ label: "UX/UI Design" }, { label: "Web Development" }, { flag: CanadaFlag, flagAlt: "Canada" }],
-    heading:
-      "MUCHO Burrito is a Canadian Mexican restaurant brand. We brought their fresh rebrand to life through a vibrant Modern Mexicana digital experience.",
+    heading: "MUCHO Burrito",
     paragraphs: [
-      "MUCHO Burrito is a Canadian Mexican restaurant brand. We brought their fresh rebrand to life through a vibrant Modern Mexicana digital experience.",
+      "We brought MUCHO Burrito’s Modern Mexicana rebrand to life with a bold, vibrant digital experience that puts the food front and centre.",
+      "The objective was to make the website be beyond a standard restaurant experience, using bold visual language, engaging layouts, and an approach to make the menu and brand come alive on screen. The result is a website designed to build appetite, and make MUCHO Burrito’s personality impossible to miss.",
     ],
     images: [
       { src: Mucho1, alt: "MUCHO Burrito — desktop" },
@@ -63,23 +62,23 @@ const defaultCaseStudies: CaseStudy[] = [
   },
   {
     pills: [{ label: "Web Developement" }, { label: "UX/UI Design" }, { label: "Logo Design" }, { flag: USFlag, flagAlt: "United States" }],
-    heading: "Sales Enforcement Platform is a workforce management solution focused on streamlining sales operations, performance tracking, and payroll processes for businesses of various sizes.",
+    heading: "BurqOra",
     paragraphs: [
-      "The objective was to create a digital presence that communicates platform value clearly and supports lead generation through an organized and informative structure.",
-      "Developed on WordPress, the site structure prioritizes direct access to information. UI and layout choices were built around simplifying service categories such as workforce tracking, sales enforcement, and payment systems.",
+      "A digital experience for a platform built to simplify sales operations. We designed and developed BurqOra’s website to make its workforce management, sales enforcement, and payment solutions easier to understand and explore.",
+      "The experience turns a complex platform into a clear, approachable digital presence, helping businesses quickly understand what BurqOra does and where it can fit into their operations.",
     ],
     images: [
-      { src: Sep1, alt: "Sales Enforcement Platform — desktop" },
-      { src: Sep2, alt: "Sales Enforcement Platform — mobile" },
-      { src: Sep3, alt: "Sales Enforcement Platform — overview" },
+      { src: Sep1, alt: "BurqOra — desktop" },
+      { src: Sep2, alt: "BurqOra — mobile" },
+      { src: Sep3, alt: "BurqOra — overview" },
     ],
   },
   {
     pills: [{ label: "UX/UI Design" }, { label: "WordPress" }, { flag: UAEFlag, flagAlt: "UAE" }],
-    heading: "A47 is an AI-powered content platform built at the intersection of political satire, meme culture, and Web3.",
+    heading: "A47",
     paragraphs: [
-      "The goal was to develop a digital presence that captures the experimental nature of the platform while maintaining structural clarity and strong UI sensibility.",
-      "The website was developed on WordPress with a custom UI/UX framework that reflects the fast-paced, creator-led nature of the project. Information architecture was planned to highlight the core pillars: AI agents, tokenomics, and community participation.",
+      "A47 is an AI-powered content platform built at the intersection of political satire, meme culture, and Web3. The objective was to create a digital presence that could match A47’s unconventional world without losing clarity.",
+      "Built on WordPress with a custom UI/UX approach, the website brings AI agents, tokenomics, and community participation into one cohesive experience. The result is a digital presence that embraces the experimental nature of the platform while keeping its more complex ideas easy to explore.",
     ],
     images: [
       { src: A471, alt: "A47 — desktop" },

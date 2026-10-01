@@ -30,7 +30,7 @@ const projects: FeaturedProject[] = [
     image2: fatimaGroup2,
     image2Alt: "Fatima Group website mobile view",
     description:
-      "The Fatima Group Website is a corporate digital platform designed to represent one of Pakistan's leading industrial conglomerates with clarity, credibility, and modern visual appeal",
+      "Our ongoing digital partnership with one of Pakistan’s leading industrial groups. The objective was to bring Fatima Group’s diverse businesses, legacy, and vision together through a clearer, more modern digital presence",
     href: "/work",
   },
   {
@@ -42,7 +42,7 @@ const projects: FeaturedProject[] = [
     image2: mucho22,
     image2Alt: "Mucho Burrito website mobile view",
     description:
-      "MUCHO Burrito is a Canadian Mexican restaurant brand. We brought their fresh rebrand to life through a vibrant Modern Mexicana digital experience.",
+      "We brought MUCHO Burrito’s Modern Mexicana rebrand to life with a bold, vibrant digital experience that puts the food front and centre",
     href: "/work",
   },
 ];
