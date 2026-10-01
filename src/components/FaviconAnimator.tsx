@@ -8,19 +8,44 @@ import fav3 from "@/assets/fav-image3.png";
 const FRAMES = [fav1.src, fav2.src, fav3.src];
 const HOLD_MS = 900;
 
-function setFavicon(href: string) {
+function ensureAnimatedLink() {
+  let link = document.querySelector<HTMLLinkElement>(
+    "link[data-favicon='animated']"
+  );
+
+  if (!link) {
+    link = document.createElement("link");
+    link.rel = "icon";
+    link.type = "image/png";
+    link.dataset.favicon = "animated";
+    // Prefer first so browsers pick the animated icon over metadata tags.
+    const firstIcon = document.head.querySelector(
+      "link[rel='icon'], link[rel='shortcut icon']"
+    );
+    if (firstIcon?.parentNode) {
+      firstIcon.parentNode.insertBefore(link, firstIcon);
+    } else {
+      document.head.appendChild(link);
+    }
+  }
+
+  // Hide React/Next metadata icons without removing them (avoids removeChild crashes).
   document
     .querySelectorAll<HTMLLinkElement>(
-      "link[rel='icon'], link[rel='shortcut icon'], link[data-favicon='animated']"
+      "link[rel='icon']:not([data-favicon='animated']), link[rel='shortcut icon']:not([data-favicon='animated'])"
     )
-    .forEach((el) => el.remove());
+    .forEach((el) => {
+      el.media = "not all";
+    });
 
-  const link = document.createElement("link");
-  link.rel = "icon";
-  link.type = "image/png";
-  link.dataset.favicon = "animated";
-  link.href = href;
-  document.head.appendChild(link);
+  return link;
+}
+
+function setFavicon(href: string) {
+  const link = ensureAnimatedLink();
+  if (link.getAttribute("href") !== href) {
+    link.href = href;
+  }
 }
 
 export default function FaviconAnimator() {
@@ -29,7 +54,6 @@ export default function FaviconAnimator() {
     let index = 0;
     let timer = 0;
 
-    // Preload all frames.
     FRAMES.forEach((src) => {
       const img = new Image();
       img.src = src;
@@ -42,7 +66,6 @@ export default function FaviconAnimator() {
       timer = window.setTimeout(tick, HOLD_MS);
     };
 
-    // Small delay so Next.js metadata icon tags are in the DOM first.
     timer = window.setTimeout(tick, 50);
 
     return () => {

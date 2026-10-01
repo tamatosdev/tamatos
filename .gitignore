@@ -42,3 +42,7 @@ next-env.d.ts
 
 # migration snapshots
 /scripts/data/
+
+# Local media backups
+backups/
+
