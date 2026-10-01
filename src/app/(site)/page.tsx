@@ -231,7 +231,7 @@ export default async function Home() {
       </div>
 
       <div className="relative">
-        <Image src={circleShade} alt="" className="case-shade absolute pointer-events-none select-none" style={{ left: 0, bottom: 0, zIndex: 0 }} />
+        <Image src={circleShade} alt="" unoptimized className="case-shade absolute pointer-events-none select-none" style={{ left: 0, bottom: 0, zIndex: 0 }} />
         <div className="relative" style={{ zIndex: 1 }}>
           <CaseStudySection items={home?.caseStudies?.items} />
         </div>
@@ -290,6 +290,7 @@ export default async function Home() {
         <Image
           src={circleShade2}
           alt=""
+          unoptimized
           className="pointer-events-none absolute left-0 z-0 select-none w-full max-w-none"
           style={{ top: "220px" }}
         />
