@@ -95,7 +95,7 @@ function FloatingInput({
         className="peer w-full bg-transparent border-b border-black/20 pt-5 pb-2 text-[#0A0A0C] text-[18px] font-normal outline-none focus:border-black/60 transition-colors duration-200"
         suppressHydrationWarning
       />
-      <label className="absolute left-0 top-3.5 text-black font-medium text-[18px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-black/50">
+      <label className="absolute left-0 top-3.5 text-black font-medium text-[16px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-black/50">
         {label}
         {required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
@@ -125,7 +125,7 @@ function FloatingTextarea({
         className="peer w-full bg-transparent border-b border-black/20 pt-5 pb-2 text-[#0A0A0C] text-[18px] font-normal outline-none focus:border-black/60 transition-colors duration-200 resize-none"
         suppressHydrationWarning
       />
-      <label className="absolute left-0 top-3.5 text-black font-medium text-[18px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-black/50">
+      <label className="absolute left-0 top-3.5 text-black font-medium text-[16px] pointer-events-none transition-all duration-200 peer-focus:top-0 peer-focus:text-black/80 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-black/50">
         {label}
         {required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
@@ -440,7 +440,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             </div>
 
             <div>
-              <p className="text-[#0A0A0C] font-medium text-[18px] mb-3">
+              <p className="text-[#0A0A0C] font-medium text-[16px] mb-3">
                 {budgetLabel}
                 <span className="text-red-500 ml-0.5">*</span>
               </p>
@@ -465,7 +465,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             </div>
 
             <div className="relative">
-              <label className="block text-[#0A0A0C] font-medium text-[18px] mb-2">
+              <label className="block text-[#0A0A0C] font-medium text-[16px] mb-2">
                 {serviceInterestLabel}
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
@@ -473,7 +473,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                 required
                 value={project.service}
                 onChange={(e) => setProject((p) => ({ ...p, service: e.target.value }))}
-                className="w-full appearance-none bg-transparent border-b border-black/20 pt-1 pb-2.5 text-[#0A0A0C] text-[18px] font-normal outline-none focus:border-black/60 transition-colors duration-200 pr-8"
+                className="w-full appearance-none bg-transparent border-b border-black/20 pt-1 pb-2.5 text-[#0A0A0C] text-[16px] font-normal outline-none focus:border-black/60 transition-colors duration-200 pr-8"
               >
                 <option value="" disabled>
                   Select a service
@@ -496,7 +496,7 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
             </div>
 
             <div>
-              <p className="text-[#0A0A0C] font-medium text-[18px] mb-3">
+              <p className="text-[#0A0A0C] font-medium text-[16px] mb-3">
                 {projectDetailsLabel}
                 <span className="text-red-500 ml-0.5">*</span>
               </p>
@@ -560,10 +560,10 @@ export default function ContactForm({ content }: { content?: ContactFormContent 
                       </svg>
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-[18px] font-medium text-[#0A0A0C]">
+                      <span className="block text-[16px] font-medium text-[#0A0A0C]">
                         {projectFile ? projectFile.name : "Upload brief / deck"}
                       </span>
-                      <span className="block text-[18px] text-black/55 mt-0.5">
+                      <span className="block text-[16px] text-black/55 mt-0.5">
                         PDF, DOC, or PPT — max 2MB
                       </span>
                     </span>
