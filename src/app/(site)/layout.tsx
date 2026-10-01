@@ -20,11 +20,10 @@ export const metadata: Metadata = {
   description: "Full Stack Digital Marketing agency in USA",
   icons: {
     icon: [
-      { url: "/fav.gif", type: "image/gif" },
       { url: "/favicon.png", type: "image/png", sizes: "64x64" },
       { url: "/favicon.ico", sizes: "any" },
     ],
-    shortcut: "/fav.gif",
+    shortcut: "/favicon.png",
     apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {

@@ -81,11 +81,8 @@ export function buildPageMetadata(seo?: SeoData): Metadata {
     description,
     metadataBase: new URL(SITE_URL),
     icons: {
-      icon: [
-        { url: "/fav.gif", type: "image/gif" },
-        { url: "/favicon.png", type: "image/png", sizes: "64x64" },
-      ],
-      shortcut: "/fav.gif",
+      icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
+      shortcut: "/favicon.png",
       apple: [{ url: "/apple-icon.png", type: "image/png" }],
     },
     alternates: { canonical },
