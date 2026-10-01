@@ -88,7 +88,7 @@ export default async function WorkPage() {
       </section>
 
       {/* CSS-only shade (::before) — never takes layout space, sits behind awards + portfolio */}
-      <div className="work-shade-wrap">
+      <div className="work-shade-wrap" data-brand-shade="272392">
         <WorkAwardsSection data={home?.awards} />
 
         <WorkPortfolioSection
