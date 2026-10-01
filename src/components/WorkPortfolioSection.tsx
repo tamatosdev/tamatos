@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import circleShade from "@/assets/circle-shade.webp";
+import circleShadeBrand from "@/assets/circle-shade-brand.webp";
 import {
   filterPortfolios,
   getPortfolioCardImages,
@@ -206,13 +206,12 @@ export default function WorkPortfolioSection({
     <section className="work-portfolio-section relative py-14 lg:py-24">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={circleShade.src}
+        src={circleShadeBrand.src}
         alt=""
-        className="work-portfolio-shade pointer-events-none select-none"
+        className="work-shade-img pointer-events-none select-none"
         aria-hidden
       />
-      <div className="work-portfolio-shade-tint" aria-hidden />
-      <div className="work-portfolio-shade-fade" aria-hidden />
+      <div className="work-shade-fade" aria-hidden />
 
       <div className="container relative z-10">
         <div
