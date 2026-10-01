@@ -20,19 +20,27 @@ export const metadata: Metadata = {
   description: "Full Stack Digital Marketing agency in USA",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/fav.gif", type: "image/gif" },
       { url: "/favicon.png", type: "image/png", sizes: "64x64" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    shortcut: "/favicon.png",
-    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    shortcut: "/fav.gif",
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {
     type: "website",
     siteName: "Tamatos",
-    images: [{ url: "/og-image.png", width: 512, height: 512, alt: "Tamatos" }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Tamatos",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     images: ["/og-image.png"],
   },
 };

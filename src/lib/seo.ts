@@ -81,9 +81,12 @@ export function buildPageMetadata(seo?: SeoData): Metadata {
     description,
     metadataBase: new URL(SITE_URL),
     icons: {
-      icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
-      shortcut: "/favicon.png",
-      apple: [{ url: "/favicon.png", type: "image/png" }],
+      icon: [
+        { url: "/fav.gif", type: "image/gif" },
+        { url: "/favicon.png", type: "image/png", sizes: "64x64" },
+      ],
+      shortcut: "/fav.gif",
+      apple: [{ url: "/apple-icon.png", type: "image/png" }],
     },
     alternates: { canonical },
     openGraph: {
@@ -96,13 +99,13 @@ export function buildPageMetadata(seo?: SeoData): Metadata {
         {
           url: ogImageUrl,
           alt: seo?.ogImage?.alt ?? seo?.twitterImage?.alt ?? title,
-          width: 512,
-          height: 512,
+          width: 1200,
+          height: 630,
         },
       ],
     },
     twitter: {
-      card: seo?.twitterCard ?? "summary",
+      card: seo?.twitterCard ?? "summary_large_image",
       title: twitterTitle,
       description: twitterDescription,
       images: [twitterImageUrl ?? ogImageUrl],
