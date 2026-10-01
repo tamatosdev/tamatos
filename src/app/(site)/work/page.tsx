@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import footerShade1 from "@/assets/footer-shade1.png";
+import circleShadeBrand from "@/assets/circle-shade-brand.webp";
 import WorkHeroVideo from "@/components/WorkHeroVideo";
 import WorkAwardsSection from "@/components/WorkAwardsSection";
 import WorkPortfolioSection from "@/components/WorkPortfolioSection";
@@ -87,13 +88,27 @@ export default async function WorkPage() {
         </div>
       </section>
 
-      <WorkAwardsSection data={home?.awards} />
+      {/* Shade behind awards + portfolio together — avoids hard cut between sections */}
+      <div className="work-shade-wrap relative">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={circleShadeBrand.src}
+          alt=""
+          className="work-shade-img pointer-events-none select-none"
+          aria-hidden
+        />
+        <div className="work-shade-fade" aria-hidden />
 
-      <WorkPortfolioSection
-        items={portfolios}
-        services={services}
-        industries={industries}
-      />
+        <div className="relative z-10">
+          <WorkAwardsSection data={home?.awards} />
+
+          <WorkPortfolioSection
+            items={portfolios}
+            services={services}
+            industries={industries}
+          />
+        </div>
+      </div>
 
       <div className="pt-8 lg:pt-16">
         <CtaSection2 data={home?.finalCta} />
