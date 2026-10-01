@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import BannerGradient from "@/assets/banner-gradient.png";
+import BannerGradient from "@/assets/banner-gradient.webp";
 import BgGrid from "@/assets/bg-grid.png";
 import GridMobile from "@/assets/grid-mobile.png";
 import Asterisk from "@/assets/asteric.png";
@@ -98,6 +98,8 @@ export default function Banner({ data }: { data?: HeroData }) {
         alt=""
         fill
         priority
+        sizes="100vw"
+        quality={80}
         className="object-cover object-center top-[-35%]!"
       />
 

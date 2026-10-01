@@ -2,7 +2,7 @@ import { defineQuery } from 'next-sanity'
 
 const imageFields = /* groq */ `
   alt,
-  "url": asset->url
+  "url": asset->url + "?auto=format&fit=max&w=256&q=75"
 `
 
 const megaMenuCategoryFields = /* groq */ `

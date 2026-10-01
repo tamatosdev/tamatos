@@ -7,15 +7,12 @@ import { useEffect, useState } from "react";
 const variants = {
   initial: {
     opacity: 0,
-    x: 80,
   },
   animate: {
     opacity: 1,
-    x: 0,
   },
   exit: {
     opacity: 0,
-    x: -80,
   },
 };
 
@@ -25,7 +22,7 @@ export default function PageTransition({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  // Skip entrance animation on first paint so LCP/Speed Index aren't delayed ~0.8s.
+  // Skip entrance animation on first paint so LCP/Speed Index aren't delayed.
   const [animateRoute, setAnimateRoute] = useState(false);
 
   useEffect(() => {
@@ -41,7 +38,7 @@ export default function PageTransition({
         animate="animate"
         exit="exit"
         transition={{
-          duration: 0.8,
+          duration: 0.35,
           ease: [0.22, 1, 0.36, 1],
         }}
         className="min-h-screen"

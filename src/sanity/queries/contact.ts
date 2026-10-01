@@ -2,7 +2,7 @@ import { defineQuery } from "next-sanity";
 
 const imageFields = /* groq */ `
   alt,
-  "url": asset->url
+  "url": asset->url + "?auto=format&fit=max&w=1200&q=75"
 `;
 
 export const contactPageQuery = defineQuery(/* groq */ `

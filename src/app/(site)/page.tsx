@@ -25,9 +25,9 @@ import Industries from "@/components/Industries";
 import CtaSection2 from "@/components/CtaSection2";
 import footerShade1 from "@/assets/footer-shade1.png";
 import footerShade2 from "@/assets/footer-shade2.png";
-import circleShade from "@/assets/circle-shade.png";
-import circleShade2 from "@/assets/circle-shade2.png";
-import bigShade from "@/assets/big-shade.png";
+import circleShade from "@/assets/circle-shade.webp";
+import circleShade2 from "@/assets/circle-shade2.webp";
+import bigShade from "@/assets/big-shade.webp";
 import TeamOrbits from "@/components/Teamorbit";
 import { getHomePage } from "@/lib/home";
 import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
@@ -84,6 +84,8 @@ export default async function Home() {
         <Image
           src={bigShade}
           alt=""
+          loading="lazy"
+          sizes="(max-width: 1024px) 100vw, 1400px"
           className="absolute pointer-events-none select-none left-1/2 top-[80%] sm:top-[80%] md:top-[60%] lg:top-1/2"
           style={{ transform: "translate(-50%, -50%)", zIndex: 0 }}
         />
@@ -231,7 +233,7 @@ export default async function Home() {
       </div>
 
       <div className="relative">
-        <Image src={circleShade} alt="" unoptimized className="case-shade absolute pointer-events-none select-none" style={{ left: 0, bottom: 0, zIndex: 0 }} />
+        <Image src={circleShade} alt="" className="case-shade absolute pointer-events-none select-none" style={{ left: 0, bottom: 0, zIndex: 0 }} />
         <div className="relative" style={{ zIndex: 1 }}>
           <CaseStudySection items={home?.caseStudies?.items} />
         </div>
@@ -290,7 +292,6 @@ export default async function Home() {
         <Image
           src={circleShade2}
           alt=""
-          unoptimized
           className="pointer-events-none absolute left-0 z-0 select-none w-full max-w-none"
           style={{ top: "220px" }}
         />

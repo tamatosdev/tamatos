@@ -191,20 +191,22 @@ export default function IndustriesSection({ data }: { data?: IndustriesData }) {
 
           <div className="relative min-h-[320px] overflow-hidden rounded-[24px] border border-white/20 lg:min-h-[420px] lg:rounded-[28px]">
             {typeof active.image === "string" ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={active.image}
                 alt={active.imageAlt || active.title}
-                className="absolute inset-0 h-full w-full object-cover"
+                fill
+                loading="lazy"
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             ) : (
               <Image
                 src={active.image || industryImage}
                 alt={active.imageAlt || active.title}
                 fill
+                loading="lazy"
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
               />
             )}
 

@@ -8,7 +8,8 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
-    qualities: [75, 100],
+    qualities: [75, 80, 100],
+    formats: ["image/avif", "image/webp"],
   },
   async headers() {
     return [
@@ -23,7 +24,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:path(.*)\\.(ico|png|jpg|jpeg|gif|webp|avif|svg|woff2|mp4)",
+        source: "/_next/image",
         headers: [
           {
             key: "Cache-Control",
@@ -32,12 +33,11 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Keep HTML fresh so CMS/content updates show quickly.
-        source: "/:path*",
+        source: "/:path(.*)\\.(ico|png|jpg|jpeg|gif|webp|avif|svg|woff2|mp4)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=0, must-revalidate",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
           },
         ],
       },

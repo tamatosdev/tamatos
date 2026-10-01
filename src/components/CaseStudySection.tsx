@@ -110,10 +110,19 @@ function mapCmsCaseStudies(items: CaseStudyData[]): CaseStudy[] {
 
 function StudyImage({ src, alt, className }: { src: StaticImageData | string; alt: string; className?: string }) {
   if (typeof src === "string") {
-  // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} className={className} />;
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        width={1200}
+        height={900}
+        loading="lazy"
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className={className}
+      />
+    );
   }
-  return <Image src={src} alt={alt} className={className} />;
+  return <Image src={src} alt={alt} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" className={className} />;
 }
 
 export default function CaseStudySection({
