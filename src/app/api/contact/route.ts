@@ -1,7 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const recipient = process.env.RESEND_TO_EMAIL || "hello@tamatos.com";
 const MAX_FILE_BYTES = 2 * 1024 * 1024;
 const ACCEPTED_EXTENSIONS = [".pdf", ".doc", ".docx", ".ppt", ".pptx"];
 const ACCEPTED_MIME = new Set([
@@ -11,14 +10,6 @@ const ACCEPTED_MIME = new Set([
   "application/vnd.ms-powerpoint",
   "application/vnd.openxmlformats-officedocument.presentationml.presentation",
 ]);
-
-function createResendClient() {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    throw new Error("Missing Resend API key.");
-  }
-  return new Resend(apiKey);
-}
 
 function isAcceptedFile(file: File) {
   const lower = file.name.toLowerCase();
@@ -55,9 +46,28 @@ async function parseBody(request: Request): Promise<{
 
 export async function POST(request: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY?.trim();
+    const recipient = process.env.RESEND_TO_EMAIL?.trim() || "hello@tamatos.com";
+    const fromEmail = process.env.RESEND_FROM_EMAIL?.trim() || "onboarding@resend.dev";
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Missing RESEND_API_KEY on the server." },
+        { status: 500 }
+      );
+    }
+
     const { payload, file } = await parseBody(request);
     const type = String(payload.type || "");
-    const fullName = String(payload.fullName || "");
+    const fullName = String(payload.fullName || "").trim();
+    const replyEmail = String(payload.email || "").trim();
+
+    if (!fullName || !replyEmail) {
+      return NextResponse.json(
+        { error: "Full name and email are required." },
+        { status: 400 }
+      );
+    }
 
     if (file) {
       if (!isAcceptedFile(file)) {
@@ -73,15 +83,9 @@ export async function POST(request: Request) {
 
     const subject = type === "project" ? "New Project Inquiry" : "New Query";
     const html = generateHtml(payload, file?.name);
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "no-reply@tamatos.com";
-    const fromName = fullName || "Tamatos Contact Form";
+    const fromName = "Tamatos Contact Form";
     const from = `${fromName} <${fromEmail}>`;
 
-    if (!process.env.RESEND_API_KEY) {
-      return NextResponse.json({ error: "Missing Resend API key." }, { status: 500 });
-    }
-
-    const resend = createResendClient();
     const attachments =
       file && file.size > 0
         ? [
@@ -92,18 +96,34 @@ export async function POST(request: Request) {
           ]
         : undefined;
 
-    await resend.emails.send({
+    const resend = new Resend(apiKey);
+    const { data, error } = await resend.emails.send({
       from,
       to: recipient,
+      replyTo: replyEmail,
       subject,
       html,
       attachments,
     });
 
-    return NextResponse.json({ success: true });
+    if (error) {
+      console.error("Resend API error:", error);
+      return NextResponse.json(
+        {
+          error:
+            error.message ||
+            "Email provider rejected the message. Check RESEND_FROM_EMAIL domain verification.",
+        },
+        { status: 502 }
+      );
+    }
+
+    return NextResponse.json({ success: true, id: data?.id ?? null });
   } catch (error) {
     console.error("Contact API error:", error);
-    return NextResponse.json({ error: "Failed to send contact message." }, { status: 500 });
+    const message =
+      error instanceof Error ? error.message : "Failed to send contact message.";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 
@@ -126,12 +146,12 @@ function generateHtml(payload: Record<string, unknown>, fileName?: string) {
         }
         return null;
       }
-      return `<p><strong>${formatLabel(key)}:</strong> ${String(value)}</p>`;
+      return `<p><strong>${formatLabel(key)}:</strong> ${escapeHtml(String(value))}</p>`;
     }),
     detailMode
       ? `<p><strong>Project details mode:</strong> ${detailMode === "upload" ? "Upload" : "Write"}</p>`
       : null,
-    fileName ? `<p><strong>Attachment:</strong> ${fileName}</p>` : null,
+    fileName ? `<p><strong>Attachment:</strong> ${escapeHtml(fileName)}</p>` : null,
   ]
     .filter(Boolean)
     .join("");
@@ -159,4 +179,12 @@ function formatLabel(key: string) {
   };
 
   return labels[key] || key.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase());
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
