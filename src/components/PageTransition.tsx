@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const variants = {
   initial: {
@@ -24,13 +25,19 @@ export default function PageTransition({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  // Skip entrance animation on first paint so LCP/Speed Index aren't delayed ~0.8s.
+  const [animateRoute, setAnimateRoute] = useState(false);
+
+  useEffect(() => {
+    setAnimateRoute(true);
+  }, []);
 
   return (
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
         variants={variants}
-        initial="initial"
+        initial={animateRoute ? "initial" : false}
         animate="animate"
         exit="exit"
         transition={{

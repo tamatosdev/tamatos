@@ -76,9 +76,9 @@ export default function Banner({ data }: { data?: HeroData }) {
   const secondaryCtaHref = data?.secondaryCta?.href ?? "/work";
 
   useEffect(() => {
-    // Start after PageTransition (0.8s) so the hero animation is visible
-    const timer = window.setTimeout(() => setIsReady(true), 850);
-    return () => window.clearTimeout(timer);
+    // Start on next frame so first paint / LCP aren't blocked by a long delay.
+    const timer = window.requestAnimationFrame(() => setIsReady(true));
+    return () => window.cancelAnimationFrame(timer);
   }, []);
 
   useEffect(() => {
