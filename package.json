@@ -15,6 +15,7 @@
     "@sanity/client": "^7.24.0",
     "@sanity/image-url": "^2.1.1",
     "@sanity/orderable-document-list": "^1.5.1",
+    "@sanity/table": "^2.0.1",
     "@sanity/ui": "^2.16.26",
     "@sanity/vision": "3.99.0",
     "@types/aos": "^3.0.7",

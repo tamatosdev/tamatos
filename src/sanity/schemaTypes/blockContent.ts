@@ -1,9 +1,13 @@
 import { defineType, defineArrayMember } from 'sanity'
+import { BlockContentInput } from '../components/BlockContentInput'
 
 export const blockContent = defineType({
   title: 'Block Content',
   name: 'blockContent',
   type: 'array',
+  components: {
+    input: BlockContentInput,
+  },
   of: [
     defineArrayMember({
       type: 'block',
@@ -56,6 +60,10 @@ export const blockContent = defineType({
           title: 'Caption',
         },
       ],
+    }),
+    defineArrayMember({
+      type: 'table',
+      title: 'Table',
     }),
   ],
 })

@@ -51,6 +51,35 @@ function createComponents(): PortableTextComponents {
           <img src={urlFor(value).width(1200).url()} alt={value.alt || ""} />
         );
       },
+      table: ({ value }) => {
+        const rows = Array.isArray(value?.rows) ? value.rows : [];
+        if (!rows.length) return null;
+
+        return (
+          <div className="blog-table-wrap">
+            <table className="blog-table">
+              <tbody>
+                {rows.map((row: { _key?: string; cells?: string[] }, rowIndex: number) => {
+                  const cells = Array.isArray(row?.cells) ? row.cells : [];
+                  const isHeader = rowIndex === 0;
+                  return (
+                    <tr key={row._key || `row-${rowIndex}`}>
+                      {cells.map((cell, cellIndex) => {
+                        const Tag = isHeader ? "th" : "td";
+                        return (
+                          <Tag key={`${row._key || rowIndex}-${cellIndex}`}>
+                            {cell}
+                          </Tag>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        );
+      },
     },
     list: {
       bullet: ({ children }) => <ul>{children}</ul>,
