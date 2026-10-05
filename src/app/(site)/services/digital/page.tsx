@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import DesignClientLogosSection from "@/components/DesignClientLogosSection";
 import DigitalDifferenceSection from "@/components/DigitalDifferenceSection";
 import DigitalFaqSection from "@/components/DigitalFaqSection";
@@ -14,17 +13,26 @@ import DigitalProcessSection from "@/components/DigitalProcessSection";
 import DigitalQuoteCtaSection from "@/components/DigitalQuoteCtaSection";
 import DigitalTechMarqueeSection from "@/components/DigitalTechMarqueeSection";
 import Industries from "@/components/Industries";
+import JsonLd from "@/components/JsonLd";
 import { getHomePage } from "@/lib/home";
+import { getPageSeo } from "@/lib/pageSeo";
+import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import shade4 from "@/assets/Shade-4.png";
 import shade2 from "@/assets/Shade-2.png";
 import blogShade from "@/assets/blog-shade.png";
 import servicesShade from "@/assets/services-shade.png";
 
-export const metadata: Metadata = {
-  title: "Digital Services | Tamatos",
-  description:
-    "From business idea to market-leading brand. Tamatos builds digital experiences that people see, recognize, and remember.",
-};
+export async function generateMetadata() {
+  const seo = await getPageSeo("digitalPage");
+  return buildPageMetadata({
+    metaTitle: "Digital Services | Tamatos",
+    metaDescription:
+      "From business idea to market-leading brand. Tamatos builds digital experiences that people see, recognize, and remember.",
+    canonicalUrl: `${SITE_URL}/services/digital`,
+    ...seo,
+  });
+}
 
 export const revalidate = 0;
 
@@ -36,7 +44,13 @@ const softFade = {
 };
 
 export default async function DigitalPage() {
-  const home = await getHomePage();
+  const [home, seo] = await Promise.all([getHomePage(), getPageSeo("digitalPage")]);
+  const jsonLd = buildJsonLd({
+    metaTitle: "Digital Services | Tamatos",
+    canonicalUrl: `${SITE_URL}/services/digital`,
+    schema: { type: "webPage", name: "Digital Services" },
+    ...seo,
+  });
 
   return (
     <main
@@ -47,6 +61,7 @@ export default async function DigitalPage() {
         ["--service-accent-rgb" as string]: "157, 245, 96",
       }}
     >
+      <JsonLd data={jsonLd} />
       {/* Page start — services-shade top right (intrinsic size) */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

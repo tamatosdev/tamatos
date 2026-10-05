@@ -9,6 +9,14 @@ import { homePage } from './homePage'
 import { contactPage } from './contactPage'
 import { portfolio, portfolioServiceTag, portfolioIndustryTag } from './portfolio'
 import {
+  aboutPage,
+  workPage,
+  blogPage,
+  digitalPage,
+  designPage,
+  developmentPage,
+} from './seoPages'
+import {
   heroDesktopPill,
   heroMobilePill,
   heroSection,
@@ -96,6 +104,12 @@ export const schemaTypes = [
   siteNavigation,
   homePage,
   contactPage,
+  aboutPage,
+  workPage,
+  blogPage,
+  digitalPage,
+  designPage,
+  developmentPage,
   portfolio,
   portfolioServiceTag,
   portfolioIndustryTag,

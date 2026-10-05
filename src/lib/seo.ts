@@ -7,7 +7,7 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export type SeoSchemaSettings = {
   enabled?: boolean;
-  type?: "organization" | "website" | "webPage" | "localBusiness" | "custom";
+  type?: "organization" | "website" | "webPage" | "article" | "localBusiness" | "custom";
   name?: string;
   url?: string;
   description?: string;
@@ -146,6 +146,13 @@ export function buildJsonLd(seo?: SeoData): Record<string, unknown> | null {
         ...base,
         "@type": "WebPage",
         name: schema?.name ?? resolveTitle(seo),
+      };
+    case "article":
+      return {
+        ...base,
+        "@type": "BlogPosting",
+        headline: schema?.name ?? resolveTitle(seo),
+        image: logo ? [logo] : undefined,
       };
     case "localBusiness":
       return { ...base, "@type": "LocalBusiness" };

@@ -23,14 +23,38 @@ import ServicesSection from "@/components/ServicesSection";
 import StatsSection from "@/components/StatsSection";
 import CaseStudySection from "@/components/CaseStudySection";
 import BodyBgOnView from "@/components/BodyBgOnView";
+import JsonLd from "@/components/JsonLd";
 import arrowShade2 from "@/assets/arrow-shade2.png";
 import shade4 from "@/assets/Shade-4.png";
 import shade2 from "@/assets/Shade-2.png";
 import blogShade from "@/assets/blog-shade.png";
+import { getPageSeo } from "@/lib/pageSeo";
+import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
-export default function AboutPage() {
+export async function generateMetadata() {
+  const seo = await getPageSeo("aboutPage");
+  return buildPageMetadata({
+    metaTitle: "About — Tamatos",
+    metaDescription:
+      "Meet Tamatos — a design and development agency bridging product, brand, and growth.",
+    canonicalUrl: `${SITE_URL}/about`,
+    ...seo,
+  });
+}
+
+export default async function AboutPage() {
+  const seo = await getPageSeo("aboutPage");
+  const jsonLd = buildJsonLd({
+    metaTitle: "About — Tamatos",
+    canonicalUrl: `${SITE_URL}/about`,
+    schema: { type: "webPage", name: "About Tamatos" },
+    ...seo,
+  });
+
   return (
     <main style={{ overflowX: "clip" }}>
+      <JsonLd data={jsonLd} />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-0 overflow-hidden">

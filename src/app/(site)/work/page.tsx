@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import footerShade1 from "@/assets/footer-shade1.png";
@@ -6,31 +5,48 @@ import WorkHeroVideo from "@/components/WorkHeroVideo";
 import WorkAwardsSection from "@/components/WorkAwardsSection";
 import WorkPortfolioSection from "@/components/WorkPortfolioSection";
 import CtaSection2 from "@/components/CtaSection2";
+import JsonLd from "@/components/JsonLd";
 import { getHomePage } from "@/lib/home";
+import { getPageSeo } from "@/lib/pageSeo";
 import {
   getPortfolioIndustryTags,
   getPortfolios,
   getPortfolioServiceTags,
 } from "@/lib/portfolio";
+import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 const WORK_HERO_VIDEO = "/videos/tamatos-work-video.mp4";
 
-export const metadata: Metadata = {
-  title: "Works — Tamatos",
-  description:
-    "Explore how Tamatos transforms ideas into design success stories through bold branding, UX, and development.",
-};
+export async function generateMetadata() {
+  const seo = await getPageSeo("workPage");
+  return buildPageMetadata({
+    metaTitle: "Works — Tamatos",
+    metaDescription:
+      "Explore how Tamatos transforms ideas into design success stories through bold branding, UX, and development.",
+    canonicalUrl: `${SITE_URL}/work`,
+    ...seo,
+  });
+}
 
 export default async function WorkPage() {
-  const [home, portfolios, services, industries] = await Promise.all([
+  const [home, portfolios, services, industries, seo] = await Promise.all([
     getHomePage(),
     getPortfolios(),
     getPortfolioServiceTags(),
     getPortfolioIndustryTags(),
+    getPageSeo("workPage"),
   ]);
+  const jsonLd = buildJsonLd({
+    metaTitle: "Works — Tamatos",
+    canonicalUrl: `${SITE_URL}/work`,
+    schema: { type: "webPage", name: "Tamatos Works" },
+    ...seo,
+  });
 
   return (
     <main>
+      <JsonLd data={jsonLd} />
       <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
         <Image
           src={footerShade1}

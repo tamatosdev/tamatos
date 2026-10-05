@@ -1,4 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/types";
+import type { SeoData } from "@/lib/seo";
 import { sanityClient } from "@/sanity/lib/client";
 import {
   portfolioBySlugQuery,
@@ -30,6 +31,7 @@ export type PortfolioItem = {
   hoverImages?: PortfolioImage[];
   services?: PortfolioTag[];
   industries?: PortfolioTag[];
+  seo?: SeoData;
 };
 
 /** Featured image first, then hover slideshow images (deduped by URL). */

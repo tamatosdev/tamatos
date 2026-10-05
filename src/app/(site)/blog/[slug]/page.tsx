@@ -9,6 +9,7 @@ import footerShade1 from "@/assets/footer-shade1.png";
 import footerShade2 from "@/assets/footer-shade2.png";
 import BlogArticleLayout from "@/components/BlogArticleLayout";
 import CtaSection2 from "@/components/CtaSection2";
+import JsonLd from "@/components/JsonLd";
 import PortableTextContent from "@/components/PortableTextContent";
 import SummarizeButtons from "@/components/SummarizeButtons";
 import {
@@ -19,7 +20,41 @@ import {
   getPostReadingTime,
 } from "@/lib/blog";
 import { extractBlogHeadings } from "@/lib/blogHeadings";
+import { buildJsonLd, buildPageMetadata, type SeoData } from "@/lib/seo";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+
+function postSeoDefaults(post: NonNullable<Awaited<ReturnType<typeof getPostBySlug>>>, slug: string): SeoData {
+  const description = getPostExcerpt(post, 160) || DEFAULT_DESCRIPTION;
+  const image = post.featuredImage?.node?.sourceUrl;
+  const url = `${SITE_URL}/blog/${slug}`;
+
+  return {
+    metaTitle: `${post.title} | ${SITE_NAME} Blog`,
+    metaDescription: description,
+    canonicalUrl: url,
+    ogTitle: post.title,
+    ogDescription: description,
+    ogType: "article",
+    ogImage: image
+      ? { url: image, alt: post.featuredImage?.node?.altText || post.title }
+      : undefined,
+    twitterCard: image ? "summary_large_image" : "summary",
+    twitterTitle: post.title,
+    twitterDescription: description,
+    twitterImage: image
+      ? { url: image, alt: post.featuredImage?.node?.altText || post.title }
+      : undefined,
+    schema: {
+      type: "article",
+      name: post.title,
+      url,
+      description,
+      logo: image
+        ? { url: image, alt: post.featuredImage?.node?.altText || post.title }
+        : undefined,
+    },
+  };
+}
 
 export async function generateMetadata({
   params,
@@ -33,29 +68,10 @@ export async function generateMetadata({
     return { title: `Post Not Found | ${SITE_NAME}` };
   }
 
-  const description = getPostExcerpt(post, 160) || DEFAULT_DESCRIPTION;
-  const image = post.featuredImage?.node?.sourceUrl;
-  const url = `${SITE_URL}/blog/${slug}`;
-
-  return {
-    title: `${post.title} | ${SITE_NAME} Blog`,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      title: post.title,
-      description,
-      url,
-      type: "article",
-      publishedTime: post.date,
-      ...(image ? { images: [{ url: image, alt: post.featuredImage?.node?.altText || post.title }] } : {}),
-    },
-    twitter: {
-      card: image ? "summary_large_image" : "summary",
-      title: post.title,
-      description,
-      ...(image ? { images: [image] } : {}),
-    },
-  };
+  return buildPageMetadata({
+    ...postSeoDefaults(post, slug),
+    ...post.seo,
+  });
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
@@ -68,9 +84,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const readingTime = getPostReadingTime(post);
   const authorGroup = post.authorGroup;
   const headings = extractBlogHeadings(post.body);
+  const jsonLd = buildJsonLd({
+    ...postSeoDefaults(post, slug),
+    ...post.seo,
+  });
 
   return (
     <>
+      <JsonLd data={jsonLd} />
       {/* Shade — full viewport width, outside any container */}
       <div className="absolute top-0 right-0 pointer-events-none select-none" style={{ zIndex: 0 }}>
         <Image src={arrow_shade} alt="" priority />

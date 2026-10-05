@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import DevelopmentClientLogosSection from "@/components/DevelopmentClientLogosSection";
 import DevelopmentDifferenceSection from "@/components/DevelopmentDifferenceSection";
 import DevelopmentFaqSection from "@/components/DevelopmentFaqSection";
@@ -13,17 +12,26 @@ import DevelopmentProcessSection from "@/components/DevelopmentProcessSection";
 import DevelopmentQuoteCtaSection from "@/components/DevelopmentQuoteCtaSection";
 import DevelopmentTechMarqueeSection from "@/components/DevelopmentTechMarqueeSection";
 import Industries from "@/components/Industries";
+import JsonLd from "@/components/JsonLd";
 import { getHomePage } from "@/lib/home";
+import { getPageSeo } from "@/lib/pageSeo";
+import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import shade4 from "@/assets/Shade-4.png";
 import shade2 from "@/assets/Shade-2.png";
 import blogShade from "@/assets/blog-shade.png";
 import servicesShade from "@/assets/services-shade.png";
 
-export const metadata: Metadata = {
-  title: "Development Services | Tamatos",
-  description:
-    "From idea to production-ready product. Tamatos builds digital products that scale with your business.",
-};
+export async function generateMetadata() {
+  const seo = await getPageSeo("developmentPage");
+  return buildPageMetadata({
+    metaTitle: "Development Services | Tamatos",
+    metaDescription:
+      "From idea to production-ready product. Tamatos builds digital products that scale with your business.",
+    canonicalUrl: `${SITE_URL}/services/development`,
+    ...seo,
+  });
+}
 
 export const revalidate = 0;
 
@@ -35,7 +43,16 @@ const softFade = {
 };
 
 export default async function DevelopmentPage() {
-  const home = await getHomePage();
+  const [home, seo] = await Promise.all([
+    getHomePage(),
+    getPageSeo("developmentPage"),
+  ]);
+  const jsonLd = buildJsonLd({
+    metaTitle: "Development Services | Tamatos",
+    canonicalUrl: `${SITE_URL}/services/development`,
+    schema: { type: "webPage", name: "Development Services" },
+    ...seo,
+  });
 
   return (
     <main
@@ -46,6 +63,7 @@ export default async function DevelopmentPage() {
         ["--service-accent-rgb" as string]: "252, 112, 49",
       }}
     >
+      <JsonLd data={jsonLd} />
       {/* Page start — services-shade top right (intrinsic size) */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

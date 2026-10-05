@@ -1,4 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/types";
+import type { SeoData } from "@/lib/seo";
 import { sanityClient } from "@/sanity/lib/client";
 import {
   postBySlugQuery,
@@ -24,6 +25,7 @@ export type BlogPost = {
     authorImage?: { node: { sourceUrl: string } };
     socialProfiles?: { name?: string; url?: string }[];
   };
+  seo?: SeoData;
 };
 
 type SanityPost = {
@@ -43,6 +45,7 @@ type SanityPost = {
     image?: { asset?: { url?: string } };
     socialProfiles?: { name?: string; url?: string }[];
   };
+  seo?: SeoData;
 };
 
 function portableTextToPlainText(blocks?: PortableTextBlock[]): string {
@@ -99,6 +102,7 @@ function mapSanityPost(post: SanityPost): BlogPost {
             .map((p) => ({ name: p.name, url: p.url })),
         }
       : undefined,
+    seo: post.seo,
   };
 }
 

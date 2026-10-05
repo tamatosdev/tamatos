@@ -1,6 +1,21 @@
 import type { StructureResolver } from "sanity/structure";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
-import { FileText, User, Tag, FolderOpen, Plus, Home, Briefcase, Menu, Mail } from "lucide-react";
+import {
+  FileText,
+  User,
+  Tag,
+  FolderOpen,
+  Plus,
+  Home,
+  Briefcase,
+  Menu,
+  Mail,
+  Search,
+  Info,
+  Layers,
+  PenTool,
+  Code2,
+} from "lucide-react";
 
 const hiddenTypes = [
   "post",
@@ -9,34 +24,99 @@ const hiddenTypes = [
   "author",
   "homePage",
   "contactPage",
+  "aboutPage",
+  "workPage",
+  "blogPage",
+  "digitalPage",
+  "designPage",
+  "developmentPage",
   "siteNavigation",
   "portfolio",
   "portfolioServiceTag",
   "portfolioIndustryTag",
 ];
 
+function seoSingleton(
+  S: Parameters<StructureResolver>[0],
+  opts: {
+    title: string;
+    schemaType: string;
+    documentId: string;
+    icon: typeof Home;
+  }
+) {
+  return S.listItem()
+    .title(opts.title)
+    .icon(opts.icon)
+    .child(
+      S.document()
+        .schemaType(opts.schemaType)
+        .documentId(opts.documentId)
+        .title(opts.title)
+    );
+}
+
 export const structure: StructureResolver = (S, context) =>
   S.list()
     .title("Content")
     .items([
-      S.listItem()
-        .title("Home Page")
-        .icon(Home)
-        .child(
-          S.document()
-            .schemaType("homePage")
-            .documentId("homePage")
-            .title("Home Page")
-        ),
+      seoSingleton(S, {
+        title: "Home Page",
+        schemaType: "homePage",
+        documentId: "homePage",
+        icon: Home,
+      }),
+      seoSingleton(S, {
+        title: "About Page",
+        schemaType: "aboutPage",
+        documentId: "aboutPage",
+        icon: Info,
+      }),
+      seoSingleton(S, {
+        title: "Work Page",
+        schemaType: "workPage",
+        documentId: "workPage",
+        icon: Briefcase,
+      }),
+      seoSingleton(S, {
+        title: "Blog Page",
+        schemaType: "blogPage",
+        documentId: "blogPage",
+        icon: FileText,
+      }),
+      seoSingleton(S, {
+        title: "Contact Page",
+        schemaType: "contactPage",
+        documentId: "contactPage",
+        icon: Mail,
+      }),
 
       S.listItem()
-        .title("Contact Page")
-        .icon(Mail)
+        .title("Service Pages (SEO)")
+        .icon(Layers)
         .child(
-          S.document()
-            .schemaType("contactPage")
-            .documentId("contactPage")
-            .title("Contact Page")
+          S.list()
+            .title("Service Pages")
+            .items([
+              seoSingleton(S, {
+                title: "Digital",
+                schemaType: "digitalPage",
+                documentId: "digitalPage",
+                icon: Search,
+              }),
+              seoSingleton(S, {
+                title: "Design",
+                schemaType: "designPage",
+                documentId: "designPage",
+                icon: PenTool,
+              }),
+              seoSingleton(S, {
+                title: "Development",
+                schemaType: "developmentPage",
+                documentId: "developmentPage",
+                icon: Code2,
+              }),
+            ])
         ),
 
       S.listItem()

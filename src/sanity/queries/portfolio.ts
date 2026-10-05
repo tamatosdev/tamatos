@@ -15,7 +15,32 @@ const portfolioFields = /* groq */ `
   featuredImage { ${imageFields} },
   hoverImages[] { ${imageFields} },
   "services": services[]->{ _id, title, "slug": slug.current },
-  "industries": industries[]->{ _id, title, "slug": slug.current }
+  "industries": industries[]->{ _id, title, "slug": slug.current },
+  seo {
+    metaTitle,
+    metaDescription,
+    canonicalUrl,
+    ogTitle,
+    ogDescription,
+    ogImage { ${imageFields} },
+    ogType,
+    ogSiteName,
+    twitterCard,
+    twitterTitle,
+    twitterDescription,
+    twitterImage { ${imageFields} },
+    twitterSite,
+    twitterCreator,
+    schema {
+      enabled,
+      type,
+      name,
+      url,
+      description,
+      logo { ${imageFields} },
+      customJsonLd
+    }
+  }
 `;
 
 export const portfoliosQuery = defineQuery(/* groq */ `

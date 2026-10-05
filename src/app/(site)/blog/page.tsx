@@ -1,35 +1,39 @@
 export const revalidate = 0;
 
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import CtaSection2 from "@/components/CtaSection2";
 import BlogListing from "@/components/BlogListing";
+import JsonLd from "@/components/JsonLd";
 import blogShade from "@/assets/blog-shade.png";
 import { getPosts } from "@/lib/blog";
+import { getPageSeo } from "@/lib/pageSeo";
+import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: `Blog | ${SITE_NAME}`,
-  description:
-    "Fresh insights, great ideas, bold trends, and revolutionary innovations in business, software, and tech.",
-  alternates: {
-    canonical: `${SITE_URL}/blog`,
-  },
-  openGraph: {
-    title: `Blog | ${SITE_NAME}`,
-    description:
+export async function generateMetadata() {
+  const seo = await getPageSeo("blogPage");
+  return buildPageMetadata({
+    metaTitle: `Blog | ${SITE_NAME}`,
+    metaDescription:
       "Fresh insights, great ideas, bold trends, and revolutionary innovations in business, software, and tech.",
-    url: `${SITE_URL}/blog`,
-    type: "website",
-  },
-};
+    canonicalUrl: `${SITE_URL}/blog`,
+    ...seo,
+  });
+}
 
 export default async function BlogPage() {
-  const posts = await getPosts();
+  const [posts, seo] = await Promise.all([getPosts(), getPageSeo("blogPage")]);
+  const jsonLd = buildJsonLd({
+    metaTitle: `Blog | ${SITE_NAME}`,
+    canonicalUrl: `${SITE_URL}/blog`,
+    schema: { type: "webPage", name: `${SITE_NAME} Blog` },
+    ...seo,
+  });
 
   return (
     <>
+      <JsonLd data={jsonLd} />
       <div
         className="absolute top-0 left-0 w-full pointer-events-none select-none"
         style={{ zIndex: 0 }}

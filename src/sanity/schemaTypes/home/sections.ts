@@ -741,6 +741,7 @@ export const seoSchemaSettings = defineType({
           { title: 'Organization', value: 'organization' },
           { title: 'WebSite', value: 'website' },
           { title: 'WebPage', value: 'webPage' },
+          { title: 'Article / BlogPosting', value: 'article' },
           { title: 'Local Business', value: 'localBusiness' },
           { title: 'Custom JSON-LD', value: 'custom' },
         ],

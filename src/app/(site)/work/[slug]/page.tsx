@@ -8,13 +8,45 @@ import footerShade1 from "@/assets/footer-shade1.png";
 import footerShade2 from "@/assets/footer-shade2.png";
 import PortableTextContent from "@/components/PortableTextContent";
 import CtaSection2 from "@/components/CtaSection2";
+import JsonLd from "@/components/JsonLd";
 import { getHomePage } from "@/lib/home";
 import { getPortfolioBySlug, getPortfolioCardTags, getPortfolioSlugs } from "@/lib/portfolio";
+import { buildJsonLd, buildPageMetadata, type SeoData } from "@/lib/seo";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export async function generateStaticParams() {
   const slugs = await getPortfolioSlugs();
   return slugs.map((slug) => ({ slug }));
+}
+
+function portfolioSeoDefaults(
+  item: NonNullable<Awaited<ReturnType<typeof getPortfolioBySlug>>>,
+  slug: string
+): SeoData {
+  const description = item.excerpt || DEFAULT_DESCRIPTION;
+  const image = item.featuredImage?.url;
+  const url = `${SITE_URL}/work/${slug}`;
+
+  return {
+    metaTitle: `${item.title} | ${SITE_NAME} Works`,
+    metaDescription: description,
+    canonicalUrl: url,
+    ogTitle: item.title,
+    ogDescription: description,
+    ogType: "article",
+    ogImage: image
+      ? { url: image, alt: item.featuredImage?.alt || item.title }
+      : undefined,
+    schema: {
+      type: "webPage",
+      name: item.title,
+      url,
+      description,
+      logo: image
+        ? { url: image, alt: item.featuredImage?.alt || item.title }
+        : undefined,
+    },
+  };
 }
 
 export async function generateMetadata({
@@ -29,22 +61,10 @@ export async function generateMetadata({
     return { title: `Project Not Found | ${SITE_NAME}` };
   }
 
-  const description = item.excerpt || DEFAULT_DESCRIPTION;
-  const image = item.featuredImage?.url;
-  const url = `${SITE_URL}/work/${slug}`;
-
-  return {
-    title: `${item.title} | ${SITE_NAME} Works`,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      title: item.title,
-      description,
-      url,
-      type: "article",
-      ...(image ? { images: [{ url: image, alt: item.featuredImage?.alt || item.title }] } : {}),
-    },
-  };
+  return buildPageMetadata({
+    ...portfolioSeoDefaults(item, slug),
+    ...item.seo,
+  });
 }
 
 export default async function PortfolioDetailPage({
@@ -58,9 +78,14 @@ export default async function PortfolioDetailPage({
   if (!item) notFound();
 
   const tags = getPortfolioCardTags(item);
+  const jsonLd = buildJsonLd({
+    ...portfolioSeoDefaults(item, slug),
+    ...item.seo,
+  });
 
   return (
     <main style={{ overflowX: "clip" }}>
+      <JsonLd data={jsonLd} />
       <section className="relative pt-32 pb-10 lg:pt-40 lg:pb-14 overflow-hidden">
         <Image
           src={footerShade1}
