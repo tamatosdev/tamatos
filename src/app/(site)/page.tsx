@@ -85,9 +85,9 @@ export default async function Home() {
           src={bigShade}
           alt=""
           loading="lazy"
-          sizes="(max-width: 1024px) 100vw, 1400px"
-          className="absolute pointer-events-none select-none left-1/2 top-[80%] sm:top-[80%] md:top-[60%] lg:top-1/2"
-          style={{ transform: "translate(-50%, -50%)", zIndex: 0 }}
+          sizes="100vw"
+          className="absolute pointer-events-none select-none left-0 top-[80%] sm:top-[80%] md:top-[60%] lg:top-1/2 w-full h-auto -translate-y-1/2"
+          style={{ zIndex: 0 }}
         />
         <AboutStrip data={home?.aboutStrip} />
         <div className="relative">
@@ -207,22 +207,24 @@ export default async function Home() {
 
         <div className="relative overflow-hidden">
           <section className="container py-8 lg:py-16 relative z-10">
-            <div className="flex items-start sm:items-center justify-between gap-5 sm:gap-0">
-              <p className="text-white/70 font-normal leading-normal" style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
+              <p
+                className="text-white/70 font-normal leading-normal text-[14px] sm:text-[18px]"
+                style={{ letterSpacing: "-0.03em", maxWidth: "min(100%, 250px)" }}
+              >
                 {compareLeft}
               </p>
               <div className="hidden sm:block self-stretch w-px mx-8 lg:mx-16" style={{ background: "#FFFFFF80" }} />
               <p
-                className="text-white text-left sm:text-right font-medium inline-flex items-center justify-start sm:justify-end gap-1.5 whitespace-nowrap"
-                style={{ fontSize: "clamp(18px, 1.2vw, 18px)", letterSpacing: "-0.03em" }}
+                className="text-white text-left sm:text-right font-medium inline-flex flex-wrap items-center justify-start sm:justify-end gap-1.5 text-[14px] sm:text-[18px] sm:whitespace-nowrap"
+                style={{ letterSpacing: "-0.03em" }}
               >
                 <Image
                   src={tamatosWhite}
                   alt="Tamatos"
                   width={90}
                   height={14}
-                  className="inline-block w-auto shrink-0 object-contain"
-                  style={{ height: "13.6px" }}
+                  className="inline-block w-auto shrink-0 object-contain h-[14px] sm:h-[13.6px]"
                 />
                 <span>{compareRightRest}</span>
               </p>

@@ -15,6 +15,18 @@ import FooterShade2 from "@/assets/footer-shade2.png";
 
 const navColumns = [
   {
+    title: "Design Services",
+    titleHref: "/services/design",
+    links: [
+      { label: "Website UX/UI Design", href: "/services/design" },
+      { label: "Mobile App Design", href: "/services/design" },
+      { label: "Brand Strategy", href: "/services/design" },
+      { label: "Brand Identity", href: "/services/design" },
+      { label: "Pitch Deck Design", href: "/services/design" },
+      { label: "Print & Marketing Collateral", href: "/services/design" },
+    ],
+  },
+  {
     title: "Development Services",
     titleHref: "/services/development",
     links: [
@@ -24,7 +36,7 @@ const navColumns = [
       { label: "SaaS Platforms", href: "/services/development" },
       { label: "Custom Web Application", href: "/services/development" },
       { label: "Customer Portals & Dashboards", href: "/services/development" },
-      { label: "ODOO Implementation", href: "/services/development" },
+      { label: "Odoo Implementation", href: "/services/development" },
       { label: "API & System Integrations", href: "/services/development" },
       { label: "AI Workflows & Agents", href: "/services/development" },
     ],
@@ -37,20 +49,8 @@ const navColumns = [
       { label: "Search Engine Optimization", href: "/services/digital" },
       { label: "Influencer Marketing", href: "/services/digital" },
       { label: "Email & WhatsApp Automation", href: "/services/digital" },
-      { label: "Content Strategy & Production", href: "/services/digital" },
-      { label: "Analytics & Growth Analysis", href: "/services/digital" },
-    ],
-  },
-  {
-    title: "Design Services",
-    titleHref: "/services/design",
-    links: [
-      { label: "Website UX/UI Design", href: "/services/design" },
-      { label: "Mobile App Design", href: "/services/design" },
-      { label: "Brand Strategy", href: "/services/design" },
-      { label: "Brand Identity", href: "/services/design" },
-      { label: "Pitch Deck Design", href: "/services/design" },
-      { label: "Print & Marketing Collateral", href: "/services/design" },
+      { label: "Content Creation & Strategy", href: "/services/digital" },
+      { label: "Analytics & Growth Optimization", href: "/services/digital" },
     ],
   },
 ];
