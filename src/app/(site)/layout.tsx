@@ -1,48 +1,13 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Script from "next/script";
 import LenisProvider from "@/components/LenisProvider";
 import AosProvider from "@/components/AosProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FaviconAnimator from "@/components/FaviconAnimator";
 import { getSiteNavigation } from "@/lib/navigation";
-import { SITE_URL } from "@/lib/site";
-import "../globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "Full Stack Digital Marketing agency",
-  description: "Full Stack Digital Marketing agency in USA",
-  icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png", sizes: "64x64" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    shortcut: "/favicon.png",
-    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
-  },
-  openGraph: {
-    type: "website",
-    siteName: "Tamatos",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Tamatos",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: ["/og-image.png"],
-  },
-};
+const GA_MEASUREMENT_ID = "G-0BL6G014K9";
+const CLARITY_PROJECT_ID = "y1tm0y8i23";
 
 export default async function SiteLayout({
   children,
@@ -52,18 +17,36 @@ export default async function SiteLayout({
   const navigation = await getSiteNavigation();
 
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <head />
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <FaviconAnimator />
-        <LenisProvider>
-          <AosProvider>
-            <Header navigation={navigation} />
-            {children}
-            <Footer />
-          </AosProvider>
-        </LenisProvider>
-      </body>
-    </html>
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_MEASUREMENT_ID}');
+        `}
+      </Script>
+      <Script id="microsoft-clarity" strategy="afterInteractive">
+        {`
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "${CLARITY_PROJECT_ID}");
+        `}
+      </Script>
+      <FaviconAnimator />
+      <LenisProvider>
+        <AosProvider>
+          <Header navigation={navigation} />
+          {children}
+          <Footer />
+        </AosProvider>
+      </LenisProvider>
+    </>
   );
 }
