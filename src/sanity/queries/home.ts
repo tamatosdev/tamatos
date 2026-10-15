@@ -37,6 +37,7 @@ export const homePageQuery = defineQuery(/* groq */ `
       boldWord,
       line1AfterBold,
       line2Word,
+      line2AfterAsterisk,
       line2ItalicWord,
       line3,
       boldHighlightColor,

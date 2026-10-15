@@ -63,15 +63,16 @@ export default function Banner({ data }: { data?: HeroData }) {
         : pill,
   );
 
-  const line1BeforeBold = data?.line1BeforeBold ?? "We Turn";
-  const boldWord = data?.boldWord ?? "BOLD";
-  const line1AfterBold = data?.line1AfterBold ?? "Ideas Into Digital";
-  const line2Word = data?.line2Word ?? "Experiences";
-  const line2ItalicWord = data?.line2ItalicWord ?? "Businesses";
-  const line3 = data?.line3 ?? "Growth With.";
+  const line1BeforeBold = data?.line1BeforeBold ?? "Your";
+  const boldWord = data?.boldWord ?? "PARTNERS";
+  const line1AfterBold = data?.line1AfterBold ?? "In Design, Development";
+  const line2Word = data?.line2Word ?? "& Marketing";
+  const line2AfterAsterisk = data?.line2AfterAsterisk ?? "Working Together";
+  const line2ItalicWord = data?.line2ItalicWord ?? "Business";
+  const line3 = data?.line3 ?? "To Grow Your";
   const boldHighlightColor = data?.boldHighlightColor ?? "#E8601C";
-  const ctaLabel = data?.cta?.label ?? "Begin Now";
-  const ctaHref = data?.cta?.href ?? "/contact";
+  const ctaLabel = data?.cta?.label ?? "Book a Call";
+  const ctaHref = data?.cta?.href ?? "https://calendly.com/nabeeldanishrafiq/tamatos";
   const secondaryCtaLabel = data?.secondaryCta?.label ?? "See Our Work";
   const secondaryCtaHref = data?.secondaryCta?.href ?? "/work";
 
@@ -197,20 +198,23 @@ export default function Banner({ data }: { data?: HeroData }) {
             <span>{line1AfterBold}</span>
           </span>
 
-          <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap mt-1">
+          <span className="mt-1 flex flex-wrap items-center justify-start gap-3 sm:gap-4 lg:justify-center">
             <span>{line2Word}</span>
             <Image
               src={Asterisk}
               alt="*"
               width={80}
               height={80}
-              className="inline-block w-[28px] sm:w-[40px] md:w-[55px] lg:w-[62px] xl:w-[72px] 2xl:w-[80px] h-auto"
+              className="inline-block h-auto w-[28px] shrink-0 sm:w-[40px] md:w-[55px] lg:w-[62px] xl:w-[72px] 2xl:w-[80px]"
               style={{ verticalAlign: "middle" }}
             />
+            <span>{line2AfterAsterisk}</span>
           </span>
 
-          <span className="block mt-1 whitespace-nowrap">
-            <span className="italic font-normal text-white/70">{line2ItalicWord}</span> {line3}
+          <span className="mt-1 block">
+            {line3}{" "}
+            <span className="italic font-normal text-white/70">{line2ItalicWord}</span>
+            <span className="text-[#9DF560]">.</span>
           </span>
         </motion.h1>
 

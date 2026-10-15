@@ -33,6 +33,7 @@ export type HeroData = {
   boldWord?: string;
   line1AfterBold?: string;
   line2Word?: string;
+  line2AfterAsterisk?: string;
   line2ItalicWord?: string;
   line3?: string;
   boldHighlightColor?: string;
