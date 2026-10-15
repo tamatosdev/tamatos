@@ -1,0 +1,16 @@
+# Prevent line-ending corruption of binary assets (breaks Next.js image optimizer)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.svg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.mp4 binary
+*.webm binary
+*.pdf binary
