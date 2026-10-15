@@ -83,6 +83,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const category = post.categories?.nodes?.[0]?.name ?? "Article";
   const readingTime = getPostReadingTime(post);
   const authorGroup = post.authorGroup;
+  const socialProfiles =
+    authorGroup?.socialProfiles?.filter(
+      (profile): profile is { name: string; url: string } =>
+        Boolean(profile.name && profile.url),
+    ) ?? [];
   const headings = extractBlogHeadings(post.body);
   const jsonLd = buildJsonLd({
     ...postSeoDefaults(post, slug),
@@ -177,59 +182,52 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   <SummarizeButtons title={post.title} slug={post.slug} />
                 </div>
 
-                {/* Bottom — Author + Date on one line */}
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-center gap-3">
-                    {authorGroup?.authorImage?.node?.sourceUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={authorGroup.authorImage.node.sourceUrl}
-                        alt={authorGroup.authorName || "Author"}
-                        className="w-10.75 h-10.75 rounded-full object-cover shrink-0"
-                      />
-                    ) : (
-                      <div className="w-10.75 h-10.75 rounded-full bg-white/20 shrink-0" />
-                    )}
-                    <div className="min-w-0">
-                      <span
-                        className="block text-white font-medium leading-tight"
-                        style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
-                      >
-                        {authorGroup?.authorName ?? "Tamatos"}
-                      </span>
-                      {authorGroup?.designation ? (
-                        <span
-                          className="block text-white/55 font-normal mt-0.5"
-                          style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
-                        >
-                          {authorGroup.designation}
-                        </span>
-                      ) : null}
-                    </div>
-                    <span className="text-white/40">•</span>
+                {/* Bottom — Author + socials on one line */}
+                <div className="flex flex-wrap items-center gap-3">
+                  {authorGroup?.authorImage?.node?.sourceUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={authorGroup.authorImage.node.sourceUrl}
+                      alt={authorGroup.authorName || "Author"}
+                      className="w-10.75 h-10.75 rounded-full object-cover shrink-0"
+                    />
+                  ) : (
+                    <div className="w-10.75 h-10.75 rounded-full bg-white/20 shrink-0" />
+                  )}
+                  <div className="min-w-0">
                     <span
-                      className="text-white font-normal"
+                      className="block text-white font-medium leading-tight"
                       style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
                     >
-                      {formatDate(post.date)}
+                      {authorGroup?.authorName ?? "Tamatos"}
                     </span>
+                    {authorGroup?.designation ? (
+                      <span
+                        className="block text-white/55 font-normal mt-0.5"
+                        style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
+                      >
+                        {authorGroup.designation}
+                      </span>
+                    ) : null}
                   </div>
-
-                  {authorGroup?.socialProfiles?.length ? (
-                    <div className="flex flex-wrap items-center gap-3">
-                      {authorGroup.socialProfiles.map((profile) => (
-                        <a
-                          key={`${profile.name}-${profile.url}`}
-                          href={profile.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white/70 font-medium hover:text-[#9DF560] transition-colors duration-200"
-                          style={{ fontSize: "16px", letterSpacing: "-0.02em" }}
-                        >
-                          {profile.name}
-                        </a>
-                      ))}
-                    </div>
+                  {socialProfiles.length > 0 ? (
+                    <>
+                      <span className="text-white/40">•</span>
+                      <div className="flex flex-wrap items-center gap-3">
+                        {socialProfiles.map((profile) => (
+                          <a
+                            key={`${profile.name}-${profile.url}`}
+                            href={profile.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#9DF560] font-medium hover:text-white transition-colors duration-200"
+                            style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+                          >
+                            {profile.name}
+                          </a>
+                        ))}
+                      </div>
+                    </>
                   ) : null}
                 </div>
 

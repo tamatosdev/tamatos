@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import type { BlogHeading } from "@/lib/blogHeadings";
 import { formatDateNumeric } from "@/lib/blog";
 import SummarizeButtons from "@/components/SummarizeButtons";
@@ -23,6 +29,111 @@ type Props = {
   author?: AuthorProfile;
   children: React.ReactNode;
 };
+
+/** Themed scrollbar — native bars can't be reliably styled on Mac/Windows Chrome. */
+function TocNav({ children }: { children: ReactNode }) {
+  const navRef = useRef<HTMLElement>(null);
+  const [thumb, setThumb] = useState({ top: 0, height: 40, show: false });
+  const dragging = useRef<{ y: number; scrollTop: number } | null>(null);
+
+  const sync = useCallback(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const { scrollTop, scrollHeight, clientHeight } = el;
+    const overflow = scrollHeight - clientHeight;
+    if (overflow <= 1) {
+      setThumb((prev) => ({ ...prev, show: false }));
+      return;
+    }
+    const height = Math.max(32, (clientHeight / scrollHeight) * clientHeight);
+    const top = (scrollTop / overflow) * (clientHeight - height);
+    setThumb({ top, height, show: true });
+  }, []);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const id = requestAnimationFrame(sync);
+    el.addEventListener("scroll", sync, { passive: true });
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    window.addEventListener("resize", sync);
+    return () => {
+      cancelAnimationFrame(id);
+      el.removeEventListener("scroll", sync);
+      ro.disconnect();
+      window.removeEventListener("resize", sync);
+    };
+  }, [sync, children]);
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      const el = navRef.current;
+      const d = dragging.current;
+      if (!el || !d) return;
+      const overflow = el.scrollHeight - el.clientHeight;
+      const track = el.clientHeight - thumb.height;
+      if (track <= 0 || overflow <= 0) return;
+      el.scrollTop = d.scrollTop + ((e.clientY - d.y) / track) * overflow;
+    };
+    const onUp = () => {
+      dragging.current = null;
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+  }, [thumb.height]);
+
+  // Same DOM on server + client (no <style>, no conditional nodes) to avoid hydration mismatch
+  return (
+    <div className="relative pr-3">
+      <nav
+        ref={navRef}
+        className="toc-nav-scroll space-y-1"
+        data-lenis-prevent="true"
+        style={{
+          maxHeight: 288,
+          minHeight: 0,
+          overflowY: "auto",
+          overflowX: "hidden",
+          overscrollBehavior: "contain",
+          scrollbarWidth: "none",
+        }}
+      >
+        {children}
+      </nav>
+      <div
+        className="pointer-events-none absolute top-0 right-0 bottom-0 w-1.5 rounded-full"
+        style={{
+          background: "rgba(255,255,255,0.12)",
+          opacity: thumb.show ? 1 : 0,
+        }}
+        aria-hidden
+      >
+        <div
+          className="pointer-events-auto absolute left-0 w-full rounded-full"
+          style={{
+            top: thumb.top,
+            height: thumb.height,
+            background: "#9DF560",
+            opacity: 0.75,
+            cursor: "grab",
+          }}
+          onPointerDown={(e) => {
+            e.preventDefault();
+            dragging.current = {
+              y: e.clientY,
+              scrollTop: navRef.current?.scrollTop ?? 0,
+            };
+          }}
+        />
+      </div>
+    </div>
+  );
+}
 
 function ShareButton({
   label,
@@ -214,7 +325,7 @@ export default function BlogArticleLayout({
               >
                 Table of contents
               </p>
-              <nav className="max-h-72 overflow-y-auto pr-1 space-y-1">
+              <TocNav>
                 {headings.map((heading, index) => {
                   const isActive = activeId === heading.id;
                   return (
@@ -237,7 +348,7 @@ export default function BlogArticleLayout({
                     </a>
                   );
                 })}
-              </nav>
+              </TocNav>
             </div>
           ) : null}
 

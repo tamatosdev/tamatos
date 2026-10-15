@@ -120,7 +120,7 @@ export default function BlogListing({ posts }: Props) {
                                   fontSize: "13px",
                                   letterSpacing: "-0.02em",
                                   padding: "7px 14px",
-                                  background: "rgba(255,255,255,0.18)",
+                                  background: "rgb(65 63 149 / 42%)",
                                   backdropFilter: "blur(10px)",
                                   WebkitBackdropFilter: "blur(10px)",
                                   border: "1px solid rgba(255,255,255,0.12)",
