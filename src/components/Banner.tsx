@@ -93,7 +93,7 @@ export default function Banner({ data }: { data?: HeroData }) {
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:min-h-[1000px]">
+    <section className="relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:min-h-[850px]">
       <Image
         src={BannerGradient}
         alt=""
@@ -178,7 +178,7 @@ export default function Banner({ data }: { data?: HeroData }) {
           initial={heroFadeUp.hidden}
           animate={isReady ? heroFadeUp.visible : heroFadeUp.hidden}
           transition={heroTransition}
-          className="relative text-white font-normal leading-[1.1] tracking-[-0.05em] text-[39.11px] sm:text-[44.44px] md:text-[56.89px] lg:text-[64px] xl:text-[74.67px] 2xl:text-[85.33px]"
+          className="banner-hero-title relative text-[39.11px] font-normal leading-[1.1] tracking-[-0.05em] text-white sm:text-[44.44px] md:text-[56.89px] lg:text-[64px] xl:text-[74.67px] min-[1440px]:!text-[54px] 2xl:!text-[85.33px]"
         >
           <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap">
             <span>{line1BeforeBold}</span>
