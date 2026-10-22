@@ -107,8 +107,8 @@
   .container { padding-inline: 2rem; }
 }
 
-/* Banner hero: design size at 1440px (beats xl utility until 2xl) */
-@media (min-width: 1440px) and (max-width: 1535px) {
+/* Banner hero: 54px from 1280px through 1535px (beats xl utility until 2xl) */
+@media (min-width: 1280px) and (max-width: 1535px) {
   .banner-hero-title {
     font-size: 54px !important;
   }
