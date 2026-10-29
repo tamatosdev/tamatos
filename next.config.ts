@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   async headers() {
+    // Dev chunk names aren't content-hashed, so long-lived caching serves stale code.
+    if (process.env.NODE_ENV !== "production") return [];
     return [
       {
         // Immutable hashed build assets — safe to cache long-term.

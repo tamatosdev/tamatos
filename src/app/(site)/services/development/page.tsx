@@ -15,7 +15,7 @@ import Industries from "@/components/Industries";
 import JsonLd from "@/components/JsonLd";
 import { getHomePage } from "@/lib/home";
 import { getPageSeo } from "@/lib/pageSeo";
-import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import shade4 from "@/assets/Shade-4.png";
 import shade2 from "@/assets/Shade-2.png";
@@ -24,13 +24,17 @@ import servicesShade from "@/assets/services-shade.png";
 
 export async function generateMetadata() {
   const seo = await getPageSeo("developmentPage");
-  return buildPageMetadata({
-    metaTitle: "Development Services | Tamatos",
-    metaDescription:
-      "From idea to production-ready product. Tamatos builds digital products that scale with your business.",
-    canonicalUrl: `${SITE_URL}/services/development`,
-    ...seo,
-  });
+  return buildPageMetadata(
+    mergeSeo(
+      {
+        metaTitle: "Development Services | Tamatos",
+        metaDescription:
+          "From idea to production-ready product. Tamatos builds digital products that scale with your business.",
+        canonicalUrl: `${SITE_URL}/services/development`,
+      },
+      seo,
+    ),
+  );
 }
 
 export const revalidate = 0;
@@ -47,12 +51,16 @@ export default async function DevelopmentPage() {
     getHomePage(),
     getPageSeo("developmentPage"),
   ]);
-  const jsonLd = buildJsonLd({
-    metaTitle: "Development Services | Tamatos",
-    canonicalUrl: `${SITE_URL}/services/development`,
-    schema: { type: "webPage", name: "Development Services" },
-    ...seo,
-  });
+  const jsonLd = buildJsonLd(
+    mergeSeo(
+      {
+        metaTitle: "Development Services | Tamatos",
+        canonicalUrl: `${SITE_URL}/services/development`,
+        schema: { type: "webPage", name: "Development Services" },
+      },
+      seo,
+    ),
+  );
 
   return (
     <main

@@ -11,7 +11,7 @@ import CtaSection2 from "@/components/CtaSection2";
 import JsonLd from "@/components/JsonLd";
 import { getHomePage } from "@/lib/home";
 import { getPortfolioBySlug, getPortfolioCardTags, getPortfolioSlugs } from "@/lib/portfolio";
-import { buildJsonLd, buildPageMetadata, type SeoData } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo, type SeoData } from "@/lib/seo";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -61,10 +61,7 @@ export async function generateMetadata({
     return { title: `Project Not Found | ${SITE_NAME}` };
   }
 
-  return buildPageMetadata({
-    ...portfolioSeoDefaults(item, slug),
-    ...item.seo,
-  });
+  return buildPageMetadata(mergeSeo(portfolioSeoDefaults(item, slug), item.seo));
 }
 
 export default async function PortfolioDetailPage({
@@ -78,10 +75,7 @@ export default async function PortfolioDetailPage({
   if (!item) notFound();
 
   const tags = getPortfolioCardTags(item);
-  const jsonLd = buildJsonLd({
-    ...portfolioSeoDefaults(item, slug),
-    ...item.seo,
-  });
+  const jsonLd = buildJsonLd(mergeSeo(portfolioSeoDefaults(item, slug), item.seo));
 
   return (
     <main style={{ overflowX: "clip" }}>

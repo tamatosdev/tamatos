@@ -8,28 +8,36 @@ import JsonLd from "@/components/JsonLd";
 import blogShade from "@/assets/blog-shade.png";
 import { getPosts } from "@/lib/blog";
 import { getPageSeo } from "@/lib/pageSeo";
-import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export async function generateMetadata() {
   const seo = await getPageSeo("blogPage");
-  return buildPageMetadata({
-    metaTitle: `Blog | ${SITE_NAME}`,
-    metaDescription:
-      "Fresh insights, great ideas, bold trends, and revolutionary innovations in business, software, and tech.",
-    canonicalUrl: `${SITE_URL}/blog`,
-    ...seo,
-  });
+  return buildPageMetadata(
+    mergeSeo(
+      {
+        metaTitle: `Blog | ${SITE_NAME}`,
+        metaDescription:
+          "Fresh insights, great ideas, bold trends, and revolutionary innovations in business, software, and tech.",
+        canonicalUrl: `${SITE_URL}/blog`,
+      },
+      seo,
+    ),
+  );
 }
 
 export default async function BlogPage() {
   const [posts, seo] = await Promise.all([getPosts(), getPageSeo("blogPage")]);
-  const jsonLd = buildJsonLd({
-    metaTitle: `Blog | ${SITE_NAME}`,
-    canonicalUrl: `${SITE_URL}/blog`,
-    schema: { type: "webPage", name: `${SITE_NAME} Blog` },
-    ...seo,
-  });
+  const jsonLd = buildJsonLd(
+    mergeSeo(
+      {
+        metaTitle: `Blog | ${SITE_NAME}`,
+        canonicalUrl: `${SITE_URL}/blog`,
+        schema: { type: "webPage", name: `${SITE_NAME} Blog` },
+      },
+      seo,
+    ),
+  );
 
   return (
     <>

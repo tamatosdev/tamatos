@@ -29,28 +29,36 @@ import shade4 from "@/assets/Shade-4.png";
 import shade2 from "@/assets/Shade-2.png";
 import blogShade from "@/assets/blog-shade.png";
 import { getPageSeo } from "@/lib/pageSeo";
-import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 export async function generateMetadata() {
   const seo = await getPageSeo("aboutPage");
-  return buildPageMetadata({
-    metaTitle: "About — Tamatos",
-    metaDescription:
-      "Meet Tamatos — a design and development agency bridging product, brand, and growth.",
-    canonicalUrl: `${SITE_URL}/about`,
-    ...seo,
-  });
+  return buildPageMetadata(
+    mergeSeo(
+      {
+        metaTitle: "About — Tamatos",
+        metaDescription:
+          "Meet Tamatos — a design and development agency bridging product, brand, and growth.",
+        canonicalUrl: `${SITE_URL}/about`,
+      },
+      seo,
+    ),
+  );
 }
 
 export default async function AboutPage() {
   const seo = await getPageSeo("aboutPage");
-  const jsonLd = buildJsonLd({
-    metaTitle: "About — Tamatos",
-    canonicalUrl: `${SITE_URL}/about`,
-    schema: { type: "webPage", name: "About Tamatos" },
-    ...seo,
-  });
+  const jsonLd = buildJsonLd(
+    mergeSeo(
+      {
+        metaTitle: "About — Tamatos",
+        canonicalUrl: `${SITE_URL}/about`,
+        schema: { type: "webPage", name: "About Tamatos" },
+      },
+      seo,
+    ),
+  );
 
   return (
     <main style={{ overflowX: "clip" }}>

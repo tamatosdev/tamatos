@@ -33,6 +33,36 @@ export type SeoData = {
   schema?: SeoSchemaSettings;
 };
 
+function isEmpty(value: unknown) {
+  return value === null || value === undefined || (typeof value === "string" && !value.trim());
+}
+
+/**
+ * Layer CMS SEO over page defaults. GROQ projections return `null` for unset
+ * fields, so a plain spread would wipe the defaults (e.g. canonical → homepage).
+ */
+export function mergeSeo(defaults: SeoData, overrides?: SeoData | null): SeoData {
+  if (!overrides) return defaults;
+
+  const merged: Record<string, unknown> = { ...defaults };
+  for (const [key, value] of Object.entries(overrides)) {
+    if (isEmpty(value)) continue;
+    if (key === "schema" && typeof value === "object") {
+      const schema: Record<string, unknown> = { ...defaults.schema };
+      for (const [schemaKey, schemaValue] of Object.entries(value)) {
+        if (!isEmpty(schemaValue)) schema[schemaKey] = schemaValue;
+      }
+      merged.schema = schema;
+    } else if (typeof value === "object" && "url" in value && isEmpty(value.url)) {
+      // Image projection with no asset (`{ alt: null, url: null }`).
+      continue;
+    } else {
+      merged[key] = value;
+    }
+  }
+  return merged as SeoData;
+}
+
 function resolveTitle(seo?: SeoData) {
   return seo?.metaTitle ?? `${SITE_NAME} — Design & Development Agency`;
 }

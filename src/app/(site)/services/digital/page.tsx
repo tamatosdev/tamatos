@@ -16,7 +16,7 @@ import Industries from "@/components/Industries";
 import JsonLd from "@/components/JsonLd";
 import { getHomePage } from "@/lib/home";
 import { getPageSeo } from "@/lib/pageSeo";
-import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import shade4 from "@/assets/Shade-4.png";
 import shade2 from "@/assets/Shade-2.png";
@@ -25,13 +25,17 @@ import servicesShade from "@/assets/services-shade.png";
 
 export async function generateMetadata() {
   const seo = await getPageSeo("digitalPage");
-  return buildPageMetadata({
-    metaTitle: "Digital Services | Tamatos",
-    metaDescription:
-      "From business idea to market-leading brand. Tamatos builds digital experiences that people see, recognize, and remember.",
-    canonicalUrl: `${SITE_URL}/services/digital`,
-    ...seo,
-  });
+  return buildPageMetadata(
+    mergeSeo(
+      {
+        metaTitle: "Digital Services | Tamatos",
+        metaDescription:
+          "From business idea to market-leading brand. Tamatos builds digital experiences that people see, recognize, and remember.",
+        canonicalUrl: `${SITE_URL}/services/digital`,
+      },
+      seo,
+    ),
+  );
 }
 
 export const revalidate = 0;
@@ -45,12 +49,16 @@ const softFade = {
 
 export default async function DigitalPage() {
   const [home, seo] = await Promise.all([getHomePage(), getPageSeo("digitalPage")]);
-  const jsonLd = buildJsonLd({
-    metaTitle: "Digital Services | Tamatos",
-    canonicalUrl: `${SITE_URL}/services/digital`,
-    schema: { type: "webPage", name: "Digital Services" },
-    ...seo,
-  });
+  const jsonLd = buildJsonLd(
+    mergeSeo(
+      {
+        metaTitle: "Digital Services | Tamatos",
+        canonicalUrl: `${SITE_URL}/services/digital`,
+        schema: { type: "webPage", name: "Digital Services" },
+      },
+      seo,
+    ),
+  );
 
   return (
     <main

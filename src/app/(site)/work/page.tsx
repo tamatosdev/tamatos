@@ -13,20 +13,24 @@ import {
   getPortfolios,
   getPortfolioServiceTags,
 } from "@/lib/portfolio";
-import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 const WORK_HERO_VIDEO = "/videos/tamatos-work-video.mp4";
 
 export async function generateMetadata() {
   const seo = await getPageSeo("workPage");
-  return buildPageMetadata({
-    metaTitle: "Works — Tamatos",
-    metaDescription:
-      "Explore how Tamatos transforms ideas into design success stories through bold branding, UX, and development.",
-    canonicalUrl: `${SITE_URL}/work`,
-    ...seo,
-  });
+  return buildPageMetadata(
+    mergeSeo(
+      {
+        metaTitle: "Works — Tamatos",
+        metaDescription:
+          "Explore how Tamatos transforms ideas into design success stories through bold branding, UX, and development.",
+        canonicalUrl: `${SITE_URL}/work`,
+      },
+      seo,
+    ),
+  );
 }
 
 export default async function WorkPage() {
@@ -37,12 +41,16 @@ export default async function WorkPage() {
     getPortfolioIndustryTags(),
     getPageSeo("workPage"),
   ]);
-  const jsonLd = buildJsonLd({
-    metaTitle: "Works — Tamatos",
-    canonicalUrl: `${SITE_URL}/work`,
-    schema: { type: "webPage", name: "Tamatos Works" },
-    ...seo,
-  });
+  const jsonLd = buildJsonLd(
+    mergeSeo(
+      {
+        metaTitle: "Works — Tamatos",
+        canonicalUrl: `${SITE_URL}/work`,
+        schema: { type: "webPage", name: "Tamatos Works" },
+      },
+      seo,
+    ),
+  );
 
   return (
     <main>

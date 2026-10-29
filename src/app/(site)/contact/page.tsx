@@ -8,7 +8,8 @@ import nabeel from "@/assets/CEO.png";
 import ReviewTab from "@/components/ReviewTab";
 import JsonLd from "@/components/JsonLd";
 import { getContactPage } from "@/lib/contact";
-import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo, type SeoData } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 0;
 
@@ -17,19 +18,20 @@ const defaultPhones = [
   { label: "+971 50 1514568", href: "+971501514568" },
 ];
 
+const contactSeoDefaults: SeoData = {
+  metaTitle: "Contact Us — Tamatos",
+  metaDescription: "Get in touch with Tamatos for design, development, and digital marketing.",
+  canonicalUrl: `${SITE_URL}/contact`,
+};
+
 export async function generateMetadata() {
   const page = await getContactPage();
-  return buildPageMetadata(
-    page?.seo ?? {
-      metaTitle: "Contact Us — Tamatos",
-      metaDescription: "Get in touch with Tamatos for design, development, and digital marketing.",
-    }
-  );
+  return buildPageMetadata(mergeSeo(contactSeoDefaults, page?.seo));
 }
 
 export default async function ContactPage() {
   const page = await getContactPage();
-  const jsonLd = buildJsonLd(page?.seo);
+  const jsonLd = buildJsonLd(mergeSeo(contactSeoDefaults, page?.seo));
 
   const breadcrumbLabel = page?.breadcrumbLabel ?? "Contact Us";
   const profileName = page?.profileName ?? "Nabeel Danish Rafiq";

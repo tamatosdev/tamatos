@@ -84,6 +84,7 @@ export const post = defineType({
       type: 'seoFields',
       group: 'seo',
       description: 'Meta title, meta description, Open Graph, Twitter, and JSON-LD schema',
+      initialValue: {ogType: 'article', schema: {enabled: true, type: 'article'}},
     }),
   ],
   preview: {

@@ -20,7 +20,7 @@ import {
   getPostReadingTime,
 } from "@/lib/blog";
 import { extractBlogHeadings } from "@/lib/blogHeadings";
-import { buildJsonLd, buildPageMetadata, type SeoData } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo, type SeoData } from "@/lib/seo";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 function postSeoDefaults(post: NonNullable<Awaited<ReturnType<typeof getPostBySlug>>>, slug: string): SeoData {
@@ -56,6 +56,17 @@ function postSeoDefaults(post: NonNullable<Awaited<ReturnType<typeof getPostBySl
   };
 }
 
+/**
+ * Studio pre-fills every SEO object with ogType "website" and schema type
+ * "organization"; neither is right for a post, so those defaults become article.
+ */
+function postSeo(post: NonNullable<Awaited<ReturnType<typeof getPostBySlug>>>, slug: string): SeoData {
+  const seo = mergeSeo(postSeoDefaults(post, slug), post.seo);
+  if (seo.ogType === "website") seo.ogType = "article";
+  if (seo.schema?.type === "organization") seo.schema = { ...seo.schema, type: "article" };
+  return seo;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -68,10 +79,7 @@ export async function generateMetadata({
     return { title: `Post Not Found | ${SITE_NAME}` };
   }
 
-  return buildPageMetadata({
-    ...postSeoDefaults(post, slug),
-    ...post.seo,
-  });
+  return buildPageMetadata(postSeo(post, slug));
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
@@ -89,10 +97,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         Boolean(profile.name && profile.url),
     ) ?? [];
   const headings = extractBlogHeadings(post.body);
-  const jsonLd = buildJsonLd({
-    ...postSeoDefaults(post, slug),
-    ...post.seo,
-  });
+  const jsonLd = buildJsonLd(postSeo(post, slug));
 
   return (
     <>

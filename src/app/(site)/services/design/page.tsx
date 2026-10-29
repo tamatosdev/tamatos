@@ -14,7 +14,7 @@ import Industries from "@/components/Industries";
 import JsonLd from "@/components/JsonLd";
 import { getHomePage } from "@/lib/home";
 import { getPageSeo } from "@/lib/pageSeo";
-import { buildJsonLd, buildPageMetadata } from "@/lib/seo";
+import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import shade4 from "@/assets/Shade-4.png";
 import shade2 from "@/assets/Shade-2.png";
@@ -23,13 +23,17 @@ import servicesShade from "@/assets/services-shade.png";
 
 export async function generateMetadata() {
   const seo = await getPageSeo("designPage");
-  return buildPageMetadata({
-    metaTitle: "Design Services | Tamatos",
-    metaDescription:
-      "From business idea to market-leading brand. Tamatos designs brands that people see, recognize, and remember.",
-    canonicalUrl: `${SITE_URL}/services/design`,
-    ...seo,
-  });
+  return buildPageMetadata(
+    mergeSeo(
+      {
+        metaTitle: "Design Services | Tamatos",
+        metaDescription:
+          "From business idea to market-leading brand. Tamatos designs brands that people see, recognize, and remember.",
+        canonicalUrl: `${SITE_URL}/services/design`,
+      },
+      seo,
+    ),
+  );
 }
 
 export const revalidate = 0;
@@ -43,12 +47,16 @@ const softFade = {
 
 export default async function DesignPage() {
   const [home, seo] = await Promise.all([getHomePage(), getPageSeo("designPage")]);
-  const jsonLd = buildJsonLd({
-    metaTitle: "Design Services | Tamatos",
-    canonicalUrl: `${SITE_URL}/services/design`,
-    schema: { type: "webPage", name: "Design Services" },
-    ...seo,
-  });
+  const jsonLd = buildJsonLd(
+    mergeSeo(
+      {
+        metaTitle: "Design Services | Tamatos",
+        canonicalUrl: `${SITE_URL}/services/design`,
+        schema: { type: "webPage", name: "Design Services" },
+      },
+      seo,
+    ),
+  );
 
   return (
     <main
