@@ -39,6 +39,32 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Hero service words: coloured italic links on touch; dimmed until hovered with a mouse. */
+.hero-service-word {
+  color: var(--word-color);
+  font-style: italic;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-service-word {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: normal;
+    transition: color 0.3s;
+  }
+
+  .hero-service-word[data-active="true"] {
+    color: var(--word-color);
+    font-style: italic;
+  }
+}
+
+/* Hero hover card: tilts while it opens, then settles straight. */
+@keyframes heroCardTilt {
+  0%   { transform: rotate(-14deg); }
+  70%  { transform: rotate(2.5deg); }
+  100% { transform: rotate(0deg); }
+}
+
 @keyframes bannerSlideUp {
   from {
     opacity: 0;

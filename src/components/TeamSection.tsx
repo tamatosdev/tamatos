@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import Image from "next/image";
 import BodyBgOnView from "@/components/BodyBgOnView";
 import orangeStar from "@/assets/orange-star.png";
@@ -10,28 +10,34 @@ import akbar from "@/assets/Team images/akbar.png";
 import ali from "@/assets/Team images/ali asad.png";
 import sadat from "@/assets/Team images/sadat.png";
 import shehroz from "@/assets/Team images/shehroz.png";
-import shahzaib from "@/assets/Team images/shahzaib.png";
 import muneer from "@/assets/Team images/muneer.png";
-import huzaifa from "@/assets/Team images/huzaifa.png";
-import hammad from "@/assets/Team images/hammad.png";
-import rayyan from "@/assets/Team images/rayyan.png";
+import mina from "@/assets/Team images/mina.png";
 import maheen from "@/assets/Team images/maheen.png";
+import hammad from "@/assets/Team images/hammad.png";
+import shahzaib from "@/assets/Team images/shahzaib.png";
+import rayyan from "@/assets/Team images/rayyan.png";
+import huzaifa from "@/assets/Team images/huzaifa.png";
+import ebad from "@/assets/Team images/ebad.png";
+import ahmed from "@/assets/Team images/ahmed.png";
 
 const team = [
-  { name: "Nabeel D.",    role: "Co-founder & CEO",         image: nabeel   },
-  { name: "Akbar G.",     role: "Group Account Manager",    image: akbar    },
-  { name: "Ali Asad",     role: "Head of Development",      image: ali      },
-  { name: "Sadat",        role: "Sr. UX/UI Designer",       image: sadat    },
-  { name: "Shehroz",      role: "Sr. Web Developer",        image: shehroz  },
-  { name: "Shahzaib",     role: "Sr. Web Developer",        image: shahzaib },
-  { name: "Muneer",       role: "Sr. Graphic Designer",     image: muneer   },
-  { name: "Maheen",       role: "Account Manager",          image: maheen   },
-  { name: "Huzaifa",      role: "Web Developer",            image: huzaifa  },
-  { name: "Hammad Razi",  role: "Sr. SEO Specialist",       image: hammad   },
-  { name: "Rayyan",       role: "Content Writer",           image: rayyan   },
+  { name: "Nabeel D.",  role: "Co-Founder & CEO",         image: nabeel   },
+  { name: "Akbar G.",   role: "Business Director",        image: akbar    },
+  { name: "Ali A.",     role: "Head of Development",      image: ali      },
+  { name: "Sadat S.",   role: "Sr. UX/UI Designer",       image: sadat    },
+  { name: "Shehroz K.", role: "Sr. Web Developer",        image: shehroz  },
+  { name: "Muneer S.",  role: "Sr. Visualizer",           image: muneer   },
+  { name: "Mina H.",    role: "Content Strategist",       image: mina     },
+  { name: "Hammad R.",  role: "SEO Lead",                 image: hammad   },
+  { name: "Mahin K.",   role: "Account Manager",          image: maheen   },
+  { name: "Shahzaib",   role: "Sr. Software Engineer",    image: shahzaib },
+  { name: "Rayyan R.",  role: "SEO & Content Executive",  image: rayyan   },
+  { name: "Huzaifa S.", role: "Web Developer",            image: huzaifa  },
+  { name: "Ebad K.",    role: "Jr. Web Developer",        image: ebad     },
+  { name: "Ahmad M.",   role: "Jr. UX/UI Designer",       image: ahmed    },
 ];
 
-/* Each column gets a unique y range for parallax */
+/* Each desktop column gets a unique y range for parallax */
 const colYRanges: [number, number][] = [
   [60, -60],
   [-60, 60],
@@ -39,38 +45,50 @@ const colYRanges: [number, number][] = [
   [-40, 40],
 ];
 
+/** Desktop column for each card: rows of four, with the last two centred under columns 2–3. */
+const desktopColumn = (index: number) => (index < 12 ? index % 4 : index - 11);
+
+/*
+ * Columns 2 and 4 sit lower than 1 and 3. Margin percentages resolve against the
+ * card width, so the step stays proportional at every size.
+ */
+function staggerClass(index: number) {
+  const mobile = index % 2 === 1 ? "mt-[14%]" : "mt-0";
+  const desktop = desktopColumn(index) % 2 === 1 ? "lg:mt-[14%]" : "lg:mt-0";
+  return `${mobile} ${desktop}`;
+}
+
 function TeamCard({
   member,
-  colIndex,
-  sectionRef,
+  index,
+  scrollYProgress,
+  parallax,
 }: {
   member: (typeof team)[0];
-  colIndex: number;
-  sectionRef: React.RefObject<HTMLDivElement | null>;
+  index: number;
+  scrollYProgress: MotionValue<number>;
+  parallax: boolean;
 }) {
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], colYRanges[colIndex % 4]);
+  const column = desktopColumn(index);
+  const y = useTransform(scrollYProgress, [0, 1], parallax ? colYRanges[column] : [0, 0]);
 
   return (
     <motion.div
       style={{ y }}
-      className="relative rounded-2xl overflow-hidden"
+      className={`relative rounded-2xl overflow-hidden ${staggerClass(index)} ${index === 12 ? "lg:col-start-2" : ""}`}
     >
-      <div className="relative w-full" style={{ aspectRatio: "3/4" }}>
+      <div className="relative w-full" style={{ aspectRatio: "345 / 467" }}>
         <Image
           src={member.image}
           alt={member.name}
           fill
+          sizes="(min-width: 1024px) 260px, 50vw"
           className="object-cover object-top"
         />
       </div>
 
       <div
-        className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row sm:items-center items-start gap-2"
+        className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between items-start gap-2"
         style={{
           backdropFilter: "blur(10px)",
           backgroundColor: "#00000005",
@@ -80,7 +98,7 @@ function TeamCard({
         }}
       >
         <span
-          className="text-white font-semibold leading-none"
+          className="text-white font-semibold leading-none whitespace-nowrap"
           style={{ fontSize: "clamp(11px, 1vw, 16px)" }}
         >
           {member.name}
@@ -98,6 +116,11 @@ function TeamCard({
 
 export default function TeamSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
 
   return (
     <BodyBgOnView
@@ -132,14 +155,15 @@ export default function TeamSection() {
 
         <div
           ref={sectionRef}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5 items-start"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 items-start"
         >
           {team.map((member, index) => (
             <TeamCard
-              key={index}
+              key={member.name}
               member={member}
-              colIndex={index % 4}
-              sectionRef={sectionRef}
+              index={index}
+              scrollYProgress={scrollYProgress}
+              parallax={!reduceMotion}
             />
           ))}
         </div>

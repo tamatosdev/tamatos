@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 import BannerGradient from "@/assets/banner-gradient.webp";
 import BgGrid from "@/assets/bg-grid.png";
 import GridMobile from "@/assets/grid-mobile.png";
-import Asterisk from "@/assets/asteric.png";
 import Frame1 from "@/assets/button-frame-1.png";
 import Frame2 from "@/assets/button-frame-2.png";
 import OrangeArrow from "@/assets/orange-arrow.svg";
+import HeroHeadline from "@/components/HeroHeadline";
 import type { HeroData } from "@/lib/home";
 
 const pillStyle: React.CSSProperties = {
@@ -22,19 +22,18 @@ const pillStyle: React.CSSProperties = {
 const defaultLeftPills = [
   { label: "UX/UI Design", top: "6%", left: "0%", insetNarrow: "2.5rem" },
   { label: "Branding", top: "39%", left: "-3%", insetNarrow: "2rem" },
-  { label: "Web & App Dev", top: "75%", left: "2%", insetNarrow: "3rem" },
+  { label: "Web & App Dev", top: "88%", left: "2%", insetNarrow: "3rem" },
 ];
 
 const defaultRightPills = [
   { label: "Product Design", top: "-1%", right: "0%", insetNarrow: "2.5rem" },
   { label: "SEO", top: "44%", right: "0%", insetNarrow: "2rem" },
-  { label: "Social Media Marketing", top: "73%", right: "-2%", insetNarrow: "3rem" },
+  { label: "Social Media Marketing", top: "88%", right: "-2%", insetNarrow: "3rem" },
 ];
 
 const defaultMobilePills: { label: string; top?: string; bottom?: string; left?: string; right?: string }[] = [
   { label: "UX/UI Design", top: "16%", left: "-1%" },
-  { label: "Branding", top: "18%", left: "42%" },
-  { label: "Product Design", top: "100px", right: "-6%" },
+  { label: "Branding", top: "100px", right: "-1%" },
   { label: "SEO", top: "44%", right: "2%" },
   { label: "Social Media Marketing", bottom: "11%", right: "-1%" },
   { label: "Web & App Dev", bottom: "7%", left: "-1%" },
@@ -63,14 +62,6 @@ export default function Banner({ data }: { data?: HeroData }) {
         : pill,
   );
 
-  const line1BeforeBold = data?.line1BeforeBold ?? "Your";
-  const boldWord = data?.boldWord ?? "PARTNERS";
-  const line1AfterBold = data?.line1AfterBold ?? "In Design, Development";
-  const line2Word = data?.line2Word ?? "& Marketing";
-  const line2AfterAsterisk = data?.line2AfterAsterisk ?? "Working Together";
-  const line2ItalicWord = data?.line2ItalicWord ?? "Business";
-  const line3 = data?.line3 ?? "To Grow Your";
-  const boldHighlightColor = data?.boldHighlightColor ?? "#E8601C";
   const ctaLabel = data?.cta?.label ?? "Book a Call";
   const ctaHref = data?.cta?.href ?? "https://calendly.com/nabeeldanishrafiq/tamatos";
   const secondaryCtaLabel = data?.secondaryCta?.label ?? "See Our Work";
@@ -180,42 +171,7 @@ export default function Banner({ data }: { data?: HeroData }) {
           transition={heroTransition}
           className="banner-hero-title relative text-[39.11px] font-normal leading-[1.1] tracking-[-0.05em] text-white sm:text-[44.44px] md:text-[56.89px] lg:text-[64px] xl:text-[74.67px] min-[1440px]:!text-[54px] 2xl:!text-[85.33px]"
         >
-          <span className="flex items-center justify-start lg:justify-center gap-3 sm:gap-4 flex-wrap">
-            <span>{line1BeforeBold}</span>
-            <span
-              className="inline-flex items-center px-4 sm:px-5 py-1 rounded-full font-semibold ml-[-16px] mr-[-18px] sm:ml-[-23px] sm:mr-[-27px] tracking-[-0.03em]"
-              style={{
-                background: boldHighlightColor,
-                color: "#0A0A0C",
-                fontSize: "0.55em",
-                verticalAlign: "middle",
-                transform: "rotate(-10deg)",
-                display: "inline-block",
-              }}
-            >
-              {boldWord}
-            </span>
-            <span>{line1AfterBold}</span>
-          </span>
-
-          <span className="mt-1 flex flex-wrap items-center justify-start gap-3 sm:gap-4 lg:justify-center">
-            <span>{line2Word}</span>
-            <Image
-              src={Asterisk}
-              alt="*"
-              width={80}
-              height={80}
-              className="inline-block h-auto w-[28px] shrink-0 sm:w-[40px] md:w-[55px] lg:w-[62px] xl:w-[72px] 2xl:w-[80px]"
-              style={{ verticalAlign: "middle" }}
-            />
-            <span>{line2AfterAsterisk}</span>
-          </span>
-
-          <span className="mt-1 block">
-            {line3}{" "}
-            <span className="italic font-normal text-white/70">{line2ItalicWord}</span>
-            <span className="text-[#9DF560]">.</span>
-          </span>
+          <HeroHeadline />
         </motion.h1>
 
         <motion.div
