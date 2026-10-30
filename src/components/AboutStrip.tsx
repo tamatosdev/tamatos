@@ -8,7 +8,7 @@ export default function AboutStrip({ data }: { data?: AboutStripData }) {
   const iconAlt = data?.icon?.alt ?? "Smiley face";
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-12 md:py-16 lg:pt-10">
       <h2
         className="container text-center font-semibold leading-[1.35] text-white text-balance"
         style={{ fontSize: "clamp(24px, 2.2vw, 36px)", letterSpacing: "-0.03em" }}

@@ -84,9 +84,9 @@ export default function Banner({ data }: { data?: HeroData }) {
   }, []);
 
   return (
-    // Desktop: min-height + padding-top always sum to 850px, so the content sits where an
-    // 850px centred hero put it, but with far less empty space below the buttons.
-    <section className="banner-hero-section relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:pt-[133px] lg:min-h-[717px]">
+    // Desktop: the hero fills the screen minus room for the "Top 1%" tagline below it, so
+    // both land in the first fold; padding-top keeps content clear of the fixed header.
+    <section className="relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:pt-[120px] lg:min-h-[clamp(480px,calc(100svh-150px),900px)]">
       <Image
         src={BannerGradient}
         alt=""

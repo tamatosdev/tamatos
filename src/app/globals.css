@@ -142,15 +142,15 @@
   .banner-hero-content {
     padding-top: 0 !important;
   }
-
-  /* Shorter content here, so a larger split of the same 850px (see Banner.tsx). */
-  .banner-hero-section {
-    padding-top: 230px !important;
-    min-height: 620px !important;
-  }
-
   .banner-hero-star {
     width: 52px !important;
+  }
+}
+
+/* Short desktop screens: drop the gap above the heading so the hero and the "Top 1%" tagline share the first fold. */
+@media (min-width: 1024px) and (max-height: 800px) {
+  .banner-hero-content {
+    padding-top: 0 !important;
   }
 }
 @media (min-width: 1600px) {
