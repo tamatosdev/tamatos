@@ -26,9 +26,9 @@ export async function generateMetadata() {
   return buildPageMetadata(
     mergeSeo(
       {
-        metaTitle: "Design Services | Tamatos",
+        metaTitle: "Branding, Logo & UX/UI Design Agency | Tamatos",
         metaDescription:
-          "From business idea to market-leading brand. Tamatos designs brands that people see, recognize, and remember.",
+          "Build a brand people remember. Tamatos offers brand strategy, logo and identity design, website and app UX/UI, and pitch decks, all strategy-first.",
         canonicalUrl: `${SITE_URL}/services/design`,
       },
       seo,
@@ -50,7 +50,7 @@ export default async function DesignPage() {
   const jsonLd = buildJsonLd(
     mergeSeo(
       {
-        metaTitle: "Design Services | Tamatos",
+        metaTitle: "Branding, Logo & UX/UI Design Agency | Tamatos",
         canonicalUrl: `${SITE_URL}/services/design`,
         schema: { type: "webPage", name: "Design Services" },
       },

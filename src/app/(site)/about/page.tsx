@@ -37,9 +37,9 @@ export async function generateMetadata() {
   return buildPageMetadata(
     mergeSeo(
       {
-        metaTitle: "About — Tamatos",
+        metaTitle: "About Tamatos | Design, Development & Marketing Agency",
         metaDescription:
-          "Meet Tamatos — a design and development agency bridging product, brand, and growth.",
+          "Since 2021, Tamatos has paired strategists, designers, developers and marketers to help startups and established brands launch, scale and stand out.",
         canonicalUrl: `${SITE_URL}/about`,
       },
       seo,
@@ -52,7 +52,7 @@ export default async function AboutPage() {
   const jsonLd = buildJsonLd(
     mergeSeo(
       {
-        metaTitle: "About — Tamatos",
+        metaTitle: "About Tamatos | Design, Development & Marketing Agency",
         canonicalUrl: `${SITE_URL}/about`,
         schema: { type: "webPage", name: "About Tamatos" },
       },

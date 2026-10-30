@@ -27,9 +27,9 @@ export async function generateMetadata() {
   return buildPageMetadata(
     mergeSeo(
       {
-        metaTitle: "Development Services | Tamatos",
+        metaTitle: "Website, Mobile App & SaaS Development Agency | Tamatos",
         metaDescription:
-          "From idea to production-ready product. Tamatos builds digital products that scale with your business.",
+          "Custom websites, mobile apps, e-commerce and SaaS platforms built to scale. Tamatos also delivers Odoo implementation, API integrations and AI workflows.",
         canonicalUrl: `${SITE_URL}/services/development`,
       },
       seo,
@@ -54,7 +54,7 @@ export default async function DevelopmentPage() {
   const jsonLd = buildJsonLd(
     mergeSeo(
       {
-        metaTitle: "Development Services | Tamatos",
+        metaTitle: "Website, Mobile App & SaaS Development Agency | Tamatos",
         canonicalUrl: `${SITE_URL}/services/development`,
         schema: { type: "webPage", name: "Development Services" },
       },

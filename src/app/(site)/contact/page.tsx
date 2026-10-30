@@ -19,8 +19,8 @@ const defaultPhones = [
 ];
 
 const contactSeoDefaults: SeoData = {
-  metaTitle: "Contact Us — Tamatos",
-  metaDescription: "Get in touch with Tamatos for design, development, and digital marketing.",
+  metaTitle: "Contact Tamatos | Start Your Web, App or Brand Project",
+  metaDescription: "Ready to build, rebrand or grow? Talk to Tamatos about your website, app, branding or marketing project and book a free consultation with our team.",
   canonicalUrl: `${SITE_URL}/contact`,
 };
 

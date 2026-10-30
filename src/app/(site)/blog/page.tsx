@@ -16,9 +16,9 @@ export async function generateMetadata() {
   return buildPageMetadata(
     mergeSeo(
       {
-        metaTitle: `Blog | ${SITE_NAME}`,
+        metaTitle: "Tamatos Blog | SEO, Web Development & Startup Insights",
         metaDescription:
-          "Fresh insights, great ideas, bold trends, and revolutionary innovations in business, software, and tech.",
+          "Expert insights on SEO, web development, UX design and building digital products. Practical reads for founders and marketers ready to grow online.",
         canonicalUrl: `${SITE_URL}/blog`,
       },
       seo,
@@ -31,7 +31,7 @@ export default async function BlogPage() {
   const jsonLd = buildJsonLd(
     mergeSeo(
       {
-        metaTitle: `Blog | ${SITE_NAME}`,
+        metaTitle: "Tamatos Blog | SEO, Web Development & Startup Insights",
         canonicalUrl: `${SITE_URL}/blog`,
         schema: { type: "webPage", name: `${SITE_NAME} Blog` },
       },

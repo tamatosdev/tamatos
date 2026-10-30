@@ -12,9 +12,21 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   async headers() {
+    const securityHeaders = {
+      source: "/:path*",
+      headers: [
+        // HTTPS only for a year. Subdomains are left out in case any still serve HTTP.
+        { key: "Strict-Transport-Security", value: "max-age=31536000" },
+        { key: "X-Content-Type-Options", value: "nosniff" },
+        { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      ],
+    };
+
     // Dev chunk names aren't content-hashed, so long-lived caching serves stale code.
-    if (process.env.NODE_ENV !== "production") return [];
+    if (process.env.NODE_ENV !== "production") return [securityHeaders];
     return [
+      securityHeaders,
       {
         // Immutable hashed build assets — safe to cache long-term.
         source: "/_next/static/:path*",

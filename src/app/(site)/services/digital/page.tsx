@@ -28,9 +28,9 @@ export async function generateMetadata() {
   return buildPageMetadata(
     mergeSeo(
       {
-        metaTitle: "Digital Services | Tamatos",
+        metaTitle: "Digital Marketing Agency | SEO, Social & Email | Tamatos",
         metaDescription:
-          "From business idea to market-leading brand. Tamatos builds digital experiences that people see, recognize, and remember.",
+          "Get found, get leads, grow. Tamatos runs SEO, social media, influencer marketing, content, and email and WhatsApp automation tied to measurable goals.",
         canonicalUrl: `${SITE_URL}/services/digital`,
       },
       seo,
@@ -52,7 +52,7 @@ export default async function DigitalPage() {
   const jsonLd = buildJsonLd(
     mergeSeo(
       {
-        metaTitle: "Digital Services | Tamatos",
+        metaTitle: "Digital Marketing Agency | SEO, Social & Email | Tamatos",
         canonicalUrl: `${SITE_URL}/services/digital`,
         schema: { type: "webPage", name: "Digital Services" },
       },
