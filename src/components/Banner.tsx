@@ -84,7 +84,9 @@ export default function Banner({ data }: { data?: HeroData }) {
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:min-h-[850px]">
+    // Desktop: min-height + padding-top always sum to 850px, so the content sits where an
+    // 850px centred hero put it, but with far less empty space below the buttons.
+    <section className="banner-hero-section relative flex items-center justify-center overflow-hidden pb-28 lg:pb-0 lg:pt-[133px] lg:min-h-[717px]">
       <Image
         src={BannerGradient}
         alt=""
@@ -114,7 +116,7 @@ export default function Banner({ data }: { data?: HeroData }) {
         </span>
       ))}
 
-      <div className="relative z-10 text-left lg:text-center pt-36 lg:pt-28 w-full max-w-[860px] xl:max-w-[1100px] 2xl:max-w-[1500px] mx-auto px-4">
+      <div className="banner-hero-content relative z-10 text-left lg:text-center pt-36 lg:pt-28 w-full max-w-[860px] xl:max-w-[1100px] 2xl:max-w-[1500px] mx-auto px-4">
         <Image src={BgGrid} alt="" fill className="hidden lg:block object-fill pointer-events-none" />
         <Image
           src={GridMobile}

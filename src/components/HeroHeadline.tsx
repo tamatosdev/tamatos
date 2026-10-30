@@ -110,7 +110,7 @@ export default function HeroHeadline() {
             alt=""
             width={80}
             height={80}
-            className="inline-block h-auto w-[28px] shrink-0 sm:w-[40px] md:w-[55px] lg:w-[62px] xl:w-[72px] 2xl:w-[80px]"
+            className="banner-hero-star inline-block h-auto w-[28px] shrink-0 sm:w-[40px] md:w-[55px] lg:w-[62px] xl:w-[72px] 2xl:w-[80px]"
           />
           <span>one team.</span>
         </span>
