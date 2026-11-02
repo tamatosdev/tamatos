@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ctaImage from "@/assets/cta-2-shadow.png";
-import ctaShadeMobile from "@/assets/cta-shade-mobile.png";
+import ctaShadeMobile from "@/assets/cta-shade-mobile.webp";
 import type { FinalCtaData } from "@/lib/home";
 
 function CopyButton({ text }: { text: string }) {
@@ -90,7 +90,6 @@ export default function CtaSection2({
           src={ctaShadeMobile}
           alt=""
           className="block lg:hidden absolute right-0 top-0 h-full w-auto object-top-right pointer-events-none select-none"
-          priority
         />
 
         <div className="flex flex-col gap-6 lg:gap-8 relative z-10">

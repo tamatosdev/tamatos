@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SmilyFace from "@/assets/Smily Face-2.gif";
+import SmilyFace from "@/assets/smiley-face.gif";
 import type { AboutStripData } from "@/lib/home";
 
 const accent = "#FC7031";

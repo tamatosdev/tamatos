@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import digitalBanner from "@/assets/digital-banner-image.png";
 import greenArrow from "@/assets/green-arrow.svg";
-import leftShade from "@/assets/left-shade.png";
+import leftShade from "@/assets/left-shade.webp";
 
 export default function DigitalHeroSection() {
   return (

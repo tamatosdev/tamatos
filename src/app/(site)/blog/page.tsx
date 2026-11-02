@@ -1,11 +1,12 @@
-export const revalidate = 0;
+// Serve a cached page and refresh it from Sanity at most once a minute.
+export const revalidate = 60;
 
 import Link from "next/link";
 import Image from "next/image";
 import CtaSection2 from "@/components/CtaSection2";
 import BlogListing from "@/components/BlogListing";
 import JsonLd from "@/components/JsonLd";
-import blogShade from "@/assets/blog-shade.png";
+import blogShade from "@/assets/blog-shade.webp";
 import { getPosts } from "@/lib/blog";
 import { getPageSeo } from "@/lib/pageSeo";
 import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";

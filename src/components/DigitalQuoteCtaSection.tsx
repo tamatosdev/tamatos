@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CEO from "@/assets/CEO.png";
 import ctaShade from "@/assets/cta-2-shadow.png";
-import ctaShadeMobile from "@/assets/cta-shade-mobile.png";
+import ctaShadeMobile from "@/assets/cta-shade-mobile.webp";
 
 export default function DigitalQuoteCtaSection() {
   return (
@@ -21,7 +21,6 @@ export default function DigitalQuoteCtaSection() {
             alt=""
             className="pointer-events-none absolute right-0 top-0 block h-full w-auto select-none object-right-top opacity-90 lg:hidden"
             aria-hidden
-            priority
           />
 
           <div className="relative z-10">

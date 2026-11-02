@@ -1,4 +1,5 @@
-export const revalidate = 0;
+// Serve a cached page and refresh it from Sanity at most once a minute.
+export const revalidate = 60;
 
 import Banner from "@/components/Banner";
 import AboutStrip from "@/components/AboutStrip";
@@ -11,8 +12,8 @@ import CaseStudySection from "@/components/CaseStudySection";
 import Image from "next/image";
 import Link from "next/link";
 import Asterisk from "@/assets/asteric.png";
-import shade1 from "@/assets/shade-1.png";
-import shade2 from "@/assets/Shade-2.png";
+import shade1 from "@/assets/shade-1.webp";
+import shade2 from "@/assets/Shade-2.webp";
 import teamIcon from "@/assets/team-icon.png";
 import bracesIcon from "@/assets/3rd-bracket.png";
 import ideaIcon from "@/assets/ai-idea.png";
@@ -23,8 +24,8 @@ import AwardsSection from "@/components/AwardsSection";
 import ReviewTab from "@/components/ReviewTab";
 import Industries from "@/components/Industries";
 import CtaSection2 from "@/components/CtaSection2";
-import footerShade1 from "@/assets/footer-shade1.png";
-import footerShade2 from "@/assets/footer-shade2.png";
+import footerShade1 from "@/assets/footer-shade1.webp";
+import footerShade2 from "@/assets/footer-shade2.webp";
 import circleShade from "@/assets/circle-shade.webp";
 import circleShade2 from "@/assets/circle-shade2.webp";
 import bigShade from "@/assets/big-shade.webp";

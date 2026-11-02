@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import developmentBanner from "@/assets/development-banner-image.png";
 import greenArrow from "@/assets/green-arrow.svg";
-import leftShade from "@/assets/left-shade.png";
+import leftShade from "@/assets/left-shade.webp";
 
 export default function DevelopmentHeroSection() {
   return (

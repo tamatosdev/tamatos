@@ -18,11 +18,12 @@ export default async function SiteLayout({
 
   return (
     <>
+      {/* Analytics load once the page is idle so they never compete with the first paint. */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -30,7 +31,7 @@ export default async function SiteLayout({
           gtag('config', '${GA_MEASUREMENT_ID}');
         `}
       </Script>
-      <Script id="microsoft-clarity" strategy="afterInteractive">
+      <Script id="microsoft-clarity" strategy="lazyOnload">
         {`
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

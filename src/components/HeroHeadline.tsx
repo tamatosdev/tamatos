@@ -2,28 +2,21 @@
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { useState, useSyncExternalStore, type CSSProperties } from "react";
+import { useEffect, useState, useSyncExternalStore, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import Asterisk from "@/assets/asteric.png";
-import DesignShot from "@/assets/Design Hero Section GIF.gif";
-import DevelopmentShot from "@/assets/Development Hero Section GIF.gif";
-import DigitalShot from "@/assets/Digital Hero Section GIF.gif";
+// Animated WebP pre-sized to 2x the card width (source GIFs are in assets alongside).
+import DesignShot from "@/assets/hero-design.webp";
+import DevelopmentShot from "@/assets/hero-development.webp";
+import DigitalShot from "@/assets/hero-digital.webp";
 
 type ServiceKey = "design" | "development" | "marketing";
 
-const services: Record<
-  ServiceKey,
-  { color: string; href: string; image: StaticImageData; animated?: boolean }
-> = {
-  design: { color: "#3DDBB1", href: "/services/design", image: DesignShot, animated: true },
-  development: {
-    color: "#F26B2C",
-    href: "/services/development",
-    image: DevelopmentShot,
-    animated: true,
-  },
-  marketing: { color: "#9DF560", href: "/services/digital", image: DigitalShot, animated: true },
+const services: Record<ServiceKey, { color: string; href: string; image: StaticImageData }> = {
+  design: { color: "#3DDBB1", href: "/services/design", image: DesignShot },
+  development: { color: "#F26B2C", href: "/services/development", image: DevelopmentShot },
+  marketing: { color: "#9DF560", href: "/services/digital", image: DigitalShot },
 };
 
 const serviceKeys = Object.keys(services) as ServiceKey[];
@@ -48,6 +41,18 @@ export default function HeroHeadline() {
     () => false,
   );
   const reduceMotion = useReducedMotion();
+  // Card images wait until the page is idle so they don't compete with the first paint.
+  const [imagesReady, setImagesReady] = useState(false);
+
+  useEffect(() => {
+    if (!canHover) return;
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(() => setImagesReady(true), { timeout: 3000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = setTimeout(() => setImagesReady(true), 1500);
+    return () => clearTimeout(id);
+  }, [canHover]);
 
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -70,6 +75,7 @@ export default function HeroHeadline() {
     }
     setActive(key);
     setShown(key);
+    setImagesReady(true);
   };
 
   const word = (key: ServiceKey) => (
@@ -137,20 +143,21 @@ export default function HeroHeadline() {
                     active && !reduceMotion ? "heroCardTilt 0.6s cubic-bezier(0.22, 1, 0.36, 1)" : "none",
                 }}
               >
-                {serviceKeys.map((key) => (
-                  <Image
-                    key={key}
-                    src={services[key].image}
-                    alt=""
-                    fill
-                    sizes="132px"
-                    loading="eager"
-                    // Next's optimizer would flatten the GIF to a single frame.
-                    unoptimized={services[key].animated}
-                    className="object-cover"
-                    style={{ opacity: shown === key ? 1 : 0 }}
-                  />
-                ))}
+                {imagesReady &&
+                  serviceKeys.map((key) => (
+                    <Image
+                      key={key}
+                      src={services[key].image}
+                      alt=""
+                      fill
+                      sizes="132px"
+                      loading="eager"
+                      // Already sized; the optimizer would also flatten the animation to one frame.
+                      unoptimized
+                      className="object-cover"
+                      style={{ opacity: shown === key ? 1 : 0 }}
+                    />
+                  ))}
               </div>
             </div>
           </motion.div>,

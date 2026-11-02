@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import aboutHeader1 from "@/assets/about-header-1.png";
 import aboutHeader2 from "@/assets/about-header-2.png";
-import footerShade1 from "@/assets/footer-shade1.png";
+import footerShade1 from "@/assets/footer-shade1.webp";
 import AboutMarquee from "@/components/AboutMarquee";
 import ClientLogos from "@/components/ClientLogos";
 import lightGreenBox from "@/assets/lighr-green-box.png";
@@ -24,10 +24,11 @@ import StatsSection from "@/components/StatsSection";
 import CaseStudySection from "@/components/CaseStudySection";
 import BodyBgOnView from "@/components/BodyBgOnView";
 import JsonLd from "@/components/JsonLd";
-import arrowShade2 from "@/assets/arrow-shade2.png";
-import shade4 from "@/assets/Shade-4.png";
-import shade2 from "@/assets/Shade-2.png";
-import blogShade from "@/assets/blog-shade.png";
+import arrowShade2 from "@/assets/arrow-shade2.webp";
+import shade4 from "@/assets/Shade-4.webp";
+import shade2 from "@/assets/Shade-2.webp";
+// Displayed at 720px or less here, so a 2x (1440px) copy is enough.
+import blogShade from "@/assets/blog-shade-1440.webp";
 import { getPageSeo } from "@/lib/pageSeo";
 import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -267,6 +268,8 @@ export default async function AboutPage() {
               <img
                 src={blogShade.src}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 className="absolute right-0 top-[8%] max-w-none opacity-55"
                 style={{
                   width: "min(58vw, 720px)",

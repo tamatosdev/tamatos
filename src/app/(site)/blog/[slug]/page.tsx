@@ -1,12 +1,13 @@
-export const revalidate = 0;
+// Serve a cached page and refresh it from Sanity at most once a minute.
+export const revalidate = 60;
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import arrow_shade from "@/assets/arrow-shade.png";
-import footerShade1 from "@/assets/footer-shade1.png";
-import footerShade2 from "@/assets/footer-shade2.png";
+import arrow_shade from "@/assets/arrow-shade.webp";
+import footerShade1 from "@/assets/footer-shade1.webp";
+import footerShade2 from "@/assets/footer-shade2.webp";
 import BlogArticleLayout from "@/components/BlogArticleLayout";
 import CtaSection2 from "@/components/CtaSection2";
 import JsonLd from "@/components/JsonLd";
@@ -18,10 +19,17 @@ import {
   getPostBySlug,
   getPostExcerpt,
   getPostReadingTime,
+  getPosts,
 } from "@/lib/blog";
 import { extractBlogHeadings } from "@/lib/blogHeadings";
 import { buildJsonLd, buildPageMetadata, mergeSeo, type SeoData } from "@/lib/seo";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+
+// Pre-render existing posts; new ones render on first visit and are then cached too.
+export async function generateStaticParams() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
 
 function postSeoDefaults(post: NonNullable<Awaited<ReturnType<typeof getPostBySlug>>>, slug: string): SeoData {
   const description = getPostExcerpt(post, 160) || DEFAULT_DESCRIPTION;

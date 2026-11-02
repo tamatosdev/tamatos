@@ -1,11 +1,12 @@
-export const revalidate = 0;
+// Serve a cached page and refresh it from Sanity at most once a minute.
+export const revalidate = 60;
 
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import footerShade1 from "@/assets/footer-shade1.png";
-import footerShade2 from "@/assets/footer-shade2.png";
+import footerShade1 from "@/assets/footer-shade1.webp";
+import footerShade2 from "@/assets/footer-shade2.webp";
 import PortableTextContent from "@/components/PortableTextContent";
 import CtaSection2 from "@/components/CtaSection2";
 import JsonLd from "@/components/JsonLd";

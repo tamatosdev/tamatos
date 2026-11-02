@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import contactBg from "@/assets/contact-page-box-bg.png";
-import arrowShade2 from "@/assets/arrow-shade2.png";
+import arrowShade2 from "@/assets/arrow-shade2.webp";
 import ContactForm from "@/components/ContactForm";
 import GlobalFootprint from "@/components/GlobalFootprint";
 import nabeel from "@/assets/CEO.png";
@@ -11,7 +11,8 @@ import { getContactPage } from "@/lib/contact";
 import { buildJsonLd, buildPageMetadata, mergeSeo, type SeoData } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
-export const revalidate = 0;
+// Serve a cached page and refresh it from Sanity at most once a minute.
+export const revalidate = 60;
 
 const defaultPhones = [
   { label: "+92 335 6787927", href: "+923356787927" },

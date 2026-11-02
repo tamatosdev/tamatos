@@ -18,10 +18,11 @@ import { getHomePage } from "@/lib/home";
 import { getPageSeo } from "@/lib/pageSeo";
 import { buildJsonLd, buildPageMetadata, mergeSeo } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
-import shade4 from "@/assets/Shade-4.png";
-import shade2 from "@/assets/Shade-2.png";
-import blogShade from "@/assets/blog-shade.png";
-import servicesShade from "@/assets/services-shade.png";
+import shade4 from "@/assets/Shade-4.webp";
+import shade2 from "@/assets/Shade-2.webp";
+// Displayed at 720px or less here, so a 2x (1440px) copy is enough.
+import blogShade from "@/assets/blog-shade-1440.webp";
+import servicesShade from "@/assets/services-shade.webp";
 
 export async function generateMetadata() {
   const seo = await getPageSeo("digitalPage");
@@ -38,7 +39,8 @@ export async function generateMetadata() {
   );
 }
 
-export const revalidate = 0;
+// Serve a cached page and refresh it from Sanity at most once a minute.
+export const revalidate = 60;
 
 const softFade = {
   right:
@@ -94,6 +96,8 @@ export default async function DigitalPage() {
           <img
             src={shade4.src}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute left-[-6%] top-[2%] h-auto w-[min(58vw,720px)] max-w-none opacity-95"
             style={{
               WebkitMaskImage: softFade.right,
@@ -106,6 +110,8 @@ export default async function DigitalPage() {
           <img
             src={blogShade.src}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute right-[-8%] top-[12%] h-auto w-[min(55vw,680px)] max-w-none opacity-60"
             style={{
               WebkitMaskImage: softFade.leftFromRight,
@@ -118,6 +124,8 @@ export default async function DigitalPage() {
           <img
             src={shade4.src}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute left-[-6%] top-[28%] h-auto w-[min(58vw,720px)] max-w-none opacity-95"
             style={{
               WebkitMaskImage: softFade.right,
@@ -130,6 +138,8 @@ export default async function DigitalPage() {
           <img
             src={blogShade.src}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute right-[-8%] top-[38%] h-auto w-[min(55vw,680px)] max-w-none opacity-60"
             style={{
               WebkitMaskImage: softFade.leftFromRight,
@@ -142,6 +152,8 @@ export default async function DigitalPage() {
           <img
             src={shade4.src}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute left-[-8%] top-[58%] h-auto w-[min(56vw,700px)] max-w-none opacity-90"
             style={{
               WebkitMaskImage: softFade.right,
@@ -154,6 +166,8 @@ export default async function DigitalPage() {
           <img
             src={shade2.src}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute right-[-6%] top-[52%] h-auto w-[min(42vw,520px)] max-w-none opacity-45"
             style={{
               WebkitMaskImage: softFade.leftFromRight,
@@ -166,6 +180,8 @@ export default async function DigitalPage() {
           <img
             src={blogShade.src}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute right-[-10%] bottom-[2%] h-auto w-[min(58vw,720px)] max-w-none opacity-65"
             style={{
               WebkitMaskImage: softFade.leftFromRight,

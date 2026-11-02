@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import ctaImage from "@/assets/cta-2-shadow.png";
-import ctaShadeMobile from "@/assets/cta-shade-mobile.png";
-import shade4 from "@/assets/Shade-4.png";
+import ctaShadeMobile from "@/assets/cta-shade-mobile.webp";
+import shade4 from "@/assets/Shade-4.webp";
 
 export default function DevelopmentFinalCtaSection() {
   return (
@@ -12,6 +12,8 @@ export default function DevelopmentFinalCtaSection() {
       <img
         src={shade4.src}
         alt=""
+        loading="lazy"
+        decoding="async"
         className="pointer-events-none absolute left-[-8%] top-1/2 z-0 h-[140%] w-[min(65vw,760px)] max-w-none -translate-y-1/2 select-none object-cover object-left opacity-95"
         style={{
           WebkitMaskImage:
@@ -42,7 +44,6 @@ export default function DevelopmentFinalCtaSection() {
             alt=""
             className="pointer-events-none absolute right-0 top-0 block h-full w-auto select-none object-right-top opacity-90 lg:hidden"
             aria-hidden
-            priority
           />
 
           <div className="relative z-10">

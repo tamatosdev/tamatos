@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import footerShade1 from "@/assets/footer-shade1.png";
+import footerShade1 from "@/assets/footer-shade1.webp";
 import WorkHeroVideo from "@/components/WorkHeroVideo";
 import WorkAwardsSection from "@/components/WorkAwardsSection";
 import WorkPortfolioSection from "@/components/WorkPortfolioSection";

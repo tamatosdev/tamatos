@@ -10,8 +10,8 @@ import OdooBadge from "@/assets/odoo-bedge.png";
 import ShopifyPartnerBadge from "@/assets/shopify-parthner-bedge.png";
 import BehanceIcon from "@/assets/behance.svg";
 import ClutchIcon from "@/assets/clutch.svg";
-import FooterShade1 from "@/assets/footer-shade1.png";
-import FooterShade2 from "@/assets/footer-shade2.png";
+import FooterShade1 from "@/assets/footer-shade1.webp";
+import FooterShade2 from "@/assets/footer-shade2.webp";
 
 const navColumns = [
   {
