@@ -67,8 +67,10 @@ export default async function Home() {
   const home = await getHomePage();
 
   const compareLeft = home?.compareStrip?.leftText ?? "Most Agencies = Either Design Well OR Market Well";
-  const compareRightRaw = home?.compareStrip?.rightText ?? "Tamatos = Bridges Product + Growth";
-  const compareRightRest = compareRightRaw.replace(/^Tamatos\s*/i, "").trim() || "= Bridges Product + Growth";
+  const compareRightRaw = home?.compareStrip?.rightText ?? "Tamatos = Bridging Product + Growth";
+  const compareRightRest =
+    compareRightRaw.replace(/^Tamatos\s*/i, "").replace(/^=\s*Bridges\b/i, "= Bridging").trim() ||
+    "= Bridging Product + Growth";
 
   const teamRoles = "Strategists. Designers. Developers. Brand thinkers. SEO nerds.";
   const teamBody =

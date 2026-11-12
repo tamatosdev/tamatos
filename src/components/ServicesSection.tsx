@@ -30,7 +30,7 @@ const defaultServices = [
       "Search Engine Optimization",
       "Influencer Marketing",
       "Email & WhatsApp Automation",
-      "Content Strategy & Production",
+      "Content Creation & Strategy",
       "Analytics & Growth Optimization",
     ],
   },

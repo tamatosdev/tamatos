@@ -46,6 +46,42 @@ function categoryAccentColor(label: string, hoverColor?: string) {
   return normalizeHexColor(hoverColor, fallback);
 }
 
+type GlassRect = { left: number; top: number; width: number; height: number };
+
+/** How far the scrolled glass bar reaches past the header content. */
+const GLASS_PAD_X = 24;
+const GLASS_PAD_Y = 8;
+
+/** Frosted-glass layers shared by the nav pill and the full scrolled header bar. */
+function GlassLayers() {
+  return (
+    <>
+      <div
+        className="absolute inset-0 rounded-full"
+        style={{
+          backdropFilter: "url(#lensFilter) blur(2px)",
+          WebkitBackdropFilter: "blur(9px)",
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "rgba(255, 255, 255, 0.07)",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
+          borderRadius: "100px",
+          boxShadow: "-1px 1px 0px #ffffff42",
+        }}
+      />
+      <div
+        className="absolute inset-x-0 top-0 h-1/2 rounded-t-full pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
+        }}
+      />
+    </>
+  );
+}
+
 export default function Header({ navigation = defaultSiteNavigation }: HeaderProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -54,6 +90,8 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [mobileMegaCategory, setMobileMegaCategory] = useState(0);
   const headerContainerRef = useRef<HTMLDivElement>(null);
+  const navPillRef = useRef<HTMLDivElement>(null);
+  const [glassBox, setGlassBox] = useState<{ pill: GlassRect | null; full: GlassRect } | null>(null);
 
   const navLinks = navigation.items ?? defaultSiteNavigation.items ?? [];
   const contactButton = navigation.contactButton ?? defaultSiteNavigation.contactButton;
@@ -62,6 +100,39 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Measure the nav pill and the whole header so the glass can grow from one to the other.
+  useEffect(() => {
+    const container = headerContainerRef.current;
+    const pill = navPillRef.current;
+    if (!container || !pill) return;
+
+    const observer = new ResizeObserver(() => {
+      const c = container.getBoundingClientRect();
+      const p = pill.getBoundingClientRect();
+      const style = getComputedStyle(container);
+      // Wrap the content box, but keep at least 8px from the screen edges.
+      const left = Math.max(parseFloat(style.paddingLeft) - GLASS_PAD_X, 8 - c.left);
+      const right = Math.min(
+        c.width - parseFloat(style.paddingRight) + GLASS_PAD_X,
+        window.innerWidth - 8 - c.left
+      );
+      setGlassBox({
+        pill: p.width
+          ? { left: p.left - c.left, top: p.top - c.top, width: p.width, height: p.height }
+          : null,
+        full: {
+          left,
+          top: -GLASS_PAD_Y,
+          width: right - left,
+          height: c.height + GLASS_PAD_Y * 2,
+        },
+      });
+    });
+    observer.observe(container);
+    observer.observe(pill);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -215,36 +286,28 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
           ref={headerContainerRef}
           className="container relative flex items-center justify-between"
         >
-          <Link
-            href="/"
-            className={`flex items-center transition-all duration-500 ${scrolled ? "opacity-0 pointer-events-none -translate-y-2" : "opacity-100 translate-y-0"}`}
-          >
+          {/* Glass sits on the nav pill at the top and grows to cover the whole header on scroll. */}
+          {glassBox && (
+            <div
+              aria-hidden
+              className="pointer-events-none absolute"
+              style={{
+                ...(scrolled || !glassBox.pill ? glassBox.full : glassBox.pill),
+                opacity: scrolled || glassBox.pill ? 1 : 0,
+                transition:
+                  "left 0.6s cubic-bezier(0.76,0,0.24,1), top 0.6s cubic-bezier(0.76,0,0.24,1), width 0.6s cubic-bezier(0.76,0,0.24,1), height 0.6s cubic-bezier(0.76,0,0.24,1), opacity 0.4s ease",
+              }}
+            >
+              <GlassLayers />
+            </div>
+          )}
+
+          <Link href="/" className="relative flex items-center">
             <Image src={Logo} alt="Logo" className="w-34.75 lg:w-auto h-auto" priority />
           </Link>
 
-          <div className="relative hidden lg:flex items-center rounded-full">
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{
-                backdropFilter: "url(#lensFilter) blur(2px)",
-                WebkitBackdropFilter: "blur(9px)",
-              }}
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "rgba(255, 255, 255, 0.07)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                borderRadius: "100px",
-                boxShadow: "-1px 1px 0px #ffffff42",
-              }}
-            />
-            <div
-              className="absolute inset-x-0 top-0 h-1/2 rounded-t-full pointer-events-none"
-              style={{
-                background: "linear-gradient(to bottom, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
-              }}
-            />
+          <div ref={navPillRef} className="relative hidden lg:flex items-center rounded-full">
+            {!glassBox && <GlassLayers />}
             <nav className="relative flex items-center gap-2 xl:gap-3 px-2.5 py-2.5">
               {navLinks.map(renderDesktopNavItem)}
             </nav>
@@ -252,7 +315,7 @@ export default function Header({ navigation = defaultSiteNavigation }: HeaderPro
 
           <Link
             href={contactButton?.href || "/contact"}
-            className={`hidden lg:inline-flex px-6 xl:px-10 py-4 xl:py-5 rounded-full text-[18px] xl:text-[18px] font-medium text-white border border-white/30 hover:bg-white hover:text-black hover:border-white leading-none transition-all duration-500 ${scrolled ? "opacity-0 pointer-events-none -translate-y-2" : "opacity-100 translate-y-0"}`}
+            className="relative hidden lg:inline-flex px-6 xl:px-10 py-4 xl:py-5 rounded-full text-[18px] xl:text-[18px] font-medium text-white border border-white/30 hover:bg-white hover:text-black hover:border-white leading-none transition-all duration-500"
           >
             {contactButton?.label || "Contact Us"}
           </Link>

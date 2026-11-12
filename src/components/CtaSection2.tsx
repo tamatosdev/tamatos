@@ -64,8 +64,10 @@ export default function CtaSection2({
   data?: FinalCtaData;
   variant?: "default" | "about";
 }) {
-  const heading = "Have something\nworth building?";
   const isAbout = variant === "about";
+  const heading = isAbout
+    ? "Have something\nworth building?"
+    : "Got a kickass idea?\nWe'll help you make it real.";
   const description = isAbout
     ? "A website. A digital product. A brand that needs a rethink. Or a business problem you haven't quite figured out yet."
     : "You've now seen what we've built and what our clients say. The only thing left for you is starting. Drop us your brief or just say hi. Either works.";

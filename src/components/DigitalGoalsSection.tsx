@@ -1,8 +1,8 @@
 const questions = [
   { number: "01", text: "What are your business goals?" },
-  { number: "02", text: "Who are the targeted audience?" },
+  { number: "02", text: "Who is your targeted audience?" },
   { number: "03", text: "Who are your competitors?" },
-  { number: "04", text: "What are the opportunities for growth?" },
+  { number: "04", text: "What are your opportunities for growth?" },
 ];
 
 export default function DigitalGoalsSection() {

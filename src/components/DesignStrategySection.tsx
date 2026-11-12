@@ -19,7 +19,7 @@ export default function DesignStrategySection() {
             style={{ fontSize: "clamp(26px, 4vw, 50.06px)" }}
           >
             A logo can make you{" "}
-            <em className="font-normal italic text-white/45">recognizable</em>
+            <em className="font-normal italic text-white/45">recognizable.</em>
             <br className="hidden sm:block" />
             {` `}Strategy makes you{" "}
             <span className="font-semibold text-[var(--service-accent,#03E4AC)]">unforgettable.</span>

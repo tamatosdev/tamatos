@@ -88,7 +88,14 @@ const testimonialPortableTextComponents = {
   },
 };
 
-export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
+export default function TestimonialsSection({
+  data,
+  variant = "default",
+}: {
+  data?: ReviewsData;
+  /** About page uses its own "Don't take our word for it." heading. */
+  variant?: "default" | "about";
+}) {
   const headingStart = data?.headingStart ?? "Verified";
   const headingHighlight = data?.headingHighlight ?? "reviews";
   const headingMiddle =
@@ -125,14 +132,26 @@ export default function TestimonialsSection({ data }: { data?: ReviewsData }) {
     <section className="py-16 lg:py-30 overflow-hidden">
       <div className="container mx-auto px-5">
         <div className="review-main-heading max-w-250 mx-auto text-center">
-          <h2 className="text-white leading-[1.2] font-medium tracking-[-0.04em]" style={{ fontSize: "clamp(22px, 3.2vw, 50.06px)" }}>
-            {headingStart}{" "}
-            <span className="text-[#9DF560]">{headingHighlight}</span> {headingMiddle}{" "}
-            <span className="italic text-white/70">{headingItalic}</span>
-            <br />
-            {headingLine2}
-            <span className="text-[#9DF560]">.</span>
-          </h2>
+          {variant === "about" ? (
+            <>
+              <h2 className="text-white leading-[1.2] font-medium tracking-[-0.04em]" style={{ fontSize: "clamp(22px, 3.2vw, 50.06px)" }}>
+                Don&apos;t take <em className="italic text-white/50">our</em> word for it
+                <span className="text-[#9DF560]">.</span>
+              </h2>
+              <p className="mt-4 text-[18px] leading-[1.55] tracking-[-0.02em] text-white/80">
+                Here&apos;s what the people we&apos;ve worked with have to say.
+              </p>
+            </>
+          ) : (
+            <h2 className="text-white leading-[1.2] font-medium tracking-[-0.04em]" style={{ fontSize: "clamp(22px, 3.2vw, 50.06px)" }}>
+              {headingStart}{" "}
+              <span className="text-[#9DF560]">{headingHighlight}</span> {headingMiddle}{" "}
+              <span className="italic text-white/70">{headingItalic}</span>
+              <br />
+              {headingLine2}
+              <span className="text-[#9DF560]">.</span>
+            </h2>
+          )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 pt-[80px]">

@@ -40,8 +40,8 @@ export default function DevelopmentGoalsCtaSection() {
                 style={{ fontSize: "18px" }}
               >
                 This enables us to build digital products that are intuitive, scalable, and aligned
-                with measurable business outcomes. Because great development isn&apos;t about writing
-                code - It&apos;s about{" "}
+                with measurable business outcomes, because great development isn&apos;t about writing
+                code. It&apos;s about{" "}
                 <span className="relative inline-block font-semibold text-[#0A0A0C] pb-1.5">
                   solving business problems.
                   <Image

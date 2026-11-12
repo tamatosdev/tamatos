@@ -33,7 +33,7 @@ export default function DigitalQuoteCtaSection() {
                 being the most relevant.
               </p>
               <p className="mt-5 italic text-[#0A0A0C]">
-                <span className="font-normal text-[#0A0A0C]/55">At Tamatos,</span> We help
+                <span className="font-normal text-[#0A0A0C]/55">At Tamatos,</span> we help
                 businesses cut through the noise with strategies that build trust, create
                 meaningful connections, and drive measurable growth.
               </p>

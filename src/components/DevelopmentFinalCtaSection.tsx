@@ -69,7 +69,7 @@ export default function DevelopmentFinalCtaSection() {
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-[#1D17E0] py-3 px-7 text-[18px] font-medium leading-none tracking-[-0.02em] text-white transition-colors duration-300 hover:bg-[#0A0A0C] lg:px-8 lg:py-4 lg:text-[18px]"
               >
-                Start Branding Project
+                Start Your Project
               </Link>
               <Link
                 href="/contact"

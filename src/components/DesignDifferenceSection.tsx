@@ -19,7 +19,7 @@ const cards = [
     number: "03",
     title: "AI-enhanced. Human-led.",
     description:
-      "We build brands that support growth, strengthen trust, and create lasting value.",
+      "We use AI to accelerate research and workflows, while every creative decision stays human.",
   },
   {
     number: "04",

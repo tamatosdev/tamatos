@@ -40,8 +40,8 @@ export default function DigitalGoalsCtaSection() {
                 style={{ fontSize: "18px" }}
               >
                 This enables us to create marketing strategies that are purposeful, measurable, and
-                built around real business outcomes. Because great marketing isn&apos;t about chasing
-                trends, it&apos;s about{" "}
+                built around real business outcomes, because great marketing isn&apos;t about chasing
+                trends. It&apos;s about{" "}
                 <span className="relative inline-block font-semibold text-[#0A0A0C] pb-1.5">
                   building sustainable growth.
                   <Image

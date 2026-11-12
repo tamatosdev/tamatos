@@ -33,7 +33,7 @@ export default function DevelopmentQuoteCtaSection() {
                 doesn&apos;t solve the problems that matter.
               </p>
               <p className="mt-5 italic text-[#0A0A0C]">
-                <span className="font-normal text-[#0A0A0C]/55">At Tamatos,</span> We believe
+                <span className="font-normal text-[#0A0A0C]/55">At Tamatos,</span> we believe
                 development should make your business simpler, faster, and easier to grow, not more
                 complicated. That&apos;s the mindset we bring to every project.
               </p>

@@ -83,7 +83,13 @@ export default function HeroHeadline() {
       href={services[key].href}
       className="hero-service-word"
       data-active={active === key}
-      style={{ "--word-color": services[key].color } as CSSProperties}
+      style={
+        {
+          "--word-color": services[key].color,
+          // Touch shimmer runs across the three words one after another.
+          "--word-delay": `${serviceKeys.indexOf(key) * 0.3}s`,
+        } as CSSProperties
+      }
       onPointerEnter={(e) => {
         if (e.pointerType === "mouse") show(key, e.clientX, e.clientY, active === null);
       }}
@@ -102,13 +108,15 @@ export default function HeroHeadline() {
 
   return (
     <>
-      <span className="block">
-        Your partners in {word("design")},
-      </span>
-      <span className="block">
+      {/* Phones start the service words on their own line and let them wrap to the screen width. */}
+      <span className="sm:block">
+        Your partners in
+        <br className="sm:hidden" /> {word("design")},
+      </span>{" "}
+      <span className="sm:block">
         {word("development")} &amp; {word("marketing")}
       </span>
-      <span className="flex flex-wrap items-center justify-start gap-x-3 sm:gap-x-4 lg:justify-center">
+      <span className="banner-hero-tagline flex flex-wrap items-center justify-start gap-x-3 sm:gap-x-4 lg:justify-center">
         <span>All the ingredients,</span>
         <span className="flex items-center gap-3 sm:gap-4 whitespace-nowrap">
           <Image

@@ -371,7 +371,7 @@ export default async function AboutPage() {
                     className="inline-block w-8 lg:w-12 h-auto mr-2 lg:mr-3"
                     style={{ verticalAlign: "middle" }}
                   />
-                  <span className="text-white">We take work seriously. </span>
+                  <span className="text-white">We take the work seriously. </span>
                   <span className="text-white/50">Ourselves? </span>
                   <em className="italic text-white font-medium">Not always</em>
                   <span className="text-[#9DF560]">.</span>
@@ -407,7 +407,7 @@ export default async function AboutPage() {
           <TeamSection />
 
           <ServicesSection />
-          <StatsSection />
+          <StatsSection showHeading />
         </div>
       </div>
 
@@ -446,7 +446,7 @@ export default async function AboutPage() {
 
       <div className="about-last-3 pt-14 lg:pt-24">
 
-      <ReviewTab />
+      <ReviewTab variant="about" />
       <BlogSection />
       <CtaSection2 variant="about" />
 
