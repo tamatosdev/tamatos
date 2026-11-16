@@ -72,7 +72,8 @@ function mapSanityPost(post: SanityPost): BlogPost {
   return {
     id: post._id,
     title: post.title,
-    slug: post.slug,
+    // Editors sometimes leave a stray space in the slug; it would break the post URL.
+    slug: post.slug.trim(),
     date: post.publishedAt ?? new Date().toISOString(),
     updatedAt: post._updatedAt,
     excerpt: post.excerpt,
@@ -121,7 +122,10 @@ export async function getPosts(limit?: number): Promise<BlogPost[]> {
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const post = await sanityClient.fetch<SanityPost | null>(postBySlugQuery, { slug });
-    return post ? mapSanityPost(post) : null;
+    if (post) return mapSanityPost(post);
+    // Fall back for slugs stored with surrounding spaces in Sanity.
+    const posts = await getPosts();
+    return posts.find((p) => p.slug === slug.trim()) ?? null;
   } catch {
     return null;
   }

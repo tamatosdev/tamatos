@@ -22,7 +22,12 @@ export const post = defineType({
       type: 'slug',
       group: 'content',
       options: { source: 'title', maxLength: 96 },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().custom((value) =>
+          value?.current && /\s/.test(value.current)
+            ? 'Slug cannot contain spaces (check the start and end too).'
+            : true,
+        ),
     }),
     defineField({
       name: 'author',
