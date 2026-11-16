@@ -434,7 +434,47 @@ body {
 
 .blog-content ul,
 .blog-content ol { padding-left: 1.5em; margin-bottom: 1.4em; }
-.blog-content li { margin-bottom: 0.4em; color: rgba(255,255,255,0.75) !important; }
+/* Tailwind's reset removes list markers; bring them back in the brand green. */
+.blog-content ul { list-style-type: disc; }
+.blog-content ol { list-style-type: decimal; }
+.blog-content ul ul { list-style-type: circle; }
+.blog-content li { margin-bottom: 0.4em; padding-left: 0.25em; color: rgba(255,255,255,0.75) !important; }
+.blog-content li::marker { color: #9DF560; font-weight: 600; }
+
+/* CTA block editors can drop into a post's content. */
+.blog-content .blog-cta {
+  margin: 2em 0;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+.blog-content .blog-cta-title {
+  margin: 0 0 0.4em !important;
+  color: #ffffff !important;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+.blog-content .blog-cta-text { margin-bottom: 1.2em; }
+.blog-content a.blog-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  background: #1d17e0;
+  color: #ffffff !important;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-decoration: none !important;
+  transition: background-color 0.3s, color 0.3s;
+}
+.blog-content a.blog-cta-button:hover { background: #ffffff; color: #0a0a0c !important; }
+.blog-content .blog-cta-plain { margin: 1.6em 0; }
 
 .blog-content blockquote {
   border-left: 3px solid #9DF560 !important;

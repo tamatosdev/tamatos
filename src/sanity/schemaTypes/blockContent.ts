@@ -65,5 +65,48 @@ export const blockContent = defineType({
       type: 'table',
       title: 'Table',
     }),
+    defineArrayMember({
+      name: 'ctaBlock',
+      title: 'CTA Button',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'Heading (optional)',
+          type: 'string',
+          description: 'Leave heading and text empty to show only the button.',
+        },
+        {
+          name: 'text',
+          title: 'Text (optional)',
+          type: 'text',
+          rows: 2,
+        },
+        {
+          name: 'label',
+          title: 'Button label',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'url',
+          title: 'Button link',
+          type: 'url',
+          description: 'A full URL (https://…) or a site path like /contact.',
+          validation: (Rule) =>
+            Rule.required().uri({ allowRelative: true, scheme: ['http', 'https', 'mailto', 'tel'] }),
+        },
+        {
+          name: 'openInNewTab',
+          title: 'Open in a new tab',
+          type: 'boolean',
+          initialValue: false,
+        },
+      ],
+      preview: {
+        select: { title: 'label', subtitle: 'url' },
+        prepare: ({ title, subtitle }) => ({ title: `CTA: ${title || 'Button'}`, subtitle }),
+      },
+    }),
   ],
 })
