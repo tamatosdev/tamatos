@@ -1,4 +1,5 @@
 import { defineType, defineArrayMember } from 'sanity'
+import { LaunchIcon } from '@sanity/icons'
 import { BlockContentInput } from '../components/BlockContentInput'
 
 export const blockContent = defineType({
@@ -61,14 +62,12 @@ export const blockContent = defineType({
         },
       ],
     }),
-    defineArrayMember({
-      type: 'table',
-      title: 'Table',
-    }),
+    // Listed before Table with a short title so it stays on the toolbar instead of the "⋯" menu.
     defineArrayMember({
       name: 'ctaBlock',
-      title: 'CTA Button',
+      title: 'Button',
       type: 'object',
+      icon: LaunchIcon,
       fields: [
         {
           name: 'title',
@@ -105,8 +104,12 @@ export const blockContent = defineType({
       ],
       preview: {
         select: { title: 'label', subtitle: 'url' },
-        prepare: ({ title, subtitle }) => ({ title: `CTA: ${title || 'Button'}`, subtitle }),
+        prepare: ({ title, subtitle }) => ({ title: `Button: ${title || 'Untitled'}`, subtitle }),
       },
+    }),
+    defineArrayMember({
+      type: 'table',
+      title: 'Table',
     }),
   ],
 })
